@@ -29,9 +29,6 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 - **Hospedagem**: Microsoft Azure
 - **Mensageria**: WebSockets com Django Channels (para mensagens em tempo real)
 
-## Licença
-
-Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## Créditos
 
@@ -73,6 +70,9 @@ Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE
     </td>
   </tr>
 </table>
+## Licença
+
+Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## Contato
 
