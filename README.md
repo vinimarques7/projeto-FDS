@@ -70,6 +70,7 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
     </td>
   </tr>
 </table>
+
 ## Licença
 
 Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
