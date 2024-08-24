@@ -40,34 +40,34 @@ Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE
 <table>
   <tr align="center">
     <td>
-      <img src="https://i.imgur.com/qiddls9.jpg" alt="Fatima Beatriz" width="150px" height="150px" style="border-radius:50%;"/><br>
+      <img src="https://i.imgur.com/qiddls9.jpg" alt="Fatima Beatriz" width="150px" height="180px" style="border-radius:50%;"/><br>
       <b>Fatima Beatriz</b><br>
       <a href="mailto:fbmmca@cesar.school">fbmmca@cesar.school</a>
     </td>
     <td>
-      <img src="https://i.imgur.com/Gp3Qnov.jpg" alt="Julia Torres" width="150px" height="150px" style="border-radius:50%;"/><br>
+      <img src="https://i.imgur.com/Gp3Qnov.jpg" alt="Julia Torres" width="150px" height="180px" style="border-radius:50%;"/><br>
       <b>Julia Torres</b><br>
       <a href="mailto:jtb@cesar.school">jtb@cesar.school</a>
     </td>
     <td>
-      <img src="https://i.imgur.com/B7Gs5AB.jpg" alt="Maria Claudia" width="150px" height="150px" style="border-radius:50%;"/><br>
+      <img src="https://i.imgur.com/B7Gs5AB.jpg" alt="Maria Claudia" width="150px" height="180px" style="border-radius:50%;"/><br>
       <b>Maria Claudia</b><br>
       <a href="mailto:mcrcoa@cesar.school">mcrcoa@cesar.school</a>
     </td>
   </tr>
   <tr align="center">
     <td>
-      <img src="https://i.imgur.com/3EiNSXx.jpg" alt="Matheus Martins" width="150px" height="150px" style="border-radius:50%;"/><br>
+      <img src="https://i.imgur.com/3EiNSXx.jpg" alt="Matheus Martins" width="150px" height="180px" style="border-radius:50%;"/><br>
       <b>Matheus Martins</b><br>
       <a href="mailto:mmv@cesar.school">mmv@cesar.school</a>
     </td>
     <td>
-      <img src="https://i.imgur.com/PUBw0Xa.jpg" alt="Vinicius Bernardo" width="150px" height="150px" style="border-radius:50%;"/><br>
+      <img src="https://i.imgur.com/PUBw0Xa.jpg" alt="Vinicius Bernardo" width="150px" height="180px" style="border-radius:50%;"/><br>
       <b>Vinicius Bernardo</b><br>
       <a href="mailto:vbs4@cesar.school">vbs4@cesar.school</a>
     </td>
     <td>
-      <img src="https://i.imgur.com/vB6f7CX.jpg" alt="Vinicius Marques" width="150px" height="150px" style="border-radius:50%;"/><br>
+      <img src="https://i.imgur.com/vB6f7CX.jpg" alt="Vinicius Marques" width="150px" height="180px" style="border-radius:50%;"/><br>
       <b>Vinicius Marques</b><br>
       <a href="mailto:vjmm@cesar.school">vjmm@cesar.school</a>
     </td>
