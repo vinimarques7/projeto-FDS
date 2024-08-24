@@ -37,13 +37,14 @@ Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE
 
 **Este projeto foi desenvolvido por:**
 
-| ![ Fatima Beatriz](https://imgur.com/qiddls9)   | [fbmmca@cesar.school](mailto:fbmmca@cesar.school) |
-| ![Julia Torres ](https://imgur.com/Gp3Qnov)     | [jtb@cesar.school](mailto:jtb@cesar.school)       |
-| ![ Maria Claudia ](https://imgur.com/B7Gs5AB)   | [mcrcoa@cesar.school](mailto:mcrcoa@cesar.school) |
-| ![Matheus Martins](https://imgur.com/3EiNSXx)   | [mmv@cesar.school](mailto:mmv@cesar.school)       |
-| ![Vinicius Bernardo](https://imgur.com/PUBw0Xa) | [vbs4@cesar.school](mailto:vbs4@cesar.school)     |
-| ![Vinicius Marques](https://imgur.com/vB6f7CX)  | [vjmm@cesar.school](mailto:vjmm@cesar.school)     |
+ ![Foto do Participante 1](https://imgur.com/qiddls9) | Fatima Beatriz    | [fbmmca@cesar.school](mailto:fbmmca@cesar.school) |
+ ![Foto do Participante 2](https://imgur.com/Gp3Qnov) | Julia Torres      | [jtb@cesar.school](mailto:jtb@cesar.school)       |
+ ![Foto do Participante 3](https://imgur.com/B7Gs5AB) | Maria Claudia     | [mcrcoa@cesar.school](mailto:mcrcoa@cesar.school) |
+ ![Foto do Participante 4](https://imgur.com/3EiNSXx) | Matheus Martins   | [mmv@cesar.school](mailto:mmv@cesar.school)       |
+ ![Foto do Participante 5](https://imgur.com/PUBw0Xa) | Vinicius Bernardo | [vbs4@cesar.school](mailto:vbs4@cesar.school)     |
+ ![Foto do Participante 6](https://imgur.com/vB6f7CX) | Vinicius Marques  | [vjmm@cesar.school](mailto:vjmm@cesar.school)     |
+
 
 ## Contato
 
-Para mais informações ou suporte, entre em contato conosco em `[contato.whichteacher@gmail.com](mailto:contato.whichteacher@gmail.com)`.
+Para mais informações ou suporte, entre em contato conosco em [contato.whichteacher@gmail.com](mailto:contato.whichteacher@gmail.com).
