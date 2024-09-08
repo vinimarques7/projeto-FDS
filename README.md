@@ -44,7 +44,7 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 <td>
       <img src="https://imgur.com/wG0u8nt.jpg" alt="Backlog" style="border-radius:50%;"/><br>
   
-    </td>
+   
 
 
 ### Board
