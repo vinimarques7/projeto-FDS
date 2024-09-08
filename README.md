@@ -16,9 +16,6 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 
 - **Mensagens e Notificações**: Sistema de mensagens interno para comunicação direta entre professores e alunos, com notificações em tempo real.
 
-## **Acesse o site**:
-
-    Abra seu navegador e vá para `linkDoSiteAqui`
 
 ## Tecnologias
 
@@ -44,7 +41,10 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 [![Jira](https://img.shields.io/badge/-Jira-red?style=flat&logo=Jira&logoColor=white)](https://cesar-team-r73jqrwd.atlassian.net/jira/software/projects/KAN/boards/1/backlog)
 
 ### Backlog
-
+<td>
+      <img src="https://imgur.com/dmBJQxw.jpg" alt="Backlog" width="150px" height="180px" style="border-radius:50%;"/><br>
+  
+    </td>
 
 
 ### Board
@@ -52,6 +52,10 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 
 
 
+
+## **Acesse o site**:
+
+    Abra seu navegador e vá para `linkDoSiteAqui`
 
 ## Créditos
 
