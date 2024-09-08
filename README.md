@@ -20,14 +20,37 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 
     Abra seu navegador e vá para `linkDoSiteAqui`
 
-## Tecnologias Utilizadas
+## Tecnologias
 
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Backend**: Django
-- **Banco de Dados**: MySQL
-- **Autenticação**: Django REST Framework (DRF)
-- **Hospedagem**: Microsoft Azure
-- **Mensageria**: WebSockets com Django Channels (para mensagens em tempo real)
+[![Python](https://img.shields.io/badge/-Python-red?style=flat&logo=Python&logoColor=white)](https://www.python.org)
+[![Django](https://img.shields.io/badge/-Django-red?style=flat&logo=Django&logoColor=white)](https://www.djangoproject.com/)
+[![SQLite](https://img.shields.io/badge/-SQLite-red?style=flat&logo=SQLite&logoColor=white)](https://www.sqlite.org/index.html)
+[![JavaScript](https://img.shields.io/badge/-JavaScript-red?style=flat&logo=JavaScript&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![HTML5](https://img.shields.io/badge/-HTML5-red?style=flat&logo=HTML5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+[![CSS3](https://img.shields.io/badge/-CSS3-red?style=flat&logo=CSS3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![Microsoft Azure](https://img.shields.io/badge/-Microsoft%20Azure-red?style=flat&logo=Microsoft-Azure&logoColor=white)](https://azure.microsoft.com/)
+
+## Ferramentas
+
+[![Jira](https://img.shields.io/badge/-Jira-red?style=flat&logo=Jira&logoColor=white)](https://www.atlassian.com/software/jira)
+[![Figma](https://img.shields.io/badge/-Figma-red?style=flat&logo=Figma&logoColor=white)](https://www.figma.com)
+[![YouTube](https://img.shields.io/badge/-YouTube-red?style=flat&logo=YouTube&logoColor=white)](https://www.youtube.com)
+[![Discord](https://img.shields.io/badge/-Discord-red?style=flat&logo=Discord&logoColor=white)](https://discord.com/)
+
+## Entrega 01
+
+[![Screencast](https://img.shields.io/badge/-Screencast-red?style=flat&logoColor=white)](https://example.com/screencast)
+[![Figma](https://img.shields.io/badge/-Figma-red?style=flat&logo=Figma&logoColor=white)](https://www.figma.com/design/lSNlGV5MUkZs83LWAfWCcy/WhichTeacher---LoFi?node-id=10-2413&node-type=FRAME&t=WqaG3RDJgDgkHVlD-0)
+[![Jira](https://img.shields.io/badge/-Jira-red?style=flat&logo=Jira&logoColor=white)](https://cesar-team-r73jqrwd.atlassian.net/jira/software/projects/KAN/boards/1/backlog)
+
+### Backlog
+
+
+
+### Board
+
+
+
 
 
 ## Créditos
