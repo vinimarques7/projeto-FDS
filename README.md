@@ -32,7 +32,6 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 [![Jira](https://img.shields.io/badge/-Jira-red?style=flat&logo=Jira&logoColor=white)](https://www.atlassian.com/software/jira)
 [![Figma](https://img.shields.io/badge/-Figma-red?style=flat&logo=Figma&logoColor=white)](https://www.figma.com)
 [![YouTube](https://img.shields.io/badge/-YouTube-red?style=flat&logo=YouTube&logoColor=white)](https://www.youtube.com)
-[![Discord](https://img.shields.io/badge/-Discord-red?style=flat&logo=Discord&logoColor=white)](https://discord.com/)
 
 ## Entrega 01
 
