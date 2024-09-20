@@ -78,12 +78,13 @@
     outline: none;
     border: none;
     line-height: 1;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.1rem;
+    color: #15202B;
   }
   
   .input-field input::placeholder {
-    color: #00000080;
+    color: #15202b6a;
     font-weight: 500;
   }
   
@@ -133,7 +134,8 @@
   }
   
   .btn:hover {
-    background-color: #8899A6;
+    background-color: #48219148;
+    color: #15202B;
   }
   .panels-container {
     position: absolute;
