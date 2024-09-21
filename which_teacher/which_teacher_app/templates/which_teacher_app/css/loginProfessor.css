@@ -60,6 +60,12 @@ form.sign-in-form {
   margin-bottom: 10px;
 }
 
+form button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
 .input-field {
   max-width: 380px;
   width: 100%;
