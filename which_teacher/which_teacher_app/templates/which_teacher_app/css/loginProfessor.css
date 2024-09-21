@@ -308,6 +308,7 @@ form.sign-in-form {
     width: 200px;
     transition: transform 0.9s ease-in-out;
     transition-delay: 0.6s;
+    margin-right: 20vw;
   }
 
   .panel .content {
