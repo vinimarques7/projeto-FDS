@@ -41,6 +41,7 @@
 .location,
 .contact {
     margin-top: 20px;
+    font-size: 11px;
 }
 
 .subjects h2{body {
@@ -143,7 +144,7 @@
 
 .contact h3{
     text-align: center;
-    font-size: 13px;
+    font-size: 14px;
 }
 .contact p{
     text-align: center;
@@ -166,7 +167,7 @@
 
 .payment-communication select,
 .payment-communication input {
-    padding: 6px;
+    padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
@@ -174,7 +175,7 @@
     justify-content: space-between;
     gap: 10px;
     display: flex;
-    flex-direction: column; /* Alinha os itens em coluna */
+    flex-direction: column;
     gap: 10px;
     width: 100%;
     margin-top: 20px;
