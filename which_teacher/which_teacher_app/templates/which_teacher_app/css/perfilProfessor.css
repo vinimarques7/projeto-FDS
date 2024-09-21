@@ -1,35 +1,38 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+* body{
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #a885d843;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
 }
 
 .profile {
-    background-color: white;
-    padding: 100px;
-    border-radius: 10px;
-    max-width: 10000px;
+    padding: 30px;
+    max-width: 1000px;
     margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .profile-header {
     display: flex;
-    align-items: center;
-    gap: 100px;
+    gap: 50px;
 }
 
 .profile-header img {
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    background-color: #ddd;
+    width: 150px;
+    height: 150px;
+    background-color: #ffffff;
 }
+
 
 .profile-header h1 {
     margin: 0;
-    font-size: 24px;
 }
 
 .subjects,
@@ -42,8 +45,9 @@ body {
 
 .subjects h2{body {
     font-family: Arial, sans-serif;
+    display: flex;
     background-color: #f0f0f0;
-    margin-right: 100px;
+    margin-left: 1px;
     padding: 20px;
 }
 
@@ -64,14 +68,15 @@ body {
 
 .profile-header img {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    background-color: #ddd;
+    border: 5px solid #482191;
+    width: 150px;
+    height: 150px;
+    background-color: #ffffff;
 }
 
 .profile-header h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 27px;
 }
 
 .subjects,
@@ -87,8 +92,11 @@ body {
 .rate h2,
 .location h2,
 .contact h2 {
-    font-size: 20px;
+    font-size: 4px;
     margin-bottom: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
 }
 
 .subjects p,
@@ -96,7 +104,6 @@ body {
 .rate p,
 .location p,
 .contact p {
-    font-size: 16px;
     margin: 5px 0;
 }
 
@@ -115,7 +122,7 @@ body {
 }
 
 .payment-communication label {
-    font-size: 14px;
+    font-size: 4px;
 }
 
 .contact-options {
@@ -130,16 +137,24 @@ body {
 .rate h2,
 .location h2,
 .contact h2 {
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 10px;
 }
 
+.contact h3{
+    text-align: center;
+    font-size: 13px;
+}
+.contact p{
+    text-align: center;
+    font-size: 1px;
+}
 .subjects p,
 .languages p,
 .rate p,
 .location p,
 .contact p {
-    font-size: 16px;
+    font-size: 14px;
     margin: 5px 0;
 }
 
@@ -151,12 +166,20 @@ body {
 
 .payment-communication select,
 .payment-communication input {
-    padding: 10px;
+    padding: 6px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    display: flex;
+    flex-direction: column; /* Alinha os itens em coluna */
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .payment-communication label {
-    font-size: 14px;
+    font-size: 13.5px;
 }
