@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.profile {
+    background-color: white;
+    padding: 100px;
+    border-radius: 10px;
+    max-width: 10000px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.profile-header img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background-color: #ddd;
+}
+
+.profile-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.subjects,
+.languages,
+.rate,
+.location,
+.contact {
+    margin-top: 20px;
+}
+
+.subjects h2{body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin-right: 100px;
+    padding: 20px;
+}
+
+.profile {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-header img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+}
+
+.profile-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.subjects,
+.languages,
+.rate,
+.location,
+.contact {
+    margin-top: 20px;
+}
+
+.subjects h2,
+.languages h2,
+.rate h2,
+.location h2,
+.contact h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.subjects p,
+.languages p,
+.rate p,
+.location p,
+.contact p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.payment-communication {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.payment-communication select,
+.payment-communication input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.payment-communication label {
+    font-size: 14px;
+}
+
+.contact-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-options div {
+    flex-basis: 45%;
+}}
+.languages h2,
+.rate h2,
+.location h2,
+.contact h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.subjects p,
+.languages p,
+.rate p,
+.location p,
+.contact p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.payment-communication {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.payment-communication select,
+.payment-communication input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.payment-communication label {
+    font-size: 14px;
+}
