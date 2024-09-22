@@ -6,12 +6,31 @@ body {
     padding: 15px;
     overflow: hidden;
 }
-header {
+header nav.menu-desktop{
     display: flex;
     height: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+.menu-mobile {
+    background-color: aqua;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+    width: 70%;
+}
+.menu-mobile nav ul {
+    text-align: right;  
+}
+.menu-mobile nav ul li a {
+    color: #15202b;
+    padding: 20px 4%;
+}
+.menu-mobile nav ul li a:hover {
+    color: red;
 }
 #title {
     flex-direction: column;
@@ -20,12 +39,12 @@ li {
     display: inline-block;
     margin: 30px;
 }
-a {
+nav.menu-desktop a {
     color: #492191;
     font-size: 20px;
     
 }
-a:hover {
+nav.menu-desktop a:hover {
     color: #15202b;
     transition: 0.3s all;
 }
