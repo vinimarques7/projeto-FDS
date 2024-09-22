@@ -98,6 +98,7 @@ main {
 h2 {
     font-size: 56px;
     line-height: 40px;
+    
 }
 span {
     color: #492191
@@ -123,12 +124,17 @@ button {
     height: 50px;
     cursor: pointer;
     font-size: large;
+    margin-top: 20px;
 }
 button:hover {
     background-color: #4821914d;
     color: #15202b;
     transition: 0.5s all;
 }
+footer {
+    padding: 40px;
+}
+
 @media screen and (max-width: 1067px){
     .menu-desktop{
         display: none;
