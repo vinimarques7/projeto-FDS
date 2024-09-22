@@ -133,6 +133,18 @@
     font-size: 16px; /* Ajuste o tamanho da fonte conforme desejado */
 }
 
+.tariff-input {
+    color: black; /* Texto em preto */
+    border: 1px solid #ccc;
+    padding: 8px; /* Diminua o padding para 8px */
+    border-radius: 5px;
+    width: 80%; /* Ajuste a largura para 80% */
+    max-width: 250px; /* Defina um limite máximo para a largura */
+}
+
+.tariff-input::placeholder {
+    color: rgb(0, 0, 0); /* Cor do placeholder em cinza claro */
+}
 
 
 .payment-communication {
@@ -208,10 +220,11 @@
 
 .payment-section {
     display: flex;
-    flex-direction: column; 
-    gap: 10px;
+    align-items: center; /* Alinha verticalmente */
+    gap: 10px; /* Espaçamento entre o label e o select */
     margin-top: 10px;
 }
+
 
 .payment-section select {
     width: 100%; 
