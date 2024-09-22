@@ -47,28 +47,19 @@
         <div class="contact">
             <h3>CONFIGURAÇÕES</h3>
             <div class="payment-communication">
-                <label>Comunicação: </label>
-                <select>
-                    <option>Meet</option>
-                    <option>Zoom</option>
-                    <option>Discord</option>
-                </select>
+                <label>Comunicação:</label>
+                <div class="communication-options">
+                    <input type="checkbox" id="meet" name="communication" value="Meet">
+                    <label for="meet">Meet</label><br>
+                    <input type="checkbox" id="zoom" name="communication" value="Zoom">
+                    <label for="zoom">Zoom</label><br>
+                    <input type="checkbox" id="discord" name="communication" value="Discord">
+                    <label for="discord">Discord</label>
+                </div>
                 <label>Número: </label>
                 <input type="text" placeholder="+55 (11) 99999-9999">
             </div>
-        </div>
-
-        <div class="payment-communication">
-            <label>Pagamento:</label>
-            <select>
-                <option>PIX</option>
-                <option>Cartão</option>
-                <option>Boleto</option>
-            </select>
-        </div>
-    </div>
+        </div>        
 
 </body>
-
-</html>
 </html>

@@ -163,6 +163,7 @@
     display: flex;
     gap: 10px;
     margin-top: 20px;
+    min-height: 7vh;
 }
 
 .payment-communication select,
@@ -183,4 +184,3 @@
 
 .payment-communication label {
     font-size: 13.5px;
-}
