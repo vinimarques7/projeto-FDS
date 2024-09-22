@@ -122,24 +122,24 @@
 }
 
 .checkbox-group {
-    display: flex; /* Mudança para flexbox */
-    gap: 15px;    /* Espaçamento entre os checkboxes */
-    flex-wrap: wrap; /* Permite quebra de linha se necessário */
+    display: flex;
+    gap: 15px;    
+    flex-wrap: wrap;
 }
 
 .checkbox-group label {
-    display: flex; /* Para alinhar checkbox e texto */
-    align-items: center; /* Alinha verticalmente */
-    font-size: 16px; /* Ajuste o tamanho da fonte conforme desejado */
+    display: flex;
+    align-items: center; 
+    font-size: 16px; 
 }
 
 .tariff-input {
-    color: black; /* Texto em preto */
+    color: black; 
     border: 1px solid #ccc;
-    padding: 8px; /* Diminua o padding para 8px */
+    padding: 8px; 
     border-radius: 5px;
-    width: 80%; /* Ajuste a largura para 80% */
-    max-width: 250px; /* Defina um limite máximo para a largura */
+    width: 80%; 
+    max-width: 250px; 
 }
 
 .tariff-input::placeholder {
@@ -157,7 +157,6 @@
 .payment-communication input {
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
     font-size: 14px;
 }
 
@@ -220,8 +219,8 @@
 
 .payment-section {
     display: flex;
-    align-items: center; /* Alinha verticalmente */
-    gap: 10px; /* Espaçamento entre o label e o select */
+    align-items: center; 
+    gap: 10px; 
     margin-top: 10px;
 }
 
@@ -257,4 +256,13 @@
     border-radius: 5px;
     margin-left: 10px; 
 }
-
+input[type="text"] {
+    color: rgb(0, 0, 0);
+    border: 1px solid #ccc;
+    padding: 4px;
+    border-radius: 5px;
+}
+input[type="text"].nome {
+    width: 400px; 
+    padding: 10px; 
+}
