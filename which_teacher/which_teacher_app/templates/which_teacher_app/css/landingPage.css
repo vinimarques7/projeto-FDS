@@ -25,7 +25,7 @@ header {
     transition: 0.5s;
 }
 .menu-mobile {
-    background-color: #15202be5;
+    background-color: #15202bec;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -49,10 +49,12 @@ nav.mobile a {
     color: #ead8fc;
     padding: 30px 8%;
     list-style-type: none;
+    text-decoration: none;
 }
 nav.mobile a:hover {
     color: #a885d8;
     transition: 0.3s;
+    text-decoration: underline;
 }
 .btn-fechar {
     padding: 20px;
@@ -72,11 +74,17 @@ nav.mobile a:hover {
 nav.menu-desktop li {
     display: inline-block;
     margin: 30px;
+    background-color: #15202b;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+nav.menu-desktop li:hover {
+    background-color: #a885d893;
+    transition: 0.5s all;
 }
 nav.menu-desktop a {
-    color: #492191;
+    color: #D9C2F0;
     font-size: 20px;
-    
 }
 nav.menu-desktop a:hover {
     color: #15202b;
