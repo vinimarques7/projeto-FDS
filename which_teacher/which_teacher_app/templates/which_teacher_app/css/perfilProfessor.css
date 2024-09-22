@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .profile {
@@ -41,7 +41,7 @@
 .location,
 .contact {
     margin-top: 20px;
-    font-size: 11px;
+    font-size: 14.2px;
 }
 
 .subjects h2{body {
@@ -53,7 +53,7 @@
 }
 
 .profile {
-    background-color: white;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     max-width: 800px;
@@ -107,6 +107,33 @@
 .contact p {
     margin: 5px 0;
 }
+.languages {
+    display: flex;
+    flex-direction: column;
+}
+
+.languages h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.languages p {
+    margin-bottom: 10px;
+}
+
+.checkbox-group {
+    display: flex; /* Mudança para flexbox */
+    gap: 15px;    /* Espaçamento entre os checkboxes */
+    flex-wrap: wrap; /* Permite quebra de linha se necessário */
+}
+
+.checkbox-group label {
+    display: flex; /* Para alinhar checkbox e texto */
+    align-items: center; /* Alinha verticalmente */
+    font-size: 16px; /* Ajuste o tamanho da fonte conforme desejado */
+}
+
+
 
 .payment-communication {
     display: flex;

@@ -9,7 +9,6 @@
     <title>Perfil do Professor</title>
 </head>
 
-<body>
 <body class="teachers-regular">
 
     <div class="profile">
@@ -23,15 +22,35 @@
         </div>
 
         <div class="subjects">
-            <h2>SOBRE AS AULAS</h2>
+            <h3>SOBRE AS AULAS</h3>
             <p>Matérias lecionadas:</p>
             <p>Horários disponíveis:</p>
         </div>
 
         <div class="languages">
             <h2>IDIOMAS</h2>
-            <p>Português, Inglês, Espanhol.</p>
-        </div>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="portugues" name="languages" value="Português"> Português
+                </label>
+        
+                <label>
+                    <input type="checkbox" id="ingles" name="languages" value="Inglês"> Inglês
+                </label>
+        
+                <label>
+                    <input type="checkbox" id="espanhol" name="languages" value="Espanhol"> Espanhol
+                </label>
+        
+                <label>
+                    <input type="checkbox" id="chines" name="languages" value="Chinês"> Chinês
+                </label>
+        
+                <label>
+                    <input type="checkbox" id="russo" name="languages" value="Russo"> Russo
+                </label>
+            </div>
+        </div>        
 
         <div class="rate">
             <h2>TARIFA</h2>
@@ -45,31 +64,32 @@
 
         <br>
         <div class="contact">
-    <h3>CONFIGURAÇÕES</h3>
-    <div class="payment-communication">
-        <label>Comunicação: </label>
-        <div>
-            <input type="checkbox" id="meet" name="communication" value="Meet">
-            <label for="meet">Meet</label>
-            <input type="checkbox" id="zoom" name="communication" value="Zoom">
-            <label for="zoom">Zoom</label>
-            <input type="checkbox" id="discord" name="communication" value="Discord">
-            <label for="discord">Discord</label>
-        </div>
-        <label>Número: </label>
-        <input type="text" placeholder="+55 (11) 99999-9999">
-    </div>
-    
-    <div class="payment-section">
-        <label><h4>Pagamento:</h4></label>
-        <select>
-            <option>PIX</option>
-            <option>Cartão</option>
-            <option>Boleto</option>
-        </select>
-    </div>
-</div>
+            <h3>CONFIGURAÇÕES</h3>
+            <div class="payment-communication">
+                <label>Comunicação: </label>
+                <div>
+                    <input type="checkbox" id="meet" name="communication" value="Meet">
+                    <label for="meet">Meet</label>
+                    <input type="checkbox" id="zoom" name="communication" value="Zoom">
+                    <label for="zoom">Zoom</label>
+                    <input type="checkbox" id="discord" name="communication" value="Discord">
+                    <label for="discord">Discord</label>
+                </div>
+                <label>Número: </label>
+                <input type="text" placeholder="+55 (11) 99999-9999">
+            </div>
 
+            <div class="payment-section">
+                <label><h4>Pagamento:</h4></label>
+                <select>
+                    <option>PIX</option>
+                    <option>Cartão</option>
+                    <option>Boleto</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
