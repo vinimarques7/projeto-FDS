@@ -17,15 +17,15 @@ header {
     cursor: pointer;
 }
 .btn-abrir i {
-    color: red;
+    color: #15202b;
     font-size: 30px;
 }
 .btn-abrir i:hover {
-    color: greenyellow;
+    color: #a885d8;
     transition: 0.5s;
 }
 .menu-mobile {
-    background-color: aqua;
+    background-color: #15202be5;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -46,12 +46,12 @@ nav.mobile ul {
 }
 
 nav.mobile a {
-    color: red;
-    padding: 20px 4%;
+    color: #ead8fc;
+    padding: 30px 8%;
     list-style-type: none;
 }
 nav.mobile a:hover {
-    color: greenyellow;
+    color: #a885d8;
     transition: 0.3s;
 }
 .btn-fechar {
@@ -59,10 +59,11 @@ nav.mobile a:hover {
 }
 .btn-fechar i {
     font-size: 30px;
+    color: #fff;
 }
 .btn-fechar i:hover {
     cursor: pointer;
-    color: red;
+    color: #a885d8;
     transition: 0.5s;
 }
 #title {
@@ -99,6 +100,7 @@ P {
 }
 img {
     width: 620px;
+    height: auto;
     position: relative;
     top: -100px;
 }
@@ -118,4 +120,22 @@ button:hover {
     background-color: #4821914d;
     color: #15202b;
     transition: 0.5s all;
+}
+@media screen and (max-width: 1067px){
+    .menu-desktop{
+        display: none;
+    }
+
+    main{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    img{
+        display: none;
+    }
+}    
+@media (min-width: 1064px) {
+    .btn-abrir {
+        display: none; 
+    }
 }
