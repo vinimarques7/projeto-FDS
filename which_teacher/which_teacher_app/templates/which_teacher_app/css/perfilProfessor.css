@@ -144,43 +144,56 @@
 
 .contact h3{
     text-align: center;
-    font-size: 13.3px;
+    font-size: 13.5px;
 }
 .contact p{
     text-align: center;
-    font-size: 1px;
 }
 .subjects p,
 .languages p,
 .rate p,
 .location p,
 .contact p {
-    font-size: 14px;
+    font-size: 15px;
     margin: 5px 0;
 }
-
 .payment-communication {
+    font-size: 13.5px;
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    min-height: 7vh;
+    justify-content: space-between; 
+    gap: 20px; 
 }
 
-.payment-communication select,
-.payment-communication input {
+.communication-options {
+    display: flex;
+    gap: 10px;
+    align-items: center; 
+}
+
+.communication-options input {
+    margin-right: 5px;
+}
+
+.payment-communication input[type="text"] {
+    font-size: 14px;
+    flex-basis: 40%;
+}
+
+.payment-section {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.payment-section select {
+    width: 100%; 
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    margin-top: 20px;
 }
 
-.payment-communication label {
-    font-size: 13.5px;
+.payment-section h4{
+        font-weight: 500;
+        font-size: 13.5px;
+}
