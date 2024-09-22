@@ -4,14 +4,25 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 15px;
-    overflow: hidden;
+    
 }
-header nav.menu-desktop{
+header {
     display: flex;
     height: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+} 
+.btn-abrir {
+    cursor: pointer;
+}
+.btn-abrir i {
+    color: red;
+    font-size: 30px;
+}
+.btn-abrir i:hover {
+    color: greenyellow;
+    transition: 0.5s;
 }
 .menu-mobile {
     background-color: aqua;
@@ -20,22 +31,44 @@ header nav.menu-desktop{
     top: 0;
     right: 0;
     z-index: 99999;
+    width: 0%;
+    overflow: hidden;
+    transition: .2s;
+}
+.menu-mobile.abrir-menu {
     width: 70%;
 }
-.menu-mobile nav ul {
+nav.mobile ul {
     text-align: right;  
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
 }
-.menu-mobile nav ul li a {
-    color: #15202b;
-    padding: 20px 4%;
-}
-.menu-mobile nav ul li a:hover {
+
+nav.mobile a {
     color: red;
+    padding: 20px 4%;
+    list-style-type: none;
+}
+nav.mobile a:hover {
+    color: greenyellow;
+    transition: 0.3s;
+}
+.btn-fechar {
+    padding: 20px;
+}
+.btn-fechar i {
+    font-size: 30px;
+}
+.btn-fechar i:hover {
+    cursor: pointer;
+    color: red;
+    transition: 0.5s;
 }
 #title {
     flex-direction: column;
 }
-li {
+nav.menu-desktop li {
     display: inline-block;
     margin: 30px;
 }
