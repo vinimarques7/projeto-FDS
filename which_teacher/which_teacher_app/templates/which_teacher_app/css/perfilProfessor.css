@@ -237,3 +237,24 @@
         font-weight: 500;
         font-size: 13.5px;
 }
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.input-group p {
+    margin-right: 10px; 
+    margin: 0; 
+    white-space: nowrap; 
+}
+
+.input-group input {
+    flex: 1; 
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10px; 
+}
+
