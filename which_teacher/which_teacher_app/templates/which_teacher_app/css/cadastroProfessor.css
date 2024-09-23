@@ -216,15 +216,11 @@ body {
 
     .container {
         width: 50%;
-        overflow-y: scroll;
-        overflow-x: scroll;
     }
 
     .form {
         width: 100%;
         border-radius: 50px;
-        overflow-y: scroll;
-        overflow-x: scroll;
     }
 }
 
@@ -232,8 +228,6 @@ body {
     .container {
         width: 90%;
         height: auto;
-        overflow-y: scroll;
-        overflow-x: scroll;
     }
 
     .gender-inputs {
@@ -260,8 +254,6 @@ body {
 @media only screen and (max-width: 768px) {
     .container {
         width: 90%;
-        overflow-y: scroll;
-        overflow-x: scroll;
     }
 
     .form {
