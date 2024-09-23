@@ -108,7 +108,7 @@ body {
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 50px;
     box-shadow: 1px 1px 6px #0000001c;
     font-size: 0.8rem;
 }
@@ -169,7 +169,7 @@ body {
     color: #fff;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     width: 100%;
 }
