@@ -40,6 +40,7 @@ body {
     width: 50%;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     background-color: #f5f5dc;
@@ -63,9 +64,9 @@ body {
     width: 100%;
     margin-top: 2.5rem;
     border: none;
-    background-color: #6c63ff;
+    background-color: #482191;
     padding: 0.62rem;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
 }
 
@@ -77,7 +78,7 @@ body {
     text-decoration: none;
     font-size: 0.93rem;
     font-weight: 500;
-    color: #fff;
+    color: #DDDDDD;
 }
 
 .form-header h1::after {
@@ -85,23 +86,22 @@ body {
     display: block;
     width: 5rem;
     height: 0.3rem;
-    background-color: #6c63ff;
+    background-color: #482191;
     margin: 0 auto;
     position: absolute;
     border-radius: 10px;
 }
 
-.input-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 1rem 0;
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
 .input-box {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.1rem;
+    grid-column: span 1;
 }
 
 .input-box input {
@@ -125,11 +125,11 @@ body {
 .gender-title h6 {
     font-size: 0.75rem;
     font-weight: 600;
-    color: #000000c0;
+    color: #15202b;
 }
 
 .input-box input::placeholder {
-    color: #000000be;
+    color: #15202b6a;
 }
 
 .gender-group {
@@ -151,34 +151,46 @@ body {
 .gender-input label {
     font-size: 0.81rem;
     font-weight: 600;
-    color: #000000c0;
+    color: #15202b;
 }
 
 .dropdown-checkbox {
     position: relative;
-    display: inline-block;
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .dropdown-btn {
-    background-color: #4CAF50;
+    background-color: #482191aa;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
 }
 
 .dropdown-btn:hover {
-    background-color: #3e8e41;
+    background-color: #D9C2F0;
 }
 
 .dropdown-list {
     position: absolute;
+    z-index: 1;
     top: 100%;
     left: 0;
-    background-color: #f9f9f9;
+    background-color: #fAF0E6;
     border: 1px solid #ccc;
     padding: 10px;
+    display: none;
+    width: 100%;
+}
+
+.dropdown-checkbox .dropdown-list {
     display: none;
 }
 
@@ -237,14 +249,14 @@ body {
         height: auto;
     }
 
-    .input-group {
+    /* .input-group {
         flex-direction: column;
         z-index: 5;
         padding-right: 5rem;
         max-height: 10rem;
         overflow-y: scroll;
         flex-wrap: nowrap;
-    }
+    } */
 
     .gender-inputs {
         margin-top: 2rem;
@@ -260,5 +272,25 @@ body {
 
     .gender-input {
         margin-top: 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .form {
+        padding: 1rem;
+    }
+
+    .input-box {
+        margin-bottom: 0.5rem;
+        overflow-y: scroll;
+        overflow-x: scroll;
+    }
+
+    .gender-group {
+        flex-direction: column;
     }
 }
