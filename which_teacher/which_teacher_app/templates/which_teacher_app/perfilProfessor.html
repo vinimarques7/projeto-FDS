@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/perfilProfessor.css">
+    <title>Perfil do Professor</title>
+</head>
+
+
+<body class="teachers-regular">
+
+    <div class="profile">
+        <div class="profile-header">
+            <img src="./img/usuario.jpg" alt="Foto">
+            <div>
+                <input type="text" placeholder="Digite seu nome" style="color: rgb(0, 0, 0); border: 1px solid #ccc; padding: 4px; border-radius: 5px; width: 300px;">
+                <br>
+                <br>
+                <input type="text" placeholder="Digite informações sobre você..." style="color: rgb(0, 0, 0); border: 1px solid #ccc; padding: 4px; border-radius: 5px; width: 300px;">
+                <p>Sinta-se à vontade para entrar em contato e vamos trabalhar no seu conhecimento!</p>
+            </div>
+        </div>
+        <div class="subjects">
+            <h3>SOBRE AS AULAS</h3>
+            <div class="input-group">
+                <p>Matérias lecionadas:</p>
+                <input type="text" placeholder="Digite suas matérias">
+            </div>
+            <div class="input-group">
+                <p>Horários disponíveis:</p>
+                <input type="text" placeholder="Digite sua disponibilidade">
+            </div>
+        </div>
+
+        <div class="languages">
+            <h2>IDIOMAS</h2>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="portugues" name="languages" value="Português"> Português
+                </label>
+        
+                <label>
+                    <input type="checkbox" id="ingles" name="languages" value="Inglês"> Inglês
+                </label>
+        
+                <label>
+                    <input type="checkbox" id="espanhol" name="languages" value="Espanhol"> Espanhol
+                </label>
+        
+                <label>
+                    <input type="checkbox" id="chines" name="languages" value="Chinês"> Chinês
+                </label>
+        
+                <label>
+                    <input type="checkbox" id="russo" name="languages" value="Russo"> Russo
+                </label>
+            </div>
+        </div>        
+
+        <div class="rate">
+            <h2>TARIFA</h2>
+            <div>
+                <input type="text" placeholder="R$ 00,00" style="color: rgb(0, 0, 0); border: 1px solid #ccc; padding: 4px; border-radius: 5px;">
+            </div>
+        </div>
+        
+        <div class="location">
+            <h2>LOCAL DE AULA</h2>
+            <div>
+                <input type="text" placeholder="Digite um local" style="color: rgb(0, 0, 0); border: 1px solid #ccc; padding: 4.5px; border-radius: 5px;">
+            </div>
+        </div>
+        
+
+        <div class="contact">
+            <h3>CONFIGURAÇÕES: </h3>
+            <br>
+            <div class="payment-communication">
+                <label>Comunicação: </label>
+                <div>
+                    <input type="checkbox" id="meet" name="communication" value="Meet">
+                    <label for="meet">Meet</label>
+                    <input type="checkbox" id="zoom" name="communication" value="Zoom">
+                    <label for="zoom">Zoom</label>
+                    <input type="checkbox" id="discord" name="communication" value="Discord">
+                    <label for="discord">Discord</label>
+                </div>
+                <label>Número: </label>
+                <input type="text" placeholder="+55 (11) 99999-9999"  style="color: rgb(0, 0, 0); border: 1px solid #ccc; padding: 4px; border-radius: 5px;">
+            </div>
+            <br>
+            <div class="payment-section">
+                <label for="payment-method"><h4 style="display: inline;">Pagamento:</h4></label>
+                <select id="payment-method" style="display: inline; margin-left: 10px;">
+                    <option>PIX</option>
+                    <option>Cartão</option>
+                    <option>Boleto</option>
+                </select>
+            </div>            
+        </div>
+    </div>
+</body>
+</html>
