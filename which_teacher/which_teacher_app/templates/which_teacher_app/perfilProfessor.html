@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/perfilProfessor.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/perfilProfessor.css' %}">
     <title>Perfil do Professor</title>
 </head>
 
@@ -14,7 +14,7 @@
 
     <div class="profile">
         <div class="profile-header">
-            <img src="./img/usuario.jpg" alt="Foto">
+            <img src="{% static './img/usuario.jpg' %}" alt="Foto">
             <div>
                 <input type="text" placeholder="Digite seu nome" style="color: rgb(0, 0, 0); border: 1px solid #ccc; padding: 4px; border-radius: 5px; width: 300px;">
                 <br>

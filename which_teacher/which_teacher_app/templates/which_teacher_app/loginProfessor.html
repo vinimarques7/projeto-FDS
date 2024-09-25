@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/loginProfessor.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loginProfessor.css' %}">
     <title>Login Professor</title>
 </head>
 
@@ -17,14 +18,15 @@
                     <h2 class="title">Login</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" tabindex="1" placeholder="Email" />
+                        <input type="email" id="loginEmail" tabindex="1" placeholder="Email" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" tabindex="2" placeholder="Senha" />
+                        <input type="password" id="loginSenha" tabindex="2" placeholder="Senha" required />
                     </div>
-                    <button><input type="submit" value="Entrar" class="btn solid" tabindex="3" /></button>
-                    <!-- <p class="social-text">Ou faça login com outras plataformas</p>
+                    <button type="button" class="btn" onclick="validarLogin()" tabindex="3">Login</button>
+                </form>
+                <!-- <p class="social-text">Ou faça login com outras plataformas</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -44,17 +46,18 @@
                     <h2 class="title">Cadastro</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="email" tabindex="4" placeholder="Email" required/>
+                        <input type="email" id="email" tabindex="4" placeholder="Email" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="password" tabindex="5" placeholder="Senha" />
+                        <input type="password" id="senha" tabindex="5" placeholder="Senha" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" tabindex="6" placeholder="Confirme sua senha" />
+                        <input type="password" id="confirmaSenha" tabindex="6" placeholder="Confirme sua senha"
+                            required />
                     </div>
-                    <button><input type="submit" class="btn" value="Cadastrar-se" tabindex="7" /></button>
+                    <button type="button" class="btn" onclick="validarCadastro()" tabindex="7">Cadastrar-se</button>
                     <!-- <p class="social-text">Or faça seu cadastro com outras plataformas</p> -->
                     <div class="social-media">
                         <!-- <a href="#" class="social-icon">
@@ -85,7 +88,7 @@
                         Cadastro
                     </button>
                 </div>
-                <img src="img/undraw_teacher_re_sico.svg" class="image"
+                <img src="{% static 'img/undraw_teacher_re_sico.svg' %}" class="image"
                     alt="Professora vestida de roxo trabalhando num computador enquanto segura uma prova nota 'A'" />
             </div>
             <div class="panel right-panel">
@@ -98,13 +101,13 @@
                         Login
                     </button>
                 </div>
-                <img src="img/undraw_teaching_re_g7e3.svg" class="image"
+                <img src="{% static 'img/undraw_teaching_re_g7e3.svg' %}" class="image"
                     alt="Professor vestido de roxo apontando para ícones num quadro digital." />
             </div>
         </div>
     </div>
 
-    <script src="js\loginProfessor.js"></script>
+    <script src="{% static 'js\loginProfessor.js' %}"></script>
 </body>
 
 </html>
