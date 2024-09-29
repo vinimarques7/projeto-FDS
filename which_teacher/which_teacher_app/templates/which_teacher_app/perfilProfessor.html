@@ -27,14 +27,13 @@
                 <input type="text" value="{{ professor.materia }}" readonly>
             </div>
             <div class="input-group">
-                <form action="{% url 'perfilP' %}" method="post">
+                <p>Horários disponíveis:</p>
+                <form method="post">
                     {% csrf_token %}
-                    <p>Horários disponíveis:</p>
-                    <input type="text" id="novo-horario" name="horario" placeholder="Digite sua disponibilidade">
                     <input type="text" id="dia" name="dia" placeholder="Digite o dia">
+                    <input type="text" id="novo-horario" name="novo-horario" placeholder="Digite sua disponibilidade">
                     <button type="submit">Adicionar</button>
                 </form>
-                
             </div>
             <div id="tabela-horarios">
                 <table>

@@ -48,6 +48,21 @@ def perfilP(request):
     professor_id = request.session.get('professor_id')
     professor = Professor.objects.get(id=professor_id)
     horarios = professor.horarios.all()
+
+    if request.method == 'POST':
+        dia = request.POST.get('dia')
+        horario = request.POST.get('novo-horario')
+        
+        try:
+            Horario.objects.create(
+                professor=professor,
+                dia=dia,
+                horario=horario
+            )
+            messages.success(request, 'Horário adicionado com sucesso!')
+        except Exception as e:
+            messages.error(request, 'Erro ao adicionar horário: ' + str(e))
+        
     return render(request, 'which_teacher_app/perfilProfessor.html', {'professor': professor, 'horarios': horarios})
 
 def home(request):
