@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Professor
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 def cadastro_professor(request):
     if request.method == 'POST':
@@ -27,12 +28,29 @@ def cadastro_professor(request):
             genero=genero
         )
         professor.save()
-        return redirect('which_teacher_app/loginProfessor.html')
+        return redirect('loginP')
     else:
         return render(request, 'which_teacher_app/cadastroProfessor.html')
     
 def loginP(request):
-    return render(request, 'which_teacher_app/loginProfessor.html')
+    if request.method == 'POST':
+        email = request.POST.get('loginEmail')
+        senha = request.POST.get('loginSenha')
+        
+        try:
+            professor = Professor.objects.get(email=email)
+            if professor.senha == senha:
+                # Aqui você pode criar uma sessão para o usuário
+                request.session['professor_id'] = professor.id
+                return redirect('perfilP')
+            else:
+                messages.error(request, 'Senha incorreta')
+                return render(request, 'which_teacher_app/loginProfessor.html')
+        except Professor.DoesNotExist:
+            messages.error(request, 'Email não encontrado')
+            return render(request, 'which_teacher_app/loginProfessor.html')
+    else:
+        return render(request, 'which_teacher_app/loginProfessor.html')
 
 def home(request):
     return render(request, 'which_teacher_app/landingPage.html')

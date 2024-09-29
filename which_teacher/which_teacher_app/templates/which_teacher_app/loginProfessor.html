@@ -14,17 +14,21 @@
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="#" class="sign-in-form">
+                <form action="{% url 'loginP' %}" method="post" class="sign-in-form">
+                    {% csrf_token %}
                     <h2 class="title">Login</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="email" id="loginEmail" tabindex="1" placeholder="Email" required />
+                        <input type="email" id="loginEmail" name="loginEmail" tabindex="1" placeholder="Email" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="loginSenha" tabindex="2" placeholder="Senha" required />
+                        <input type="password" id="loginSenha" name="loginSenha" tabindex="2" placeholder="Senha" required />
                     </div>
                     <button type="submit" class="btn" tabindex="3">Login</button>
+                    {% if error %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endif %}
                 </form>
                 
             </div>
