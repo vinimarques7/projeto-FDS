@@ -24,6 +24,7 @@ body {
 .signin-signup {
   position: absolute;
   top: 50%;
+  transform: translate(-50%, -50%);
   left: 75%;
   width: 50%;
   transition: 1s 0.7s ease-in-out;
