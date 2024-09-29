@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Professor
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
+from .models import Professor, Horario
 from django.contrib import messages
 
 def cadastro_professor(request):
@@ -29,9 +27,8 @@ def cadastro_professor(request):
         )
         professor.save()
         return redirect('loginP')
-    else:
-        return render(request, 'which_teacher_app/cadastroProfessor.html')
-    
+    return render(request, 'which_teacher_app/cadastroProfessor.html')
+
 def loginP(request):
     if request.method == 'POST':
         email = request.POST.get('loginEmail')
@@ -40,25 +37,21 @@ def loginP(request):
         try:
             professor = Professor.objects.get(email=email)
             if professor.senha == senha:
-                # Aqui você pode criar uma sessão para o usuário
                 request.session['professor_id'] = professor.id
                 return redirect('perfilP')
-            else:
-                messages.error(request, 'Senha incorreta')
-                return render(request, 'which_teacher_app/loginProfessor.html')
+            messages.error(request, 'Senha incorreta')
         except Professor.DoesNotExist:
             messages.error(request, 'Email não encontrado')
-            return render(request, 'which_teacher_app/loginProfessor.html')
-    else:
-        return render(request, 'which_teacher_app/loginProfessor.html')
+    return render(request, 'which_teacher_app/loginProfessor.html')
+
+def perfilP(request):
+    professor_id = request.session.get('professor_id')
+    professor = Professor.objects.get(id=professor_id)
+    horarios = professor.horarios.all()
+    return render(request, 'which_teacher_app/perfilProfessor.html', {'professor': professor, 'horarios': horarios})
 
 def home(request):
     return render(request, 'which_teacher_app/landingPage.html')
 
 def cadastroP(request):
     return render(request, 'which_teacher_app/cadastroProfessor.html')
-
-def perfilP(request):
-    return render(request, 'which_teacher_app/perfilProfessor.html')
-
-

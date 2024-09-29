@@ -1,16 +1,17 @@
 from django.db import models
 
-
 class Professor(models.Model):
-    nome = models.CharField(max_length=255)
-    celular = models.CharField(max_length=20)
+    nome = models.CharField(max_length=100)
+    celular = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
-    senha = models.CharField(max_length=255)
-    materia = models.CharField(max_length=255, blank=True)
-    nivel_ensino = models.CharField(max_length=255, blank=True)
-    recebimento = models.CharField(max_length=255, blank=True)
-    comunicacao = models.CharField(max_length=255, blank=True)
-    genero = models.CharField(max_length=255, blank=True)
+    senha = models.CharField(max_length=100)
+    materia = models.TextField()
+    nivel_ensino = models.TextField()
+    recebimento = models.TextField()
+    comunicacao = models.TextField()
+    genero = models.CharField(max_length=10)
 
-    def __str__(self):
-        return self.nome
+class Horario(models.Model):
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='horarios')
+    dia = models.CharField(max_length=10)
+    horario = models.TimeField()
