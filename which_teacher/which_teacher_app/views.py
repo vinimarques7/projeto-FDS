@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Professor
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 
 def register_professor(request):
     if request.method == 'POST':
