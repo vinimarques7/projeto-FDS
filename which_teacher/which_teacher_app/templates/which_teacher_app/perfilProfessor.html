@@ -27,9 +27,14 @@
                 <input type="text" value="{{ professor.materia }}" readonly>
             </div>
             <div class="input-group">
-                <p>Horários disponíveis:</p>
-                <input type="text" id="novo-horario" placeholder="Digite sua disponibilidade">
-                <button type="button" onclick="adicionarHorario()">Adicionar</button>
+                <form action="{% url 'perfilP' %}" method="post">
+                    {% csrf_token %}
+                    <p>Horários disponíveis:</p>
+                    <input type="text" id="novo-horario" name="horario" placeholder="Digite sua disponibilidade">
+                    <input type="text" id="dia" name="dia" placeholder="Digite o dia">
+                    <button type="submit">Adicionar</button>
+                </form>
+                
             </div>
             <div id="tabela-horarios">
                 <table>
@@ -105,15 +110,5 @@
             </div>            
         </div>
     </div>
-    <script>
-        function adicionarHorario() {
-            const novoHorario = document.getElementById('novo-horario').value;
-            const tabela = document.getElementById('tabela-horarios').getElementsByTagName('tbody')[0];
-            const novaLinha = tabela.insertRow();
-            const novaCelula = novaLinha.insertCell(0);
-            novaCelula.textContent = novoHorario;
-            document.getElementById('novo-horario').value = '';
-        }
-    </script>
 </body>
 </html>

@@ -10,8 +10,6 @@ class Professor(models.Model):
     recebimento = models.TextField()
     comunicacao = models.TextField()
     genero = models.CharField(max_length=10)
-
-class Horario(models.Model):
-    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='horarios')
-    dia = models.CharField(max_length=10)
     horario = models.TimeField()
+    dia = models.CharField(max_length=10)
+

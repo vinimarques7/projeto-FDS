@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Professor, Horario
+from .models import Professor
 from django.contrib import messages
 
 def cadastro_professor(request):
@@ -45,10 +45,7 @@ def loginP(request):
     return render(request, 'which_teacher_app/loginProfessor.html')
 
 def perfilP(request):
-    professor_id = request.session.get('professor_id')
-    professor = Professor.objects.get(id=professor_id)
-    horarios = professor.horarios.all()
-    return render(request, 'which_teacher_app/perfilProfessor.html', {'professor': professor, 'horarios': horarios})
+    return render(request, 'which_teacher_app/perfilProfessor.html')
 
 def home(request):
     return render(request, 'which_teacher_app/landingPage.html')
