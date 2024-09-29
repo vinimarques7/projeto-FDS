@@ -1,127 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/cadastroProfessor.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cadastroProfessor.css' %}">
     <title>Cadastro Professor</title>
 </head>
 
 <body class="teachers-regular">
     <div class="container">
         <div class="form-image">
-            <img src="img/undraw_online_learning_re_qw08.svg" alt="">
+            <img src="{% static 'img/undraw_online_learning_re_qw08.svg' %}" alt="">
         </div>
+
         <div class="form">
-            <form action="#">
+            <form method="post">
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastre-se</h1>
                     </div>
                 </div>
-                <div class="input-grid">
-                    <div class="input-box">
-                        <label for="name">Nome completo</label>
-                        <input id="name" type="text" name="name" placeholder="Digite seu nome completo" required>
-                    </div>
+                {% csrf_token %}
+    <div class="input-grid">
+        <div class="input-box">
+            <label for="nome">Nome completo</label>
+            <input id="nome" type="text" name="nome" placeholder="Digite seu nome completo" required>
+        </div>
 
-                    <div class="input-box">
-                        <label for="number">Celular</label>
-                        <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
-                    </div>
+        <div class="input-box">
+            <label for="celular">Celular</label>
+            <input id="celular" type="tel" name="celular" placeholder="(xx) xxxx-xxxx" required>
+        </div>
 
-                    <div class="dropdown-checkbox">
-                        <button class="dropdown-btn">Matérias</button>
-                        <ul class="dropdown-list">
-                            <li><input type="checkbox" id="option1" name="options[]" value="Option 1"><label
-                                    for="option1">Option 1</label></li>
-                            <li><input type="checkbox" id="option2" name="options[]" value="Option 2"><label
-                                    for="option2">Option 2</label></li>
-                            <li><input type="checkbox" id="option3" name="options[]" value="Option 3"><label
-                                    for="option3">Option 3</label></li>
-                            <!-- Add more options here -->
-                        </ul>
-                    </div>
+        <div class="input-box">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
+        </div>
 
-                    <div class="dropdown-checkbox">
-                        <button class="dropdown-btn">Nível de Ensino</button>
-                        <ul class="dropdown-list">
-                            <li><input type="checkbox" id="option1" name="options[]" value="Option 1"><label
-                                    for="option1">Ensino Fundamental</label></li>
-                            <li><input type="checkbox" id="option2" name="options[]" value="Option 2"><label
-                                    for="option2">Ensino Médio</label></li>
-                            <li><input type="checkbox" id="option3" name="options[]" value="Option 3"><label
-                                    for="option3">Ensino Superior</label></li>
-                            <!-- Add more options here -->
-                        </ul>
-                    </div>
+        <div class="input-box">
+            <label for="senha">Senha</label>
+            <input id="senha" type="password" name="senha" placeholder="Digite sua senha" required>
+        </div>
 
-                    <div class="dropdown-checkbox">
-                        <button class="dropdown-btn">Recebimento</button>
-                        <ul class="dropdown-list">
-                            <li><input type="checkbox" id="option1" name="options[]" value="Option 1"><label
-                                    for="option1">PIX</label></li>
-                            <li><input type="checkbox" id="option2" name="options[]" value="Option 2"><label
-                                    for="option2">Cartão</label></li>
-                            <li><input type="checkbox" id="option3" name="options[]" value="Option 3"><label
-                                    for="option3">Boleto</label></li>
-                            <!-- Add more options here -->
-                        </ul>
-                    </div>
+        <div class="dropdown-checkbox">
+            <button class="dropdown-btn">Matérias</button>
+            <ul class="dropdown-list">
+                <li><input type="checkbox" id="option1" name="materia" value="Matemática"><label for="Matemática">Matemática</label></li>
+                <li><input type="checkbox" id="option2" name="materia" value="Português"><label for="Português">Português</label></li>
+                <li><input type="checkbox" id="option3" name="materia" value="Inglês"><label for="Inglês">Inglês</label></li>
+                <!-- Add more options here -->
+            </ul>
+        </div>
 
-                    <div class="dropdown-checkbox">
-                        <button class="dropdown-btn">Comunicação</button>
-                        <ul class="dropdown-list">
-                            <li><input type="checkbox" id="option1" name="options[]" value="Option 1"><label
-                                    for="option1">Meet</label></li>
-                            <li><input type="checkbox" id="option2" name="options[]" value="Option 2"><label
-                                    for="option2">Zoom</label></li>
-                            <li><input type="checkbox" id="option3" name="options[]" value="Option 3"><label
-                                    for="option3">Discord</label></li>
-                            <!-- Add more options here -->
-                        </ul>
-                    </div>
+        <div class="dropdown-checkbox">
+            <button class="dropdown-btn">Nível de Ensino</button>
+            <ul class="dropdown-list">
+                <li><input type="checkbox" id="option1" name="nivel_ensino" value="Ensino Fundamental"><label for="option1">Ensino Fundamental</label></li>
+                <li><input type="checkbox" id="option2" name="nivel_ensino" value="Ensino Médio"><label for="option2">Ensino Médio</label></li>
+                <li><input type="checkbox" id="option3" name="nivel_ensino" value="Ensino Superior"><label for="option3">Ensino Superior</label></li>
+                <!-- Add more options here -->
+            </ul>
+        </div>
 
-                </div>
+        <div class="dropdown-checkbox">
+            <button class="dropdown-btn">Recebimento</button>
+            <ul class="dropdown-list">
+                <li><input type="checkbox" id="option1" name="recebimento" value="PIX"><label for="option1">PIX</label></li>
+                <li><input type="checkbox" id="option2" name="recebimento" value="Cartão"><label for="option2">Cartão</label></li>
+                <li><input type="checkbox" id="option3" name="recebimento" value="Boleto"><label for="option3">Boleto</label></li>
+                <!-- Add more options here -->
+            </ul>
+        </div>
 
-                <div class="gender-inputs">
-                    <div class="gender-title">
-                        <h6>Gênero</h6>
-                    </div>
+        <div class="dropdown-checkbox">
+            <button class="dropdown-btn">Comunicação</button>
+            <ul class="dropdown-list">
+                <li><input type="checkbox" id="option1" name="comunicacao" value="Meet"><label for="option1">Meet</label></li>
+                <li><input type="checkbox" id="option2" name="comunicacao" value="Zoom"><label for="option2">Zoom</label></li>
+                <li><input type="checkbox" id="option3" name="comunicacao" value="Discord"><label for="option3">Discord</label></li>
+                <!-- Add more options here -->
+            </ul>
+        </div>
 
-                    <div class="gender-group">
-                        <div class="gender-input">
-                            <input id="female" type="radio" name="gender">
-                            <label for="female">Feminino</label>
-                        </div>
+    </div>
 
-                        <div class="gender-input">
-                            <input id="male" type="radio" name="gender">
-                            <label for="male">Masculino</label>
-                        </div>
+    <div class="gender-inputs">
+        <div class="gender-title">
+            <h6>Gênero</h6>
+        </div>
 
-                        <div class="gender-input">
-                            <input id="others" type="radio" name="gender">
-                            <label for="others">Outros</label>
-                        </div>
+        <div class="gender-group">
+            <div class="gender-input">
+                <input id="female" type="radio" name="genero" value="Feminino">
+                <label for="female">Feminino</label>
+            </div>
 
-                        <div class="gender-input">
-                            <input id="none" type="radio" name="gender">
-                            <label for="none">Prefiro não dizer</label>
-                        </div>
-                    </div>
-                </div>
+            <div class="gender-input">
+                <input id="male" type="radio" name="genero" value="Masculino">
+                <label for="male">Masculino</label>
+            </div>
 
-                <div class="login-button">
-                    <button><a href="#">Entrar</a></button>
-                </div>
-            </form>
+            <div class="gender-input">
+                <input id="others" type="radio" name="genero" value="Outros">
+                <label for="others">Outros</label>
+            </div>
+
+            <div class="gender-input">
+                <input id="none" type="radio" name="genero" value="Prefiro não dizer">
+                <label for="none">Prefiro não dizer</label>
+            </div>
         </div>
     </div>
-    <script src="js/cadastroProfessor.js"></script>
+
+    <div class="login-button">
+        <button type="submit">Cadastrar</button>
+    </div>
+        </div>
+    </div>
+    <script src="{% static 'js/cadastroProfessor.js' %}"></script>
 </body>
 
 </html>

@@ -3,9 +3,10 @@
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/landingPage.css">
+    <link rel="stylesheet" href="{% static 'css/landingPage.css' %}">
     <title>WhichTeacher</title>
 </head>
 <body class="teachers-regular">
@@ -28,14 +29,14 @@
             <div class="btn-fechar">
                 <i class="ri-close-large-line"></i>
             </div>
-        <nav class="mobile">
-            <ul>
-                <a href="#"><li>Home</li></a>
-                <a href="#"><li>Sobre</li></a>
-                <a href="#"><li>Contatos</li></a>
-                <a href="#"><li>Serviços</li></a>
-            </ul>
-        </nav>
+            <nav class="mobile">
+                <ul>
+                    <a href="#"><li>Home</li></a>
+                    <a href="#"><li>Sobre</li></a>
+                    <a href="#"><li>Contatos</li></a>
+                    <a href="#"><li>Serviços</li></a>
+                </ul>
+            </nav>
         </div>
     </header>
     <main>
@@ -45,12 +46,12 @@
             <h2><span>Começa Aqui!</span></h2>
             <p>Bem-vindo ao nosso site! Conecte-se e potencialize seus estudos com professores qualificados e prontos para te ajudar.</p>
             <button onclick="window.location.href='#'">Sou Aluno</button>
-            <button onclick="window.location.href='loginProfessor.html'">Sou Professor</button>
+            <button onclick="window.location.href='/loginP/'">Sou Professor</button>
         </aside>
         <article>
-            <a href="https://storyset.com/people"><img src="./img/Webinar-pana.png" alt="computador mostrando um professor com blusa roxa, cabelo preto e óculos redondos dando uma video aula, sendo acompanhado de um pequeno balão de fala. Em cada lado do computador a um vaso de plantas e atrás do computador esta uma pilha de livros. Em cima do computador esta dois balões de comentários, dois gráfico, sendo um deles um gráfico de pizza, e uma barra de volume de som em cima do professor."></a>
+            <a href="https://storyset.com/people"><img src="{% static 'img/Webinar-pana.png' %}" alt="computador mostrando um professor com blusa roxa, cabelo preto e óculos redondos dando uma video aula, sendo acompanhado de um pequeno balão de fala. Em cada lado do computador a um vaso de plantas e atrás do computador esta uma pilha de livros. Em cima do computador esta dois balões de comentários, dois gráfico, sendo um deles um gráfico de pizza, e uma barra de volume de som em cima do professor."></a>
         </article>
     </main>
-    <script src="js/landingPage.js"></script>
+    <script src="{% static 'js/landingPage.js' %}"></script>
 </body>
 </html>
