@@ -1,0 +1,17 @@
+<!-- <form action="{% url 'loginP' %}" class="sign-up-form" method="POST" >
+                    {% csrf_token %}
+                    <h2 class="title">Cadastro</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input name="email" id="email" tabindex="4" placeholder="Email" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input name="senha" type="password"  id="senha" tabindex="5" placeholder="Senha" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="confirmaSenha" id="confirmaSenha" tabindex="6" placeholder="Confirme sua senha"
+                            required />
+                    </div>
+                    <button type="submit" class="btn" tabindex="7">Cadastrar-se</button> -->
