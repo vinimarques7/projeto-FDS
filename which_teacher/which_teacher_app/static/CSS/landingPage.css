@@ -111,7 +111,7 @@ img {
     width: 620px;
     height: auto;
     position: relative;
-    top: -100px;
+    top: 0px;
 }
 button {
     border: 2px;
