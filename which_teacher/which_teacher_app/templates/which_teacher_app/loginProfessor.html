@@ -24,7 +24,7 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" id="loginSenha" tabindex="2" placeholder="Senha" required />
                     </div>
-                    <button type="button" class="btn" onclick="validarLogin()" tabindex="3">Login</button>
+                    <button type="submit" class="btn" tabindex="3">Login</button>
                 </form>
                 <!-- <p class="social-text">Ou faça login com outras plataformas</p>
                     <div class="social-media">
@@ -42,7 +42,8 @@
                         </a>
                     </div> -->
                 </form>
-                <form action="#" class="sign-up-form">
+                <form action="{% url 'loginP' %}" class="sign-up-form" method="POST" >
+                    {% csrf_token %}
                     <h2 class="title">Cadastro</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -50,14 +51,14 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input name="senha" id="senha" tabindex="5" placeholder="Senha" required />
+                        <input name="senha" type="password"  id="senha" tabindex="5" placeholder="Senha" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="confirmaSenha" tabindex="6" placeholder="Confirme sua senha"
+                        <input type="password" name="confirmaSenha" id="confirmaSenha" tabindex="6" placeholder="Confirme sua senha"
                             required />
                     </div>
-                    <button type="button" class="btn" onclick="validarCadastro()" tabindex="7">Cadastrar-se</button>
+                    <button type="submit" class="btn" tabindex="7">Cadastrar-se</button>
                     <!-- <p class="social-text">Or faça seu cadastro com outras plataformas</p> -->
                     <div class="social-media">
                         <!-- <a href="#" class="social-icon">
