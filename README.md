@@ -166,4 +166,3 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
   </a>
 </p>
 
-<p align="center">Projeto para a disciplina de <strong>Fundamentos de Desenvolvimento de Software</strong> na <strong>CESAR School‎‎</strong></p>
