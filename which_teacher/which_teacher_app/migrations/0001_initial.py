@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='professor',
             fields=[
-                ('id_prof', models.AutoField(primary_key=True, serialize=False)),
+                ('id_prof', models.BigAutoField(primary_key=True, serialize=False)),
                 ('email', models.EmailField(max_length=100)),
                 ('senha', models.CharField(max_length=100)),
             ],
