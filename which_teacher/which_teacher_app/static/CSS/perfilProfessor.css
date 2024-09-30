@@ -12,6 +12,136 @@
     font-size: 15px;
 }
 
+.btn-abrir {
+    cursor: pointer;
+}
+
+.btn-abrir i {
+    color: #15202b;
+    font-size: 30px;
+}
+
+.btn-abrir i:hover {
+    color: #a885d8;
+    transition: 0.5s;
+}
+
+.menu-mobile {
+    background-color: #15202bec;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+    width: 0%;
+    overflow: hidden;
+    transition: .2s;
+}
+
+.menu-mobile.abrir-menu {
+    width: 70%;
+}
+
+nav.mobile ul {
+    text-align: right;  
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+nav.mobile a {
+    color: #ead8fc;
+    padding: 30px 8%;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+nav.mobile a:hover {
+    color: #a885d8;
+    transition: 0.3s;
+    text-decoration: underline;
+}
+
+.btn-fechar {
+    padding: 20px;
+}
+
+.btn-fechar i {
+    font-size: 30px;
+    color: #fff;
+}
+
+.btn-fechar i:hover {
+    cursor: pointer;
+    color: #a885d8;
+    transition: 0.5s;
+}
+
+#title {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+} 
+
+#title h1 {
+    font-size: 32px;
+    margin: 0;
+    /*margin-top: 40px;*/
+    margin-left: 40px;
+}
+
+nav.menu-desktop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+
+nav.menu-desktop ul {
+    margin: 0;
+    margin-top: 21px;
+    margin-right: 77px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    padding-right: 20px;
+}
+nav.menu-desktop li {
+    display: inline-block;
+    margin: 30px;
+    background-color: #15202b;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+nav.menu-desktop li:hover {
+    background-color: #a885d893;
+    transition: 0.5s all;
+}
+
+nav.menu-desktop a {
+    color: #D9C2F0;
+    font-size: 20px;
+}
+
+nav.menu-desktop a:hover {
+    color: #15202b;
+    transition: 0.3s all;
+}
+
+span {
+    color: #492191
+}
+
 .profile {
     padding: 30px;
     max-width: 1000px;
