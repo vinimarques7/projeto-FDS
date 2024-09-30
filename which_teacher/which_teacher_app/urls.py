@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # Esta rota chama a função 'index' em views.py
-    path('', views.index, name='index'),  
+    path('', views.home, name='home'),
+    path('loginP/', views.loginP, name='loginP'),
+    path('cadastroP/', views.cadastro_professor, name='cadastroP'),
+    path('perfilP/', views.perfilP, name='perfilP'),
 ]
