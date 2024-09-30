@@ -30,6 +30,7 @@ if NOT_PROD:
     DEBUG = True
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = 'django-insecure-&jj*w)_d4w8o18*llk(!gnw86ys#j3hmwttjz#e7d+(*(9=+aj'
+    CSRF_TRUSTED_ORIGINS = ['https://whichteacher-c0ceg4bueke5cec0.eastus-01.azurewebsites.net']
     ALLOWED_HOSTS = []
     DATABASES = {
         'default': {
