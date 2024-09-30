@@ -26,6 +26,7 @@ TARGET_ENV = os.getenv('TARGET_ENV')
 NOT_PROD = not TARGET_ENV.lower().startswith('prod')
 
 if NOT_PROD:
+    CSRF_TRUSTED_ORIGINS += ['https://whichteacher-c0ceg4bueke5cec0.eastus-01.azurewebsites.net']
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
     # SECURITY WARNING: keep the secret key used in production secret!
