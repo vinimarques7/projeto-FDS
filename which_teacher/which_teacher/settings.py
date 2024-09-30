@@ -12,10 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-<<<<<<< HEAD
 from dotenv import load_dotenv
-=======
->>>>>>> c6c028927d270177bfa2cf4fa2c12ad044246fb4
 
 
 # Defina o caminho base do projeto
@@ -31,7 +28,7 @@ NOT_PROD = not TARGET_ENV.lower().startswith('prod')
 if NOT_PROD:
     # Ambiente de desenvolvimento
     DEBUG = True
-    SECRET_KEY = '<A SECRET KEY DO SEU PROJETO>'  # Substitua com sua SECRET_KEY original
+    SECRET_KEY = 'django-insecure-&jj*w)_d4w8o18*llk(!gnw86ys#j3hmwttjz#e7d+(*(9=+aj'  # Substitua com sua SECRET_KEY original
     ALLOWED_HOSTS = []
     DATABASES = {
         'default': {
