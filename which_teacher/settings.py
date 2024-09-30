@@ -29,7 +29,7 @@ if NOT_PROD:
     # Ambiente de desenvolvimento
     DEBUG = True
     SECRET_KEY = 'django-insecure-&jj*w)_d4w8o18*llk(!gnw86ys#j3hmwttjz#e7d+(*(9=+aj'  # Substitua com sua SECRET_KEY original
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['whichteacher-c0ceg4bueke5cec0.eastus-01.azurewebsites.net']
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
