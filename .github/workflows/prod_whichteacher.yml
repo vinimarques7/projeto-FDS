@@ -33,7 +33,7 @@ jobs:
       - name: Run local server
         run: |
             python manage.py migrate
-            python manage.py runserver 
+            # python manage.py runserver 
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
