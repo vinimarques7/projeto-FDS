@@ -1,7 +1,6 @@
 from django.db import models
 
 class Professor(models.Model):
-    id = models.BigAutoField(primary_key=True)
     nome = models.CharField(max_length=100)
     celular = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
