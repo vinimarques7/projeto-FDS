@@ -18,5 +18,8 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(max_length=100)),
                 ('senha', models.CharField(max_length=100)),
             ],
+            options={
+                'id': False,
+            },
         ),
     ]
