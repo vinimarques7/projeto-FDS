@@ -30,7 +30,7 @@ if NOT_PROD:
     DEBUG = True
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = 'django-insecure-&jj*w)_d4w8o18*llk(!gnw86ys#j3hmwttjz#e7d+(*(9=+aj'
-    CSRF_TRUSTED_ORIGINS = ['https://whichteacher-c0ceg4bueke5cec0.eastus-01.azurewebsites.net']
+    CSRF_TRUSTED_ORIGINS = ['whichteacher.azurewebsites.net']
     ALLOWED_HOSTS = []
     DATABASES = {
         'default': {
@@ -42,7 +42,7 @@ else:
     SECRET_KEY = os.getenv('SECRET_KEY')
     DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
     ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
-    ALLOWED_HOSTS.append( 'whichteacher-c0ceg4bueke5cec0.eastus-01.azurewebsites.net')
+    ALLOWED_HOSTS.append( 'whichteacher.azurewebsites.net')
     CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(' ')
     SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', '0').lower() in ['true', 't', '1']
 
