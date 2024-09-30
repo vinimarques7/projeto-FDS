@@ -17,90 +17,153 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 - **Mensagens e Notificações**: Sistema de mensagens interno para comunicação direta entre professores e alunos, com notificações em tempo real.
 
 
-## Tecnologias
+---
 
-[![Python](https://img.shields.io/badge/-Python-red?style=flat&logo=Python&logoColor=white)](https://www.python.org)
-[![Django](https://img.shields.io/badge/-Django-red?style=flat&logo=Django&logoColor=white)](https://www.djangoproject.com/)
-[![SQLite](https://img.shields.io/badge/-SQLite-red?style=flat&logo=SQLite&logoColor=white)](https://www.sqlite.org/index.html)
-[![JavaScript](https://img.shields.io/badge/-JavaScript-red?style=flat&logo=JavaScript&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![HTML5](https://img.shields.io/badge/-HTML5-red?style=flat&logo=HTML5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
-[![CSS3](https://img.shields.io/badge/-CSS3-red?style=flat&logo=CSS3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![Microsoft Azure](https://img.shields.io/badge/-Microsoft%20Azure-red?style=flat&logo=Microsoft-Azure&logoColor=white)](https://azure.microsoft.com/)
+## ✨ Tecnologias ✨
+<div style="display: flex; align-items: center; text-decoration: none;">
+  <img src="https://img.shields.io/badge/Python-7f1d1d?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Django-000?style=for-the-badge&logo=django&logoColor=white"/>
+  <img src="https://img.shields.io/badge/sqlite-7f1d1d?style=for-the-badge&logo=sqlite&logoColor=white"/>
+  <img src="https://img.shields.io/badge/javascript-000?style=for-the-badge&logo=javascript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/html5-7f1d1d?style=for-the-badge&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/css3-000?style=for-the-badge&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Microsoft_Azure-7f1d1d?style=for-the-badge&logo=microsoft-azure&logoColor=white"/>  
+</div>
 
-## Ferramentas
+## 🧰 Ferramentas 🧰
+<div style="display: flex; align-items: center;">
+  <a href="https://cesar-team-r73jqrwd.atlassian.net/jira/software/projects/WT/boards/4/backlog">
+    <img src="https://img.shields.io/badge/Jira-7f1d1d?style=for-the-badge&logo=Jira&logoColor=white"/></a>
+  <a href="https://www.figma.com/design/lSNlGV5MUkZs83LWAfWCcy/WhichTeacher---LoFi?node-id=0-1&node-type=canvas&t=FU5ooGZWYzdutmon-0">
+    <img src="https://img.shields.io/badge/figma-000?style=for-the-badge&logo=figma&logoColor=white"/></a>
+    <img src="https://img.shields.io/badge/YOUTUBE-7f1d1d?style=for-the-badge&logo=youtube&logoColor=white"/></a>
+</div>
 
-[![Jira](https://img.shields.io/badge/-Jira-red?style=flat&logo=Jira&logoColor=white)](https://www.atlassian.com/software/jira)
-[![Figma](https://img.shields.io/badge/-Figma-red?style=flat&logo=Figma&logoColor=white)](https://www.figma.com)
-[![YouTube](https://img.shields.io/badge/-YouTube-red?style=flat&logo=YouTube&logoColor=white)](https://www.youtube.com)
+<br/>
+<br/>
 
-## Entrega 01
+# Entrega 01
+<br/>
+<p align="center" style="">
+<a href="https://www.youtube.com/watch?v=Qkvbe7pQpms"">
+  <img src="https://img.shields.io/badge/screencast-7f1d1d?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+<a href="https://www.figma.com/design/lSNlGV5MUkZs83LWAfWCcy/WhichTeacher---LoFi?node-id=0-1&node-type=canvas&t=FU5ooGZWYzdutmon-0">
+  <img src="https://img.shields.io/badge/figma-000?style=for-the-badge&logo=figma&logoColor=white"  height="35px"/></a>
+  <a href="https://cesar-team-r73jqrwd.atlassian.net/jira/software/projects/WT/boards/4/backlog">
+    <img src="https://img.shields.io/badge/jira-7f1d1d?style=for-the-badge&logo=Jira&logoColor=white"  height="35px"/></a>
+</p>
+<br/>
 
-[![Screencast](https://img.shields.io/badge/-Screencast-red?style=flat&logoColor=white)](https://youtu.be/Qkvbe7pQpms?feature=shared)
-[![Figma](https://img.shields.io/badge/-Figma-red?style=flat&logo=Figma&logoColor=white)](https://www.figma.com/design/lSNlGV5MUkZs83LWAfWCcy/WhichTeacher---LoFi?node-id=10-2413&node-type=FRAME&t=WqaG3RDJgDgkHVlD-0)
-[![Jira](https://img.shields.io/badge/-Jira-red?style=flat&logo=Jira&logoColor=white)](https://cesar-team-r73jqrwd.atlassian.net/jira/software/projects/WT/boards/4/backlog)
+- <strong> Backlog </strong>
 
-### Backlog
-<td>
-      <img src="https://imgur.com/wG0u8nt.jpg" alt="Backlog" style="border-radius:50%;"/><br>
+![Backlog](https://imgur.com/fzxAHrA.png)
+
+<br/>
   
-   
+- <strong> Board </strong>
 
-### Board
-<td>
-      <img src="https://imgur.com/RcL4az2.jpg" alt="Backlog" style="border-radius:50%;"/><br>
+![Board](https://imgur.com/6zLXdbt.png)
+
+---
+
+# Entrega 02
+<br/>
+<p align="center" style="">
+<a href="Video de bernado aqui"">
+  <img src="https://img.shields.io/badge/relatório programação em par-000000?style=for-the-badge&logo=googledocs&logoColor=white" height="35px"/></a>
+<a href=" Link do site aqui"">
+  <img src="https://img.shields.io/badge/site na azure-7f1d1d?style=for-the-badge&logo=microsoft-azure&logoColor=white" height="35px"/></a>
+</p>
+<br/>
+
+- <strong> Instruções de acesso </strong>
+
+<p align="center" style="">
+<a href="inserir tutorial aqui"">
+  <img src="https://img.shields.io/badge/Cadastro / Login-7f1d1d?style=for-the-badge&logo=googledocs&logoColor=white" height="35px"/></a>
+<br/>
+
+- <strong> Backlog </strong>
+
+![image](https://imgur.com/xEvEY0h.png)
+
+<br/>
+  
+- <strong> Board </strong>
+
+![Board](https://imgur.com/NgPRZib.png)
 
 
-
-
-## **Acesse o site**:
-
-    Abra seu navegador e vá para `linkDoSiteAqui`
-
-## Créditos
-
-**Este projeto foi desenvolvido por:**
-
+# 👥 Equipe
 <table>
-  <tr align="center">
-    <td>
-      <img src="https://i.imgur.com/qiddls9.jpg" alt="Fatima Beatriz" width="150px" height="180px" style="border-radius:50%;"/><br>
-      <b>Fatima Beatriz</b><br>
-      <a href="mailto:fbmmca@cesar.school">fbmmca@cesar.school</a>
+<tr>
+      <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href="https://github.com/BiaMoraes97">
+        <div
+          style="border: 3px solid #7f1d1d; border-radius: 50%; width: 115px; height: 115px; display: flex; align-items: center; justify-content: center;"
+        >
+            <img src="https://imgur.com/qiddls9.png" style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden; width: 150px; " alt="Fatima Beatriz"/>
+        </div>
+            <br />
+            <sub style="font-size:14px"><b>Fatima Beatriz</b></sub>
+        </a>
     </td>
-    <td>
-      <img src="https://i.imgur.com/Gp3Qnov.jpg" alt="Julia Torres" width="150px" height="180px" style="border-radius:50%;"/><br>
-      <b>Julia Torres</b><br>
-      <a href="mailto:jtb@cesar.school">jtb@cesar.school</a>
+  <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href="https://github.com/JuliaTBarros" >
+        <div  
+          style="border: 3px solid #7f1d1d; border-radius: 50%; width: 115px; height: 115px; display: flex; align-items: center; justify-content: center;"
+        >
+            <img src="https://imgur.com/Gp3Qnov.png" style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden; width: 150px;" alt="Julia Torres"/>
+        </div>
+            <br />
+            <sub style="font-size:14px"><b>Julia Torres</b></sub>
+        </a>
     </td>
-    <td>
-      <img src="https://i.imgur.com/B7Gs5AB.jpg" alt="Maria Claudia" width="150px" height="180px" style="border-radius:50%;"/><br>
-      <b>Maria Claudia</b><br>
-      <a href="mailto:mcrcoa@cesar.school">mcrcoa@cesar.school</a>
+   <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href="https://github.com/Maria-ClaudiaA">
+        <div  
+          style="border: 3px solid #7f1d1d; border-radius: 50%; width: 115px; height: 115px; display: flex; align-items: center; justify-content: center;"
+        >
+            <img src="https://imgur.com/B7Gs5AB.png" style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden; width: 150px; " alt="Maria Claudia"/>
+        </div>
+            <br />
+            <sub style="font-size:14px"><b>Maria Claudia</b></sub>
+        </a>
     </td>
-  </tr>
-  <tr align="center">
-    <td>
-      <img src="https://i.imgur.com/3EiNSXx.jpg" alt="Matheus Martins" width="150px" height="180px" style="border-radius:50%;"/><br>
-      <b>Matheus Martins</b><br>
-      <a href="mailto:mmv@cesar.school">mmv@cesar.school</a>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/MatheusMV05>
+            <div style="border: 3px solid #7f1d1d; border-radius: 50%; width: 115px; height: 115px; display: flex; align-items: center; justify-content: center;">
+              <img src="https://imgur.com/3EiNSXx.png" style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden; width: 150px; " alt="Matheus Martins"/>
+            </div>
+            <br />
+            <sub style="font-size:14px;"><b>Matheus Martins</b></sub>
+        </a>
     </td>
-    <td>
-      <img src="https://i.imgur.com/PUBw0Xa.jpg" alt="Vinicius Bernardo" width="150px" height="180px" style="border-radius:50%;"/><br>
-      <b>Vinicius Bernardo</b><br>
-      <a href="mailto:vbs4@cesar.school">vbs4@cesar.school</a>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href="https://github.com/Vinib80">
+        <div  
+          style="border: 3px solid #7f1d1d; border-radius: 50%; width: 115px; height: 115px; display: flex; align-items: center; justify-content: center;">
+            <img src="https://imgur.com/PUBw0Xa.png" style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden; width: 150px; " alt="Vinicius Bernardo"/>
+        </div>
+            <br />
+            <sub style="font-size:14px"><b>Vinicius Bernardo</b></sub>
+        </a>
     </td>
-    <td>
-      <img src="https://i.imgur.com/vB6f7CX.jpg" alt="Vinicius Marques" width="150px" height="180px" style="border-radius:50%;"/><br>
-      <b>Vinicius Marques</b><br>
-      <a href="mailto:vjmm@cesar.school">vjmm@cesar.school</a>
+  <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href="https://github.com/vinimarques7">
+        <div  
+          style="border: 3px solid #7f1d1d; border-radius: 50%; width: 115px; height: 115px; display: flex; align-items: center; justify-content: center;"
+        >
+            <img src="https://imgur.com/vB6f7CX.png" style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden; width: 150px; " alt="Vinicius Marques">
+        </div>
+            <br />
+            <sub style="font-size:14px"><b>Vinicius Marques</b></sub>
+        </a>
     </td>
-  </tr>
 </table>
 
-## Licença
+---
+  </a>
+</p>
 
-Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## Contato
-
-Para mais informações ou suporte, entre em contato conosco em [contato.whichteacher@gmail.com](mailto:contato.whichteacher@gmail.com).
+<p align="center">Projeto para a disciplina de <strong>Fundamentos de Desenvolvimento de Software</strong> na <strong>CESAR School‎‎</strong></p>
