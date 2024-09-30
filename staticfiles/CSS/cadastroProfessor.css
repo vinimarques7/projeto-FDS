@@ -1,0 +1,273 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #a885d843;
+}
+
+.container {
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    box-shadow: 10px 10px 10px #15202b6b;
+    border-radius: 50px;
+    background-color: #A885D8;
+}
+
+.form-image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A885D8;
+    padding: 1rem;
+    border-radius: 50px;
+}
+
+.form-image img {
+    width: 31rem;
+}
+
+.form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5dc;
+    padding: 3rem;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.form-header {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-button {
+    display: flex;
+    align-items: center;
+}
+
+.login-button button {
+    width: 100%;
+    margin-top: 2.5rem;
+    border: none;
+    background-color: #482191;
+    padding: 0.62rem;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.login-button button:hover {
+    background-color: #6b63fff1;
+}
+
+.login-button button a {
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #DDDDDD;
+}
+
+.form-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: #482191;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 1;
+}
+
+.input-box input {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+}
+
+.input-box input:hover {
+    background-color: #eeeeee75;
+}
+
+.input-box input:focus-visible {
+    outline: 1px solid #6c63ff;
+}
+
+.input-box label,
+.gender-title h6 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #15202b;
+}
+
+.input-box input::placeholder {
+    color: #15202b6a;
+}
+
+.gender-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.62rem;
+    padding: 0 .5rem;
+}
+
+.gender-input {
+    display: flex;
+    align-items: center;
+}
+
+.gender-input input {
+    margin-right: 0.35rem;
+}
+
+.gender-input label {
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: #15202b;
+}
+
+.dropdown-checkbox {
+    position: relative;
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.dropdown-btn {
+    background-color: #482191aa;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.dropdown-btn:hover {
+    background-color: #D9C2F0;
+}
+
+.dropdown-list {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    background-color: #fAF0E6;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 10px;
+    display: none;
+    width: 100%;
+}
+
+.dropdown-checkbox .dropdown-list {
+    display: none;
+}
+
+.dropdown-checkbox.show-dropdown .dropdown-list {
+    display: block;
+}
+
+.dropdown-list li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.dropdown-list li label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 1330px) {
+    .form-image {
+        display: none;
+    }
+
+    .container {
+        width: 50%;
+    }
+
+    .form {
+        width: 100%;
+        border-radius: 50px;
+    }
+}
+
+@media screen and (max-width: 1064px) {
+    .container {
+        width: 90%;
+        height: auto;
+    }
+
+    .gender-inputs {
+        margin-top: 2rem;
+    }
+
+    .gender-group {
+        flex-direction: column;
+    }
+
+    .gender-title h6 {
+        margin: 0;
+    }
+
+    .gender-input {
+        margin-top: 0.5rem;
+    }
+
+    .form {
+        border-radius: 50px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .form {
+        padding: 1rem;
+        border-radius: 50px;
+    }
+
+    .input-box {
+        margin-bottom: 0.5rem;
+        overflow-y: scroll;
+        overflow-x: scroll;
+    }
+
+    .gender-group {
+        flex-direction: column;
+    }
+}
