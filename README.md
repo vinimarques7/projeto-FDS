@@ -21,22 +21,22 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 
 ## ✨ Tecnologias ✨
 <div style="display: flex; align-items: center; text-decoration: none;">
-  <img src="https://img.shields.io/badge/Python-7f1d1d?style=for-the-badge&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Django-000?style=for-the-badge&logo=django&logoColor=white"/>
-  <img src="https://img.shields.io/badge/sqlite-7f1d1d?style=for-the-badge&logo=sqlite&logoColor=white"/>
-  <img src="https://img.shields.io/badge/javascript-000?style=for-the-badge&logo=javascript&logoColor=white"/>
-  <img src="https://img.shields.io/badge/html5-7f1d1d?style=for-the-badge&logo=html5&logoColor=white"/>
-  <img src="https://img.shields.io/badge/css3-000?style=for-the-badge&logo=css3&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Microsoft_Azure-7f1d1d?style=for-the-badge&logo=microsoft-azure&logoColor=white"/>  
+<img src="https://img.shields.io/badge/Python-9b59b6?style=for-the-badge&logo=python&logoColor=white"/> 
+<img src="https://img.shields.io/badge/Django-white?style=for-the-badge&logo=django&logoColor=black"/> 
+<img src="https://img.shields.io/badge/sqlite-9b59b6?style=for-the-badge&logo=sqlite&logoColor=white"/> 
+<img src="https://img.shields.io/badge/javascript-white?style=for-the-badge&logo=javascript&logoColor=black"/> 
+<img src="https://img.shields.io/badge/html5-9b59b6?style=for-the-badge&logo=html5&logoColor=white"/> 
+<img src="https://img.shields.io/badge/css3-white?style=for-the-badge&logo=css3&logoColor=black"/> 
+<img src="https://img.shields.io/badge/Microsoft_Azure-9b59b6?style=for-the-badge&logo=microsoft-azure&logoColor=white"/> 
 </div>
 
 ## 🧰 Ferramentas 🧰
 <div style="display: flex; align-items: center;">
   <a href="https://cesar-team-r73jqrwd.atlassian.net/jira/software/projects/WT/boards/4/backlog">
-    <img src="https://img.shields.io/badge/Jira-7f1d1d?style=for-the-badge&logo=Jira&logoColor=white"/></a>
+    <img src="https://img.shields.io/badge/figma-9b59b6?style=for-the-badge&logo=figma&logoColor=white"/>
   <a href="https://www.figma.com/design/lSNlGV5MUkZs83LWAfWCcy/WhichTeacher---LoFi?node-id=0-1&node-type=canvas&t=FU5ooGZWYzdutmon-0">
-    <img src="https://img.shields.io/badge/figma-000?style=for-the-badge&logo=figma&logoColor=white"/></a>
-    <img src="https://img.shields.io/badge/YOUTUBE-7f1d1d?style=for-the-badge&logo=youtube&logoColor=white"/></a>
+    <img src="https://img.shields.io/badge/Jira-white?style=for-the-badge&logo=Jira&logoColor=black"/>
+    <img src="https://img.shields.io/badge/YOUTUBE-9b59b6?style=for-the-badge&logo=youtube&logoColor=white"/> 
 </div>
 
 <br/>
@@ -46,11 +46,11 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 <br/>
 <p align="center" style="">
 <a href="https://www.youtube.com/watch?v=Qkvbe7pQpms"">
-  <img src="https://img.shields.io/badge/screencast-7f1d1d?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+ <img src="https://img.shields.io/badge/screencast-9b59b6?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/>
 <a href="https://www.figma.com/design/lSNlGV5MUkZs83LWAfWCcy/WhichTeacher---LoFi?node-id=0-1&node-type=canvas&t=FU5ooGZWYzdutmon-0">
-  <img src="https://img.shields.io/badge/figma-000?style=for-the-badge&logo=figma&logoColor=white"  height="35px"/></a>
+ <img src="https://img.shields.io/badge/figma-white?style=for-the-badge&logo=figma&logoColor=black" height="35px"/>
   <a href="https://cesar-team-r73jqrwd.atlassian.net/jira/software/projects/WT/boards/4/backlog">
-    <img src="https://img.shields.io/badge/jira-7f1d1d?style=for-the-badge&logo=Jira&logoColor=white"  height="35px"/></a>
+    <img src="https://img.shields.io/badge/jira-9b59b6?style=for-the-badge&logo=Jira&logoColor=white" height="35px"/>
 </p>
 <br/>
 
@@ -69,19 +69,13 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 # Entrega 02
 <br/>
 <p align="center" style="">
-<a href="Video de bernado aqui"">
-  <img src="https://img.shields.io/badge/screencast-7f1d1d?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
-<a href="https://whichteacher.azurewebsites.net"">
-  <img src="https://img.shields.io/badge/site na azure-7f1d1d?style=for-the-badge&logo=microsoft-azure&logoColor=white" height="35px"/></a>
+<a href="https://youtu.be/a9RVq2Y3EUE?feature=shared">
+  <img src="https://img.shields.io/badge/screencast-9b59b6?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/>
+<a href="https://whichteacher.azurewebsites.net">
+  <img src="https://img.shields.io/badge/site%20na%20azure-white?style=for-the-badge&logo=microsoft-azure&logoColor=black" height="35px"/>
 </p>
 <br/>
 
-- <strong> Instruções de acesso </strong>
-
-<p align="center" style="">
-<a href="inserir tutorial aqui"">
-  <img src="https://img.shields.io/badge/Cadastro / Login-7f1d1d?style=for-the-badge&logo=googledocs&logoColor=white" height="35px"/></a>
-<br/>
 
 - <strong> Backlog </strong>
 
