@@ -76,12 +76,6 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 </p>
 <br/>
 
-- <strong> Instruções de acesso </strong>
-
-<p align="center" style="">
-<a href="inserir tutorial aqui"">
-  <img src="https://img.shields.io/badge/Cadastro / Login-7f1d1d?style=for-the-badge&logo=googledocs&logoColor=white" height="35px"/></a>
-<br/>
 
 - <strong> Backlog </strong>
 
