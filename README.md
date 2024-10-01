@@ -33,10 +33,10 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 ## 🧰 Ferramentas 🧰
 <div style="display: flex; align-items: center;">
   <a href="https://cesar-team-r73jqrwd.atlassian.net/jira/software/projects/WT/boards/4/backlog">
-    <img src="https://img.shields.io/badge/Jira-7f1d1d?style=for-the-badge&logo=Jira&logoColor=white"/></a>
+    <img src="https://img.shields.io/badge/figma-white?style=for-the-badge&logo=figma&logoColor=black"/> 
   <a href="https://www.figma.com/design/lSNlGV5MUkZs83LWAfWCcy/WhichTeacher---LoFi?node-id=0-1&node-type=canvas&t=FU5ooGZWYzdutmon-0">
-    <img src="https://img.shields.io/badge/figma-000?style=for-the-badge&logo=figma&logoColor=white"/></a>
-    <img src="https://img.shields.io/badge/YOUTUBE-7f1d1d?style=for-the-badge&logo=youtube&logoColor=white"/></a>
+    <img src="https://img.shields.io/badge/Jira-white?style=for-the-badge&logo=Jira&logoColor=black"/>
+    <img src="https://img.shields.io/badge/YOUTUBE-9b59b6?style=for-the-badge&logo=youtube&logoColor=white"/> 
 </div>
 
 <br/>
