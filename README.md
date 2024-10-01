@@ -71,7 +71,7 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 <p align="center" style="">
 <a href="Video de bernado aqui"">
   <img src="https://img.shields.io/badge/screencast-7f1d1d?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
-<a href="https://whichteacher.azurewebsites.net"">
+<a href="https://whichteacher.azurewebsites.net">
   <img src="https://img.shields.io/badge/site na azure-7f1d1d?style=for-the-badge&logo=microsoft-azure&logoColor=white" height="35px"/></a>
 </p>
 <br/>
