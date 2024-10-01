@@ -21,13 +21,13 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 
 ## ✨ Tecnologias ✨
 <div style="display: flex; align-items: center; text-decoration: none;">
-  <img src="https://img.shields.io/badge/Python-7f1d1d?style=for-the-badge&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Django-000?style=for-the-badge&logo=django&logoColor=white"/>
-  <img src="https://img.shields.io/badge/sqlite-7f1d1d?style=for-the-badge&logo=sqlite&logoColor=white"/>
-  <img src="https://img.shields.io/badge/javascript-000?style=for-the-badge&logo=javascript&logoColor=white"/>
-  <img src="https://img.shields.io/badge/html5-7f1d1d?style=for-the-badge&logo=html5&logoColor=white"/>
-  <img src="https://img.shields.io/badge/css3-000?style=for-the-badge&logo=css3&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Microsoft_Azure-7f1d1d?style=for-the-badge&logo=microsoft-azure&logoColor=white"/>  
+<img src="https://img.shields.io/badge/Python-9b59b6?style=for-the-badge&logo=python&logoColor=white"/> 
+<img src="https://img.shields.io/badge/Django-white?style=for-the-badge&logo=django&logoColor=black"/> 
+<img src="https://img.shields.io/badge/sqlite-9b59b6?style=for-the-badge&logo=sqlite&logoColor=white"/> 
+<img src="https://img.shields.io/badge/javascript-white?style=for-the-badge&logo=javascript&logoColor=black"/> 
+<img src="https://img.shields.io/badge/html5-9b59b6?style=for-the-badge&logo=html5&logoColor=white"/> 
+<img src="https://img.shields.io/badge/css3-white?style=for-the-badge&logo=css3&logoColor=black"/> 
+<img src="https://img.shields.io/badge/Microsoft_Azure-9b59b6?style=for-the-badge&logo=microsoft-azure&logoColor=white"/> 
 </div>
 
 ## 🧰 Ferramentas 🧰
