@@ -36,6 +36,7 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
     <img src="https://img.shields.io/badge/figma-9b59b6?style=for-the-badge&logo=figma&logoColor=white"/>
   <a href="https://www.figma.com/design/lSNlGV5MUkZs83LWAfWCcy/WhichTeacher---LoFi?node-id=0-1&node-type=canvas&t=FU5ooGZWYzdutmon-0">
     <img src="https://img.shields.io/badge/Jira-white?style=for-the-badge&logo=Jira&logoColor=black"/>
+  <a href="https://www.youtube.com">
     <img src="https://img.shields.io/badge/YOUTUBE-9b59b6?style=for-the-badge&logo=youtube&logoColor=white"/> 
 </div>
 
