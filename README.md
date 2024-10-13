@@ -1,3 +1,4 @@
+![gitbanner](https://imgur.com/DeA8SYA.jpg)
 # WhichTeacher - Plataforma de Agendamento para Professores Particulares
 
 **Bem-vindo ao WhichTeacher!** 
