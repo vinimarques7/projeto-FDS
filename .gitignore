@@ -1,9 +1,27 @@
+# Ambientes Virtuais
 /.venv
-venv/
+/venv
+
+# Arquivos de Banco de Dados
 /db.sqlite3
 
-# Ignorar arquivos .pyc
-*.pyc
+# Arquivos de Configuração do Editor
+.vscode/
 
-# Ignorar diretórios __pycache__
+# Arquivos de Log
+*.log
+
+# Arquivos de Cache do Python
 __pycache__/
+*.py[cod]
+
+# Arquivos de Configuração do Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de Dependências
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Arquivos de Ambiente
+.env
