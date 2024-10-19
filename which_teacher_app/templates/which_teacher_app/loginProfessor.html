@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'loginProfessor.css' %}">
+    <title>Login Professor</title>
+</head>
+
+<body class="teachers-regular">
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form action="{% url 'loginP' %}" method="post" class="sign-in-form">
+                    {% csrf_token %}
+                    <h2 class="title">Login</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="email" id="loginEmail" name="loginEmail" tabindex="1" placeholder="Email" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginSenha" name="loginSenha" tabindex="2" placeholder="Senha" required />
+                    </div>
+                    <button type="submit" class="btn" tabindex="3">Login</button>
+                    {% if error %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endif %}
+                </form>
+                
+            </div>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Novo por aqui?</h3>
+                    <p>
+                        Faça seu cadastro!
+                    </p>
+                    <button class="btn transparent" id="sign-up-btn" tabindex="8" onclick="window.location.href='/cadastroP/'">
+                        Cadastro
+                    </button>
+                </div>
+                <img src="{% static 'undraw_teacher_re_sico.svg' %}" class="image"
+                    alt="Professora vestida de roxo trabalhando num computador enquanto segura uma prova nota 'A'" />
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
