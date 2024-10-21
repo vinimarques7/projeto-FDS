@@ -70,3 +70,6 @@ def home(request):
 
 def cadastroP(request):
     return render(request, 'cadastroProfessor.html')
+
+def busca(request):
+    return render(request, 'busca.html')
