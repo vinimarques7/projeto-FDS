@@ -136,6 +136,12 @@ nav.mobile a:hover {
     /* Allow the buttons to grow evenly */
 }
 
+#educationDropdown,
+#subjectDropdown {
+    background-color: #492191;
+    border-radius: 50px;
+}
+
 #item-list {
     width: 100%;
     /* Updated width to match Bootstrap’s grid */
