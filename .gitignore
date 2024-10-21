@@ -25,3 +25,6 @@ pip-delete-this-directory.txt
 
 # Arquivos de Ambiente
 .env
+
+# Arquivos de Migrations
+which_teacher_app/migrations
