@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Professor, Horario
+from .models import Professor, Horario,Aluno
 from django.contrib import messages
 
 def cadastro_professor(request):
@@ -65,11 +65,49 @@ def perfilP(request):
         
     return render(request, 'perfilProfessor.html', {'professor': professor, 'horarios': horarios})
 
+def cadastro_aluno(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        celular = request.POST.get('celular')
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
+        nivel_ensino = request.POST.getlist('nivel_ensino')
+        idade = request.POST.get('idade')
+        genero = request.POST.get('genero')
+
+        aluno = Aluno(
+            nome=nome,
+            celular=celular,
+            email=email,
+            senha=senha,
+            nivel_ensino=', '.join(nivel_ensino),
+            idade = idade,
+            genero=genero
+        )
+        aluno.save()
+        return redirect('loginA')
+    return render(request, 'cadastroAluno.html')
+
+def loginA(request):
+    if request.method == 'POST':
+        email = request.POST.get('loginEmail')
+        senha = request.POST.get('loginSenha')
+        
+        try:
+            aluno = Aluno.objects.get(email=email)
+            if aluno.senha == senha:
+                request.session['aluno_id'] = aluno.id
+                return redirect('loginA')
+            messages.error(request, 'Senha incorreta')
+        except Professor.DoesNotExist:
+            messages.error(request, 'Email não encontrado')
+    return render(request, 'loginAluno.html')
+
+                  
+
 def home(request):
     return render(request, 'landingPage.html')
 
-def cadastroP(request):
-    return render(request, 'cadastroProfessor.html')
 
 def busca(request):
     return render(request, 'busca.html')
