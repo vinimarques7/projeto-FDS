@@ -123,6 +123,16 @@ nav.mobile a:hover {
 
 .filter-container {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    /* Align them with space between */
+    gap: 10px;
+    /* Optional: Add space between the dropdowns */
+}
+
+.dropdown {
+    flex-grow: 1;
+    /* Allow the buttons to grow evenly */
 }
 
 #item-list {
