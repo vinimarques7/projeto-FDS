@@ -120,3 +120,21 @@ nav.mobile a:hover {
     color: #a885d8;
     transition: 0.5s;
 }
+
+.filter-container {
+    margin-bottom: 20px;
+}
+
+#item-list {
+    width: 100%;
+    /* Updated width to match Bootstrap’s grid */
+}
+
+#item-list li {
+    margin-bottom: 10px;
+    /* Updated for better spacing between list items */
+}
+
+.imagem {
+    width: 100vw;
+}

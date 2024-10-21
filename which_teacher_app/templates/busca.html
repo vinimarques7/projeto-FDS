@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'busca.css' %}">
     <title>WhichTeacher</title>
@@ -30,8 +31,104 @@
             <i class="ri-menu-line"></i>
         </div>
     </header>
-    <script src="{% static 'landingPage.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="imagem">
+        <img src="{% static 'busca.svg' %}" class="img-fluid" alt="banner">
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <!-- Filter Section with Dropdown -->
+                <div class="filter-container">
+                    <h2 class="mb-3">Filter by type:</h2>
+
+                    <!-- Dropdown Trigger Button -->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Filters
+                        </button>
+
+                        <!-- Dropdown Menu containing checkboxes -->
+                        <div class="dropdown-menu p-3" aria-labelledby="filterDropdown">
+                            <div class="row">
+                                <!-- First Column (First 3 Filters) -->
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input filter-checkbox"
+                                            value="ensino_fundamental" id="ensino_fundamental">
+                                        <label class="form-check-label" for="ensino_fundamental">Ensino
+                                            Fundamental</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input filter-checkbox"
+                                            value="ensino_medio" id="ensino_medio">
+                                        <label class="form-check-label" for="ensino_medio">Ensino Médio</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input filter-checkbox"
+                                            value="ensino_superior" id="ensino_superior">
+                                        <label class="form-check-label" for="ensino_superior">Ensino Superior</label>
+                                    </div>
+                                </div>
+
+                                <!-- Second Column (Next 3 Filters) -->
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input filter-checkbox"
+                                            value="portugues" id="portugues">
+                                        <label class="form-check-label" for="portugues">Português</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input filter-checkbox" value="ingles"
+                                            id="ingles">
+                                        <label class="form-check-label" for="ingles">Inglês</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input filter-checkbox"
+                                            value="matematica" id="matematica">
+                                        <label class="form-check-label" for="matematica">Matemática</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul id="item-list" class="list-group">
+                    <!-- Ensino Fundamental Items -->
+                    <li data-type="ensino_fundamental portugues" class="list-group-item">Português - Ensino Fundamental
+                    </li>
+                    <li data-type="ensino_fundamental matematica" class="list-group-item">Matemática - Ensino
+                        Fundamental</li>
+
+                    <!-- Ensino Médio Items -->
+                    <li data-type="ensino_medio ingles" class="list-group-item">Inglês - Ensino Médio</li>
+                    <li data-type="ensino_medio matematica" class="list-group-item">Matemática - Ensino Médio</li>
+
+                    <!-- Ensino Superior Items -->
+                    <li data-type="ensino_superior portugues" class="list-group-item">Português - Ensino Superior</li>
+                    <li data-type="ensino_superior ingles" class="list-group-item">Inglês - Ensino Superior</li>
+
+                    <!-- Mixed Subjects (Cross-curricular) -->
+                    <li data-type="ensino_medio portugues" class="list-group-item">Português - Ensino Médio</li>
+                    <li data-type="ensino_superior matematica" class="list-group-item">Matemática - Ensino Superior</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Popper.js (v1.16.1 for Bootstrap 4) -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS (v4.5.2) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="{% static 'busca.js' %}"></script>
 </body>
 
 </html>
