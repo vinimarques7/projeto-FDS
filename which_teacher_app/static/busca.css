@@ -155,14 +155,11 @@ nav.mobile a:hover {
 .imagem {
     width: 100vw;
 }
-
-<<<<<<< HEAD
-
-
-
-
-
-
+.imagem img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
 .carousel-item img {
     border-radius: 10px;
 }
@@ -172,10 +169,3 @@ nav.mobile a:hover {
     border-radius: 5px; /* Bordas arredondadas */
     padding: 10px; /* Espaçamento interno */
 }
-=======
-.imagem img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
->>>>>>> 6a256be703ed00a11b58162eb6947e01f8541504
