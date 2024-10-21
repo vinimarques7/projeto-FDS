@@ -25,3 +25,12 @@ class Aluno(models.Model):
     nivel_ensino = models.TextField()
     genero = models.CharField(max_length=10)
     idade = models.CharField(max_length=100)
+
+class Turma(models.Model):
+    nome = models.CharField(max_length=255)
+    materia = models.CharField(max_length=255)  # Campo para a matéria da turma
+    assunto = models.CharField(max_length=255)  # Assunto abordado na turma
+    alunos = models.ManyToManyField(Aluno, related_name='turmas')  # Relacionamento com Aluno
+
+    def __str__(self):
+        return self.nome
