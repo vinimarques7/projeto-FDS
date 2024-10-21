@@ -148,3 +148,9 @@ nav.mobile a:hover {
 .imagem {
     width: 100vw;
 }
+
+.imagem img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
