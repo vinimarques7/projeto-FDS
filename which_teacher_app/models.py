@@ -7,7 +7,6 @@ class Professor(models.Model):
     email = models.EmailField(unique=True)
     senha = models.CharField(max_length=100)
     materia = models.TextField()
-    nivel_ensino = models.TextField()
     recebimento = models.TextField()
     comunicacao = models.TextField()
     genero = models.CharField(max_length=10)
@@ -25,4 +24,4 @@ class Aluno(models.Model):
     senha = models.CharField(max_length=100)
     nivel_ensino = models.TextField()
     genero = models.CharField(max_length=10)
-    idade = models.IntegerField
+    idade = models.CharField(max_length=100)

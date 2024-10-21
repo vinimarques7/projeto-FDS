@@ -71,22 +71,20 @@ def cadastro_aluno(request):
         celular = request.POST.get('celular')
         email = request.POST.get('email')
         senha = request.POST.get('senha')
-        materia = request.POST.getlist('materia')
         nivel_ensino = request.POST.getlist('nivel_ensino')
         idade = request.POST.get('idade')
         genero = request.POST.get('genero')
 
-        professor = Professor(
+        aluno = Aluno(
             nome=nome,
             celular=celular,
             email=email,
             senha=senha,
-            materia=', '.join(materia),
             nivel_ensino=', '.join(nivel_ensino),
             idade = idade,
             genero=genero
         )
-        professor.save()
+        aluno.save()
         return redirect('loginA')
     return render(request, 'cadastroAluno.html')
 
@@ -96,10 +94,10 @@ def loginA(request):
         senha = request.POST.get('loginSenha')
         
         try:
-            professor = Professor.objects.get(email=email)
-            if professor.senha == senha:
-                request.session['professor_id'] = professor.id
-                return redirect('perfilP')
+            aluno = Aluno.objects.get(email=email)
+            if aluno.senha == senha:
+                request.session['aluno_id'] = aluno.id
+                return redirect('loginA')
             messages.error(request, 'Senha incorreta')
         except Professor.DoesNotExist:
             messages.error(request, 'Email não encontrado')
