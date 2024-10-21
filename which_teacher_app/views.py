@@ -73,3 +73,23 @@ def cadastroP(request):
 
 def busca(request):
     return render(request, 'busca.html')
+
+
+from django.shortcuts import render
+
+def busca(request):
+    professores = [
+        {
+            'nome': 'Professor A',
+            'materias': ['Português'],
+            'imagem_url': 'url-da-imagem',
+            'nota': 4,  # Nota entre 1 e 5
+        },
+        # Adicione mais professores conforme necessário
+    ]
+
+    # Adiciona uma chave 'estrelas' com uma lista de estrelas
+    for professor in professores:
+        professor['estrelas'] = ['★' if i < professor['nota'] else '☆' for i in range(5)]
+
+    return render(request, 'busca.html', {'professores': professores})

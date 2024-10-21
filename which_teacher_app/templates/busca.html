@@ -115,17 +115,53 @@
                     <li data-type="ensino_superior matematica" class="list-group-item">Matemática - Ensino Superior</li>
                 </ul>
 
+                <!-- Carrossel -->
+                <div id="professorCarousel" class="carousel slide mt-5" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-center">
+                                <img src="https://via.placeholder.com/300" class="d-block w-50" alt="Professor A">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Professor A</h5>
+                                <p>Especialista em Matemática e Ciências.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-center">
+                                <img src="https://via.placeholder.com/300" class="d-block w-50" alt="Professor B">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Professor B</h5>
+                                <p>Professor de Línguas e Literatura.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-center">
+                                <img src="https://via.placeholder.com/300" class="d-block w-50" alt="Professor C">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Professor C</h5>
+                                <p>Experiente em História e Geografia.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#professorCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#professorCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- jQuery -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
-    <!-- Popper.js (v1.16.1 for Bootstrap 4) -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <!-- Bootstrap JS (v4.5.2) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="{% static 'busca.js' %}"></script>

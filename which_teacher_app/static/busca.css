@@ -138,3 +138,19 @@ nav.mobile a:hover {
 .imagem {
     width: 100vw;
 }
+
+
+
+
+
+
+
+.carousel-item img {
+    border-radius: 10px;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5); /* Fundo escuro com opacidade */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px; /* Espaçamento interno */
+}
