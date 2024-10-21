@@ -123,6 +123,7 @@ nav.mobile a:hover {
 }
 
 .filter-container {
+    margin-top: 40px;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
@@ -155,19 +156,30 @@ nav.mobile a:hover {
 .imagem {
     width: 100vw;
 }
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+.imagem img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+>>>>>>> 81aa0e795681e72330fcbd7f2b93c075f66c6c63
 
 .carousel-item img {
     border-radius: 10px;
 }
 
 .carousel-caption {
-    background: rgba(0, 0, 0, 0.5); /* Fundo escuro com opacidade */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px; /* Espaçamento interno */
+    background: rgba(0, 0, 0, 0.5);
+    /* Fundo escuro com opacidade */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    padding: 10px;
+    /* Espaçamento interno */
 }
