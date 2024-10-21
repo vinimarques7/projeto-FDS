@@ -1,23 +1,25 @@
-* body{
+/* Ajuste do fundo da página */
+body {
+    background-color: #f5f5dc; /* Fundo bege claro */
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background-color: #a885d843;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
 }
 
+/* Contêiner principal do perfil */
 .profile {
+    background-color: #a885d8; /* Fundo roxo claro */
+    border-radius: 20px;
     padding: 30px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
     max-width: 1000px;
-    margin: auto;
+    width: 100%;
 }
 
+/* Cabeçalho do perfil */
 .profile-header {
     display: flex;
     gap: 50px;
@@ -27,242 +29,34 @@
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    background-color: #ffffff;
+    border: 3px solid #482191; /* Borda da imagem roxo escuro */
 }
 
-
-.profile-header h1 {
-    margin: 0;
+/* Estilos do texto */
+h1 {
+    color: #15202b;
 }
 
-.subjects,
-.languages,
-.rate,
-.location,
-.contact {
-    margin-top: 20px;
-    font-size: 14.2px;
-}
-
-.subjects h2{body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    background-color: #f0f0f0;
-    margin-left: 1px;
-    padding: 20px;
-}
-
-.profile {
-    background-color: #ffffff;
-    padding: 20px;
+/* Inputs */
+input {
+    border: 2px solid #482191;
     border-radius: 10px;
-    max-width: 800px;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.profile-header img {
-    border-radius: 50%;
-    border: 5px solid #482191;
-    width: 150px;
-    height: 150px;
-    background-color: #ffffff;
-}
-
-.profile-header h1 {
-    margin: 0;
-    font-size: 27px;
-}
-
-.subjects,
-.languages,
-.rate,
-.location,
-.contact {
-    margin-top: 20px;
-}
-
-.subjects h2,
-.languages h2,
-.rate h2,
-.location h2,
-.contact h2 {
-    font-size: 4px;
-    margin-bottom: 10px;
-    display: flex;
-    text-align: center;
-    align-items: center;
-}
-
-.subjects p,
-.languages p,
-.rate p,
-.location p,
-.contact p {
-    margin: 5px 0;
-}
-.languages {
-    display: flex;
-    flex-direction: column;
-}
-
-.languages h2 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.languages p {
-    margin-bottom: 10px;
-}
-
-.checkbox-group {
-    display: flex;
-    gap: 15px;    
-    flex-wrap: wrap;
-}
-
-.checkbox-group label {
-    display: flex;
-    align-items: center; 
-    font-size: 16px; 
-}
-
-.tariff-input {
-    color: black; 
-    border: 1px solid #ccc;
-    padding: 8px; 
-    border-radius: 5px;
-    width: 80%; 
-    max-width: 250px; 
-}
-
-.tariff-input::placeholder {
-    color: rgb(0, 0, 0); /* Cor do placeholder em cinza claro */
-}
-
-
-.payment-communication {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.payment-communication select,
-.payment-communication input {
     padding: 10px;
-    border-radius: 5px;
-    font-size: 14px;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
-.payment-communication label {
-    font-size: 4px;
+input:focus {
+    box-shadow: 0 0 10px rgba(72, 33, 145, 0.5); /* Efeito focus */
 }
 
-.contact-options {
-    display: flex;
-    justify-content: space-between;
+/* Estilos dos botões primários */
+.btn-primary {
+    background-color: #482191; /* Botões roxo escuro */
+    border-color: #482191;
 }
 
-.contact-options div {
-    flex-basis: 45%;
-}}
-.languages h2,
-.rate h2,
-.location h2,
-.contact h2 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.contact h3{
-    text-align: center;
-    font-size: 13.5px;
-}
-.contact p{
-    text-align: center;
-}
-.subjects p,
-.languages p,
-.rate p,
-.location p,
-.contact p {
-    font-size: 15px;
-    margin: 5px 0;
-}
-.payment-communication {
-    font-size: 13.5px;
-    display: flex;
-    justify-content: space-between; 
-    gap: 20px; 
-}
-
-.communication-options {
-    display: flex;
-    gap: 10px;
-    align-items: center; 
-}
-
-.communication-options input {
-    margin-right: 5px;
-}
-
-.payment-communication input[type="text"] {
-    font-size: 14px;
-    flex-basis: 40%;
-}
-
-.payment-section {
-    display: flex;
-    align-items: center; 
-    gap: 10px; 
-    margin-top: 10px;
-}
-
-
-.payment-section select {
-    width: 100%; 
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.payment-section h4{
-        font-weight: 500;
-        font-size: 13.5px;
-}
-
-.input-group {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.input-group p {
-    margin-right: 10px; 
-    margin: 0; 
-    white-space: nowrap; 
-}
-
-.input-group input {
-    flex: 1; 
-    padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-left: 10px; 
-}
-input[type="text"] {
-    color: rgb(0, 0, 0);
-    border: 1px solid #ccc;
-    padding: 4px;
-    border-radius: 5px;
-}
-input[type="text"].nome {
-    width: 400px; 
-    padding: 10px; 
+.btn-primary:hover {
+    background-color: #a885d8; /* Hover roxo claro */
+    border-color: #a885d8;
 }

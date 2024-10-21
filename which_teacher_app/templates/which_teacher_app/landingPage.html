@@ -1,57 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head> 
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'landingPage.css' %}">
     <title>WhichTeacher</title>
 </head>
+
 <body class="teachers-regular">
-    <header>
-        <div id="title">
-            <h1>Which<span>Teacher</span></h1>
+    <header class="container d-flex justify-content-between align-items-center py-3">
+        <div class="logo">
+            <a href="#" class="navbar-brand">
+                <span class="text-black">Which</span><span class="text-purple">Teacher</span>
+            </a>
         </div>
         <nav class="menu-desktop">
             <ul>
-                <a href="#"><li>Home</li></a>
-                <a href="#"><li>Sobre</li></a>
-                <a href="#"><li>Contatos</li></a>
-                <a href="#"><li>Serviços</li></a>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contatos</a></li>
+                <li><a href="#">Serviços</a></li>
             </ul>
         </nav>
         <div class="btn-abrir" id="btn-abrir">
             <i class="ri-menu-line"></i>
         </div>
-        <div class="menu-mobile" id="menu-mobile">
-            <div class="btn-fechar">
-                <i class="ri-close-large-line"></i>
-            </div>
-            <nav class="mobile">
-                <ul>
-                    <a href="#"><li>Home</li></a>
-                    <a href="#"><li>Sobre</li></a>
-                    <a href="#"><li>Contatos</li></a>
-                    <a href="#"><li>Serviços</li></a>
-                </ul>
-            </nav>
-        </div>
     </header>
-    <main>
-        <aside>
-            <h2>Sua Jornada de </h2>
-            <h2>Aprendizado</h2>
-            <h2><span>Começa Aqui!</span></h2>
+    <main class="container d-flex flex-column flex-md-row mt-5">
+        <aside class="me-md-5">
+            <h2>Sua Jornada de Aprendizado <br> <span>Começa Aqui!</span></h2>
             <p>Bem-vindo ao nosso site! Conecte-se e potencialize seus estudos com professores qualificados e prontos para te ajudar.</p>
-            <button onclick="window.location.href='#'">Sou Aluno</button>
-            <button onclick="window.location.href='/loginP/'">Sou Professor</button>
+            <button class="btn btn-primary" onclick="window.location.href='#'">Sou Aluno</button>
+            <button class="btn btn-secondary" onclick="window.location.href='/loginP/'">Sou Professor</button>
         </aside>
         <article>
-            <img src="{% static 'undraw_educator_re_ju47 (1).svg' %}" alt="computador mostrando um professor com blusa roxa, cabelo preto e óculos redondos dando uma video aula, sendo acompanhado de um pequeno balão de fala. Em cada lado do computador a um vaso de plantas e atrás do computador esta uma pilha de livros. Em cima do computador esta dois balões de comentários, dois gráfico, sendo um deles um gráfico de pizza, e uma barra de volume de som em cima do professor."></a>
+            <img src="{% static 'undraw_educator_re_ju47.svg' %}" class="img-fluid" alt="educator">
         </article>
     </main>
     <script src="{% static 'landingPage.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
