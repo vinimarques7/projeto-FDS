@@ -8,12 +8,7 @@ body {
     overflow: hidden;
     font-weight: bold;
 }
-.teachers-regular {
-    font-family: "Teachers", system-ui;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-}
+
 /* Cabeçalho */
 header {
     display: flex;
@@ -42,7 +37,7 @@ nav.menu-desktop ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    
+
 }
 
 nav.menu-desktop li {
@@ -168,7 +163,7 @@ img {
 /* Personalizando os botões */
 button.btn-primary {
     background-color: #492191 !important;
-    border-color: #D9C2F0  !important;
+    border-color: #D9C2F0 !important;
     color: #D9C2F0 !important;
     width: 40%;
     padding: 15px 30px;
@@ -185,7 +180,7 @@ button.btn-primary:hover {
 
 button.btn-secondary {
     background-color: #492191 !important;
-    border-color: #D9C2F0  !important;
+    border-color: #D9C2F0 !important;
     color: #D9C2F0 !important;
     width: 40%;
     padding: 15px 30px;
@@ -196,7 +191,7 @@ button.btn-secondary {
 }
 
 button.btn-secondary:hover {
-    background-color:  #D9C2F0 !important;
+    background-color: #D9C2F0 !important;
     color: #ffffff !important;
     transition: 0.5s all !important;
 }
