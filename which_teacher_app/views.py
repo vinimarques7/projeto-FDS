@@ -27,7 +27,7 @@ def cadastro_professor(request):
         )
         professor.save()
         return redirect('loginP')
-    return render(request, 'which_teacher_app/cadastroProfessor.html')
+    return render(request, 'cadastroProfessor.html')
 
 def loginP(request):
     if request.method == 'POST':
@@ -42,7 +42,7 @@ def loginP(request):
             messages.error(request, 'Senha incorreta')
         except Professor.DoesNotExist:
             messages.error(request, 'Email não encontrado')
-    return render(request, 'which_teacher_app/loginProfessor.html')
+    return render(request, 'loginProfessor.html')
 
 def perfilP(request):
     professor_id = request.session.get('professor_id')
@@ -63,10 +63,10 @@ def perfilP(request):
         except Exception as e:
             messages.error(request, 'Erro ao adicionar horário: ' + str(e))
         
-    return render(request, 'which_teacher_app/perfilProfessor.html', {'professor': professor, 'horarios': horarios})
+    return render(request, 'perfilProfessor.html', {'professor': professor, 'horarios': horarios})
 
 def home(request):
-    return render(request, 'which_teacher_app/landingPage.html')
+    return render(request, 'landingPage.html')
 
 def cadastroP(request):
-    return render(request, 'which_teacher_app/cadastroProfessor.html')
+    return render(request, 'cadastroProfessor.html')
