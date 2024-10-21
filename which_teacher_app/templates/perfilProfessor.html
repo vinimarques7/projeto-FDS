@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'perfilProfessor.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Perfil do Professor</title>
+</head>
+<body class="teachers-regular">
+    <div class="container py-5">
+        <div class="row mb-5">
+            <div class="col-md-3 text-center">
+                <img src="{% static 'usuario.jpg' %}" class="img-fluid rounded-circle" alt="Foto">
+            </div>
+            <div class="col-md-9">
+                <input type="text" value="{{ professor.nome }}" class="form-control mb-3" readonly>
+                <input type="text" value="Informações sobre você..." class="form-control" readonly>
+                <p class="mt-3">Sinta-se à vontade para entrar em contato e vamos trabalhar no seu conhecimento!</p>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <h3>SOBRE AS AULAS</h3>
+            <form method="post">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Matérias lecionadas</span>
+                    <input type="text" class="form-control" value="{{ professor.materia }}" readonly>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" id="dia" name="dia" class="form-control" placeholder="Digite o dia">
+                    <input type="text" id="novo-horario" name="novo-horario" class="form-control" placeholder="Digite sua disponibilidade">
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="mb-5">
+            <h3>Idiomas</h3>
+            <div class="form-check">
+                <input type="checkbox" id="portugues" name="languages" value="Português" class="form-check-input" {% if "Português" in professor.comunicacao %}checked{% endif %}>
+                <label class="form-check-label" for="portugues">Português</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="ingles" name="languages" value="Inglês" class="form-check-input" {% if "Inglês" in professor.comunicacao %}checked{% endif %}>
+                <label class="form-check-label" for="ingles">Inglês</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="espanhol" name="languages" value="Espanhol" class="form-check-input" {% if "Espanhol" in professor.comunicacao %}checked{% endif %}>
+                <label class="form-check-label" for="espanhol">Espanhol</label>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <h3>Local de Aula</h3>
+            <input type="text" class="form-control" placeholder="Digite um local">
+        </div>
+
+        <div class="mb-5">
+            <h3>Configurações</h3>
+            <div class="input-group">
+                <span class="input-group-text">Número</span>
+                <input type="text" class="form-control" value="{{ professor.celular }}" readonly>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
