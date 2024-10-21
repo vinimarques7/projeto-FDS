@@ -60,3 +60,19 @@ input:focus {
     background-color: #a885d8; /* Hover roxo claro */
     border-color: #a885d8;
 }
+
+.btn-secondary {
+    margin-left: 30rem;
+    margin-top: 1rem;
+    width: 20rem;
+}
+
+.cancelar {
+    background-color: #b62e2e;
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: transparent;
+    border-color: transparent;
+    width: 6rem;
+    height: 2.4rem;
+}
