@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Professor, Horario,Aluno
 from django.contrib import messages
+from django.shortcuts import render
+from .models import Professor
+from django.shortcuts import render
+from django.contrib import messages
 
 def cadastro_professor(request):
     if request.method == 'POST':
@@ -113,8 +117,6 @@ def busca(request):
     return render(request, 'busca.html')
 
 
-from django.shortcuts import render
-
 def busca(request):
     professores = [
         {
@@ -131,3 +133,24 @@ def busca(request):
         professor['estrelas'] = ['★' if i < professor['nota'] else '☆' for i in range(5)]
 
     return render(request, 'busca.html', {'professores': professores})
+
+
+def agendar_aula(request):
+    if request.method == 'POST':
+        data = request.POST.get('data')
+        horarios = request.POST.getlist('horarios[]')  # Captura os horários enviados
+        materia = request.POST.get('materia')
+        duvidas = request.POST.get('duvidas')
+
+        # Validações e processamento
+        if not data:
+            messages.error(request, 'Selecione uma data.')
+        elif not horarios:
+            messages.error(request, 'Adicione pelo menos um horário.')
+        elif not materia:
+            messages.error(request, 'Selecione uma matéria.')
+        else:
+            # Salvar no banco ou realizar alguma ação com os dados
+            messages.success(request, 'Aula agendada com sucesso!')
+        
+    return render(request, 'agendamento.html')

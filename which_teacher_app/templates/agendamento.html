@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'busca.css' %}">
+    <title>WhichTeacher</title>
+</head>
+
+<body class="teachers-regular">
+    <header class="container d-flex justify-content-between align-items-center py-3">
+        <div class="logo">
+            <a href="#" class="navbar-brand">
+                <span class="text-black">Which</span><span class="text-purple">Teacher</span>
+            </a>
+        </div>
+        <nav class="menu-desktop">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contatos</a></li>
+                <li><a href="#">Serviços</a></li>
+            </ul>
+        </nav>
+        <div class="btn-abrir" id="btn-abrir">
+            <i class="ri-menu-line"></i>
+        </div>
+    </header>
+
+    <!-- Seção de Agendamento de Aulas -->
+    <div class="container">
+        <h1>Agendamento de Aulas</h1>
+        <form method="POST" action="{% url 'agendar_aula' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="data">Selecione a Data:</label>
+                <input type="date" class="form-control" id="data" name="data" required>
+            </div>
+            <div class="form-group">
+                <label for="hora">Selecione o Horário:</label>
+                <div id="horariosContainer">
+                    <!-- Botões de horários disponíveis -->
+                    <div class="horario-box" data-horario="08:00">08:00</div>
+                    <div class="horario-box" data-horario="09:00">09:00</div>
+                    <div class="horario-box" data-horario="10:00">10:00</div>
+                    <div class="horario-box" data-horario="11:00">11:00</div>
+                </div>
+                <input type="hidden" id="hora" name="hora">
+            </div>
+            <div class="form-group">
+                <label for="observacoes">Observações:</label>
+                <textarea class="form-control" id="observacoes" name="observacoes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Agendar Aula</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Interação com os botões de horário
+        document.querySelectorAll('.horario-box').forEach(box => {
+            box.addEventListener('click', function() {
+                document.getElementById('hora').value = this.dataset.horario;
+                document.querySelectorAll('.horario-box').forEach(el => el.style.backgroundColor = '#007bff');
+                this.style.backgroundColor = '#0056b3';
+            });
+        });
+    </script>
+    <script src="{% static 'busca.js' %}"></script>
+</body>
+
+</html>
