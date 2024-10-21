@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #d9c2f062;
+    overflow-x: hidden;
 }
 
 /* Cabeçalho */
@@ -123,6 +124,22 @@ nav.mobile a:hover {
 
 .filter-container {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    /* Align them with space between */
+    gap: 10px;
+    /* Optional: Add space between the dropdowns */
+}
+
+.dropdown {
+    flex-grow: 1;
+    /* Allow the buttons to grow evenly */
+}
+
+#educationDropdown,
+#subjectDropdown {
+    background-color: #492191;
+    border-radius: 50px;
 }
 
 #item-list {
@@ -139,6 +156,7 @@ nav.mobile a:hover {
     width: 100vw;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -154,3 +172,10 @@ nav.mobile a:hover {
     border-radius: 5px; /* Bordas arredondadas */
     padding: 10px; /* Espaçamento interno */
 }
+=======
+.imagem img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+>>>>>>> 6a256be703ed00a11b58162eb6947e01f8541504

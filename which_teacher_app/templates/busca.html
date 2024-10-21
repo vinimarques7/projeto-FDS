@@ -31,89 +31,79 @@
             <i class="ri-menu-line"></i>
         </div>
     </header>
-    <div class="imagem">
-        <img src="{% static 'busca.svg' %}" class="img-fluid" alt="banner">
+    <div class="imagem w-100">
+        <img src="{% static 'busca.svg' %}" id="imagem" class="img-fluid" alt="banner">
     </div>
 
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <!-- Filter Section with Dropdown -->
+                <!-- Filter Section with Two Dropdowns -->
                 <div class="filter-container">
-                    <h2 class="mb-3">Filter by type:</h2>
 
-                    <!-- Dropdown Trigger Button -->
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown"
+                    <!-- First Dropdown: Education Levels -->
+                    <div class="dropdown mb-3">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="educationDropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select Filters
+                            Nível da aula
                         </button>
+                        <div class="dropdown-menu p-3" aria-labelledby="educationDropdown">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input filter-checkbox"
+                                    value="ensino_fundamental" id="ensino_fundamental">
+                                <label class="form-check-label" for="ensino_fundamental">Ensino Fundamental</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="ensino_medio"
+                                    id="ensino_medio">
+                                <label class="form-check-label" for="ensino_medio">Ensino Médio</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="ensino_superior"
+                                    id="ensino_superior">
+                                <label class="form-check-label" for="ensino_superior">Ensino Superior</label>
+                            </div>
+                        </div>
+                    </div>
 
-                        <!-- Dropdown Menu containing checkboxes -->
-                        <div class="dropdown-menu p-3" aria-labelledby="filterDropdown">
-                            <div class="row">
-                                <!-- First Column (First 3 Filters) -->
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input filter-checkbox"
-                                            value="ensino_fundamental" id="ensino_fundamental">
-                                        <label class="form-check-label" for="ensino_fundamental">Ensino
-                                            Fundamental</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input filter-checkbox"
-                                            value="ensino_medio" id="ensino_medio">
-                                        <label class="form-check-label" for="ensino_medio">Ensino Médio</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input filter-checkbox"
-                                            value="ensino_superior" id="ensino_superior">
-                                        <label class="form-check-label" for="ensino_superior">Ensino Superior</label>
-                                    </div>
-                                </div>
-
-                                <!-- Second Column (Next 3 Filters) -->
-                                <div class="col-md-6">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input filter-checkbox"
-                                            value="portugues" id="portugues">
-                                        <label class="form-check-label" for="portugues">Português</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input filter-checkbox" value="ingles"
-                                            id="ingles">
-                                        <label class="form-check-label" for="ingles">Inglês</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input filter-checkbox"
-                                            value="matematica" id="matematica">
-                                        <label class="form-check-label" for="matematica">Matemática</label>
-                                    </div>
-                                </div>
+                    <!-- Second Dropdown: Subjects -->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="subjectDropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Matérias
+                        </button>
+                        <div class="dropdown-menu p-3" aria-labelledby="subjectDropdown">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="portugues"
+                                    id="portugues">
+                                <label class="form-check-label" for="portugues">Português</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="ingles"
+                                    id="ingles">
+                                <label class="form-check-label" for="ingles">Inglês</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="matematica"
+                                    id="matematica">
+                                <label class="form-check-label" for="matematica">Matemática</label>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Item List Section -->
                 <ul id="item-list" class="list-group">
-                    <!-- Ensino Fundamental Items -->
                     <li data-type="ensino_fundamental portugues" class="list-group-item">Português - Ensino Fundamental
                     </li>
                     <li data-type="ensino_fundamental matematica" class="list-group-item">Matemática - Ensino
                         Fundamental</li>
-
-                    <!-- Ensino Médio Items -->
                     <li data-type="ensino_medio ingles" class="list-group-item">Inglês - Ensino Médio</li>
                     <li data-type="ensino_medio matematica" class="list-group-item">Matemática - Ensino Médio</li>
-
-                    <!-- Ensino Superior Items -->
                     <li data-type="ensino_superior portugues" class="list-group-item">Português - Ensino Superior</li>
                     <li data-type="ensino_superior ingles" class="list-group-item">Inglês - Ensino Superior</li>
-
-                    <!-- Mixed Subjects (Cross-curricular) -->
-                    <li data-type="ensino_medio portugues" class="list-group-item">Português - Ensino Médio</li>
-                    <li data-type="ensino_superior matematica" class="list-group-item">Matemática - Ensino Superior</li>
                 </ul>
+<<<<<<< HEAD
 
                 <!-- Carrossel -->
                 <div id="professorCarousel" class="carousel slide mt-5" data-ride="carousel">
@@ -155,6 +145,8 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+=======
+>>>>>>> 6a256be703ed00a11b58162eb6947e01f8541504
             </div>
         </div>
     </div>
