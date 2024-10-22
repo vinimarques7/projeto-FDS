@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'busca.css' %}">
     <title>WhichTeacher</title>
 </head>
-
 <body class="teachers-regular">
     <header class="container d-flex justify-content-between align-items-center py-3">
         <div class="logo">
@@ -31,92 +27,81 @@
             <i class="ri-menu-line"></i>
         </div>
     </header>
-    <div class="imagem w-100">
-        <img src="{% static 'busca.svg' %}" id="imagem" class="img-fluid" alt="banner">
-    </div>
 
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <!-- Filter Section with Two Dropdowns -->
+                <!-- Filter Section -->
                 <div class="filter-container">
-
-                    <!-- First Dropdown: Education Levels -->
                     <div class="dropdown mb-3">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="educationDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="educationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Nível da aula
                         </button>
                         <div class="dropdown-menu p-3" aria-labelledby="educationDropdown">
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox"
-                                    value="ensino_fundamental" id="ensino_fundamental">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="ensino_fundamental" id="ensino_fundamental">
                                 <label class="form-check-label" for="ensino_fundamental">Ensino Fundamental</label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="ensino_medio"
-                                    id="ensino_medio">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="ensino_medio" id="ensino_medio">
                                 <label class="form-check-label" for="ensino_medio">Ensino Médio</label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="ensino_superior"
-                                    id="ensino_superior">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="ensino_superior" id="ensino_superior">
                                 <label class="form-check-label" for="ensino_superior">Ensino Superior</label>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Second Dropdown: Subjects -->
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="subjectDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="subjectDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Matérias
                         </button>
                         <div class="dropdown-menu p-3" aria-labelledby="subjectDropdown">
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="portugues"
-                                    id="portugues">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="portugues" id="portugues">
                                 <label class="form-check-label" for="portugues">Português</label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="ingles"
-                                    id="ingles">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="ingles" id="ingles">
                                 <label class="form-check-label" for="ingles">Inglês</label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="matematica"
-                                    id="matematica">
+                                <input type="checkbox" class="form-check-input filter-checkbox" value="matematica" id="matematica">
                                 <label class="form-check-label" for="matematica">Matemática</label>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item List Section -->
-                <ul id="item-list" class="list-group">
-                    <li data-type="ensino_fundamental portugues" class="list-group-item">Português - Ensino Fundamental
-                    </li>
-                    <li data-type="ensino_fundamental matematica" class="list-group-item">Matemática - Ensino
-                        Fundamental</li>
-                    <li data-type="ensino_medio ingles" class="list-group-item">Inglês - Ensino Médio</li>
-                    <li data-type="ensino_medio matematica" class="list-group-item">Matemática - Ensino Médio</li>
-                    <li data-type="ensino_superior portugues" class="list-group-item">Português - Ensino Superior</li>
-                    <li data-type="ensino_superior ingles" class="list-group-item">Inglês - Ensino Superior</li>
-                </ul>
+                <!-- Cards Section -->
+                <div class="row" id="item-list">
+                    {% for professor in professores %}
+                    <div class="col-md-12 mb-3" data-type="{{ professor.nivel_ensino }} {{ professor.materia }}">
+                        <div class="card horizontal-card">
+                            <div class="row no-gutters">
+                                    <!-- Imagem do professor -->
+                                    <img src="{%static 'busca.svg' %}" class="card-img-left rounded-circle" alt="Imagem de perfil de {{ professor.nome }}" style="width: 100px; height: 100px; margin-right: 100px; margin-top: 18px;">
+                                
+                                <div class="col">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ professor.nome }}</h5>
+                                        <span class="badge badge-primary">{{ professor.materia }}</span>
+                                        <p class="card-text">Nível de Ensino: {{ professor.nivel_ensino }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
-    <!-- Popper.js (v1.16.1 for Bootstrap 4) -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <!-- Bootstrap JS (v4.5.2) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script src="{% static 'busca.js' %}"></script>
 </body>
-
 </html>

@@ -1,4 +1,3 @@
-// script.js
 const checkboxes = document.querySelectorAll('.filter-checkbox');
 const items = document.querySelectorAll('#item-list li');
 

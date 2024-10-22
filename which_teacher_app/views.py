@@ -110,4 +110,5 @@ def home(request):
 
 
 def busca(request):
-    return render(request, 'busca.html')
+    professores = Professor.objects.all()
+    return render(request, 'busca.html', {'professores': professores})
