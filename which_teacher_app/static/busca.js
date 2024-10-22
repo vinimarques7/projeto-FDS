@@ -18,7 +18,7 @@ scrollLeftBtn.addEventListener('click', () => {
 filterButtons.forEach(button => {
     button.addEventListener('click', function () {
         const selectedSubject = button.getAttribute('data-subject').toLowerCase();
-        
+
         // Filtrar itens de acordo com a matéria selecionada
         filterItemsBySubject(selectedSubject);
     });
@@ -35,3 +35,37 @@ function filterItemsBySubject(selectedSubject) {
         }
     });
 }
+
+// Function to open the modal and populate data
+function openModal(teacherCard) {
+    // Extract teacher details from the card
+    const name = teacherCard.querySelector('.card-title').innerText;
+    const subject = teacherCard.querySelector('.badge').innerText;
+    const details = teacherCard.querySelector('.card-text').innerText;
+    const imageSrc = teacherCard.querySelector('img').src;
+
+    // Populate the modal with the extracted information
+    document.getElementById('modal-teacher-name').innerText = name;
+    document.getElementById('modal-teacher-subject').innerHTML = `<strong>Subject:</strong> ${subject}`;
+    document.getElementById('modal-teacher-details').innerText = details;
+    document.getElementById('modal-teacher-image').src = imageSrc;
+
+    // Trigger Bootstrap modal to open
+    $('#teacherModal').modal('show');
+
+    // // Handle "Schedule Class" button click
+    // document.getElementById('schedule-class-btn').onclick = () => {
+    //     window.location.href = `/schedule-class?teacher=${encodeURIComponent(name)}`;
+    // };
+
+    // // Handle "Write a Review" button click (redirect)
+    // document.getElementById('write-review-btn').onclick = () => {
+    //     window.location.href = `/write-review?teacher=${encodeURIComponent(name)}`;
+    // };
+}
+
+// Add event listeners to each teacher card to open the modal on click
+const teacherCards = document.querySelectorAll('.col-md-3 .card');
+teacherCards.forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+});
