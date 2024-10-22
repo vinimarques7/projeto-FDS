@@ -9,6 +9,7 @@ class Professor(models.Model):
     materia = models.TextField()
     recebimento = models.TextField()
     comunicacao = models.TextField()
+    nivel_ensino = models.TextField()
     genero = models.CharField(max_length=10)
 
 class Horario(models.Model):
