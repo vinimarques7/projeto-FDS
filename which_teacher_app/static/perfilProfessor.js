@@ -1,3 +1,14 @@
+let SubmitMenu = document.getElementById('menu-abrir')
+let menu = document.getElementById('menu-mobile')
+
+SubmitMenu.addEventListener('click',()=>{
+    menu.classList.add('abrir-menu')
+})
+
+menu.addEventListener('click',()=>{
+    menu.classList.remove('abrir-menu')
+})
+
 document.querySelector('.btn-primary').addEventListener('click', function () {
     const nomeTurma = document.querySelector('.nome').value;
     if (nomeTurma) {

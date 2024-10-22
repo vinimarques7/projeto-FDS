@@ -12,6 +12,37 @@
 </head>
 
 <body class="teachers-regular">
+    <header class="container d-flex justify-content-between align-items-center py-3">
+        <div class="logo">
+            <a href="#" class="navbar-brand">
+                <span class="text-black">Which</span><span class="text-purple">Teacher</span>
+            </a>
+        </div>
+        <nav class="menu-desktop">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contatos</a></li>
+                <li><a href="#">Serviços</a></li>
+            </ul>
+        </nav>
+        <div class="menu-abrir" id="menu-abrir">
+            <img src="{% static 'menu-line.svg' %}" alt="">
+        </div> 
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="menu-fechar">
+                <img src="{% static 'close-large-line.svg' %}" alt="">
+            </div>
+        <nav class="mobile">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contatos</a></li>
+                <li><a href="#">Serviços</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
     <div class="container py-5">
         <div class="row mb-5">
             <div class="col-md-3 text-center">
