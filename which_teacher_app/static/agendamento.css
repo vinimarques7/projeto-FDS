@@ -119,6 +119,18 @@ nav.mobile a:hover {
     cursor: pointer;
 }
 
+.card {
+    width: 100%; 
+    margin: 10px 0; 
+}
+
+.card-body {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+
 /* Responsividade */
 @media screen and (max-width: 1067px) {
     .menu-desktop {
