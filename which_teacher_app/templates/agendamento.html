@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'busca.css' %}">
     <title>WhichTeacher</title>
+    <style>
+        #horarios-disponiveis {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
 <body class="teachers-regular">
@@ -56,10 +62,27 @@
             </div>
             <div class="form-group">
                 <label for="horario-input">Horário:</label>
-                <input type="text" id="horario-input" class="form-control" placeholder="HH:MM">
+                <div class="input-group">
+                    <input type="text" id="horario-input" class="form-control" placeholder="HH:MM">
+                    <div class="input-group-append">
+                        <button type="button" id="icon-horario" class="btn btn-secondary">
+                            <i class="fas fa-clock"></i>
+                        </button>
+                    </div>
+                </div>
                 <button type="button" id="add-horario" class="btn btn-primary mt-2">Adicionar</button>
             </div>
+
+            <!-- Aba de horários disponíveis -->
+            <div id="horarios-disponiveis">
+                <h5>Horários Disponíveis:</h5>
+                <ul id="lista-horarios" class="list-group">
+                    <!-- Os horários disponíveis serão adicionados aqui -->
+                </ul>
+            </div>
+
             <div id="horarios-container" class="mt-4">
+                <h5>Horários Cadastrados:</h5>
                 <!-- Os cartões de horário serão adicionados aqui -->
             </div>
             <input type="hidden" id="horarios-input" name="horarios">
@@ -74,6 +97,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script src="{% static 'agendamento.js' %}"></script> <!-- Carregando o novo arquivo JS -->
 </body>
 

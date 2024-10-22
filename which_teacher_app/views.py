@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Professor, Horario,Aluno, Turma
+from .models import Professor, Horario, Aluno, Turma
 from django.contrib import messages
 
 def cadastro_professor(request):
@@ -82,7 +82,7 @@ def cadastro_aluno(request):
             email=email,
             senha=senha,
             nivel_ensino=', '.join(nivel_ensino),
-            idade = idade,
+            idade=idade,
             genero=genero
         )
         aluno.save()
@@ -100,7 +100,7 @@ def loginA(request):
                 request.session['aluno_id'] = aluno.id
                 return redirect('loginA')
             messages.error(request, 'Senha incorreta')
-        except Professor.DoesNotExist:
+        except Aluno.DoesNotExist:
             messages.error(request, 'Email não encontrado')
     return render(request, 'loginAluno.html')
 
@@ -113,11 +113,10 @@ def criar_turma(request):
             alunos = Aluno.objects.filter(id__in=alunos_ids)
             turma.alunos.set(alunos)
             turma.save()
-        return redirect('perfil_professor')                  
+        return redirect('perfil_professor')
 
 def home(request):
     return render(request, 'landingPage.html')
-
 
 def busca(request):
     professores = Professor.objects.all()
@@ -125,10 +124,12 @@ def busca(request):
 
 def agendar_aula(request):
     if request.method == 'POST':
+        professor_id = request.POST.get('professor_id')  # Id do professor selecionado
         data = request.POST.get('data')
-        horarios = request.POST.getlist('horarios[]')  # Captura os horários enviados
+        horarios = request.POST.getlist('horarios[]')
         materia = request.POST.get('materia')
         duvidas = request.POST.get('duvidas')
+
         # Validações e processamento
         if not data:
             messages.error(request, 'Selecione uma data.')
@@ -137,7 +138,14 @@ def agendar_aula(request):
         elif not materia:
             messages.error(request, 'Selecione uma matéria.')
         else:
-            # Salvar no banco ou realizar alguma ação com os dados
-            messages.success(request, 'Aula agendada com sucesso!')
+            professor = Professor.objects.get(id=professor_id)
+            horarios_disponiveis = professor.horarios.filter(dia=data)
+
+            if horarios_disponiveis.exists():
+                # Salvar no banco ou realizar alguma ação com os dados
+                messages.success(request, 'Aula agendada com sucesso!')
+            else:
+                messages.error(request, 'Nenhum horário disponível para a data selecionada.')
         
-    return render(request, 'agendamento.html')
+    professores = Professor.objects.all()  # Lista de professores para seleção
+    return render(request, 'agendamento.html', {'professores': professores})

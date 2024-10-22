@@ -1,19 +1,39 @@
-let SubmitMenu = document.getElementById('menu-abrir')
-let menu = document.getElementById('menu-mobile')
-
-SubmitMenu.addEventListener('click', () => {
-    menu.classList.add('abrir-menu')
-})
-
-menu.addEventListener('click', () => {
-    menu.classList.remove('abrir-menu')
-})
-
 document.addEventListener('DOMContentLoaded', function () {
     const horarioInput = document.getElementById('horario-input');
     const addHorarioBtn = document.getElementById('add-horario');
     const horariosContainer = document.getElementById('horarios-container');
-    const horariosInput = document.getElementById('horarios-input');
+    const iconHorario = document.getElementById('icon-horario');
+    const horariosDisponiveis = document.getElementById('horarios-disponiveis');
+    const listaHorarios = document.getElementById('lista-horarios');
+
+    // Lista de horários disponíveis (exemplo)
+    const horarios = ['08:00', '09:00', '10:00', '14:00', '15:00', '16:00'];
+
+    // Função para carregar os horários disponíveis
+    function carregarHorarios() {
+        horarios.forEach(horario => {
+            const li = document.createElement('li');
+            li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+            li.innerText = horario;
+            li.addEventListener('click', () => {
+                horarioInput.value = horario; // Preencher o input com o horário selecionado
+                horariosDisponiveis.style.display = 'none'; // Ocultar a aba
+            });
+            listaHorarios.appendChild(li);
+        });
+    }
+
+    // Carregar os horários disponíveis ao iniciar
+    carregarHorarios();
+
+    // Exibir ou ocultar a aba de horários disponíveis ao clicar no ícone
+    iconHorario.addEventListener('click', () => {
+        if (horariosDisponiveis.style.display === 'none') {
+            horariosDisponiveis.style.display = 'block';
+        } else {
+            horariosDisponiveis.style.display = 'none';
+        }
+    });
 
     addHorarioBtn.addEventListener('click', function () {
         adicionarHorario();
@@ -45,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
             horariosContainer.appendChild(card);
 
             // Atualiza o campo oculto com os horários
+            const horariosInput = document.getElementById('horarios-input');
             horariosInput.value += horariosInput.value ? ',' + horario : horario;
 
             // Limpa o campo de entrada
@@ -65,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function atualizarHorariosInput() {
         const horarios = Array.from(horariosContainer.children)
             .map(card => card.querySelector('.card-title').innerText);
+        const horariosInput = document.getElementById('horarios-input');
         horariosInput.value = horarios.join(',');
     }
 });
