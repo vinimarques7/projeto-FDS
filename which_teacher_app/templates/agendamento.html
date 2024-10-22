@@ -63,7 +63,7 @@
             <div class="form-group">
                 <label for="horario-input">Horário:</label>
                 <div class="input-group">
-                    <input type="text" id="horario-input" class="form-control" placeholder="HH:MM">
+                    <input type="text" id="horario-input" class="form-control" placeholder="HH:MM" required>
                     <div class="input-group-append">
                         <button type="button" id="icon-horario" class="btn btn-secondary">
                             <i class="fas fa-clock"></i>
@@ -83,7 +83,9 @@
 
             <div id="horarios-container" class="mt-4">
                 <h5>Horários Cadastrados:</h5>
-                <!-- Os cartões de horário serão adicionados aqui -->
+                <div id="horarios-cards">
+                    <!-- Os cartões de horário serão adicionados aqui -->
+                </div>
             </div>
             <input type="hidden" id="horarios-input" name="horarios">
             <div class="form-group">
