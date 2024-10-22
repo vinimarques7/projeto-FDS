@@ -146,8 +146,10 @@ nav.mobile a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center; /* Centraliza os cards horizontalmente */
-    align-items: flex-start;  /* Mantém o alinhamento no topo, caso os cards tenham diferentes alturas */
+    justify-content: center;
+    /* Centraliza os cards horizontalmente */
+    align-items: flex-start;
+    /* Mantém o alinhamento no topo, caso os cards tenham diferentes alturas */
     margin-top: 80px;
 }
 
@@ -279,6 +281,7 @@ nav.mobile a:hover {
     max-width: 200px;
     /* Define um limite de largura */
 }
+
 .scrolling-wrapper-container {
     display: flex;
     align-items: center;
@@ -351,9 +354,27 @@ nav.mobile a:hover {
 }
 
 .scrolling-wrapper::-webkit-scrollbar {
-    display: none; /* Oculta a barra de rolagem */
+    display: none;
+    /* Oculta a barra de rolagem */
 }
 
+#schedule-class-btn,
+#write-review-btn {
+    background-color: #492191;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#schedule-class-btn:hover,
+#write-review-btn:hover {
+    background-color: whitesmoke;
+    color: #492191;
+    transition: 0.3s;
+}
 
 /* Responsividade */
 @media screen and (max-width: 1067px) {
@@ -376,4 +397,3 @@ nav.mobile a:hover {
         display: none;
     }
 }
-
