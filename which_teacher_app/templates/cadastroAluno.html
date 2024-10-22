@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'cadastroAluno.css' %}">
+    <title>Cadastro Professor</title>
+</head>
+
+<body class="teachers-regular">
+    <div class="container-fluid d-flex align-items-center justify-content-center vh-100">
+        <div class="row w-100 shadow-lg rounded-5 bg-light">
+            <div class="col-md-6 d-flex align-items-center justify-content-center p-5">
+                <img src="{% static 'undraw_online_learning_re_qw08.svg' %}" class="img-fluid" alt="">
+            </div>
+
+            <div class="col-md-6 p-5">
+                <form method="post">
+                    <div class="mb-4 text-center">
+                        <h1>Cadastre-se</h1>
+                    </div>
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="nome" class="form-label">Nome completo</label>
+                            <input id="nome" type="text" name="nome" class="form-control"
+                                placeholder="Digite seu nome completo" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="celular" class="form-label">Celular</label>
+                            <input id="celular" type="tel" name="celular" class="form-control"
+                                placeholder="(xx) xxxx-xxxx" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input id="email" type="email" name="email" class="form-control"
+                                placeholder="Digite seu e-mail" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input id="senha" type="password" name="senha" class="form-control"
+                                placeholder="Digite sua senha" required>
+                        </div>
+                    </div>
+
+                    <!-- Seção de Gênero -->
+                    <div class="mt-4">
+                        <h6 class="mb-2">Gênero</h6>
+                        <div class="d-flex justify-content-start gap-3">
+                            <div class="form-check">
+                                <input id="female" type="radio" name="genero" value="Feminino" class="form-check-input">
+                                <label for="female" class="form-check-label">Feminino</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="male" type="radio" name="genero" value="Masculino" class="form-check-input">
+                                <label for="male" class="form-check-label">Masculino</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="others" type="radio" name="genero" value="Outros" class="form-check-input">
+                                <label for="others" class="form-check-label">Outros</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="none" type="radio" name="genero" value="Prefiro não dizer"
+                                    class="form-check-input">
+                                <label for="none" class="form-check-label">Prefiro não dizer</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seção de Idade -->
+                    <div class="mt-4 position-relative">
+                    <h6 class="mb-2">Idade</h6>
+                    <div class="input-group">
+                        <input type="range" class="custom-range" min="1" max="100" step="1" name="idade" id="customRange3"
+                            oninput="updateRange(this)">
+                        <span id="rangeValue" class="position-absolute">1</span> <!-- Valor inicial da faixa -->
+                    </div>
+            </div>
+
+
+            <!-- Seção do Nivel de ensino -->
+            <div class="mt-4">
+                <h6 class="mb-2">Nivel de ensino</h6>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+                        Selecione o Nivel de ensino
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-Fundamental">
+                            Ensino Fundamental</label></li>
+                        <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-medio">
+                            Ensino medio</label></li>
+                            <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-Superior">
+                                Ensino medio</label></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script src="{% static 'cadastroAluno.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

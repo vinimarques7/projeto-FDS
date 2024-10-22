@@ -26,15 +26,28 @@
                 <li><a href="#">Serviços</a></li>
             </ul>
         </nav>
-        <div class="btn-abrir" id="btn-abrir">
-            <i class="ri-menu-line"></i>
+        <div class="menu-abrir" id="menu-abrir">
+            <img src="{% static 'menu-line.svg' %}" alt="">
+        </div> 
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="menu-fechar">
+                <img src="{% static 'close-large-line.svg' %}" alt="">
+            </div>
+        <nav class="mobile">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contatos</a></li>
+                <li><a href="#">Serviços</a></li>
+            </ul>
+        </nav>
         </div>
     </header>
     <main class="container d-flex flex-column flex-md-row mt-5">
         <aside class="me-md-5">
             <h2>Sua Jornada de Aprendizado <br> <span>Começa Aqui!</span></h2>
             <p>Bem-vindo ao nosso site! Conecte-se e potencialize seus estudos com professores qualificados e prontos para te ajudar.</p>
-            <button class="btn btn-primary" onclick="window.location.href='#'">Sou Aluno</button>
+            <button class="btn btn-primary" onclick="window.location.href='/loginA/'">Sou Aluno</button>
             <button class="btn btn-secondary" onclick="window.location.href='/loginP/'">Sou Professor</button>
         </aside>
         <article>

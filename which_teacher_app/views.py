@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Professor, Horario
+from .models import Professor, Horario,Aluno, Turma
 from django.contrib import messages
 
 def cadastro_professor(request):
@@ -48,6 +48,7 @@ def perfilP(request):
     professor_id = request.session.get('professor_id')
     professor = Professor.objects.get(id=professor_id)
     horarios = professor.horarios.all()
+    alunos = Aluno.objects.all()
 
     if request.method == 'POST':
         dia = request.POST.get('dia')
@@ -63,7 +64,56 @@ def perfilP(request):
         except Exception as e:
             messages.error(request, 'Erro ao adicionar horário: ' + str(e))
         
-    return render(request, 'perfilProfessor.html', {'professor': professor, 'horarios': horarios})
+    return render(request, 'perfilProfessor.html', {'professor': professor, 'horarios': horarios, 'alunos': alunos})
+
+def cadastro_aluno(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        celular = request.POST.get('celular')
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
+        nivel_ensino = request.POST.getlist('nivel_ensino')
+        idade = request.POST.get('idade')
+        genero = request.POST.get('genero')
+
+        aluno = Aluno(
+            nome=nome,
+            celular=celular,
+            email=email,
+            senha=senha,
+            nivel_ensino=', '.join(nivel_ensino),
+            idade = idade,
+            genero=genero
+        )
+        aluno.save()
+        return redirect('loginA')
+    return render(request, 'cadastroAluno.html')
+
+def loginA(request):
+    if request.method == 'POST':
+        email = request.POST.get('loginEmail')
+        senha = request.POST.get('loginSenha')
+        
+        try:
+            aluno = Aluno.objects.get(email=email)
+            if aluno.senha == senha:
+                request.session['aluno_id'] = aluno.id
+                return redirect('loginA')
+            messages.error(request, 'Senha incorreta')
+        except Professor.DoesNotExist:
+            messages.error(request, 'Email não encontrado')
+    return render(request, 'loginAluno.html')
+
+def criar_turma(request):
+    if request.method == 'POST':
+        nome_turma = request.POST.get('nome_turma')
+        alunos_ids = request.POST.getlist('aluno')
+        if nome_turma and alunos_ids:
+            turma = Turma.objects.create(nome=nome_turma)
+            alunos = Aluno.objects.filter(id__in=alunos_ids)
+            turma.alunos.set(alunos)
+            turma.save()
+        return redirect('perfil_professor')                  
 
 def home(request):
     return render(request, 'landingPage.html')
