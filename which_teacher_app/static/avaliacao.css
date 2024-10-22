@@ -1,0 +1,21 @@
+.star-rating {
+    display: flex;
+    direction: rtl; /* Para facilitar o hover de estrelas da direita para a esquerda */
+}
+.star-rating input[type="radio"] {
+    display: none; /* Esconde os inputs */
+}
+.star-rating label {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.star-rating input[type="radio"]:checked ~ label,
+.star-rating input[type="radio"]:hover ~ label {
+    color: #f5b50a; /* Cor das estrelas quando selecionadas */
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #f5b50a; /* Efeito de hover nas estrelas */
+}
