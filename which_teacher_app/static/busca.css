@@ -156,20 +156,6 @@ nav.mobile a:hover {
 .imagem {
     width: 100vw;
 }
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
-.imagem img{
-    width: 100%;
-    height: auto;
-    display: block;
-}
->>>>>>> 81aa0e795681e72330fcbd7f2b93c075f66c6c63
 
 .carousel-item img {
     border-radius: 10px;
