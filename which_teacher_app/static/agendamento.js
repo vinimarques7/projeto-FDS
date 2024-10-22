@@ -1,14 +1,25 @@
-document.addEventListener('DOMContentLoaded', function() {
+let SubmitMenu = document.getElementById('menu-abrir')
+let menu = document.getElementById('menu-mobile')
+
+SubmitMenu.addEventListener('click', () => {
+    menu.classList.add('abrir-menu')
+})
+
+menu.addEventListener('click', () => {
+    menu.classList.remove('abrir-menu')
+})
+
+document.addEventListener('DOMContentLoaded', function () {
     const horarioInput = document.getElementById('horario-input');
     const addHorarioBtn = document.getElementById('add-horario');
     const horariosContainer = document.getElementById('horarios-container');
     const horariosInput = document.getElementById('horarios-input');
 
-    addHorarioBtn.addEventListener('click', function() {
+    addHorarioBtn.addEventListener('click', function () {
         adicionarHorario();
     });
 
-    horarioInput.addEventListener('keypress', function(event) {
+    horarioInput.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
             adicionarHorario();
         }
@@ -41,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Adiciona evento para remover o cartão
             const removerBtn = card.querySelector('.btn-remover');
-            removerBtn.addEventListener('click', function() {
+            removerBtn.addEventListener('click', function () {
                 horariosContainer.removeChild(card);
                 // Atualiza o campo oculto removendo o horário
                 atualizarHorariosInput();
