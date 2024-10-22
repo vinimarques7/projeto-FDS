@@ -68,6 +68,9 @@ def perfilP(request):
 def home(request):
     return render(request, 'landingPage.html')
 
+def avaliacao(request):
+    return render(request, 'avaliacao.html')
+
 def cadastroP(request):
     return render(request, 'cadastroProfessor.html')
 
