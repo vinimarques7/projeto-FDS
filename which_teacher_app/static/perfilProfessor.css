@@ -47,6 +47,9 @@ input:focus {
     box-shadow: 0 0 10px rgba(72, 33, 145, 0.5); 
 }
 */
+header {
+    margin-bottom: 4rem;
+}
 
 nav.menu-desktop ul {
     list-style: none;
