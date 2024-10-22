@@ -173,3 +173,25 @@ nav.mobile a:hover {
     outline: none;
     border-color: transparent;
 }
+
+/* Responsividade */
+@media screen and (max-width: 1067px) {
+    .menu-desktop {
+        display: none;
+    }
+
+    main {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    article img {
+        display: none;
+    }
+}
+
+@media (min-width: 1064px) {
+    .menu-abrir img{
+        display: none;
+    }
+}
