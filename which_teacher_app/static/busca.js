@@ -1,29 +1,37 @@
-const checkboxes = document.querySelectorAll('.filter-checkbox');
-const items = document.querySelectorAll('#item-list .col-md-12');
+const filterButtons = document.querySelectorAll('.filter-btn');
+const items = document.querySelectorAll('#item-list .col-md-3');
+const scrollWrapper = document.querySelector('.scrolling-wrapper');
+const scrollRightBtn = document.querySelector('.scroll-right');
+const scrollLeftBtn = document.querySelector('.scroll-left');
 
-// Escutar mudanças em qualquer checkbox
-checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', function () {
-        const selectedFilters = Array.from(checkboxes)
-            .filter(checkbox => checkbox.checked)
-            .map(checkbox => checkbox.value.toLowerCase());
+// Função para rolar à direita
+scrollRightBtn.addEventListener('click', () => {
+    scrollWrapper.scrollBy({ left: 300, behavior: 'smooth' });
+});
 
-        filterItems(selectedFilters);
+// Função para rolar à esquerda
+scrollLeftBtn.addEventListener('click', () => {
+    scrollWrapper.scrollBy({ left: -300, behavior: 'smooth' });
+});
+
+// Função de filtragem ao clicar nos ícones
+filterButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        const selectedSubject = button.getAttribute('data-subject').toLowerCase();
+        
+        // Filtrar itens de acordo com a matéria selecionada
+        filterItemsBySubject(selectedSubject);
     });
 });
 
-// Função que faz a filtragem
-function filterItems(selectedFilters) {
+function filterItemsBySubject(selectedSubject) {
     items.forEach(function (item) {
-        const itemTypes = item.getAttribute('data-type').toLowerCase().split(' ');
+        const itemSubject = item.getAttribute('data-type').toLowerCase();
 
-        // Verifica se o item corresponde a todos os filtros selecionados
-        const matchesAllFilters = selectedFilters.every(filter => itemTypes.includes(filter));
-
-        if (matchesAllFilters || selectedFilters.length === 0) {
-            item.style.display = 'block';  // Exibe o item se ele corresponde a todos os filtros
+        if (itemSubject.includes(selectedSubject)) {
+            item.style.display = 'block';  // Exibe o item se a matéria corresponder
         } else {
-            item.style.display = 'none';   // Esconde se não corresponde
+            item.style.display = 'none';   // Esconde se não corresponder
         }
     });
 }

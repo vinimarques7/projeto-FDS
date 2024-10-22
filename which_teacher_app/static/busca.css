@@ -20,6 +20,7 @@ header {
     text-decoration: none;
 }
 
+
 .text-black {
     color: black;
 }
@@ -142,8 +143,14 @@ nav.mobile a:hover {
 
 #item-list {
     width: 100%;
-    /* Updated width to match Bootstrap’s grid */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    align-items: flex-start;  /* Mantém o alinhamento no topo, caso os cards tenham diferentes alturas */
+    margin-top: 80px;
 }
+
 
 #item-list li {
     margin-bottom: 10px;
@@ -272,6 +279,81 @@ nav.mobile a:hover {
     max-width: 200px;
     /* Define um limite de largura */
 }
+.scrolling-wrapper-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.scrolling-wrapper {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    background-color: #FDECEC;
+    border-radius: 30px;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 90%;
+}
+
+.scroll-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+.scroll-item img {
+    width: 50px;
+    height: 50px;
+}
+
+.scroll-item p {
+    font-size: 14px;
+    color: #000;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.scroll-arrow {
+    display: flex;
+    align-items: center;
+}
+
+.scroll-arrow button {
+    background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.filter-btn img {
+    margin-bottom: 5px;
+}
+
+.filter-btn p {
+    margin: 0;
+}
+
+.scrolling-wrapper::-webkit-scrollbar {
+    display: none; /* Oculta a barra de rolagem */
+}
+
 
 /* Responsividade */
 @media screen and (max-width: 1067px) {
@@ -294,3 +376,4 @@ nav.mobile a:hover {
         display: none;
     }
 }
+

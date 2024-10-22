@@ -92,79 +92,69 @@
                     </a>
                 </div>
 
-                <!-- Filter Section with Two Dropdowns -->
-                <div class="filter-container">
-                    <div class="dropdown mb-3">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="educationDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Nível da aula
+                <!-- Substituir o Dropdown de Matérias pelo Menu de Rolagem -->
+                <div class="scrolling-wrapper-container">
+                    <div class="scroll-arrow">
+                        <button class="scroll-left">
+                            <span>&lt;</span> <!-- Seta para a esquerda -->
                         </button>
-                        <div class="dropdown-menu p-3" aria-labelledby="educationDropdown">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="Ensino-Fundamental" id="Ensino-Fundamental">
-                                <label class="form-check-label" for="Ensino-Fundamental">Ensino Fundamental</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="Ensino-Medio" id="Ensino-Medio">
-                                <label class="form-check-label" for="Ensino-Medio">Ensino Médio</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="Ensino-Superior" id="Ensino-Superior">
-                                <label class="form-check-label" for="Ensino-Superior">Ensino Superior</label>
-                            </div>
-                        </div>
                     </div>
 
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="subjectDropdown"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Matérias
-                        </button>
-                        <div class="dropdown-menu p-3" aria-labelledby="subjectDropdown">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="Portugues"
-                                    id="Portugues">
-                                <label class="form-check-label" for="portugues">Português</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="Ingles"
-                                    id="Ingles">
-                                <label class="form-check-label" for="ingles">Inglês</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input filter-checkbox" value="Matematica"
-                                    id="Matematica">
-                                <label class="form-check-label" for="matematica">Matemática</label>
-                            </div>
+                    <div class="scrolling-wrapper">
+                        <div class="scroll-item">
+                            <button class="filter-btn" data-subject="Português">
+                                <img src="{% static 'icons/portugues.svg' %}" alt="Português">
+                                <p>Português</p>
+                            </button>
                         </div>
+                        <div class="scroll-item">
+                            <button class="filter-btn" data-subject="Inglês">
+                                <img src="{% static 'icons/ingles.svg' %}" alt="Inglês">
+                                <p>Inglês</p>
+                            </button>
+                        </div>
+                        <div class="scroll-item">
+                            <button class="filter-btn" data-subject="Matemática">
+                                <img src="{% static 'icons/matematica.svg' %}" alt="Matemática">
+                                <p>Matemática</p>
+                            </button>
+                        </div>
+                        <!-- Adicione mais matérias conforme necessário -->
+                    </div>
+
+                    <div class="scroll-arrow">
+                        <button class="scroll-right">
+                            <span>&gt;</span> <!-- Seta para a direita -->
+                        </button>
                     </div>
                 </div>
+            </div>
 
-                <!-- Cards Section -->
-                <div class="row" id="item-list">
-                    {% for professor in professores %}
-                    <div class="col-md-12 mb-3" data-type="{{ professor.nivel_ensino }} {{ professor.materia }}">
-                        <div class="card horizontal-card">
-                            <div class="row no-gutters">
-                                <!-- Imagem do professor -->
-                                <img src="{%static 'busca.svg' %}" class="card-img-left rounded-circle"
-                                    alt="Imagem de perfil de {{ professor.nome }}"
-                                    style="width: 100px; height: 100px; margin-right: 100px; margin-top: 18px;">
+            <!-- Cards Section -->
+            <div class="row" id="item-list" >
+                {% for professor in professores %}
+                <div class="col-md-3 mb-3" data-type="{{ professor.nivel_ensino }} {{ professor.materia }}">
+                    <div class="card horizontal-card">
+                        <div class="row no-gutters">
+                            <!-- Imagem do professor -->
+                            <img src="{%static 'busca.svg' %}" class="card-img-left rounded-circle"
+                                alt="Imagem de perfil de {{ professor.nome }}"
+                                style="width: 100px; height: 100px; margin-right: 100px; margin-top: 18px;">
 
-                                <div class="col">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ professor.nome }}</h5>
-                                        <span class="badge badge-primary">{{ professor.materia }}</span>
-                                        <p class="card-text">Nível de Ensino: {{ professor.nivel_ensino }}</p>
-                                    </div>
+                            <div class="col">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ professor.nome }}</h5>
+                                    <span class="badge badge-primary">{{ professor.materia }}</span>
+                                    <p class="card-text">Nível de Ensino: {{ professor.nivel_ensino }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
         </div>
+    </div>
     </div>
 
 
