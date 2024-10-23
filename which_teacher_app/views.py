@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .models import Professor, Horario,Aluno, Turma
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Professor, Horario,Aluno, Turma, Lembrete
 from django.contrib import messages
 
 def cadastro_professor(request):
@@ -51,20 +51,45 @@ def perfilP(request):
     alunos = Aluno.objects.all()
 
     if request.method == 'POST':
-        dia = request.POST.get('dia')
-        horario = request.POST.get('novo-horario')
-        
-        try:
-            Horario.objects.create(
-                professor=professor,
-                dia=dia,
-                horario=horario
-            )
-            messages.success(request, 'Horário adicionado com sucesso!')
-        except Exception as e:
-            messages.error(request, 'Erro ao adicionar horário: ' + str(e))
-        
-    return render(request, 'perfilProfessor.html', {'professor': professor, 'horarios': horarios, 'alunos': alunos})
+        if 'lembrete_texto' in request.POST:
+            lembrete_texto = request.POST.get('lembrete_texto')
+            if lembrete_texto:
+                try:
+                    Lembrete.objects.create(texto=lembrete_texto)
+                    messages.success(request, 'Lembrete adicionado com sucesso!')
+                except Exception as e:
+                    messages.error(request, 'Erro ao adicionar lembrete: ' + str(e))
+            return redirect('perfilP')
+        elif 'delete_lembrete' in request.POST:
+            lembrete_id = request.POST.get('delete_lembrete')
+            try:
+                lembrete = get_object_or_404(Lembrete, id=lembrete_id)
+                lembrete.delete()
+                messages.success(request, 'Lembrete apagado com sucesso!')
+            except Exception as e:
+                messages.error(request, 'Erro ao apagar lembrete: ' + str(e))
+            return redirect('perfilP')
+        else:
+            dia = request.POST.get('dia')
+            horario = request.POST.get('novo-horario')
+            try:
+                Horario.objects.create(
+                    professor=professor,
+                    dia=dia,
+                    horario=horario
+                )
+                messages.success(request, 'Horário adicionado com sucesso!')
+            except Exception as e:
+                messages.error(request, 'Erro ao adicionar horário: ' + str(e))
+
+    lembretes = Lembrete.objects.all().order_by('-data_criacao')
+
+    return render(request, 'perfilProfessor.html', {
+        'professor': professor,
+        'horarios': horarios,
+        'alunos': alunos,
+        'lembretes': lembretes
+    })
 
 def cadastro_aluno(request):
     if request.method == 'POST':
@@ -88,6 +113,8 @@ def cadastro_aluno(request):
         aluno.save()
         return redirect('loginA')
     return render(request, 'cadastroAluno.html')
+
+
 
 def loginA(request):
     if request.method == 'POST':

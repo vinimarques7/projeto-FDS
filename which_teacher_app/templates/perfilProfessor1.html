@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'perfilProfessor.css' %}">
+    <title>Perfil do Professor</title>
+</head>
+
+<body class="teachers-regular">
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <!-- Navegação do Perfil -->
+            <div class="profile-nav col-md-3">
+                <div class="panel">
+                    <div class="user-heading round">
+                        <a href="#">
+                            <img src="{% static 'usuario.jpg' %}" alt="Foto do professor" class="img-fluid rounded-circle">
+                        </a>
+                        <h1>{{ professor.nome }}</h1>
+                        <p>{{ professor.email }}</p>
+                    </div>
+
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="#"> <i class="fa fa-user"></i> Perfil</a></li>
+                        <li><a href="#"> <i class="fa fa-calendar"></i> Atividades Recentes</a></li>
+                        <li><a href="#"> <i class="fa fa-edit"></i> Editar Perfil</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Informações do Perfil -->
+            <div class="profile-info col-md-9">
+                <div class="panel">
+                    <form>
+                        <textarea placeholder="O que está em sua mente hoje?" rows="2" class="form-control input-lg p-text-area"></textarea>
+                    </form>
+                    <footer class="panel-footer">
+                        <button class="btn btn-warning pull-right">Postar</button>
+                        <ul class="nav nav-pills">
+                            <li><a href="#"><i class="fa fa-map-marker"></i></a></li>
+                            <li><a href="#"><i class="fa fa-camera"></i></a></li>
+                            <li><a href="#"><i class="fa fa-film"></i></a></li>
+                            <li><a href="#"><i class="fa fa-microphone"></i></a></li>
+                        </ul>
+                    </footer>
+                </div>
+
+                <!-- Bio -->
+                <div class="panel">
+                    <div class="bio-graph-heading">
+                        Aqui você pode adicionar uma descrição ou um resumo sobre você, {{ professor.nome }}.
+                    </div>
+                    <div class="panel-body bio-graph-info">
+                        <h1>Informações</h1>
+                        <div class="row">
+                            <div class="bio-row">
+                                <p><span>Nome </span>: {{ professor.nome }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Email </span>: {{ professor.email }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Matérias </span>: {{ professor.materia }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Celular </span>: {{ professor.celular }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos de Progresso de Projetos -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-chart">
+                                    <div style="display:inline;width:100px;height:100px;">
+                                        <canvas width="100" height="100px"></canvas>
+                                        <input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="35" data-fgcolor="#e06b7d" data-bgcolor="#e8e8e8">
+                                    </div>
+                                </div>
+                                <div class="bio-desk">
+                                    <h4 class="red">Envato Website</h4>
+                                    <p>Iniciado: 15 de Julho</p>
+                                    <p>Prazo: 15 de Agosto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-chart">
+                                    <div style="display:inline;width:100px;height:100px;">
+                                        <canvas width="100" height="100px"></canvas>
+                                        <input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="63" data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8">
+                                    </div>
+                                </div>
+                                <div class="bio-desk">
+                                    <h4 class="terques">ThemeForest CMS</h4>
+                                    <p>Iniciado: 15 de Julho</p>
+                                    <p>Prazo: 15 de Agosto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-chart">
+                                    <div style="display:inline;width:100px;height:100px;">
+                                        <canvas width="100" height="100px"></canvas>
+                                        <input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="75" data-fgcolor="#96be4b" data-bgcolor="#e8e8e8">
+                                    </div>
+                                </div>
+                                <div class="bio-desk">
+                                    <h4 class="green">VectorLab Portfolio</h4>
+                                    <p>Iniciado: 15 de Julho</p>
+                                    <p>Prazo: 15 de Agosto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bio-chart">
+                                    <div style="display:inline;width:100px;height:100px;">
+                                        <canvas width="100" height="100px"></canvas>
+                                        <input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="50" data-fgcolor="#cba4db" data-bgcolor="#e8e8e8">
+                                    </div>
+                                </div>
+                                <div class="bio-desk">
+                                    <h4 class="purple">Adobe Muse Template</h4>
+                                    <p>Iniciado: 15 de Julho</p>
+                                    <p>Prazo: 15 de Agosto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- Fim da seção de informações -->
+        </div> <!-- Fim da row principal -->
+    </div> <!-- Fim do container -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -17,6 +17,13 @@ class Horario(models.Model):
     dia = models.CharField(max_length=10)
     horario = models.TimeField()
 
+class Lembrete(models.Model):
+    texto = models.CharField(max_length=255)
+    data_criacao = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.texto
+
 class Aluno(models.Model):
     id = models.BigAutoField(primary_key=True)
     nome = models.CharField(max_length=100)
