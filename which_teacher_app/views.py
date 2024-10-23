@@ -160,7 +160,7 @@ def loginA(request):
             aluno = Aluno.objects.get(email=email)
             if aluno.senha == senha:
                 request.session['aluno_id'] = aluno.id
-                return redirect('loginA')
+                return redirect('busca')
             messages.error(request, 'Senha incorreta')
         except Professor.DoesNotExist:
             messages.error(request, 'Email não encontrado')
