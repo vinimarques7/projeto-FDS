@@ -142,6 +142,9 @@ def criar_turma(request):
             turma.save()
         return redirect('perfil_professor')                  
 
+def editarP(request):
+    return render(request, 'editarPerfil.html')
+
 def home(request):
     return render(request, 'landingPage.html')
 
