@@ -98,7 +98,8 @@ def loginA(request):
             aluno = Aluno.objects.get(email=email)
             if aluno.senha == senha:
                 request.session['aluno_id'] = aluno.id
-                return redirect('loginA')
+                # Redireciona para a página de busca após login bem-sucedido
+                return redirect('/busca/')
             messages.error(request, 'Senha incorreta')
         except Aluno.DoesNotExist:
             messages.error(request, 'Email não encontrado')

@@ -31,7 +31,7 @@
                         <div class="mb-3">
                             <input type="password" class="form-control" id="loginSenha" name="loginSenha" placeholder="Senha" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary" onclick="window.location.href='/busca/';">Login</button>
                         {% if error %}
                             <p class="text-danger mt-3">{{ error }}</p>
                         {% endif %}
