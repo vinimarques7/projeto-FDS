@@ -121,28 +121,38 @@ def home(request):
 def avaliacao(request):
     aluno_id = request.session.get('aluno_id')
 
+
     if aluno_id:
         aluno = Aluno.objects.get(id=aluno_id)
         nome_aluno = aluno.nome
     else:
         return redirect('LoginA')
-    
 
-    if request.method =='POST':
+
+    success_message = None
+
+    estrelas = None
+    comentario = None
+
+
+    if request.method == 'POST':
         estrelas = request.POST.get('rating')
         comentario = request.POST.get('comentario')
 
-    avaliacao = Avaliacao(
-        estrelas = estrelas,
-        comentario = comentario,
-        id_aluno = aluno_id,
-        nome_aluno = nome_aluno
+        avaliacao = Avaliacao(
+            estrelas=estrelas,
+            comentario=comentario,
+            id_aluno=aluno_id,
+            nome_aluno=nome_aluno
+        )
+        avaliacao.save()  
 
-    )
 
-    avaliacao.save()
+        success_message = "Avaliação enviada com sucesso!"
 
-    return render(request, 'avaliacao.html')
+
+    return render(request, 'avaliacao.html', {'aluno': aluno, 'success_message': success_message})
+
 
 def cadastroP(request):
     return render(request, 'cadastroProfessor.html')
