@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Professor, Horario,Aluno, Turma, Lembrete
 from django.contrib import messages
 
+from django.contrib import messages
+
 def cadastro_professor(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
@@ -14,6 +16,12 @@ def cadastro_professor(request):
         comunicacao = request.POST.getlist('comunicacao')
         genero = request.POST.get('genero')
 
+       # Verifica se o email já está cadastrado
+        if Professor.objects.filter(email=email).exists():
+            messages.error(request, 'Este email já está cadastrado. Por favor, utilize outro email.')
+            return render(request, 'cadastroProfessor.html')
+
+        # Criação do novo professor
         professor = Professor(
             nome=nome,
             celular=celular,
@@ -26,8 +34,12 @@ def cadastro_professor(request):
             genero=genero
         )
         professor.save()
+
+        # Redireciona para a página de login
         return redirect('loginP')
+
     return render(request, 'cadastroProfessor.html')
+
 
 def loginP(request):
     if request.method == 'POST':

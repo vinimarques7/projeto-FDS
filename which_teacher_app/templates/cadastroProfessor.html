@@ -12,6 +12,16 @@
 </head>
 
 <body class="teachers-regular">
+  <!-- Exibir mensagem de erro se houver -->
+{% if messages %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+        <strong>Aviso:</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {% endfor %}
+</div>
+{% endif %}
+
     <div class="container-fluid d-flex align-items-center justify-content-center vh-100">
         <div class="row w-100 shadow-lg rounded-5 bg-light">
             <div class="col-md-6 d-flex align-items-center justify-content-center p-5">
