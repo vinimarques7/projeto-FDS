@@ -136,6 +136,10 @@ def cadastro_aluno(request):
         idade = request.POST.get('idade')
         genero = request.POST.get('genero')
 
+        if Aluno.objects.filter(email=email).exists():
+            messages.error(request, 'Este email já está cadastrado. Por favor, utilize outro email.')
+            return render(request, 'cadastroAluno.html')
+
         aluno = Aluno(
             nome=nome,
             celular=celular,
@@ -162,7 +166,7 @@ def loginA(request):
                 request.session['aluno_id'] = aluno.id
                 return redirect('busca')
             messages.error(request, 'Senha incorreta')
-        except Professor.DoesNotExist:
+        except Aluno.DoesNotExist:
             messages.error(request, 'Email não encontrado')
     return render(request, 'loginAluno.html')
 

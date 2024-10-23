@@ -374,4 +374,13 @@ ul.summary-list > li:last-child  {
 .activity-desk .album a:last-child{
     margin-right: 0px;
 }
+
+.alert {
+    display: none; /* Oculta o elemento por padrão */
+}
+
+.alert.show {
+    display: block; /* Mostra o elemento quando a classe show for adicionada */
+}
+
    
