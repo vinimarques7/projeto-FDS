@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'cadastroAluno.css' %}">
-    <title>Cadastro Professor</title>
+    <title>Cadastro Aluno</title>
 </head>
 
 <body class="teachers-regular">
@@ -77,46 +77,46 @@
 
                     <!-- Seção de Idade -->
                     <div class="mt-4 position-relative">
-                    <h6 class="mb-2">Idade</h6>
-                    <div class="input-group">
-                        <input type="range" class="custom-range" min="1" max="100" step="1" name="idade" id="customRange3"
-                            oninput="updateRange(this)">
-                        <span id="rangeValue" class="position-absolute">1</span> <!-- Valor inicial da faixa -->
+                        <h6 class="mb-2">Idade</h6>
+                        <div class="input-group">
+                            <input type="range" class="custom-range" min="1" max="100" step="1" name="idade"
+                                id="customRange3" oninput="updateRange(this)">
+                            <span id="rangeValue" class="position-absolute">1</span> <!-- Valor inicial da faixa -->
+                        </div>
                     </div>
-            </div>
 
 
-            <!-- Seção do Nivel de ensino -->
-            <div class="mt-4">
-                <h6 class="mb-2">Nivel de ensino</h6>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
-                        Selecione o Nivel de ensino
-                    </button>
-                    <ul class="dropdown-menu w-100">
-                        <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-Fundamental">
-                            Ensino Fundamental</label></li>
-<<<<<<<<< Temporary merge branch 1
-                        <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino Superior">
-                            Ensino Medio</label></li>
-                            <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino Superior">
-                                Ensino Superior</label></li>
-=========
-                        <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-medio">
-                            Ensino medio</label></li>
-                            <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-Superior">
-                                Ensino medio</label></li>
->>>>>>>>> Temporary merge branch 2
-                    </ul>
-                </div>
-            </div>
+                    <!-- Seção do Nivel de ensino -->
+                    <div class="mt-4">
+                        <h6 class="mb-2">Nivel de ensino</h6>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle w-100" type="button"
+                                data-bs-toggle="dropdown">
+                                Selecione o Nivel de ensino
+                            </button>
+                            <ul class="dropdown-menu w-100">
+                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino"
+                                            value="Ensino-Fundamental">
+                                        Ensino Fundamental</label>
+                                </li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino"
+                                            value="Ensino Superior">
+                                        Ensino Medio</label>
+                                </li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino"
+                                            value="Ensino Superior">
+                                        Ensino Superior</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-            <div class="mt-4 text-center">
-                <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <div class="mt-4 text-center">
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </div>
+                </form>
             </div>
-            </form>
         </div>
-    </div>
     </div>
     <script src="{% static 'cadastroAluno.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
