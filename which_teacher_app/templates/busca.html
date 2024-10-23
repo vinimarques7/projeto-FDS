@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'busca.css' %}">
     <title>WhichTeacher</title>
 </head>
@@ -26,12 +25,166 @@
                 <li><a href="#">Serviços</a></li>
             </ul>
         </nav>
-        <div class="btn-abrir" id="btn-abrir">
-            <i class="ri-menu-line"></i>
+        <div class="menu-abrir" id="menu-abrir">
+            <img src="{% static 'menu-line.svg' %}" alt="">
+        </div>
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="menu-fechar">
+                <img src="{% static 'close-large-line.svg' %}" alt="">
+            </div>
+            <nav class="mobile">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contatos</a></li>
+                    <li><a href="#">Serviços</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
-    <script src="{% static 'landingPage.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <div class="imagem w-100">
+        <img src="{% static 'busca.svg' %}" class="img-fluid" alt="banner">
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <!-- Filter Section -->
+                <!-- Carrossel -->
+                <div id="professorCarousel" class="carousel slide mt-5" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-center">
+                                <img src="https://via.placeholder.com/300" class="d-block w-50" alt="Professor A">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Professor A</h5>
+                                <p>Especialista em Matemática e Ciências.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-center">
+                                <img src="https://via.placeholder.com/300" class="d-block w-50" alt="Professor B">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Professor B</h5>
+                                <p>Professor de Línguas e Literatura.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-center">
+                                <img src="https://via.placeholder.com/300" class="d-block w-50" alt="Professor C">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Professor C</h5>
+                                <p>Experiente em História e Geografia.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#professorCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#professorCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <!-- Substituir o Dropdown de Matérias pelo Menu de Rolagem -->
+                <div class="scrolling-wrapper-container">
+                    <div class="scroll-arrow">
+                        <button class="scroll-left">
+                            <span>&lt;</span> <!-- Seta para a esquerda -->
+                        </button>
+                    </div>
+
+                    <div class="scrolling-wrapper">
+                        <div class="scroll-item">
+                            <button class="filter-btn" data-subject="Português">
+                                <p>Português</p>
+                            </button>
+                        </div>
+                        <div class="scroll-item">
+                            <button class="filter-btn" data-subject="Inglês">
+                                <p>Inglês</p>
+                            </button>
+                        </div>
+                        <div class="scroll-item">
+                            <button class="filter-btn" data-subject="Matemática">
+                                <p>Matemática</p>
+                            </button>
+                        </div>
+                        <!-- Adicione mais matérias conforme necessário -->
+                    </div>
+
+                    <div class="scroll-arrow">
+                        <button class="scroll-right">
+                            <span>&gt;</span> <!-- Seta para a direita -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards Section -->
+            <div class="row" id="item-list">
+                {% for professor in professores %}
+                <div class="col-md-3 mb-3" data-type="{{ professor.nivel_ensino }} {{ professor.materia }}">
+                    <div class="card horizontal-card">
+                        <div class="row no-gutters">
+                            <!-- Imagem do professor -->
+                            <img src="{%static 'busca.svg' %}" class="card-img-left rounded-circle"
+                                alt="Imagem de perfil de {{ professor.nome }}"
+                                style="width: 100px; height: 100px; margin-right: 100px; margin-top: 18px;">
+
+                            <div class="col">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ professor.nome }}</h5>
+                                    <span class="badge badge-primary">{{ professor.materia }}</span>
+                                    <p class="card-text">Nível de Ensino: {{ professor.nivel_ensino }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Bootstrap Modal for Teacher Preview -->
+    <div class="modal fade" id="teacherModal" tabindex="-1" aria-labelledby="teacherModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-teacher-name">Teacher Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modal-teacher-image" class="img-fluid rounded-circle mb-3" src="" alt="Teacher Image" />
+                    <p id="modal-teacher-subject"><strong>Matéria(s):</strong> Subject Name</p>
+                    <p id="modal-teacher-details">Additional Information</p>
+                </div>
+                <div class="modal-footer">
+                    <!-- Schedule Button -->
+                    <button type="button" class="btn btn-primary" id="schedule-class-btn"
+                        onclick="window.location.href='/agendar/';">Agendar</button>
+                    <!-- Write a Review Button -->
+                    <button type="button" class="btn btn-info" id="write-review-btn"
+                        onclick="window.location.href='/avaliacao/';">Avaliar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'busca.js' %}"></script>
 </body>
 
 </html>
