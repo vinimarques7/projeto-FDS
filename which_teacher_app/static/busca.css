@@ -120,6 +120,23 @@ nav.mobile a:hover {
     cursor: pointer;
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #492191;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.carousel-inner img {
+    border-radius: 50%;
+    width: 200px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-inner .carousel-item.active img {
+    transform: scale(1.1);
+}
+
 .filter-container {
     margin-top: 40px;
     margin-bottom: 20px;
@@ -298,6 +315,7 @@ nav.mobile a:hover {
     align-items: center;
     flex-grow: 1;
     max-width: 90%;
+    background-color: #492191;
 }
 
 .scroll-item {
@@ -305,48 +323,56 @@ nav.mobile a:hover {
     flex-direction: column;
     align-items: center;
     margin-right: 20px;
-    white-space: nowrap;
+    transition: transform 0.2s ease-in-out;
 }
 
-.scroll-item img {
+.scroll-item:hover {
+    transform: translateY(-5px);
+}
+
+/* .scroll-item img {
     width: 50px;
     height: 50px;
-}
+} */
 
 .scroll-item p {
     font-size: 14px;
-    color: #000;
+    color: #fff;
     margin-top: 5px;
     text-align: center;
 }
 
 .scroll-arrow {
-    display: flex;
-    align-items: center;
+    display: none;
+    /* align-items: center; */
 }
 
-.scroll-arrow button {
-    background-color: white;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* .scroll-arrow button {
+    background-color: #492191;
+    color: white;
     border: none;
-    font-size: 18px;
+    border-radius: 50%;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
+
+.scroll-arrow button:hover {
+    background-color: #ead8fc;
+    color: #492191;
+} */
 
 .filter-btn {
     background-color: transparent;
     border: none;
     text-align: center;
     cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.filter-btn img {
-    margin-bottom: 5px;
+.filter-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #a885d8;
 }
 
 .filter-btn p {
@@ -356,6 +382,39 @@ nav.mobile a:hover {
 .scrolling-wrapper::-webkit-scrollbar {
     display: none;
     /* Oculta a barra de rolagem */
+}
+
+.modal-content {
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: #492191;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.modal-body img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.modal-footer button {
+    background-color: #492191;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+.modal-footer button:hover {
+    background-color: white;
+    color: #492191;
+    border: 1px solid #492191;
 }
 
 #schedule-class-btn,
@@ -395,5 +454,26 @@ nav.mobile a:hover {
 @media (min-width: 1064px) {
     .menu-abrir img {
         display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .filter-btn img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .scroll-item p {
+        font-size: 12px;
+    }
+
+    .modal-body img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .modal-footer button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
     }
 }
