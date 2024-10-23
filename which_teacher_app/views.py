@@ -147,20 +147,44 @@ def editarP(request):
     professor = get_object_or_404(Professor, id=professor_id)
 
     if request.method == 'POST':
+        # Verificando se o botão de remover horário foi acionado
+        if 'remover_horario_id' in request.POST:
+            horario_id = request.POST.get('remover_horario_id')
+            horario = get_object_or_404(Horario, id=horario_id, professor=professor)
+            horario.delete()
+            messages.success(request, 'Horário removido com sucesso!')
+            return redirect('editarP')
+
+        # Atualizando os campos do professor
         professor.nome = request.POST.get('nome')
         professor.email = request.POST.get('email')
         professor.materia = request.POST.get('materia')
         professor.celular = request.POST.get('celular')
 
-        # Verifica se há uma imagem enviada
+        # Atualizando imagem, se houver
         if 'imagem' in request.FILES:
             professor.imagem = request.FILES['imagem']
-        
+
+        # Adicionando novo horário
+        if 'dia' in request.POST and 'hora_inicio' in request.POST and 'hora_fim' in request.POST:
+            dia = request.POST.get('dia')
+            hora_inicio = request.POST.get('hora_inicio')
+            hora_fim = request.POST.get('hora_fim')
+            try:
+                Horario.objects.create(professor=professor, dia=dia, hora_inicio=hora_inicio, hora_fim=hora_fim)
+                messages.success(request, 'Horário adicionado com sucesso!')
+                return redirect('editarP')
+            except Exception as e:
+                messages.error(request, 'Erro ao adicionar horário: ' + str(e))
+
         professor.save()
         messages.success(request, 'Perfil atualizado com sucesso!')
-        return redirect('perfilP')  # Redireciona para a página de perfil
-    
-    return render(request, 'editarPerfil.html', {'professor': professor})
+        return redirect('perfilP')
+
+    # Carregar os horários do professor
+    horarios = professor.horarios.all()
+
+    return render(request, 'editarPerfil.html', {'professor': professor, 'horarios': horarios})
 
 def home(request):
     return render(request, 'landingPage.html')

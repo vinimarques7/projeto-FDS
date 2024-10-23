@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import time
 
 class Professor(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -12,11 +13,15 @@ class Professor(models.Model):
     nivel_ensino = models.TextField()
     genero = models.CharField(max_length=10)
     imagem = models.ImageField(upload_to='perfil_professor/', blank=True, null=True)
+    
+    
+    
 
 class Horario(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='horarios')
     dia = models.CharField(max_length=10)
-    horario = models.TimeField()
+    hora_inicio = models.TimeField(default=time(9, 0))  # Defina um valor padrão para hora de início
+    hora_fim = models.TimeField(default=time(17, 0))  
 
 class Lembrete(models.Model):
     texto = models.CharField(max_length=255)
