@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Cinza claro para o fundo da página */
+}
+.container {
+    max-width: 600px;
+    text-align: center;
+    background-color: #8349d543; /* Cor mais clara para a caixa */
+    padding: 30px;
+    border-radius: 25px; /* Bordas arredondadas */
+    box-shadow: 0 0 15px rgba(76, 0, 130, 0.2); /* Sombra em roxo */
+}
+h3 {
+    color: #ffffff; /* Título em branco */
+    margin-bottom: 20px;
+}
+.star-rating {
+    display: flex;
+    justify-content: center;
+    direction: rtl;
+    font-size: 3rem; /* Aumenta o tamanho das estrelas */
+    margin-bottom: 20px;
+}
+.star-rating input[type="radio"] {
+    display: none; /* Esconde os inputs */
+}
+.star-rating label {
+    color: #d4c29d; /* Dourado suave para visibilidade */
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.star-rating input[type="radio"]:checked ~ label,
+.star-rating input[type="radio"]:hover ~ label {
+    color: #d4af37; /* Dourado mais forte quando selecionado */
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #d4af37; /* Efeito hover */
+}
+.form-control {
+    background-color: #e6d5f4; /* Fundo do input e textarea */
+    border: none;
+    border-radius: 20px; /* Arredondamento */
+    color: #000000; /* Texto preto */
+    padding: 10px;
+    margin-bottom: 15px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1); /* Leve sombra interna */
+}
+button.btn-primary {
+    background-color: #6a1b9a !important; /* Cor roxa do botão */
+    border: none !important;
+    border-radius: 25px; /* Bordas arredondadas */
+    padding: 10px 30px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+button.btn-primary:hover {
+    background-color: #8e24aa !important; /* Cor roxa vibrante ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+.form-control {
+    background-color: #f0f0f0; /* Cinza claro para o fundo */
+    border: none;
+    border-radius: 20px; /* Arredondamento */
+    color: #000000; /* Texto preto */
+    padding: 10px;
+    margin-bottom: 15px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1); /* Leve sombra interna */
+}

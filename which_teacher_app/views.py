@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Professor, Horario, Aluno, Turma
+from .models import Professor, Horario, Aluno, Turma, Avaliacao
 from django.contrib import messages
 
 def cadastro_professor(request):
@@ -118,6 +118,34 @@ def criar_turma(request):
 def home(request):
     return render(request, 'landingPage.html')
 
+def avaliacao(request):
+    aluno_id = request.session.get('aluno_id')
+
+    if aluno_id:
+        aluno = Aluno.objects.get(id=aluno_id)
+        nome_aluno = aluno.nome
+    else:
+        return redirect('LoginA')
+    
+
+    if request.method =='POST':
+        estrelas = request.POST.get('rating')
+        comentario = request.POST.get('comentario')
+
+    avaliacao = Avaliacao(
+        estrelas = estrelas,
+        comentario = comentario,
+        id_aluno = aluno_id,
+        nome_aluno = nome_aluno
+
+    )
+
+    avaliacao.save()
+
+    return render(request, 'avaliacao.html')
+
+def cadastroP(request):
+    return render(request, 'cadastroProfessor.html')
 def busca(request):
     professores = Professor.objects.all()
     return render(request, 'busca.html', {'professores': professores})
