@@ -7,7 +7,7 @@ class Professor(models.Model):
     celular = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
     senha = models.CharField(max_length=100)
-    materia = models.TextField()
+    materia = models.CharField(max_length=255, blank=True, null=True)
     recebimento = models.TextField()
     comunicacao = models.TextField()
     nivel_ensino = models.TextField()
@@ -41,10 +41,10 @@ class Aluno(models.Model):
     idade = models.CharField(max_length=100)
 
 class Turma(models.Model):
-    nome = models.CharField(max_length=255)
-    materia = models.CharField(max_length=255)  # Campo para a matéria da turma
-    assunto = models.CharField(max_length=255)  # Assunto abordado na turma
-    alunos = models.ManyToManyField(Aluno, related_name='turmas')  # Relacionamento com Aluno
+    nome = models.CharField(max_length=100)
+    materia = models.CharField(max_length=100)
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE)  # Relaciona a turma ao professor
+    alunos = models.ManyToManyField(Aluno)
 
     def __str__(self):
         return self.nome
