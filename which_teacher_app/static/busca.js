@@ -46,7 +46,7 @@ function openModal(teacherCard) {
 
     // Populate the modal with the extracted information
     document.getElementById('modal-teacher-name').innerText = name;
-    document.getElementById('modal-teacher-subject').innerHTML = `<strong>Subject:</strong> ${subject}`;
+    document.getElementById('modal-teacher-subject').innerHTML = `<strong>Matéria(s):</strong> ${subject}`;
     document.getElementById('modal-teacher-details').innerText = details;
     document.getElementById('modal-teacher-image').src = imageSrc;
 
