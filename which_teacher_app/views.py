@@ -236,6 +236,11 @@ def editarP(request):
 def home(request):
     return render(request, 'landingPage.html')
 
+def publicoP(request, professor_id):
+    professor = get_object_or_404(Professor, pk=professor_id)
+    return render(request, 'perfilpublicoP.html', {'professor': professor})
+
+
 
 def busca(request):
     professores = Professor.objects.all()
