@@ -143,7 +143,24 @@ def criar_turma(request):
         return redirect('perfil_professor')                  
 
 def editarP(request):
-    return render(request, 'editarPerfil.html')
+    professor_id = request.session.get('professor_id')
+    professor = get_object_or_404(Professor, id=professor_id)
+
+    if request.method == 'POST':
+        professor.nome = request.POST.get('nome')
+        professor.email = request.POST.get('email')
+        professor.materia = request.POST.get('materia')
+        professor.celular = request.POST.get('celular')
+
+        # Verifica se há uma imagem enviada
+        if 'imagem' in request.FILES:
+            professor.imagem = request.FILES['imagem']
+        
+        professor.save()
+        messages.success(request, 'Perfil atualizado com sucesso!')
+        return redirect('perfilP')  # Redireciona para a página de perfil
+    
+    return render(request, 'editarPerfil.html', {'professor': professor})
 
 def home(request):
     return render(request, 'landingPage.html')

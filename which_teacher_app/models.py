@@ -11,6 +11,7 @@ class Professor(models.Model):
     comunicacao = models.TextField()
     nivel_ensino = models.TextField()
     genero = models.CharField(max_length=10)
+    imagem = models.ImageField(upload_to='perfil_professor/', blank=True, null=True)
 
 class Horario(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='horarios')

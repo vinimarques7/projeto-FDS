@@ -20,7 +20,12 @@
                 <div class="panel">
                     <div class="user-heading round">
                         <a href="#">
-                            <img src="{% static 'usuario.jpg' %}" alt="Foto do professor" class="img-fluid rounded-circle">
+                            <!-- Exibir imagem do professor ou imagem padrão se não houver -->
+                            {% if professor.imagem %}
+                                <img src="{{ professor.imagem.url }}" alt="Imagem do professor" class="img-fluid rounded-circle">
+                            {% else %}
+                                <img src="{% static 'usuario_default.png' %}" alt="Imagem padrão" class="img-fluid rounded-circle">
+                            {% endif %}
                         </a>
                         <h1>{{ professor.nome }}</h1>
                         <p>{{ professor.email }}</p>
