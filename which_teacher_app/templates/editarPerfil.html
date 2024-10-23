@@ -66,8 +66,20 @@
                                 <input class="form-control" id="inputEmail" type="email" name="email" value="{{ professor.email }}">
                             </div>
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputMateria">Matéria</label>
-                                <input class="form-control" id="inputMateria" type="text" name="materia" value="{{ professor.materia }}">
+                                <label class="small mb-1" for="inputMateria">Matérias</label>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" id="inputMateria">
+                                        Selecione as matérias
+                                    </button>
+                                    <ul class="dropdown-menu w-100">
+                                        <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Matemática"
+                                            {% if "Matemática" in professor.materia %}checked{% endif %}> Matemática</label></li>
+                                        <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Português"
+                                            {% if "Português" in professor.materia %}checked{% endif %}> Português</label></li>
+                                        <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Inglês"
+                                            {% if "Inglês" in professor.materia %}checked{% endif %}> Inglês</label></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputCelular">Celular</label>

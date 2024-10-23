@@ -61,8 +61,10 @@ def perfilP(request):
     professor = Professor.objects.get(id=professor_id)
     horarios = professor.horarios.all()
     alunos = Aluno.objects.all()
+    turmas = Turma.objects.filter(professor=professor)
 
     if request.method == 'POST':
+        # Lógica para lembretes
         if 'lembrete_texto' in request.POST:
             lembrete_texto = request.POST.get('lembrete_texto')
             if lembrete_texto:
@@ -72,6 +74,8 @@ def perfilP(request):
                 except Exception as e:
                     messages.error(request, 'Erro ao adicionar lembrete: ' + str(e))
             return redirect('perfilP')
+
+        # Lógica para deletar lembretes
         elif 'delete_lembrete' in request.POST:
             lembrete_id = request.POST.get('delete_lembrete')
             try:
@@ -81,18 +85,33 @@ def perfilP(request):
             except Exception as e:
                 messages.error(request, 'Erro ao apagar lembrete: ' + str(e))
             return redirect('perfilP')
-        else:
-            dia = request.POST.get('dia')
-            horario = request.POST.get('novo-horario')
+
+        # Lógica para criar uma nova turma
+        elif 'nome_turma' in request.POST:
+            nome_turma = request.POST.get('nome_turma')
+            materia = request.POST.get('materia')
+            alunos_ids = request.POST.getlist('alunos')
+            if nome_turma and materia and alunos_ids:
+                try:
+                    turma = Turma.objects.create(nome=nome_turma, materia=materia, professor=professor)
+                    alunos = Aluno.objects.filter(id__in=alunos_ids)
+                    turma.alunos.set(alunos)
+                    turma.save()
+                    messages.success(request, 'Turma criada com sucesso!')
+                except Exception as e:
+                    messages.error(request, 'Erro ao criar turma: ' + str(e))
+            return redirect('perfilP')
+
+        # Lógica para remover turma
+        elif 'remover_turma' in request.POST:
+            turma_id = request.POST.get('remover_turma')
             try:
-                Horario.objects.create(
-                    professor=professor,
-                    dia=dia,
-                    horario=horario
-                )
-                messages.success(request, 'Horário adicionado com sucesso!')
+                turma = get_object_or_404(Turma, id=turma_id)
+                turma.delete()
+                messages.success(request, 'Turma removida com sucesso!')
             except Exception as e:
-                messages.error(request, 'Erro ao adicionar horário: ' + str(e))
+                messages.error(request, 'Erro ao remover a turma: ' + str(e))
+            return redirect('perfilP')
 
     lembretes = Lembrete.objects.all().order_by('-data_criacao')
 
@@ -100,8 +119,12 @@ def perfilP(request):
         'professor': professor,
         'horarios': horarios,
         'alunos': alunos,
-        'lembretes': lembretes
+        'lembretes': lembretes,
+        'turmas': turmas  # Passar as turmas para o template
     })
+
+
+
 
 def cadastro_aluno(request):
     if request.method == 'POST':
@@ -137,7 +160,7 @@ def loginA(request):
             aluno = Aluno.objects.get(email=email)
             if aluno.senha == senha:
                 request.session['aluno_id'] = aluno.id
-                return redirect('loginA')
+                return redirect('busca')
             messages.error(request, 'Senha incorreta')
         except Professor.DoesNotExist:
             messages.error(request, 'Email não encontrado')
@@ -170,7 +193,17 @@ def editarP(request):
         # Atualizando os campos do professor
         professor.nome = request.POST.get('nome')
         professor.email = request.POST.get('email')
-        professor.materia = request.POST.get('materia')
+        
+        # Capturando as matérias selecionadas no formulário
+        materias_selecionadas = request.POST.getlist('materia')
+        
+        if materias_selecionadas:
+            # Atualizar as matérias somente se houver seleção
+            professor.materia = ','.join(materias_selecionadas)  # Converte a lista de matérias em string
+        else:
+            # Preservar as matérias atuais se não houver novas seleções
+            messages.info(request, 'Nenhuma matéria selecionada, as matérias anteriores foram mantidas.')
+
         professor.celular = request.POST.get('celular')
 
         # Atualizando imagem, se houver
@@ -189,6 +222,7 @@ def editarP(request):
             except Exception as e:
                 messages.error(request, 'Erro ao adicionar horário: ' + str(e))
 
+        # Salvando o professor com as alterações feitas
         professor.save()
         messages.success(request, 'Perfil atualizado com sucesso!')
         return redirect('perfilP')
@@ -197,6 +231,7 @@ def editarP(request):
     horarios = professor.horarios.all()
 
     return render(request, 'editarPerfil.html', {'professor': professor, 'horarios': horarios})
+
 
 def home(request):
     return render(request, 'landingPage.html')
