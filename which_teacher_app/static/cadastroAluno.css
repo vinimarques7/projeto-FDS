@@ -13,6 +13,7 @@ h1, label {
     color: #15202b; /* Texto escuro */
 }
 
+
 /* Inputs Bootstrap com bordas personalizadas */
 .form-control {
     border-radius: 55px;
@@ -60,4 +61,54 @@ h1, label {
 /* Texto e labels adicionais */
 .form-check-label {
     color: #15202b;
+}
+
+/* Estilizando o input range */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s ease;
+    position: relative;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #6f42c1; /* Cor roxa */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #6f42c1; /* Cor roxa */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-ms-thumb {
+    width: 15px;
+    height: 15px;
+    background: #6f42c1; /* Cor roxa */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para o número exibido */
+#rangeValue {
+    top: -30px; /* Posição acima da bolinha */
+    color: #6f42c1; /* Cor roxa para combinar */
+    font-weight: bold;
+    font-size: 16px;
+    transition: left 0.1s ease; /* Suaviza o movimento */
 }
