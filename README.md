@@ -29,6 +29,8 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 <img src="https://img.shields.io/badge/html5-9b59b6?style=for-the-badge&logo=html5&logoColor=white"/> 
 <img src="https://img.shields.io/badge/css3-white?style=for-the-badge&logo=css3&logoColor=black"/> 
 <img src="https://img.shields.io/badge/Microsoft_Azure-9b59b6?style=for-the-badge&logo=microsoft-azure&logoColor=white"/> 
+<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"/>
+<img src="https://img.shields.io/badge/Bootstrap-white?style=for-the-badge&logo=bootstrap&logoColor=black"/>
 </div>
 
 ## 🧰 Ferramentas 🧰
