@@ -94,10 +94,10 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 # Entrega 03
 
 <p align="center" style="">
-  <a href="https://www.youtube.com/watch?v=EMiCv1hPsiQ">
+  <a href="https://youtu.be/FD0XVhsh1r8">
     <img src="https://img.shields.io/badge/screencast das histórias em produção-7c4f87?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
   
-  <a href="https://www.youtube.com/watch?v=tR3aUt2-5tc">
+  <a href="https://youtu.be/rbCHKqfulTs">
     <img src="https://img.shields.io/badge/screencast dos protótipos-ffffff?style=for-the-badge&logo=youtube&logoColor=black" height="35px"/></a>
   
   <a href="">
