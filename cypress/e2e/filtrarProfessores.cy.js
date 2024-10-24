@@ -85,11 +85,24 @@ describe('test suite Filtrar', () => {
         
     })
 
-    it('cenario2', () => {
-        //steps do cenario2
+    it('Filtrar professores por uma matéria sem resultados correspondentes', () => {
+        cy.visit('/');
+        cy.registerLoginP();
+        cy.visit('/')
+        cy.registerLoginA();
+        cy.visit('busca/')
+        // Clica no botão de filtro para a matéria de ingles
+        cy.get('.filter-btn[data-subject="Inglês"]').click();
     })
 
-    it('cenario3', () => {
-        //steps do cenario3
+    it(' Resetar filtro e visualizar todos os professores', () => {
+        cy.visit('/');
+        cy.registerLoginP();
+        cy.visit('/')
+        cy.registerLoginA();
+        cy.visit('busca/')
+        // Clica no botão de filtro para a matéria de ingles
+        cy.get('.filter-btn[data-subject="Português"]').click();
+        cy.get('.filter-btn[data-subject="Português"]').click();
     })
 })
