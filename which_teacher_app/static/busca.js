@@ -33,15 +33,26 @@ filterButtons.forEach(button => {
 });
 
 function filterItemsBySubject(selectedSubject) {
+    let hasVisibleItems = false;
+
     items.forEach(function (item) {
         const itemSubject = item.getAttribute('data-type').toLowerCase();
 
         if (itemSubject.includes(selectedSubject)) {
             item.style.display = 'block';  // Exibe o item se a matéria corresponder
+            hasVisibleItems = true;
         } else {
             item.style.display = 'none';   // Esconde se não corresponder
         }
     });
+
+    // Exibe a mensagem se nenhum item estiver visível
+    const noTeachersMessage = document.getElementById('no-teachers-message');
+    if (hasVisibleItems) {
+        noTeachersMessage.style.display = 'none';
+    } else {
+        noTeachersMessage.style.display = 'block';
+    }
 }
 
 function showAllItems() {
