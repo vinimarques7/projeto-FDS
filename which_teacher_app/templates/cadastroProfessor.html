@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,21 +14,22 @@
 
 <body class="teachers-regular">
     {% if messages %}
-    <div class="alert alert-info alert-dismissible fade show" role="alert" style="opacity: 1 !important; visibility: visible !important;">
+    <div class="alert alert-info alert-dismissible fade show" role="alert"
+        style="opacity: 1 !important; visibility: visible !important;">
         {% for message in messages %}
-            <strong>Aviso:</strong> {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        {% endfor %}
-    </div>
-{% endif %}
-{% if messages %}
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    {% for message in messages %}
         <strong>Aviso:</strong> {{ message }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    {% endfor %}
-</div>
-{% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+        <strong>Aviso:</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {% endfor %}
+    </div>
+    {% endif %}
 
     <div class="container-fluid d-flex align-items-center justify-content-center vh-100">
         <div class="row w-100 shadow-lg rounded-5 bg-light">
@@ -44,22 +46,26 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="nome" class="form-label">Nome completo</label>
-                            <input id="nome" type="text" name="nome" class="form-control" placeholder="Digite seu nome completo" required>
+                            <input id="nome" type="text" name="nome" class="form-control"
+                                placeholder="Digite seu nome completo" required>
                         </div>
 
                         <div class="col-md-6">
                             <label for="celular" class="form-label">Celular</label>
-                            <input id="celular" type="tel" name="celular" class="form-control" placeholder="(xx) xxxx-xxxx" required>
+                            <input id="celular" type="tel" name="celular" class="form-control"
+                                placeholder="(xx) xxxx-xxxx" required>
                         </div>
 
                         <div class="col-md-6">
                             <label for="email" class="form-label">E-mail</label>
-                            <input id="email" type="email" name="email" class="form-control" placeholder="Digite seu e-mail" required>
+                            <input id="email" type="email" name="email" class="form-control"
+                                placeholder="Digite seu e-mail" required>
                         </div>
 
                         <div class="col-md-6">
                             <label for="senha" class="form-label">Senha</label>
-                            <input id="senha" type="password" name="senha" class="form-control" placeholder="Digite sua senha" required>
+                            <input id="senha" type="password" name="senha" class="form-control"
+                                placeholder="Digite sua senha" required>
                         </div>
                     </div>
 
@@ -80,7 +86,8 @@
                                 <label for="others" class="form-check-label">Outros</label>
                             </div>
                             <div class="form-check">
-                                <input id="none" type="radio" name="genero" value="Prefiro não dizer" class="form-check-input">
+                                <input id="none" type="radio" name="genero" value="Prefiro não dizer"
+                                    class="form-check-input">
                                 <label for="none" class="form-check-label">Prefiro não dizer</label>
                             </div>
                         </div>
@@ -90,19 +97,19 @@
                     <div class="mt-4">
                         <h6 class="mb-2">Matérias</h6>
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+                            <button class="btn btn-primary dropdown-toggle w-100" type="button"
+                                data-bs-toggle="dropdown">
                                 Selecione as matérias
                             </button>
                             <ul class="dropdown-menu w-100">
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Matemática"> Matemática</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Português"> Português</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Inglês"> Inglês</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Física"> Física</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Química"> Química</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Biologia"> Biologia</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="História"> História</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Geografia"> Geografia</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Artes"> Artes</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="materia"
+                                            value="Matemática"> Matemática</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="materia"
+                                            value="Português"> Português</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Inglês">
+                                        Inglês</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Física">
+                                        Física</label></li>
                             </ul>
                         </div>
                     </div>
@@ -111,13 +118,17 @@
                     <div class="mt-4">
                         <h6 class="mb-2">Método de Reunião</h6>
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+                            <button class="btn btn-primary dropdown-toggle w-100" type="button"
+                                data-bs-toggle="dropdown">
                                 Selecione o método de reunião
                             </button>
                             <ul class="dropdown-menu w-100">
-                                <li><label class="dropdown-item"><input type="checkbox" name="comunicacao" value="Meet"> Meet</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="comunicacao" value="Zoom"> Zoom</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="comunicacao" value="Discord"> Discord</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="comunicacao" value="Meet">
+                                        Meet</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="comunicacao" value="Zoom">
+                                        Zoom</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="comunicacao"
+                                            value="Discord"> Discord</label></li>
                             </ul>
                         </div>
                     </div>
@@ -125,13 +136,17 @@
                     <div class="mt-4">
                         <h6 class="mb-2">Nivel de Ensino</h6>
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+                            <button class="btn btn-primary dropdown-toggle w-100" type="button"
+                                data-bs-toggle="dropdown">
                                 Selecione o nivel de ensino
                             </button>
                             <ul class="dropdown-menu w-100">
-                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-Fundamental"> Ensino Fundamental</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-Medio"> Ensino Medio</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-Superior"> Ensino Superior</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino"
+                                            value="Ensino-Fundamental"> Ensino Fundamental</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino"
+                                            value="Ensino-Medio"> Ensino Medio</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino"
+                                            value="Ensino-Superior"> Ensino Superior</label></li>
                             </ul>
                         </div>
                     </div>
@@ -146,4 +161,5 @@
     <script src="{% static 'cadastroProfessor.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
