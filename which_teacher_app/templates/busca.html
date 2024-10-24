@@ -115,55 +115,56 @@
                                 <p>Português</p>
                             </button>
                         </div>
-                        <button class="filter-btn" data-subject="Inglês">
-                            <p>Inglês</p>
-                        </button>
-                    </div>
-                    <div class="scroll-item">
-                        <button class="filter-btn" data-subject="Física">
-                            <p>Física</p>
-                        </button>
-                        <!-- Adicione mais matérias conforme necessário -->
-                    </div>
+                        <div class="scroll-item">
+                            <button class="filter-btn" data-subject="Inglês">
+                                <p>Inglês</p>
+                            </button>
+                        </div>
+                        <div class="scroll-item">
+                            <button class="filter-btn" data-subject="Física">
+                                <p>Física</p>
+                            </button>
+                            <!-- Adicione mais matérias conforme necessário -->
+                        </div>
 
-                    <div class="scroll-arrow">
-                        <button class="scroll-right">
-                            <span>&gt;</span> <!-- Seta para a direita -->
-                        </button>
+                        <div class="scroll-arrow">
+                            <button class="scroll-right">
+                                <span>&gt;</span> <!-- Seta para a direita -->
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Cards Section -->
-            <div class="row" id="item-list">
-                {% for professor in professores %}
-                <div class="col-md-3 mb-3" data-type="{{ professor.nivel_ensino }} {{ professor.materia }}">
-                    <a href="{% url 'publicoP' professor.id %}">
-                        <div class="card horizontal-card">
-                            <div class="row no-gutters">
-                                <!-- Imagem do professor -->
-                                <img src="{{ professor.imagem }}" class="card-img-left rounded-circle"
-                                    alt="Imagem de perfil de {{ professor.nome }}"
-                                    style="width: 100px; height: 100px; margin-right: 100px; margin-top: 18px;">
+                <!-- Cards Section -->
+                <div class="row" id="item-list">
+                    {% for professor in professores %}
+                    <div class="col-md-3 mb-3" data-type="{{ professor.nivel_ensino }} {{ professor.materia }}">
+                        <a href="{% url 'publicoP' professor.id %}">
+                            <div class="card horizontal-card">
+                                <div class="row no-gutters">
+                                    <!-- Imagem do professor -->
+                                    <img src="{{ professor.imagem }}" class="card-img-left rounded-circle"
+                                        alt="Imagem de perfil de {{ professor.nome }}"
+                                        style="width: 100px; height: 100px; margin-right: 100px; margin-top: 18px;">
 
-                                <div class="col">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ professor.nome }}</h5>
-                                        <span class="badge badge-primary">{{ professor.materia }}</span>
-                                        <p class="card-text">Nível de Ensino: {{ professor.nivel_ensino }}</p>
+                                    <div class="col">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ professor.nome }}</h5>
+                                            <span class="badge badge-primary">{{ professor.materia }}</span>
+                                            <p class="card-text">Nível de Ensino: {{ professor.nivel_ensino }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-            <div class="alert alert-warning" id="no-teachers-message" style="display: none;">
-                Nenhum professor encontrado para a matéria selecionada.
+                <div class="alert alert-warning" id="no-teachers-message" style="display: none;">
+                    Nenhum professor encontrado para a matéria selecionada.
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
 
