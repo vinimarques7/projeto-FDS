@@ -12,7 +12,7 @@ class Professor(models.Model):
     comunicacao = models.TextField()
     nivel_ensino = models.TextField()
     genero = models.CharField(max_length=10)
-    imagem = models.ImageField(upload_to='perfil_professor/', blank=True, null=True)
+    imagem = models.ImageField(upload_to='media/perfil_professor/', blank=True, null=True)
     
     
     
