@@ -347,7 +347,7 @@ nav.mobile a:hover {
     /* align-items: center; */
 }
 
-/* .scroll-arrow button {
+.scroll-arrow button {
     background-color: #492191;
     color: white;
     border: none;
@@ -359,7 +359,7 @@ nav.mobile a:hover {
 .scroll-arrow button:hover {
     background-color: #ead8fc;
     color: #492191;
-} */
+}
 
 .filter-btn {
     background-color: transparent;
