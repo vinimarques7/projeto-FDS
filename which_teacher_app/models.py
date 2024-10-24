@@ -7,6 +7,7 @@ class Professor(models.Model):
     celular = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
     senha = models.CharField(max_length=100)
+
     materia = models.CharField(max_length=255, blank=True, null=True)
     recebimento = models.TextField()
     comunicacao = models.TextField()
@@ -20,6 +21,7 @@ class Professor(models.Model):
 class Horario(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='horarios')
     dia = models.CharField(max_length=10)
+
     hora_inicio = models.TimeField(default=time(9, 0))  # Defina um valor padrão para hora de início
     hora_fim = models.TimeField(default=time(17, 0))  
 
@@ -48,3 +50,4 @@ class Turma(models.Model):
 
     def __str__(self):
         return self.nome
+

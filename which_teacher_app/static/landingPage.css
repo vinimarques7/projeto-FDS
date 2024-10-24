@@ -1,3 +1,4 @@
+
 /* Definições Globais */
 body {
     background-color: #d9c2f062;
@@ -72,6 +73,7 @@ nav.menu-desktop a:hover {
 /* Menu Mobile */
 .menu-mobile {
     background-color: #15202baf;
+
     height: 100vh;
     position: fixed;
     top: 0;
@@ -79,6 +81,7 @@ nav.menu-desktop a:hover {
     z-index: 99999;
     width: 0%;
     overflow: hidden;
+
     transition: .5s;
 }
 
@@ -89,6 +92,7 @@ nav.menu-desktop a:hover {
 nav.mobile ul {
     text-align: center;
     font-family: sans-serif;
+
     font-size: 20px;
     display: flex;
     flex-direction: column;
@@ -100,18 +104,16 @@ nav.mobile li {
     margin: 20px;
 }
 
-nav.mobile a {
-    color: #ead8fc;
-    padding: 30px 8%;
-    list-style-type: none;
-    text-decoration: none;
-}
+
+
+
 
 nav.mobile a:hover {
     color: #a885d8;
     transition: 0.3s;
     text-decoration: underline;
 }
+
 
 .menu-fechar {
     padding: 20px;
@@ -124,11 +126,13 @@ nav.mobile a:hover {
 }
 
 /* Main Section */
+
 main {
     display: flex;
     flex-direction: row;
     margin-top: 50px;
 }
+
 
 h2 {
     font-size: 48px;
@@ -214,3 +218,4 @@ button.btn-secondary:hover {
         display: none;
     }
 }
+
