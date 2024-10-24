@@ -12,7 +12,7 @@ urlpatterns = [
     path('loginA/', views.loginA, name='loginA'),
     path('busca/', views.busca, name='busca'),
     path('editarP/', views.editarP, name='editarP'),
-   path('publicoP/<int:professor_id>/', views.publicoP, name='publicoP'),
+    path('publicoP/<int:professor_id>/', views.publicoP, name='publicoP'),
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
