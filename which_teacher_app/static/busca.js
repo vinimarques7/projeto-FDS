@@ -3,6 +3,7 @@ const items = document.querySelectorAll('#item-list .col-md-3');
 const scrollWrapper = document.querySelector('.scrolling-wrapper');
 const scrollRightBtn = document.querySelector('.scroll-right');
 const scrollLeftBtn = document.querySelector('.scroll-left');
+let activeFilter = null; // Variável para armazenar o filtro ativo
 
 // Função para rolar à direita
 scrollRightBtn.addEventListener('click', () => {
@@ -19,8 +20,15 @@ filterButtons.forEach(button => {
     button.addEventListener('click', function () {
         const selectedSubject = button.getAttribute('data-subject').toLowerCase();
 
-        // Filtrar itens de acordo com a matéria selecionada
-        filterItemsBySubject(selectedSubject);
+        if (activeFilter === selectedSubject) {
+            // Se o filtro já estiver ativo, desative-o e exiba todos os itens
+            showAllItems();
+            activeFilter = null; // Reseta o filtro ativo
+        } else {
+            // Se o filtro não estiver ativo, aplique o filtro para a matéria selecionada
+            filterItemsBySubject(selectedSubject);
+            activeFilter = selectedSubject; // Atualiza o filtro ativo
+        }
     });
 });
 
@@ -33,6 +41,12 @@ function filterItemsBySubject(selectedSubject) {
         } else {
             item.style.display = 'none';   // Esconde se não corresponder
         }
+    });
+}
+
+function showAllItems() {
+    items.forEach(function (item) {
+        item.style.display = 'block';  // Exibe todos os itens
     });
 }
 
@@ -52,16 +66,6 @@ function openModal(teacherCard) {
 
     // Trigger Bootstrap modal to open
     $('#teacherModal').modal('show');
-
-    // // Handle "Schedule Class" button click
-    // document.getElementById('schedule-class-btn').onclick = () => {
-    //     window.location.href = `/schedule-class?teacher=${encodeURIComponent(name)}`;
-    // };
-
-    // // Handle "Write a Review" button click (redirect)
-    // document.getElementById('write-review-btn').onclick = () => {
-    //     window.location.href = `/write-review?teacher=${encodeURIComponent(name)}`;
-    // };
 }
 
 // Add event listeners to each teacher card to open the modal on click
