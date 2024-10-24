@@ -31,7 +31,6 @@ Cypress.Commands.add('registerLoginA', () =>{
 
 Cypress.Commands.add('registerLoginP', () =>{
     cy.deleteAllUsersP();
-
     cy.get('.btn-secondary').click()
     cy.get('.cadastro-section > .btn').click()
     cy.get('#nome').type('teste testador')
@@ -40,7 +39,6 @@ Cypress.Commands.add('registerLoginP', () =>{
     cy.get('#senha').type('btslover200k')
     cy.get('#male').check();
     cy.get(':nth-child(5) > .dropdown > .btn').click()
-    cy.get('input[name="materia"][value="Matemática"]').check();
     cy.get('input[name="materia"][value="Português"]').check();
     cy.get(':nth-child(5) > .dropdown > .btn').click()
     cy.get(':nth-child(6) > .dropdown > .btn').click()
@@ -49,16 +47,41 @@ Cypress.Commands.add('registerLoginP', () =>{
     cy.get(':nth-child(7) > .dropdown > .btn').click()
     cy.get('input[name="nivel_ensino"][value="Ensino-Fundamental"]').check();
     cy.get(':nth-child(7) > .dropdown > .btn').click()
+    cy.get('.mt-4.text-center > .btn').click()
+    cy.visit('/')
+    cy.get('.btn-secondary').click()
+    cy.get('.cadastro-section > .btn').click()
+    cy.get('#nome').type('teste epico')
+    cy.get('#celular').type('987654321')
+    cy.get('#email').type('jjiminkook@gmail.com')
+    cy.get('#senha').type('btslover300k')
+    cy.get('#male').check();
+    cy.get(':nth-child(5) > .dropdown > .btn').click()
+    cy.get('input[name="materia"][value="Matemática"]').check();
+    cy.get(':nth-child(5) > .dropdown > .btn').click()
+    cy.get(':nth-child(6) > .dropdown > .btn').click()
+    cy.get('input[name="comunicacao"][value="Discord"]').check();
+    cy.get(':nth-child(6) > .dropdown > .btn').click()
+    cy.get(':nth-child(7) > .dropdown > .btn').click()
+    cy.get('input[name="nivel_ensino"][value="Ensino-Fundamental"]').check();
+    cy.get(':nth-child(7) > .dropdown > .btn').click()
+    cy.get('.mt-4.text-center > .btn').click()
+    
 })
 
 describe('test suite Filtrar', () => {
     it('filtrar com sucesso', () => {
-  
         cy.visit('/');
         cy.registerLoginP();
         cy.visit('/')
         cy.registerLoginA();
         cy.visit('busca/')
+        // Clica no botão de filtro para a matéria de Português
+        cy.get('.filter-btn[data-subject="Português"]').click();
+        
+       
+
+        
         
     })
 
