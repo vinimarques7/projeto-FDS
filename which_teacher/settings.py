@@ -27,10 +27,10 @@ NOT_PROD = not TARGET_ENV.lower().startswith('prod')
 
 if NOT_PROD:
     # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = False
+    DEBUG = True
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = 'django-insecure-&jj*w)_d4w8o18*llk(!gnw86ys#j3hmwttjz#e7d+(*(9=+aj'
-    CSRF_TRUSTED_ORIGINS = ['whichteacher.azurewebsites.net']
+    CSRF_TRUSTED_ORIGINS = ['http://whichteacher.azurewebsites.net']
     ALLOWED_HOSTS = []
     DATABASES = {
         'default': {
