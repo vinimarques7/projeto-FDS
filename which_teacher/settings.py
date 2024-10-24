@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 # Configuração de Feature Flag para alternar entre desenvolvimento e produção
-TARGET_ENV = os.getenv('TARGET_ENV')
+TARGET_ENV = os.getenv('TARGET_ENV', 'development')
 NOT_PROD = not TARGET_ENV.lower().startswith('prod')
 
 if NOT_PROD:
@@ -30,7 +30,6 @@ if NOT_PROD:
     DEBUG = True
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = 'django-insecure-&jj*w)_d4w8o18*llk(!gnw86ys#j3hmwttjz#e7d+(*(9=+aj'
-    CSRF_TRUSTED_ORIGINS = ['http://whichteacher.azurewebsites.net']
     ALLOWED_HOSTS = []
     DATABASES = {
         'default': {
@@ -140,6 +139,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 # STATIC_URL = "static/"
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # STATIC_URL = 'static/'
 STATIC_URL = os.environ.get('DJANGO_STATIC_URL', "/static/")
@@ -148,3 +149,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
