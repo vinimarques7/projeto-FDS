@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Professor, Horario, Aluno, Turma, Lembrete, Avaliacao
 from django.contrib import messages
+from datetime import datetime
 
 def cadastro_professor(request):
     if request.method == 'POST':
@@ -302,7 +303,7 @@ def agendar_aula(request):
     horarios_disponiveis = []  # Lista para armazenar horários disponíveis
 
     if request.method == 'POST':
-        professor_id = request.POST.get('professor_id')  # Id do professor selecionado
+        # Obtém dados do formulário
         data = request.POST.get('data')
         horarios = request.POST.getlist('horarios[]')
         materia = request.POST.get('materia')
@@ -310,19 +311,20 @@ def agendar_aula(request):
 
         # Validações e processamento
         if not data:
-            messages.error(request, 'Selecione uma data.')
+            messages.error(request, 'Selecione um dia.')
         elif not horarios:
             messages.error(request, 'Adicione pelo menos um horário.')
         elif not materia:
             messages.error(request, 'Selecione uma matéria.')
         else:
-            # Verifica os horários disponíveis para a data selecionada
-            horarios_disponiveis = professor.horarios.filter(dia=data)
+            # Verifica os horários disponíveis para o dia da semana selecionado
+            dia_semana = data  # Certifique-se que o valor de data corresponde a um dia da semana
+            horarios_disponiveis = professor.horarios.filter(dia=dia_semana)
 
             if horarios_disponiveis.exists():
                 messages.success(request, 'Aula agendada com sucesso!')
             else:
-                messages.error(request, 'Nenhum horário disponível para a data selecionada.')
+                messages.error(request, 'Nenhum horário disponível para o dia selecionado.')
 
     # Lista de professores para seleção    
     professores = Professor.objects.all()
