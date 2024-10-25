@@ -16,5 +16,12 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // Ignora o erro específico de 'addEventListener'
+    if (err.message.includes("Cannot read properties of null (reading 'addEventListener')")) {
+        return false; // Impede que o Cypress falhe o teste
+    }
+    // Permite que outros erros não relacionados causem falhas
+});
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

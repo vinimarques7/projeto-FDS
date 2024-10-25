@@ -21,8 +21,8 @@ Cypress.Commands.add('registerLoginP', () =>{
     cy.get('input[name="nivel_ensino"][value="Ensino-Fundamental"]').check();
     cy.get(':nth-child(7) > .dropdown > .btn').click()
     cy.get('.mt-4.text-center > .btn').click()
-    cy.get('#loginEmail').type('teste@gmail.com')
-    cy.get('#loginSenha').type('queijo')
+    cy.get('#loginEmail').type('joaokook@gmail.com')
+    cy.get('#loginSenha').type('btslover200k')
     cy.get('form > .btn').click()
 })
 
