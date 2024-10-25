@@ -25,6 +25,14 @@
 </head>
 
 <body>
+    {% if messages %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert" style="opacity: 1 !important; visibility: visible !important;">
+        {% for message in messages %}
+            <strong>Aviso:</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {% endfor %}
+    </div>
+{% endif %}
     <div class="container-xl px-4 mt-4">
         <div class="row">
             <div class="col-xl-4">
@@ -71,9 +79,20 @@
                                     value="{{ professor.email }}">
                             </div>
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputMateria">Matéria</label>
-                                <input class="form-control" id="inputMateria" type="text" name="materia"
-                                    value="{{ professor.materia }}">
+                                <label class="small mb-1" for="inputMateria">Matérias</label>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" id="inputMateria">
+                                        Selecione as matérias
+                                    </button>
+                                    <ul class="dropdown-menu w-100">
+                                        <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Matemática"
+                                            {% if "Matemática" in professor.materia %}checked{% endif %}> Matemática</label></li>
+                                        <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Português"
+                                            {% if "Português" in professor.materia %}checked{% endif %}> Português</label></li>
+                                        <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Inglês"
+                                            {% if "Inglês" in professor.materia %}checked{% endif %}> Inglês</label></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputCelular">Celular</label>

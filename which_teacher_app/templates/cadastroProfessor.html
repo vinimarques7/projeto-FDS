@@ -13,6 +13,24 @@
 </head>
 
 <body class="teachers-regular">
+    {% if messages %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert"
+        style="opacity: 1 !important; visibility: visible !important;">
+        {% for message in messages %}
+        <strong>Aviso:</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+        <strong>Aviso:</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <div class="container-fluid d-flex align-items-center justify-content-center vh-100">
         <div class="row w-100 shadow-lg rounded-5 bg-light">
             <div class="col-md-6 d-flex align-items-center justify-content-center p-5">
@@ -84,12 +102,9 @@
                                 Selecione as matérias
                             </button>
                             <ul class="dropdown-menu w-100">
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia"
-                                            value="Matemática"> Matemática</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia"
-                                            value="Português"> Português</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Inglês">
-                                        Inglês</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Matemática"> Matemática</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Português"> Português</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="materia" value="Inglês"> Inglês</label></li>
                             </ul>
                         </div>
                     </div>
@@ -116,20 +131,13 @@
                     <div class="mt-4">
                         <h6 class="mb-2">Nivel de ensino</h6>
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle w-100" type="button"
-                                data-bs-toggle="dropdown">
-                                Selecione o Nivel de ensino
+                            <button class="btn btn-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+                                Selecione o nivel de ensino
                             </button>
                             <ul class="dropdown-menu w-100">
-                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino"
-                                            value="Ensino-Fundamental">
-                                        Ensino Fundamental</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino"
-                                            value="Ensino-Superior">
-                                        Ensino Medio</label></li>
-                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino"
-                                            value="Ensino-Superior">
-                                        Ensino Superior</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-Fundamental"> Ensino Fundamental</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-Medio"> Ensino Medio</label></li>
+                                <li><label class="dropdown-item"><input type="checkbox" name="nivel_ensino" value="Ensino-Superior"> Ensino Superior</label></li>
                             </ul>
                         </div>
                     </div>

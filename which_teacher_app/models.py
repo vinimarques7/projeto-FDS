@@ -21,8 +21,8 @@ class Professor(models.Model):
     celular = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
     senha = models.CharField(max_length=100)
-    materia = models.CharField(max_length=50, choices=MATERIAS_CHOICES)
-    nivel_ensino = models.CharField(max_length=50, choices=NIVEIS_CHOICES)
+
+    materia = models.CharField(max_length=255, blank=True, null=True)
     recebimento = models.TextField()
     comunicacao = models.TextField()
     nivel_ensino = models.TextField()
@@ -38,6 +38,7 @@ class Professor(models.Model):
 class Horario(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='horarios')
     dia = models.CharField(max_length=10)
+
     hora_inicio = models.TimeField(default=time(9, 0))  # Defina um valor padrão para hora de início
     hora_fim = models.TimeField(default=time(17, 0))  
 
@@ -66,10 +67,10 @@ class Aluno(models.Model):
     idade = models.CharField(max_length=100)
 
 class Turma(models.Model):
-    nome = models.CharField(max_length=255)
-    materia = models.CharField(max_length=255)  # Campo para a matéria da turma
-    assunto = models.CharField(max_length=255)  # Assunto abordado na turma
-    alunos = models.ManyToManyField(Aluno, related_name='turmas')  # Relacionamento com Aluno
+    nome = models.CharField(max_length=100)
+    materia = models.CharField(max_length=100)
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE)  # Relaciona a turma ao professor
+    alunos = models.ManyToManyField(Aluno)
 
     def __str__(self):
         return self.nome

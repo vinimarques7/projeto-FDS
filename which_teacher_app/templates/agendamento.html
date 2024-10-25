@@ -53,7 +53,7 @@
 
     <!-- Seção de Agendamento de Aulas -->
     <div class="container">
-        <h1>Agendamento de Aulas</h1>
+        <h1><span>Agendamento de Aulas </span> - {{ professor.nome }}</h1>
         <form method="POST" action="{% url 'agendar_aula' %}">
             {% csrf_token %}
             <div class="form-group">

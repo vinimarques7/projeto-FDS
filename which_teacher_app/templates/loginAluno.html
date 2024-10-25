@@ -12,6 +12,14 @@
 </head>
 
 <body>
+    {% if messages %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert" style="opacity: 1 !important; visibility: visible !important;">
+        {% for message in messages %}
+            <strong>Aviso:</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {% endfor %}
+    </div>
+{% endif %}
     <div class="container-fluid vh-100">
         <div class="row h-100">
             <!-- Seção de Cadastro -->

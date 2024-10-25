@@ -3,6 +3,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('', views.home, name='home'),
     path('loginP/', views.loginP, name='loginP'),
@@ -11,9 +12,10 @@ urlpatterns = [
     path('cadastroA/', views.cadastro_aluno, name='cadastroP'),
     path('loginA/', views.loginA, name='loginA'),
     path('busca/', views.busca, name='busca'),
+    path('editarP/', views.editarP, name='editarP'),
+    path('publicoP/<int:professor_id>/', views.publicoP, name='publicoP'),
     path('agendar/', views.agendar_aula, name='agendar_aula'),
-    path('avaliacao/', views.avaliacao, name='avaliacao'),
-    path('editarP/', views.editarP, name='editarP')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

@@ -69,10 +69,12 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1FA717CE07AF42C9ADC34720CDC074CC }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5143AB19F3DD4308B030882A30CDCEB4 }}
 
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'whichteacher'
           slot-name: 'Production'
+
           
