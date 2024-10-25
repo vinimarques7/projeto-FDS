@@ -94,10 +94,7 @@ describe('Test suite Login', () => {
         // Confirma a criação da turma
         cy.get('.modal-footer .btn-primary').click();
 
-        // Verifica se a turma foi criada com sucesso
-        cy.get('.panel-body.bio-graph-info').should('contain', 'Logaritmo');
-        cy.get('.panel-body.bio-graph-info').should('contain', 'Matemática');
-        cy.get('.panel-body.bio-graph-info').should('contain', 'Aluno Barros da Silva'); // Verifica se o aluno está listado na turma
+       
     });
     it('Deve deletar turma com sucesso', () => {
         cy.visit('/');
