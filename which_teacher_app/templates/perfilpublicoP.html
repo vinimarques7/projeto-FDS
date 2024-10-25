@@ -91,6 +91,17 @@
 										{% endfor %}
 									</ul>
 								</div>
+								<!-- <div class="bio-row">
+                                    <p><span>Preço por hora </span>: R$ {{ professor.preco_hora }}</p>
+                                </div> -->
+								<!-- Display Average Rating -->
+								<div class="bio-row">
+									<p>
+										<span>Avaliação </span>: {% for i in
+										"12345"|slice:average_rating|stringformat:"d" %} &#9733; {%
+										endfor %} ({{ average_rating }}/5)
+									</p>
+								</div>
 							</div>
 
 							<div class="modal-footer">

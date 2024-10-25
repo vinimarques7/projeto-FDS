@@ -16,8 +16,12 @@ class Professor(models.Model):
     imagem = models.ImageField(upload_to='perfil_professor/', blank=True, null=True)
     
     
+class Review(models.Model):
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='reviews')
+    rating = models.PositiveSmallIntegerField()
+    comment = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)    
     
-
 class Horario(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='horarios')
     dia = models.CharField(max_length=10)
@@ -50,4 +54,3 @@ class Turma(models.Model):
 
     def __str__(self):
         return self.nome
-

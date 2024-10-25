@@ -1,9 +1,8 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Professor, Horario,Aluno, Turma, Lembrete
+from .models import Professor, Horario, Aluno, Turma, Lembrete, Review
 from django.contrib import messages
-
-
+from django.db.models import Avg
 from django.contrib import messages
 
 def cadastro_professor(request):
@@ -251,6 +250,14 @@ def home(request):
 
 def publicoP(request, professor_id):
     professor = get_object_or_404(Professor, pk=professor_id)
+    reviews = Review.objects.filter(professor=professor)
+    average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
+
+    context = {
+        'professor': professor,
+        'reviews': reviews,
+        'average_rating': round(average_rating, 1)
+    }
     return render(request, 'perfilpublicoP.html', {'professor': professor})
 
 def busca(request):
@@ -259,4 +266,17 @@ def busca(request):
 
 def avaliar(request, professor_id):
     professor = get_object_or_404(Professor, pk=professor_id)
+
+    if request.method == "POST":
+        rating = int(request.POST.get("rating"))
+        comment = request.POST.get("comment")
+
+        if 1 <= rating <= 5:
+            review = Review(professor=professor, rating=rating, comment=comment)
+            review.save()
+            messages.success(request, 'Avaliação enviada com sucesso!')
+        else:
+            messages.error(request, 'Avaliação inválida. A nota deve ser entre 1 e 5.')
+
+        return redirect('publicoP', professor_id=professor.id)
     return render(request, 'avaliacao.html', {'professor': professor})
