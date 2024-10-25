@@ -26,13 +26,13 @@
 
 <body>
     {% if messages %}
-    <div class="alert alert-info alert-dismissible fade show" role="alert" style="opacity: 1 !important; visibility: visible !important;">
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
         {% for message in messages %}
-            <strong>Aviso:</strong> {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Aviso:</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         {% endfor %}
     </div>
-{% endif %}
+    {% endif %}
     <div class="container-xl px-4 mt-4">
         <div class="row">
             <div class="col-xl-4">
@@ -111,9 +111,17 @@
                         <form method="POST">
                             {% csrf_token %}
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputDia">Dia</label>
-                                <input class="form-control" id="inputDia" type="text" name="dia"
-                                    placeholder="Ex: Segunda, Terça" required>
+                                <label class="small mb-1" for="inputDia">Dia da Semana</label>
+                                <select class="form-control" id="inputDia" name="dia_semana" required>
+                                    <option value="" disabled selected>Selecione o dia</option>
+                                    <option value="Segunda-feira">Segunda-feira</option>
+                                    <option value="Terca-feira">Terça-feira</option>
+                                    <option value="Quarta-feira">Quarta-feira</option>
+                                    <option value="Quinta-feira">Quinta-feira</option>
+                                    <option value="Sexta-feira">Sexta-feira</option>
+                                    <option value="Sabado">Sábado</option>
+                                    <option value="Domingo">Domingo</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputHoraInicio">Hora de Início</label>
@@ -136,7 +144,7 @@
                         <ul class="list-group">
                             {% for horario in horarios %}
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ horario.dia }} - {{ horario.hora_inicio }} até {{ horario.hora_fim }}
+                                {{ horario.dia_semana }} - {{ horario.hora_inicio }} até {{ horario.hora_fim }}
                                 <form method="POST">
                                     {% csrf_token %}
                                     <input type="hidden" name="remover_horario_id" value="{{ horario.id }}">
@@ -149,9 +157,6 @@
                         </ul>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>

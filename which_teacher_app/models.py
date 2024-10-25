@@ -37,7 +37,7 @@ class Professor(models.Model):
 
 class Horario(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='horarios')
-    dia = models.CharField(max_length=10)
+    dia_semana = models.CharField(max_length=100)
 
     hora_inicio = models.TimeField(default=time(9, 0))  # Defina um valor padrão para hora de início
     hora_fim = models.TimeField(default=time(17, 0))  

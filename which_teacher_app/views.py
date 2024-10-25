@@ -222,12 +222,12 @@ def editarP(request):
             professor.imagem = request.FILES['imagem']
 
         # Adicionando novo horário
-        if 'dia' in request.POST and 'hora_inicio' in request.POST and 'hora_fim' in request.POST:
-            dia = request.POST.get('dia')
+        if 'dia_semana' in request.POST and 'hora_inicio' in request.POST and 'hora_fim' in request.POST:
+            dia_semana = request.POST.get('dia_semana')
             hora_inicio = request.POST.get('hora_inicio')
             hora_fim = request.POST.get('hora_fim')
             try:
-                Horario.objects.create(professor=professor, dia=dia, hora_inicio=hora_inicio, hora_fim=hora_fim)
+                Horario.objects.create(professor=professor, dia_semana=dia_semana, hora_inicio=hora_inicio, hora_fim=hora_fim)
                 messages.success(request, 'Horário adicionado com sucesso!')
                 return redirect('editarP')
             except Exception as e:
@@ -242,6 +242,8 @@ def editarP(request):
     horarios = professor.horarios.all()
 
     return render(request, 'editarPerfil.html', {'professor': professor, 'horarios': horarios})
+
+
 
 
 def home(request):
@@ -299,37 +301,26 @@ from .models import Professor
 
 def agendar_aula(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
-    horarios_disponiveis = []  # Lista para armazenar horários disponíveis
-
+    horarios = []
+    
     if request.method == 'POST':
-        # Obtém dados do formulário
-        data = request.POST.get('data')
-        horarios = request.POST.getlist('horarios[]')
-        materia = request.POST.get('materia')
-        duvidas = request.POST.get('duvidas')
+        dia_selecionado = request.POST.get('dia')
+        
+        # Filtrar os horários com base no dia selecionado
+        horarios = Horario.objects.filter(professor=professor, dia=dia_selecionado)
+        
+        # Lógica de agendamento, por exemplo, salvar o horário escolhido
+        horario_selecionado = request.POST.getlist('horarios')
+        # Adicionar aqui lógica de salvar agendamento, como uma nova instância de agendamento.
 
-        # Validações e processamento
-        if not data:
-            messages.error(request, 'Selecione um dia.')
-        elif not horarios:
-            messages.error(request, 'Adicione pelo menos um horário.')
-        elif not materia:
-            messages.error(request, 'Selecione uma matéria.')
-        else:
-            # Verifica os horários disponíveis para o dia da semana selecionado
-            dia_semana = data  # Certifique-se que o valor de data corresponde a um dia da semana
-            horarios_disponiveis = professor.horarios.filter(dia=dia_semana)
+    else:
+        # Inicialmente exibe todos os horários, caso deseje.
+        horarios = Horario.objects.filter(professor=professor)
 
-            if horarios_disponiveis.exists():
-                messages.success(request, 'Aula agendada com sucesso!')
-            else:
-                messages.error(request, 'Nenhum horário disponível para o dia selecionado.')
-
-    # Lista de professores para seleção    
-    professores = Professor.objects.all()
-    return render(request, 'agendamento.html', {
-        'professores': professores,
+    context = {
         'professor': professor,
-        'horarios_disponiveis': horarios_disponiveis  # Passa os horários disponíveis para o template
-    })
+        'horarios': horarios,
+    }
+    return render(request, 'agendamento.html', context)
 
+ 

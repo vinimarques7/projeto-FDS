@@ -95,135 +95,138 @@
                 </div>
             </div>
         </div>
-                <div class="panel">
-                    <div class="bio-graph-heading">
-                        
+        <div class="panel">
+            <div class="bio-graph-heading">
+
+            </div>
+            <div class="panel-body bio-graph-info">
+                <h1>Suas informações</h1>
+                <div class="row">
+                    <div class="bio-row">
+                        <p><span>Nome </span>: {{ professor.nome }}</p>
                     </div>
-                    <div class="panel-body bio-graph-info">
-                        <h1>Suas informações</h1>
-                        <div class="row">
-                            <div class="bio-row">
-                                <p><span>Nome </span>: {{ professor.nome }}</p>
-                            </div>
-                            <div class="bio-row">
-                                <p><span>Email </span>: {{ professor.email }}</p>
-                            </div>
-                            <div class="bio-row">
-                                <p><span>Matérias </span>: {{ professor.materia }}</p>
-                            </div>
-                            <div class="bio-row">
-                                <p><span>Celular </span>: {{ professor.celular }}</p>
-                            </div>
-                            <div class="bio-row">
-                                <p><span>Horários</span>Disponiveis</p>
-                                <ul>
-                                    {% for horario in horarios %}
-                                    <li>{{ horario.dia }} - {{ horario.hora_inicio }} até {{ horario.hora_fim }}</li>
-                                    {% empty %}
-                                    <li>Nenhum horário disponível.</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="bio-row">
+                        <p><span>Email </span>: {{ professor.email }}</p>
                     </div>
-                </div>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Launch static backdrop modal
-                 </button>
-  
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Understood</button>
-                            </div>
-                        </div>
+                    <div class="bio-row">
+                        <p><span>Matérias </span>: {{ professor.materia }}</p>
                     </div>
-                </div>
-                <div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="panel">
-                                <div class="panel-body">
-                                    <div class="bio-chart">
-                                        <div style="display:inline;width:100px;height:100px;">
-                                            <canvas width="100" height="100px"></canvas>
-                                            <input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="35" data-fgcolor="#482191aa" data-bgcolor="#482191aa">
-                                        </div>
-                                    </div>
-                                    <div class="bio-desk">
-                                        <h4 class="red">Envato Website</h4>
-                                        <p>Iniciado: 15 de Julho</p>
-                                        <p>Prazo: 15 de Agosto</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel">
-                                <div class="panel-body">
-                                    <div class="bio-chart">
-                                        <div style="display:inline;width:100px;height:100px;">
-                                            <canvas width="100" height="100px"></canvas>
-                                            <input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="63" data-fgcolor="#482191aa" data-bgcolor="#482191aa">
-                                        </div>
-                                    </div>
-                                    <div class="bio-desk">
-                                        <h4 class="terques">ThemeForest CMS</h4>
-                                        <p>Iniciado: 15 de Julho</p>
-                                        <p>Prazo: 15 de Agosto</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel">
-                                <div class="panel-body">
-                                    <div class="bio-chart">
-                                        <div style="display:inline;width:100px;height:100px;">
-                                            <canvas width="100" height="100px"></canvas>
-                                            <input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="75" data-fgcolor="#482191aa" data-bgcolor="#482191aa">
-                                        </div>
-                                    </div>
-                                    <div class="bio-desk">
-                                        <h4 class="green">VectorLab Portfolio</h4>
-                                        <p>Iniciado: 15 de Julho</p>
-                                        <p>Prazo: 15 de Agosto</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel">
-                                <div class="panel-body">
-                                    <div class="bio-chart">
-                                        <div style="display:inline;width:100px;height:100px;">
-                                            <canvas width="100" height="100px"></canvas>
-                                            <input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="50" data-fgcolor="#482191aa" data-bgcolor="#482191aa">
-                                        </div>
-                                    </div>
-                                    <div class="bio-desk">
-                                        <h4 class="purple">Adobe Muse Template</h4>
-                                        <p>Iniciado: 15 de Julho</p>
-                                        <p>Prazo: 15 de Agosto</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="bio-row">
+                        <p><span>Celular </span>: {{ professor.celular }}</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>Horários</span>Disponiveis</p>
+                        <ul>
+                            {% for horario in horarios %}
+                            <li>{{ horario.dia }} - {{ horario.hora_inicio }} até {{ horario.hora_fim }}</li>
+                            {% empty %}
+                            <li>Nenhum horário disponível.</li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Criar turma
+        </button>
+
+        <form method="POST" action="{% url 'perfilP' %}">
+            {% csrf_token %}
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Nome da turma</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" name="nome_turma" class="form-control" placeholder="Tópico">
+                            <h5>Matéria:</h5>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle w-100" type="button"
+                                    data-toggle="dropdown">
+                                    Selecione a matéria
+                                </button>
+                                <ul class="dropdown-menu w-100">
+                                    <li><label class="dropdown-item"><input type="radio" name="materia"
+                                                value="Matemática"> Matemática</label></li>
+                                    <li><label class="dropdown-item"><input type="radio" name="materia"
+                                                value="Português"> Português</label></li>
+                                    <li><label class="dropdown-item"><input type="radio" name="materia" value="Inglês">
+                                            Inglês</label></li>
+                                </ul>
+                            </div>
+                            <h5>Alunos:</h5>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle w-100" type="button"
+                                    data-toggle="dropdown">
+                                    Selecione os alunos
+                                </button>
+                                <ul class="dropdown-menu w-100">
+                                    {% for aluno in alunos %}
+                                    <li><label class="dropdown-item"><input type="checkbox" name="alunos"
+                                                value="{{ aluno.id }}"> {{ aluno.nome }}</label></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="panel-body bio-graph-info">
+            <!-- Seção para exibir as turmas cadastradas -->
+            <h3>Turmas Cadastradas</h3>
+            <div class="row">
+                {% for turma in turmas %}
+                <div class="col-md-3"> <!-- Cada card ocupa 3 colunas (4 cards por linha) -->
+                    <div class="card" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px;">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ turma.nome }}</h4>
+                            <p class="card-text">
+                                <strong>Matéria:</strong> {{ turma.materia }}
+                            </p>
+                            <p><strong>Alunos:</strong></p>
+                            <ul>
+                                {% for aluno in turma.alunos.all %}
+                                <li>{{ aluno.nome }}</li>
+                                {% endfor %}
+                            </ul>
+
+                            <!-- Botão para remover a turma -->
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="remover_turma" value="{{ turma.id }}">
+                                <button type="submit" class="btn btn-danger btn-sm">Remover Turma</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-md-12">
+                    <p>Nenhuma turma cadastrada.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+
+    </div>
+    </div>
+    </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

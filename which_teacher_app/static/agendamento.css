@@ -129,6 +129,109 @@ nav.mobile a:hover {
 	align-items: center;
 }
 
+.professor-card {
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin-top: 30px;
+}
+
+.professor-image {
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+}
+
+.price-tag {
+	font-size: 24px;
+	font-weight: bold;
+	color: #000;
+}
+
+.about-section {
+	margin-top: 20px;
+	border-top: 1px solid #ddd;
+	padding-top: 15px;
+}
+
+.btn-primary {
+	background-color: #000;
+	border-color: #000;
+}
+
+.btn-primary:hover {
+	background-color: #333;
+	border-color: #333;
+}
+
+.tag {
+	background-color: #28a745;
+	color: white;
+	font-size: 12px;
+	border-radius: 4px;
+	padding: 2px 6px;
+}
+
+.about-section textarea {
+	resize: none;
+}
+
+#calendar {
+	margin-top: 20px;
+}
+
+.calendar {
+	width: 100%;
+	background: #ffffff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	padding: 20px;
+}
+
+.calendar-header {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+.calendar-days {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 10px;
+}
+
+.calendar-day {
+	padding: 20px;
+	background: #f5f5f5;
+	text-align: center;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.calendar-day:hover {
+	background-color: #ccc;
+}
+
+.selected-date {
+	background-color: #007bff !important;
+	color: white;
+}
+
+.time-slots {
+	margin-top: 20px;
+}
+
+.time-slot {
+	display: inline-block;
+	padding: 10px;
+	margin: 5px;
+	background-color: #007bff;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.time-slot.selected {
+	background-color: #333;
+}
+
 /* Responsividade */
 @media screen and (max-width: 1067px) {
 	.menu-desktop {

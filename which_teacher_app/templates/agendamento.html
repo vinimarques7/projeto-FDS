@@ -5,14 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'agendamento.css' %}">
-    <title>WhichTeacher</title>
-    <style>
-        /* Você pode adicionar estilos personalizados aqui, se necessário */
-    </style>
+    <title>WhichTeacher - Agendamento</title>
 </head>
 
 <body class="teachers-regular">
@@ -30,80 +26,82 @@
                 <li><a href="#">Serviços</a></li>
             </ul>
         </nav>
-        <div class="menu-abrir" id="menu-abrir">
-            <img src="{% static 'menu-line.svg' %}" alt="">
-        </div>
-        <div class="menu-mobile" id="menu-mobile">
-            <div class="menu-fechar">
-                <img src="{% static 'close-large-line.svg' %}" alt="">
-            </div>
-            <nav class="mobile">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contatos</a></li>
-                    <li><a href="#">Serviços</a></li>
-                </ul>
-            </nav>
-        </div>
     </header>
 
-    <!-- Seção de Agendamento de Aulas -->
-    <div class="container">
-        <h1><span>Agendamento de Aulas </span> - {{ professor.nome }}</h1>
-        
-        <form method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <label>Selecione um dia da semana:</label>
-                <div id="dias-da-semana" class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="dia" id="segunda" value="Segunda" required> Segunda
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="dia" id="terca" value="Terça"> Terça
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="dia" id="quarta" value="Quarta"> Quarta
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="dia" id="quinta" value="Quinta"> Quinta
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="dia" id="sexta" value="Sexta"> Sexta
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="dia" id="sabado" value="Sábado"> Sábado
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="dia" id="domingo" value="Domingo"> Domingo
-                    </label>
-                </div>
-            </div>
-            <div id="horarios-disponiveis">
-                <h5>Horários disponíveis:</h5>
-                <ul id="lista-horarios">
-                    {% for horario in horarios %}
-                    <li>{{ horario.hora_inicio }} até {{ horario.hora_fim }}</li>
-                    {% empty %}
-                    <li>Nenhum horário disponível.</li>
-                    {% endfor %}
-                </ul>
+    <div class="container professor-card">
+        <div class="row">
+            <div class="col-md-6">
+              
+                    <!-- Exibir imagem do professor ou imagem padrão se não houver -->
+                    {% if professor.imagem %}
+                    <img src="{{ professor.imagem.url }}" alt="Imagem do professor"
+                        class="img-fluid rounded-circle">
+                    {% else %}
+                    <img src="{% static 'usuario_default.png' %}" alt="Imagem padrão"
+                        class="img-fluid rounded-circle">
+                    {% endif %}
+           
+                <h2>{{ professor.nome }}</h2>
+                <span class="tag">Tag</span>
+                <p class="price-tag">$50</p>
+                <p>Já teve aula com esse professor? <a href="#">Avalie</a></p>
             </div>
 
-            <div class="form-group">
-                <label for="observacoes">Dúvidas:</label>
-                <textarea class="form-control" id="observacoes" name="observacoes" rows="3"></textarea>
+            <div class="col-md-6">
+                <h5>Selecione a data:</h5>
+
+                <div id="calendar" class="calendar">
+                    <div class="calendar-header">
+                        <button id="prev-month" class="btn btn-sm btn-secondary">‹</button>
+                        <span id="month-year"></span>
+                        <button id="next-month" class="btn btn-sm btn-secondary">›</button>
+                    </div>
+                    <div class="calendar-days">
+                        <div>Dom</div>
+                        <div>Seg</div>
+                        <div>Ter</div>
+                        <div>Qua</div>
+                        <div>Qui</div>
+                        <div>Sex</div>
+                        <div>Sáb</div>
+                    </div>
+                    <div id="calendar-body" class="calendar-days">
+                        <!-- Dias serão preenchidos dinamicamente -->
+                    </div>
+                </div>
+
+                <div class="time-slots">
+                    <h5>Horários disponíveis para <span id="selected-date"></span>:</h5>
+                    <div id="available-times">
+                        Selecione uma data para ver os horários.
+                    </div>
+                    <div id="horarios-data" data-horarios='[
+    {% for horario in horarios %}
+        {"dia": "{{ horario.dia_semana }}", "inicio": "{{ horario.hora_inicio }}", "fim": "{{ horario.hora_fim }}"}{% if not forloop.last %},{% endif %}
+    {% endfor %}
+]'></div>
+                </div>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="data_selecionada" id="data-selecionada" value="">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Agendar Aula</button>
+                    </div>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary">Agendar Aula</button>
-        </form>
+        </div>
+
+        <div class="about-section">
+            <h5>Sobre</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id nibh magna.</p>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-    <script src="{% static 'agendamento.js' %}"></script> <!-- Carregando o novo arquivo JS -->
+    <script src="{% static 'agendamento.js' %}"></script>
 </body>
 
 </html>
