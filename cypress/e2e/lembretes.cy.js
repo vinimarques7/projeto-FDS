@@ -31,7 +31,7 @@ describe('test suite Filtrar', () => {
         //steps do cenario1
         cy.visit('/');
         cy.registerLoginP();
-        cy.visit('perfilP/')
+        
 
         // Encontra o campo de texto do lembrete e digita o texto
         cy.get('textarea[name="lembrete_texto"]').type('Este é um lembrete de teste');
