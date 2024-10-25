@@ -99,4 +99,77 @@ describe('Test suite Login', () => {
         cy.get('.panel-body.bio-graph-info').should('contain', 'Matemática');
         cy.get('.panel-body.bio-graph-info').should('contain', 'Aluno Barros da Silva'); // Verifica se o aluno está listado na turma
     });
+    it('Deve deletar turma com sucesso', () => {
+        cy.visit('/');
+        cy.registerAluno(); // Registra o aluno no banco de dados
+        cy.visit('/');
+        cy.registerProfessor(); // Registra o professor no banco de dados
+
+        // Abre o modal para criar turma
+        cy.get('[data-toggle="modal"]').click();
+
+        // Preenche o nome da turma
+        cy.get('.modal-body input[name="nome_turma"]').type('Logaritmo');
+
+        // Seleciona a matéria (seleciona o primeiro dropdown com eq(0))
+        cy.get('.modal-body .dropdown > .btn').eq(0).click();
+        cy.get('input[name="materia"][value="Matemática"]').check();
+        cy.get('.modal-body .dropdown > .btn').eq(0).click(); // Fecha o dropdown de matéria
+
+        // Abre o dropdown para selecionar alunos com {force: true}
+        cy.get('.modal-body .dropdown-toggle').contains('Selecione os alunos').click({ force: true });
+
+        // Verifica se o dropdown de alunos está visível
+        cy.get('.dropdown-menu').should('be.visible');
+
+        // Espera até que os checkboxes de alunos sejam preenchidos
+        cy.get('input[name="alunos"]', { timeout: 10000 }).should('exist');
+
+        // Aqui vamos verificar o valor correto do input gerado para os alunos
+        cy.get('.dropdown-menu').then(($menu) => {
+            cy.log($menu.html()); // Isso vai exibir o HTML no log do Cypress para você inspecionar
+        });
+
+        // Ajuste o value correto após verificar no HTML
+        cy.get('.dropdown-menu input[name="alunos"]').eq(0).check({ force: true });// Exemplo: usando o ID 1, ajuste conforme o valor correto
+
+        // Fecha o dropdown de alunos
+        cy.get('.modal-body .dropdown-toggle').contains('Selecione os alunos').click({ force: true });
+
+        // Confirma a criação da turma
+        cy.get('.modal-footer .btn-primary').click();
+
+        cy.contains('button', 'Remover Turma').click();
+
+        // Confirma que a turma foi removida
+        cy.contains('Nenhuma turma cadastrada.').should('exist'); // Ajuste a mensagem conforme sua interface
+
+        
+    });
+
+    it('Tentar adicionar turma sem alunos', () => {
+        cy.visit('/');
+        cy.registerAluno(); // Registra o aluno no banco de dados
+        cy.visit('/');
+        cy.registerProfessor(); // Registra o professor no banco de dados
+
+        // Abre o modal para criar turma
+        cy.get('[data-toggle="modal"]').click();
+
+        // Preenche o nome da turma
+        cy.get('.modal-body input[name="nome_turma"]').type('Logaritmo');
+
+        // Seleciona a matéria (seleciona o primeiro dropdown com eq(0))
+        cy.get('.modal-body .dropdown > .btn').eq(0).click();
+        cy.get('input[name="materia"][value="Matemática"]').check();
+        cy.get('.modal-body .dropdown > .btn').eq(0).click(); // Fecha o dropdown de matéria
+
+        // Confirma a criação da turma
+        cy.get('.modal-footer .btn-primary').click();
+
+    
+
+        // Verifica se a turma foi criada com sucesso
+       
+    });
 });
