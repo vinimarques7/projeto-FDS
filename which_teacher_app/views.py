@@ -75,13 +75,15 @@ def perfilP(request):
     if request.method == 'POST':
         # Lógica para lembretes
         if 'lembrete_texto' in request.POST:
-            lembrete_texto = request.POST.get('lembrete_texto')
+            lembrete_texto = request.POST.get('lembrete_texto').strip()  # Remove espaços em branco
             if lembrete_texto:
                 try:
                     Lembrete.objects.create(texto=lembrete_texto)
                     messages.success(request, 'Lembrete adicionado com sucesso!')
                 except Exception as e:
                     messages.error(request, 'Erro ao adicionar lembrete: ' + str(e))
+            else:
+                messages.error(request, 'O lembrete não pode estar vazio.')
             return redirect('perfilP')
 
         # Lógica para deletar lembretes
@@ -109,6 +111,8 @@ def perfilP(request):
                     messages.success(request, 'Turma criada com sucesso!')
                 except Exception as e:
                     messages.error(request, 'Erro ao criar turma: ' + str(e))
+            else:
+                messages.error(request, 'Por favor, preencha todos os campos para criar uma turma.')
             return redirect('perfilP')
 
         # Lógica para remover turma
@@ -131,6 +135,7 @@ def perfilP(request):
         'lembretes': lembretes,
         'turmas': turmas  # Passar as turmas para o template
     })
+
 
 
 
