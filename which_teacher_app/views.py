@@ -292,10 +292,15 @@ def busca(request):
     professores = Professor.objects.all()
     return render(request, 'busca.html', {'professores': professores})
 
+from django.contrib import messages
+from django.shortcuts import render, get_object_or_404
+from .models import Professor
+
 def agendar_aula(request):
     professor_id = request.session.get('professor_id')
     professor = get_object_or_404(Professor, id=professor_id)
-    
+    horarios_disponiveis = []  # Lista para armazenar horários disponíveis
+
     if request.method == 'POST':
         professor_id = request.POST.get('professor_id')  # Id do professor selecionado
         data = request.POST.get('data')
@@ -311,14 +316,19 @@ def agendar_aula(request):
         elif not materia:
             messages.error(request, 'Selecione uma matéria.')
         else:
+            # Verifica os horários disponíveis para a data selecionada
             horarios_disponiveis = professor.horarios.filter(dia=data)
 
             if horarios_disponiveis.exists():
                 messages.success(request, 'Aula agendada com sucesso!')
             else:
                 messages.error(request, 'Nenhum horário disponível para a data selecionada.')
-    
+
     # Lista de professores para seleção    
     professores = Professor.objects.all()
-    return render(request, 'agendamento.html', {'professores': professores, 'professor': professor})
+    return render(request, 'agendamento.html', {
+        'professores': professores,
+        'professor': professor,
+        'horarios_disponiveis': horarios_disponiveis  # Passa os horários disponíveis para o template
+    })
 

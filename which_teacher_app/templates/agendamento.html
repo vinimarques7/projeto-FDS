@@ -11,10 +11,7 @@
     <link rel="stylesheet" href="{% static 'busca.css' %}">
     <title>WhichTeacher</title>
     <style>
-        #horarios-disponiveis {
-            display: none;
-            margin-top: 10px;
-        }
+        /* Você pode adicionar estilos personalizados aqui, se necessário */
     </style>
 </head>
 
@@ -54,42 +51,52 @@
     <!-- Seção de Agendamento de Aulas -->
     <div class="container">
         <h1><span>Agendamento de Aulas </span> - {{ professor.nome }}</h1>
+        
         <form method="POST" action="{% url 'agendar_aula' %}">
             {% csrf_token %}
             <div class="form-group">
-                <label for="data">Selecione a Data:</label>
-                <input type="date" class="form-control" id="data" name="data" required>
-            </div>
-            <div class="form-group">
-                <label for="horario-input">Horário:</label>
-                <div class="input-group">
-                    <input type="text" id="horario-input" class="form-control" placeholder="HH:MM" required>
-                    <div class="input-group-append">
-                        <button type="button" id="icon-horario" class="btn btn-secondary">
-                            <i class="fas fa-clock"></i>
-                        </button>
-                    </div>
+                <label>Selecione um dia da semana:</label>
+                <div id="dias-da-semana" class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="dia" id="segunda" value="Segunda" required> Segunda
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="dia" id="terca" value="Terça"> Terça
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="dia" id="quarta" value="Quarta"> Quarta
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="dia" id="quinta" value="Quinta"> Quinta
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="dia" id="sexta" value="Sexta"> Sexta
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="dia" id="sabado" value="Sábado"> Sábado
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="dia" id="domingo" value="Domingo"> Domingo
+                    </label>
                 </div>
-                <button type="button" id="add-horario" class="btn btn-primary mt-2">Adicionar</button>
             </div>
-
-            <!-- Aba de horários disponíveis -->
             <div id="horarios-disponiveis">
-                <h5>Horários Disponíveis:</h5>
-                <ul id="lista-horarios" class="list-group">
-                    <!-- Os horários disponíveis serão adicionados aqui -->
+                <h5>Horários disponíveis:</h5>
+                <ul id="lista-horarios">
+                    {% for horario in horarios %}
+                    <li>{{ horario.dia }} - {{ horario.hora_inicio }} até {{ horario.hora_fim }}</li>
+                    {% empty %}
+                    <li>Nenhum horário disponível.</li>
+                    {% endfor %}
                 </ul>
             </div>
-
-            <div id="horarios-container" class="mt-4">
-                <h5>Horários Cadastrados:</h5>
-                <div id="horarios-cards">
-                    <!-- Os cartões de horário serão adicionados aqui -->
-                </div>
+            
+            <!-- Mensagem de "Nenhum horário disponível" -->
+            <div id="mensagem-sem-horarios" style="display: none; color: red;">
+                Nenhum horário disponível para o dia selecionado.
             </div>
-            <input type="hidden" id="horarios-input" name="horarios">
             <div class="form-group">
-                <label for="observacoes">Observações:</label>
+                <label for="observacoes">Dúvidas:</label>
                 <textarea class="form-control" id="observacoes" name="observacoes" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Agendar Aula</button>
