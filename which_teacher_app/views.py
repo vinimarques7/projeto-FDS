@@ -297,8 +297,7 @@ from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 from .models import Professor
 
-def agendar_aula(request):
-    professor_id = request.session.get('professor_id')
+def agendar_aula(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
     horarios_disponiveis = []  # Lista para armazenar horários disponíveis
 

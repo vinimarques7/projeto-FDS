@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <link rel="stylesheet" href="{% static 'busca.css' %}">
+    <link rel="stylesheet" href="{% static 'agendamento.css' %}">
     <title>WhichTeacher</title>
     <style>
         /* Você pode adicionar estilos personalizados aqui, se necessário */
@@ -52,7 +52,7 @@
     <div class="container">
         <h1><span>Agendamento de Aulas </span> - {{ professor.nome }}</h1>
         
-        <form method="POST" action="{% url 'agendar_aula' %}">
+        <form method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <label>Selecione um dia da semana:</label>
