@@ -1,154 +1,152 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #d9c2f062;
-    overflow-x: hidden;
+	margin: 0;
+	padding: 0;
+	background-color: #d9c2f062;
+	overflow-x: hidden;
 }
 
 /* Cabeçalho */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: auto;
-    margin-top: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: auto;
+	margin-top: 50px;
 }
 
 .logo a {
-    font-size: 28px;
-    font-weight: bold;
-    text-decoration: none;
+	font-size: 28px;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 .text-black {
-    color: black;
+	color: black;
 }
 
 .text-purple {
-    color: #492191;
+	color: #492191;
 }
 
 /* Menu Desktop */
 nav.menu-desktop ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 nav.menu-desktop li {
-    display: inline-block;
-    margin: 0 20px;
+	display: inline-block;
+	margin: 0 20px;
 }
 
 nav.menu-desktop a {
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #15202b;
-    padding: 10px 20px;
-    border-radius: 25px;
+	text-decoration: none;
+	color: #ffffff;
+	background-color: #15202b;
+	padding: 10px 20px;
+	border-radius: 25px;
 }
 
 nav.menu-desktop a:hover {
-    background-color: #492191;
-    color: white;
-    transition: 0.3s;
+	background-color: #492191;
+	color: white;
+	transition: 0.3s;
 }
 
 /* Botão de Menu Mobile */
 .menu-abrir {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .menu-abrir img {
-    width: 30px;
-    margin-left: 10px;
+	width: 30px;
+	margin-left: 10px;
 }
 
 /* Menu Mobile */
 .menu-mobile {
-    background-color: #15202baf;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 99999;
-    width: 0%;
-    overflow: hidden;
-    transition: .5s;
+	background-color: #15202baf;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 99999;
+	width: 0%;
+	overflow: hidden;
+	transition: 0.5s;
 }
 
 .menu-mobile.abrir-menu {
-    width: 100%;
+	width: 100%;
 }
 
 nav.mobile ul {
-    text-align: center;
-    font-family: sans-serif;
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 20px;
+	display: flex;
+	flex-direction: column;
 }
 
 nav.mobile li {
-    list-style-type: none;
-    text-decoration: none;
-    margin: 20px;
+	list-style-type: none;
+	text-decoration: none;
+	margin: 20px;
 }
 
 nav.mobile a {
-    color: #ead8fc;
-    padding: 30px 8%;
-    list-style-type: none;
-    text-decoration: none;
+	color: #ead8fc;
+	padding: 30px 8%;
+	list-style-type: none;
+	text-decoration: none;
 }
 
 nav.mobile a:hover {
-    color: #a885d8;
-    transition: 0.3s;
-    text-decoration: underline;
+	color: #a885d8;
+	transition: 0.3s;
+	text-decoration: underline;
 }
 
 .menu-fechar {
-    padding: 20px;
+	padding: 20px;
 }
 
 .menu-fechar img {
-    width: 30px;
-    margin-top: 10px;
-    cursor: pointer;
+	width: 30px;
+	margin-top: 10px;
+	cursor: pointer;
 }
 
 .card {
-    width: 100%; 
-    margin: 10px 0; 
+	width: 100%;
+	margin: 10px 0;
 }
 
 .card-body {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
-
 
 /* Responsividade */
 @media screen and (max-width: 1067px) {
-    .menu-desktop {
-        display: none;
-    }
+	.menu-desktop {
+		display: none;
+	}
 
-    main {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+	main {
+		flex-direction: column;
+		align-items: flex-start;
+	}
 
-    article img {
-        display: none;
-    }
+	article img {
+		display: none;
+	}
 }
 
 @media (min-width: 1064px) {
-    .menu-abrir img {
-        display: none;
-    }
+	.menu-abrir img {
+		display: none;
+	}
 }

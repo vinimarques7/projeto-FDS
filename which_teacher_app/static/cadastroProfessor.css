@@ -1,65 +1,64 @@
-
 /* Ajusta o fundo da página */
 body {
-    background-color: #f5f5dc; /* Fundo bege claro */
+	background-color: #f5f5dc; /* Fundo bege claro */
 }
 
 /* Estilos para o contêiner principal */
 .container-fluid {
-    background-color: #a885d8; /* Fundo roxo claro */
+	background-color: #a885d8; /* Fundo roxo claro */
 }
 
 /* Títulos e labels */
-h1, label {
-    color: #15202b; /* Texto escuro */
+h1,
+label {
+	color: #15202b; /* Texto escuro */
 }
 
 /* Inputs Bootstrap com bordas personalizadas */
 .form-control {
-    border-radius: 55px;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+	border-radius: 55px;
+	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Botão de enviar (btn-success do Bootstrap) */
 .btn-success {
-    background-color: #482191; /* Botão roxo escuro */
-    border-color: #482191;
-    border-radius: 50px;
-    width: 400px; /* Defina o tamanho desejado */
-    height: 40px; /* Defina a altura desejada */
-    font-size: 16px; /* Ajuste o tamanho da fonte, se necessário */
-    display: block; /* Para garantir que o botão se comporte como um bloco */
-    margin: 0 auto; /* Centraliza o botão se precisar */
+	background-color: #482191; /* Botão roxo escuro */
+	border-color: #482191;
+	border-radius: 50px;
+	width: 400px; /* Defina o tamanho desejado */
+	height: 40px; /* Defina a altura desejada */
+	font-size: 16px; /* Ajuste o tamanho da fonte, se necessário */
+	display: block; /* Para garantir que o botão se comporte como um bloco */
+	margin: 0 auto; /* Centraliza o botão se precisar */
 }
 
 /* Hover para o botão */
 .btn-success:hover {
-    background-color: #a885d8; /* Hover roxo claro */
-    border-color: #a885d8;
+	background-color: #a885d8; /* Hover roxo claro */
+	border-color: #a885d8;
 }
 
-.btn-primary{
-    background-color: #482191aa;
-    border-color: transparent;
-    border-radius: 50px;
+.btn-primary {
+	background-color: #482191aa;
+	border-color: transparent;
+	border-radius: 50px;
 }
 
-.btn-primary:hover{
-    background-color: #a885d8;
+.btn-primary:hover {
+	background-color: #a885d8;
 }
 
 /* Dropdowns */
 .dropdown-menu {
-    background-color: #f5f5dc; /* Fundo dropdown */
+	background-color: #f5f5dc; /* Fundo dropdown */
 }
 
 .dropdown-item:hover {
-    background-color: #a885d8; /* Hover no item do dropdown */
-    color: #15202b;
+	background-color: #a885d8; /* Hover no item do dropdown */
+	color: #15202b;
 }
 
 /* Texto e labels adicionais */
 .form-check-label {
-    color: #15202b;
+	color: #15202b;
 }
-
