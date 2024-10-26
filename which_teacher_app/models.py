@@ -2,6 +2,7 @@ from django.db import models
 from datetime import time
 
 
+
 class Professor(models.Model):
     id = models.BigAutoField(primary_key=True)
     nome = models.CharField(max_length=100)
@@ -49,16 +50,14 @@ class Aluno(models.Model):
 
 
 class Review(models.Model):
-    aluno = models.ForeignKey(
-        Aluno, on_delete=models.CASCADE, related_name='review')  # Aluno que avalia
-    professor = models.ForeignKey(
-        Professor, on_delete=models.CASCADE, related_name='reviews')  # Professor avaliado
-    rating = models.PositiveSmallIntegerField(default=0)  # Nota entre 1 e 5
-    comment = models.TextField(blank=True, null=True)
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, related_name='review')
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='reviews')
+    rating = models.PositiveSmallIntegerField(default=0)  # Nota de 1 a 5
+    comment = models.TextField(blank=True, null=True)  # Comentário opcional
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.professor} - {self.rating}'
+        return f'Review by {self.aluno} for {self.professor} - Rating: {self.rating}'
 
 
 class Turma(models.Model):

@@ -4,8 +4,7 @@ from .models import Professor, Horario, Aluno, Turma, Lembrete, Review
 from django.contrib import messages
 from django.db.models import Avg
 from django.contrib import messages
-from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
+
 
 
 def cadastro_professor(request):
@@ -278,27 +277,28 @@ def busca(request):
 def avaliar(request, professor_id):
     if request.method == "POST" and request.user.is_authenticated:
         professor = get_object_or_404(Professor, id=professor_id)
-        aluno = request.user  # Isso supondo que o aluno já está logado
-        rating = int(request.POST.get("rating", 0))
-        comment = request.POST.get("comment")
+        aluno = request.user  # O aluno é o usuário logado
+        rating = int(request.POST.get("rating", 0))  # Valor da avaliação (estrelas)
+        comment = request.POST.get("comment", "").strip()  # Comentário (opcional)
+        review = Review.objects.create(aluno=aluno)
+        review.save()
 
-        if 1 <= rating <= 5:
-            # Verifica se já existe uma avaliação desse aluno para esse professor
-            review, created = Review.objects.get_or_create(
-                aluno=aluno, professor=professor,
-                defaults={'rating': rating, 'comment': comment}
-            )
+        
 
-            if not created:  # Se já existe uma avaliação
-                review.rating = rating
-                review.comment = comment
-                review.save()
-                messages.success(request, 'Avaliação atualizada com sucesso!')
-            else:
-                messages.success(request, 'Avaliação enviada com sucesso!')
-        else:
-            messages.error(
-                request, 'Avaliação inválida. A nota deve ser entre 1 e 5.')
+        # if 1 <= rating <= 5:  # Valida se o valor da nota está entre 1 e 5
+        #     # Salva a avaliação ou atualiza se já existe uma
+        #     Review, created = Review.objects.update_or_create(
+        #         aluno=aluno,
+        #         professor=professor,
+        #         defaults={'rating': rating, 'comment': comment}
+        #     )
+
+        #     if created:
+        #         messages.success(request, 'Avaliação enviada com sucesso!')
+        #     else:
+        #         messages.success(request, 'Avaliação atualizada com sucesso!')
+        # else:
+        #     messages.error(request, 'Avaliação inválida. A nota deve ser entre 1 e 5.')
 
         return redirect('publicoP', professor_id=professor.id)
 
