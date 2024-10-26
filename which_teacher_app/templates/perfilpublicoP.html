@@ -22,7 +22,8 @@
 		<div
 			class="alert alert-info alert-dismissible fade show"
 			role="alert"
-			style="opacity: 1 !important; visibility: visible !important">
+			style="opacity: 1 !important; visibility: visible !important"
+		>
 			{% for message in messages %}
 			<strong>Aviso:</strong> {{ message }}
 			<button
@@ -66,20 +67,16 @@
 							<h1>Informações do Professor</h1>
 							<div class="row">
 								<div class="bio-row">
-									<p><span>Nome: {{ professor.nome }}
-									</p>
+									<p><span> Nome: {{ professor.nome }} </span></p>
 								</div>
 								<div class="bio-row">
-									<p><span>Email: {{ professor.email }}
-									</p>
+									<p><span>Email: {{ professor.email }} </span></p>
 								</div>
 								<div class="bio-row">
-									<p><span>Matérias: {{ professor.materia }}
-									</p>
+									<p><span>Matérias: {{ professor.materia }} </span></p>
 								</div>
 								<div class="bio-row">
-									<p><span>Celular: {{ professor.celular }}
-									</p>
+									<p><span>Celular: {{ professor.celular }} </span></p>
 								</div>
 								<div class="bio-row">
 									<p><span>Horários Disponíveis: </span></p>
@@ -100,68 +97,70 @@
 								<!-- Display Average Rating -->
 								<div class="bio-row">
 									<p>
-										<span>Avaliação:
-										<span class="rating">
-											<span class="rating-value">/5.0<span class="rating-stars">&#9733;</span>
+										<span
+											>Avaliação:
+											<span class="rating">
+												<span class="rating-value"
+													>/5.0<span class="rating-stars">&#9733;</span>
+												</span>
+											</span>
 										</span>
 									</p>
-								</div>						
-								
 								</div>
 							</div>
+						</div>
 
-							<div class="modal-footer">
-								<!-- Schedule Button -->
-								<button
-									type="button"
-									class="btn btn-primary"
-									id="schedule-class-btn"
-								>
-									Agendar
-								</button>
-								<!-- Write a Review Button -->
-								<a href="http://127.0.0.1:8000/avaliar/1/" class="btn btn-info">
-									Avaliar
-								</a>
-							</div>
+						<div class="modal-footer">
+							<!-- Schedule Button -->
+							<button
+								type="button"
+								class="btn btn-primary"
+								id="schedule-class-btn"
+							>
+								Agendar
+							</button>
+							<!-- Write a Review Button -->
+							<a href="http://127.0.0.1:8000/avaliar/1/" class="btn btn-info">
+								Avaliar
+							</a>
 						</div>
 					</div>
+				</div>
 
-					<!-- Seção para exibir as turmas cadastradas -->
-					<div class="panel-body bio-graph-info">
-						<h3>Turmas</h3>
-						<div class="row">
-							{% for turma in turmas %}
-							<div class="col-md-3">
-								<!-- Cada card ocupa 3 colunas (4 cards por linha) -->
-								<div
-									class="card"
-									style="
-										border: 1px solid #ddd;
-										padding: 15px;
-										margin-bottom: 20px;
-									"
-								>
-									<div class="card-body">
-										<h4 class="card-title">{{ turma.nome }}</h4>
-										<p class="card-text">
-											<strong>Matéria:</strong> {{ turma.materia }}
-										</p>
-										<p><strong>Alunos:</strong></p>
-										<ul>
-											{% for aluno in turma.alunos.all %}
-											<li>{{ aluno.nome }}</li>
-											{% endfor %}
-										</ul>
-									</div>
+				<!-- Seção para exibir as turmas cadastradas -->
+				<div class="panel-body bio-graph-info">
+					<h3>Turmas</h3>
+					<div class="row">
+						{% for turma in turmas %}
+						<div class="col-md-3">
+							<!-- Cada card ocupa 3 colunas (4 cards por linha) -->
+							<div
+								class="card"
+								style="
+									border: 1px solid #ddd;
+									padding: 15px;
+									margin-bottom: 20px;
+								"
+							>
+								<div class="card-body">
+									<h4 class="card-title">{{ turma.nome }}</h4>
+									<p class="card-text">
+										<strong>Matéria:</strong> {{ turma.materia }}
+									</p>
+									<p><strong>Alunos:</strong></p>
+									<ul>
+										{% for aluno in turma.alunos.all %}
+										<li>{{ aluno.nome }}</li>
+										{% endfor %}
+									</ul>
 								</div>
 							</div>
-							{% empty %}
-							<div class="col-md-12">
-								<p>Nenhuma turma cadastrada.</p>
-							</div>
-							{% endfor %}
 						</div>
+						{% empty %}
+						<div class="col-md-12">
+							<p>Nenhuma turma cadastrada.</p>
+						</div>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
