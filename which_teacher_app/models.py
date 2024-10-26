@@ -16,11 +16,6 @@ class Professor(models.Model):
     imagem = models.ImageField(upload_to='perfil_professor/', blank=True, null=True)
     
     
-class Review(models.Model):
-    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='reviews')
-    rating = models.PositiveSmallIntegerField()
-    comment = models.TextField(blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)    
     
 class Horario(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='horarios')
@@ -45,6 +40,16 @@ class Aluno(models.Model):
     nivel_ensino = models.TextField()
     genero = models.CharField(max_length=10)
     idade = models.CharField(max_length=100)
+
+class Review(models.Model):
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)  # Aluno que avalia
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='reviews')  # Professor avaliado
+    rating = models.PositiveSmallIntegerField(default=0)  # Nota entre 1 e 5
+    comment = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.aluno} - {self.professor} - {self.rating}'
 
 class Turma(models.Model):
     nome = models.CharField(max_length=100)
