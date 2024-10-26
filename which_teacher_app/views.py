@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.db.models import Avg
 from django.contrib import messages
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 
 def cadastro_professor(request):
@@ -257,8 +258,8 @@ def home(request):
 
 
 def publicoP(request, professor_id):
-    professor = get_object_or_404(Professor, pk=professor_id)
-    reviews = Review.objects.filter(professor=professor)
+    professor = get_object_or_404(Professor, id=professor_id)
+    reviews = professor.reviews.all()
     average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
 
     context = {
@@ -266,7 +267,7 @@ def publicoP(request, professor_id):
         'reviews': reviews,
         'average_rating': round(average_rating, 1)
     }
-    return render(request, 'perfilpublicoP.html', {'professor': professor})
+    return render(request, 'perfilpublicoP.html', context)
 
 
 def busca(request):

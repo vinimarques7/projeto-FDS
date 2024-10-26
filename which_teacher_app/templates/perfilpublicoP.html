@@ -127,6 +127,22 @@
 					</div>
 				</div>
 
+				<div class="bio-graph-info">
+					<h3>Avaliação</h3>
+					{% if reviews %} {% for review in reviews %}
+					<div class="review">
+						<p>
+							<strong>{{ review.aluno.nome }}</strong> - {{ review.rating }}
+							estrelas
+						</p>
+						<p>{{ review.comment }}</p>
+						<small>{{ review.date_created }}</small>
+					</div>
+					{% endfor %} {% else %}
+					<p>Ainda não há avaliações.</p>
+					{% endif %}
+				</div>
+
 				<!-- Seção para exibir as turmas cadastradas -->
 				<div class="panel-body bio-graph-info">
 					<h3>Turmas</h3>
