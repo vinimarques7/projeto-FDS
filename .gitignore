@@ -30,3 +30,5 @@ pip-delete-this-directory.txt
 # Arquivos de Migrations
 which_teacher_app/migrations
 
+# Arquivos do node_modules
+/node_modules
