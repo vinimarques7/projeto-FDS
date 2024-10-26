@@ -22,8 +22,7 @@
 		<div
 			class="alert alert-info alert-dismissible fade show"
 			role="alert"
-			style="opacity: 1 !important; visibility: visible !important"
-		>
+			style="opacity: 1 !important; visibility: visible !important">
 			{% for message in messages %}
 			<strong>Aviso:</strong> {{ message }}
 			<button
@@ -67,19 +66,23 @@
 							<h1>Informações do Professor</h1>
 							<div class="row">
 								<div class="bio-row">
-									<p><span>Nome </span>: {{ professor.nome }}</p>
+									<p><span>Nome: {{ professor.nome }}
+									</p>
 								</div>
 								<div class="bio-row">
-									<p><span>Email </span>: {{ professor.email }}</p>
+									<p><span>Email: {{ professor.email }}
+									</p>
 								</div>
 								<div class="bio-row">
-									<p><span>Matérias </span>: {{ professor.materia }}</p>
+									<p><span>Matérias: {{ professor.materia }}
+									</p>
 								</div>
 								<div class="bio-row">
-									<p><span>Celular </span>: {{ professor.celular }}</p>
+									<p><span>Celular: {{ professor.celular }}
+									</p>
 								</div>
 								<div class="bio-row">
-									<p><span>Horários Disponíveis </span>:</p>
+									<p><span>Horários Disponíveis: </span></p>
 									<ul>
 										{% for horario in horarios %}
 										<li>
@@ -97,10 +100,13 @@
 								<!-- Display Average Rating -->
 								<div class="bio-row">
 									<p>
-										<span>Avaliação </span>: {% for i in
-										"12345"|slice:average_rating|stringformat:"d" %} &#9733; {%
-										endfor %} ({{ average_rating }}/5)
+										<span>Avaliação:
+										<span class="rating">
+											<span class="rating-value">/5.0<span class="rating-stars">&#9733;</span>
+										</span>
 									</p>
+								</div>						
+								
 								</div>
 							</div>
 
