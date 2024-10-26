@@ -6,6 +6,7 @@ from django.db.models import Avg
 from django.contrib import messages
 from django.http import JsonResponse
 
+
 def cadastro_professor(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
@@ -18,10 +19,10 @@ def cadastro_professor(request):
         comunicacao = request.POST.getlist('comunicacao')
         genero = request.POST.get('genero')
 
-
        # Verifica se o email já está cadastrado
         if Professor.objects.filter(email=email).exists():
-            messages.error(request, 'Este email já está cadastrado. Por favor, utilize outro email.')
+            messages.error(
+                request, 'Este email já está cadastrado. Por favor, utilize outro email.')
             return render(request, 'cadastroProfessor.html')
 
         # Criação do novo professor
@@ -39,19 +40,17 @@ def cadastro_professor(request):
         )
         professor.save()
 
-
         # Redireciona para a página de login
         return redirect('loginP')
 
     return render(request, 'cadastroProfessor.html')
 
 
-
 def loginP(request):
     if request.method == 'POST':
         email = request.POST.get('loginEmail')
         senha = request.POST.get('loginSenha')
-        
+
         try:
             professor = Professor.objects.get(email=email)
             if professor.senha == senha:
@@ -79,9 +78,11 @@ def perfilP(request):
             if lembrete_texto:
                 try:
                     Lembrete.objects.create(texto=lembrete_texto)
-                    messages.success(request, 'Lembrete adicionado com sucesso!')
+                    messages.success(
+                        request, 'Lembrete adicionado com sucesso!')
                 except Exception as e:
-                    messages.error(request, 'Erro ao adicionar lembrete: ' + str(e))
+                    messages.error(
+                        request, 'Erro ao adicionar lembrete: ' + str(e))
             return redirect('perfilP')
 
         # Lógica para deletar lembretes
@@ -102,7 +103,8 @@ def perfilP(request):
             alunos_ids = request.POST.getlist('alunos')
             if nome_turma and materia and alunos_ids:
                 try:
-                    turma = Turma.objects.create(nome=nome_turma, materia=materia, professor=professor)
+                    turma = Turma.objects.create(
+                        nome=nome_turma, materia=materia, professor=professor)
                     alunos = Aluno.objects.filter(id__in=alunos_ids)
                     turma.alunos.set(alunos)
                     turma.save()
@@ -133,8 +135,6 @@ def perfilP(request):
     })
 
 
-
-
 def cadastro_aluno(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
@@ -146,7 +146,8 @@ def cadastro_aluno(request):
         genero = request.POST.get('genero')
 
         if Aluno.objects.filter(email=email).exists():
-            messages.error(request, 'Este email já está cadastrado. Por favor, utilize outro email.')
+            messages.error(
+                request, 'Este email já está cadastrado. Por favor, utilize outro email.')
             return render(request, 'cadastroAluno.html')
 
         aluno = Aluno(
@@ -155,7 +156,7 @@ def cadastro_aluno(request):
             email=email,
             senha=senha,
             nivel_ensino=', '.join(nivel_ensino),
-            idade = idade,
+            idade=idade,
             genero=genero
         )
         aluno.save()
@@ -163,12 +164,11 @@ def cadastro_aluno(request):
     return render(request, 'cadastroAluno.html')
 
 
-
 def loginA(request):
     if request.method == 'POST':
         email = request.POST.get('loginEmail')
         senha = request.POST.get('loginSenha')
-        
+
         try:
             aluno = Aluno.objects.get(email=email)
             if aluno.senha == senha:
@@ -179,6 +179,7 @@ def loginA(request):
             messages.error(request, 'Email não encontrado')
     return render(request, 'loginAluno.html')
 
+
 def criar_turma(request):
     if request.method == 'POST':
         nome_turma = request.POST.get('nome_turma')
@@ -188,7 +189,8 @@ def criar_turma(request):
             alunos = Aluno.objects.filter(id__in=alunos_ids)
             turma.alunos.set(alunos)
             turma.save()
-        return redirect('perfil_professor')                  
+        return redirect('perfil_professor')
+
 
 def editarP(request):
     professor_id = request.session.get('professor_id')
@@ -198,7 +200,8 @@ def editarP(request):
         # Verificando se o botão de remover horário foi acionado
         if 'remover_horario_id' in request.POST:
             horario_id = request.POST.get('remover_horario_id')
-            horario = get_object_or_404(Horario, id=horario_id, professor=professor)
+            horario = get_object_or_404(
+                Horario, id=horario_id, professor=professor)
             horario.delete()
             messages.success(request, 'Horário removido com sucesso!')
             return redirect('editarP')
@@ -206,16 +209,18 @@ def editarP(request):
         # Atualizando os campos do professor
         professor.nome = request.POST.get('nome')
         professor.email = request.POST.get('email')
-        
+
         # Capturando as matérias selecionadas no formulário
         materias_selecionadas = request.POST.getlist('materia')
-        
+
         if materias_selecionadas:
             # Atualizar as matérias somente se houver seleção
-            professor.materia = ','.join(materias_selecionadas)  # Converte a lista de matérias em string
+            # Converte a lista de matérias em string
+            professor.materia = ','.join(materias_selecionadas)
         else:
             # Preservar as matérias atuais se não houver novas seleções
-            messages.info(request, 'Nenhuma matéria selecionada, as matérias anteriores foram mantidas.')
+            messages.info(
+                request, 'Nenhuma matéria selecionada, as matérias anteriores foram mantidas.')
 
         professor.celular = request.POST.get('celular')
 
@@ -229,7 +234,8 @@ def editarP(request):
             hora_inicio = request.POST.get('hora_inicio')
             hora_fim = request.POST.get('hora_fim')
             try:
-                Horario.objects.create(professor=professor, dia=dia, hora_inicio=hora_inicio, hora_fim=hora_fim)
+                Horario.objects.create(
+                    professor=professor, dia=dia, hora_inicio=hora_inicio, hora_fim=hora_fim)
                 messages.success(request, 'Horário adicionado com sucesso!')
                 return redirect('editarP')
             except Exception as e:
@@ -249,6 +255,7 @@ def editarP(request):
 def home(request):
     return render(request, 'landingPage.html')
 
+
 def publicoP(request, professor_id):
     professor = get_object_or_404(Professor, pk=professor_id)
     reviews = Review.objects.filter(professor=professor)
@@ -261,9 +268,11 @@ def publicoP(request, professor_id):
     }
     return render(request, 'perfilpublicoP.html', {'professor': professor})
 
+
 def busca(request):
     professores = Professor.objects.all()
     return render(request, 'busca.html', {'professores': professores})
+
 
 def avaliar(request, professor_id):
     if request.method == "POST" and request.user.is_authenticated:
@@ -278,7 +287,7 @@ def avaliar(request, professor_id):
                 aluno=aluno, professor=professor,
                 defaults={'rating': rating, 'comment': comment}
             )
-            
+
             if not created:  # Se já existe uma avaliação
                 review.rating = rating
                 review.comment = comment
@@ -287,7 +296,8 @@ def avaliar(request, professor_id):
             else:
                 messages.success(request, 'Avaliação enviada com sucesso!')
         else:
-            messages.error(request, 'Avaliação inválida. A nota deve ser entre 1 e 5.')
+            messages.error(
+                request, 'Avaliação inválida. A nota deve ser entre 1 e 5.')
 
         return redirect('publicoP', professor_id=professor.id)
 
