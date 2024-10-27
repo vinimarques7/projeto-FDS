@@ -1,99 +1,64 @@
 document.addEventListener('DOMContentLoaded', function () {
     const horariosDataElement = document.getElementById('horarios-data');
     const horarios = JSON.parse(horariosDataElement.getAttribute('data-horarios'));
-
-    const selectedDateElement = document.getElementById('selected-date');
     const selectedDateInput = document.getElementById('data-selecionada');
     const availableTimesElement = document.getElementById('available-times');
-    let currentMonth = new Date().getMonth();
-    let currentYear = new Date().getFullYear();
     let selectedTimes = [];
 
-    function renderCalendar(month, year) {
-        const monthYear = document.getElementById('month-year');
-        const calendarBody = document.getElementById('calendar-body');
-        calendarBody.innerHTML = '';
+    // Define a data mínima como o dia atual
+    const today = new Date().toISOString().split('T')[0];
+    selectedDateInput.setAttribute('min', today);
 
-        const firstDay = new Date(year, month).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+    // Exibe os horários disponíveis ao selecionar uma data
+    selectedDateInput.addEventListener('change', function () {
+        const selectedDate = new Date(selectedDateInput.value);
+        const selectedDayOfWeek = selectedDate.toLocaleString('pt-BR', { weekday: 'long' }).toLowerCase();
+        console.log("Dia selecionado:", selectedDayOfWeek);  // Verifique se o dia da semana corresponde corretamente
 
-        monthYear.innerText = new Date(year, month).toLocaleString('pt-BR', { month: 'long', year: 'numeric' });
+        document.getElementById('selected-date').innerText = selectedDateInput.value;
+        document.getElementById('data-selecionada-oculto').value = selectedDateInput.value;
 
-        for (let i = 0; i < firstDay; i++) {
-            const emptyCell = document.createElement('div');
-            emptyCell.classList.add('calendar-day', 'empty');
-            calendarBody.appendChild(emptyCell);
+        // Filtra os horários com base no dia da semana selecionado
+        const horariosDisponiveis = horarios.filter(horario => horario.dia.toLowerCase() === selectedDayOfWeek);
+        availableTimesElement.innerHTML = '';
+
+        if (horariosDisponiveis.length > 0) {
+            horariosDisponiveis.forEach(horario => {
+                let inicio = new Date(`1970-01-01T${horario.inicio}:00`);
+                let fim = new Date(`1970-01-01T${horario.fim}:00`);
+
+                while (inicio < fim) {
+                    const timeSlot = document.createElement('div');
+                    timeSlot.classList.add('time-slot', 'badge', 'badge-primary', 'mr-2', 'mb-2');
+                    timeSlot.setAttribute('data-time', inicio.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}));
+                    timeSlot.innerText = `${inicio.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+                    availableTimesElement.appendChild(timeSlot);
+                    inicio.setMinutes(inicio.getMinutes() + 60);  // Intervalo de 1 hora
+                }
+            });
+        } else {
+            availableTimesElement.innerText = 'Nenhum horário disponível.';
         }
+    });
 
-        for (let day = 1; day <= daysInMonth; day++) {
-            const dayElement = document.createElement('div');
-            dayElement.classList.add('calendar-day', 'text-center', 'border', 'rounded');
-            dayElement.textContent = day;
-
-            const dayDate = new Date(year, month, day);
-
-            if (dayDate < today) {
-                dayElement.classList.add('disabled');
+    // Permite seleção múltipla de horários
+    availableTimesElement.addEventListener('click', function (event) {
+        if (event.target.classList.contains('time-slot')) {
+            const time = event.target.getAttribute('data-time');
+            if (selectedTimes.includes(time)) {
+                selectedTimes = selectedTimes.filter(t => t !== time);
+                event.target.classList.remove('selected');
             } else {
-                dayElement.onclick = function () {
-                    const selectedDate = new Date(year, month, day);
-                    const selectedDayOfWeek = selectedDate.toLocaleString('pt-BR', { weekday: 'long' });
-
-                    selectedDateElement.innerText = `${day}/${month + 1}/${year}`;
-                    selectedDateInput.value = `${year}-${month + 1}-${day}`;
-
-                    const horariosDisponiveis = horarios.filter(horario => horario.dia.toLowerCase() === selectedDayOfWeek.toLowerCase());
-
-                    availableTimesElement.innerHTML = '';
-                    if (horariosDisponiveis.length > 0) {
-                        horariosDisponiveis.forEach(horario => {
-                            const timeSlot = document.createElement('div');
-                            timeSlot.classList.add('time-slot', 'badge', 'badge-primary');
-                            timeSlot.setAttribute('data-time', horario.inicio);
-                            timeSlot.innerText = `${horario.inicio} até ${horario.fim}`;
-                            availableTimesElement.appendChild(timeSlot);
-
-                            timeSlot.addEventListener('click', function () {
-                                const time = this.getAttribute('data-time');
-                                if (selectedTimes.includes(time)) {
-                                    selectedTimes = selectedTimes.filter(t => t !== time);
-                                    this.classList.remove('selected');
-                                } else {
-                                    selectedTimes.push(time);
-                                    this.classList.add('selected');
-                                }
-                                document.getElementById('horarios-selecionados').value = selectedTimes.join(', ');
-                            });
-                        });
-                    } else {
-                        availableTimesElement.innerText = 'Nenhum horário disponível.';
-                    }
-                };
+                selectedTimes.push(time);
+                event.target.classList.add('selected');
             }
-
-            calendarBody.appendChild(dayElement);
+            document.getElementById('horarios-selecionados').value = selectedTimes.join(', ');
         }
-    }
+    });
 
-    document.getElementById('prev-month').onclick = function () {
-        if (!(currentYear === new Date().getFullYear() && currentMonth === new Date().getMonth())) {
-            currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
-            currentYear = (currentMonth === 11) ? currentYear - 1 : currentYear;
-            renderCalendar(currentMonth, currentYear);
-        }
-    };
-
-    document.getElementById('next-month').onclick = function () {
-        currentMonth = (currentMonth === 11) ? 0 : currentMonth + 1;
-        currentYear = (currentMonth === 0) ? currentYear + 1 : currentYear;
-        renderCalendar(currentMonth, currentYear);
-    };
-
-    renderCalendar(currentMonth, currentYear);
-
+    // Exibe mensagem de confirmação ao agendar
     document.getElementById('agendar-form').addEventListener('submit', function (e) {
-        document.getElementById('data-selecionada').value = selectedDateElement.innerText;
+        e.preventDefault();
+        document.getElementById('confirmacao-mensagem').style.display = 'block';
     });
 });

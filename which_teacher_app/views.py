@@ -284,8 +284,19 @@ def avaliacao(request):
     return render(request, 'avaliacao.html', {'aluno': aluno, 'success_message': success_message})
 
 def publicoP(request, professor_id):
-    professor = get_object_or_404(Professor, pk=professor_id)
-    return render(request, 'perfilpublicoP.html', {'professor': professor})
+    professor = get_object_or_404(Professor, id=professor_id)
+    
+    # Obtenha todos os horários associados ao professor
+    horarios = Horario.objects.filter(professor=professor)
+    turmas= Turma.objects.filter(professor=professor)
+     # Exemplo para carregar turmas, caso necessário
+
+    # Renderize o template com o professor, os horários e as turmas
+    return render(request, 'perfilpublicoP.html', {
+        'professor': professor,
+        'horarios': horarios,
+        'turmas': turmas
+    })
    
 
 def cadastroP(request):

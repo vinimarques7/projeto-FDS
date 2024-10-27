@@ -36,7 +36,7 @@
                 {% else %}
                 <img src="{% static 'usuario_default.png' %}" alt="Imagem padrão" class="img-fluid rounded-circle">
                 {% endif %}
-           
+
                 <h2>{{ professor.nome }}</h2>
                 <span class="tag">Tag</span>
                 <p class="price-tag">$50</p>
@@ -45,32 +45,12 @@
 
             <div class="col-md-6">
                 <h5>Selecione a data:</h5>
+                <input type="date" id="data-selecionada" class="form-control mb-3" min="{{ data_atual }}" required>
 
-                <div id="calendar" class="calendar">
-                    <div class="calendar-header">
-                        <button id="prev-month" class="btn btn-sm btn-secondary">‹</button>
-                        <span id="month-year"></span>
-                        <button id="next-month" class="btn btn-sm btn-secondary">›</button>
-                    </div>
-                    <div class="calendar-days" id="calendar-weekdays">
-                        <div>Dom</div>
-                        <div>Seg</div>
-                        <div>Ter</div>
-                        <div>Qua</div>
-                        <div>Qui</div>
-                        <div>Sex</div>
-                        <div>Sáb</div>
-                    </div>
-                    <div id="calendar-body" class="calendar-days">
-                        <!-- Dias serão preenchidos dinamicamente -->
-                    </div>
-                </div>
 
                 <div class="time-slots">
                     <h5>Horários disponíveis para <span id="selected-date"></span>:</h5>
-                    <div id="available-times">
-                        Selecione uma data para ver os horários.
-                    </div>
+                    <div id="available-times">Selecione uma data para ver os horários.</div>
                     <div id="horarios-data" data-horarios='[
                         {% for horario in horarios %}
                             {"dia": "{{ horario.dia_semana }}", "inicio": "{{ horario.hora_inicio|date:"H:i" }}", "fim": "{{ horario.hora_fim|date:"H:i" }}"}
@@ -81,19 +61,22 @@
 
                 <form method="POST" id="agendar-form">
                     {% csrf_token %}
-                    <input type="hidden" name="data_selecionada" id="data-selecionada" value="">
+                    <input type="hidden" name="data_selecionada" id="data-selecionada-oculto" value="">
                     <input type="hidden" name="horarios_selecionados" id="horarios-selecionados" value="">
-                    <input type="hidden" name="duracao" id="duracao" value="">
+                    
+                    
                     <div class="form-group">
-                        <label for="quantidade-horas">Duração da aula (em horas):</label>
-                        <select id="quantidade-horas" class="form-control">
-                            <option value="1">1 hora</option>
-                            <option value="2">2 horas</option>
-                            <option value="3">3 horas</option>
-                        </select>
+                        <label for="comentarios">Comentários:</label>
+                        <textarea id="comentarios" name="comentarios" class="form-control" rows="3"
+                            placeholder="Digite qualquer informação adicional..."></textarea>
                     </div>
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">Agendar Aula</button>
+                    </div>
+
+                    <div id="confirmacao-mensagem" class="alert alert-success mt-3" style="display:none;">
+                        Agendamento realizado com sucesso!
                     </div>
                 </form>
             </div>
