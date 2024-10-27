@@ -31,15 +31,11 @@
     <div class="container professor-card">
         <div class="row">
             <div class="col-md-6">
-              
-                    <!-- Exibir imagem do professor ou imagem padrão se não houver -->
-                    {% if professor.imagem %}
-                    <img src="{{ professor.imagem.url }}" alt="Imagem do professor"
-                        class="img-fluid rounded-circle">
-                    {% else %}
-                    <img src="{% static 'usuario_default.png' %}" alt="Imagem padrão"
-                        class="img-fluid rounded-circle">
-                    {% endif %}
+                {% if professor.imagem %}
+                <img src="{{ professor.imagem.url }}" alt="Imagem do professor" class="img-fluid rounded-circle">
+                {% else %}
+                <img src="{% static 'usuario_default.png' %}" alt="Imagem padrão" class="img-fluid rounded-circle">
+                {% endif %}
            
                 <h2>{{ professor.nome }}</h2>
                 <span class="tag">Tag</span>
@@ -56,7 +52,7 @@
                         <span id="month-year"></span>
                         <button id="next-month" class="btn btn-sm btn-secondary">›</button>
                     </div>
-                    <div class="calendar-days">
+                    <div class="calendar-days" id="calendar-weekdays">
                         <div>Dom</div>
                         <div>Seg</div>
                         <div>Ter</div>
@@ -76,15 +72,26 @@
                         Selecione uma data para ver os horários.
                     </div>
                     <div id="horarios-data" data-horarios='[
-    {% for horario in horarios %}
-        {"dia": "{{ horario.dia_semana }}", "inicio": "{{ horario.hora_inicio }}", "fim": "{{ horario.hora_fim }}"}{% if not forloop.last %},{% endif %}
-    {% endfor %}
-]'></div>
+                        {% for horario in horarios %}
+                            {"dia": "{{ horario.dia_semana }}", "inicio": "{{ horario.hora_inicio|date:"H:i" }}", "fim": "{{ horario.hora_fim|date:"H:i" }}"}
+                            {% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ]'></div>
                 </div>
 
-                <form method="POST">
+                <form method="POST" id="agendar-form">
                     {% csrf_token %}
                     <input type="hidden" name="data_selecionada" id="data-selecionada" value="">
+                    <input type="hidden" name="horarios_selecionados" id="horarios-selecionados" value="">
+                    <input type="hidden" name="duracao" id="duracao" value="">
+                    <div class="form-group">
+                        <label for="quantidade-horas">Duração da aula (em horas):</label>
+                        <select id="quantidade-horas" class="form-control">
+                            <option value="1">1 hora</option>
+                            <option value="2">2 horas</option>
+                            <option value="3">3 horas</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">Agendar Aula</button>
                     </div>

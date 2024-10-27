@@ -1,6 +1,6 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Professor, Horario, Aluno, Turma, Lembrete, Avaliacao
+from .models import Professor, Horario, Aluno, Turma, Lembrete, Avaliacao,Agendamento
 from django.contrib import messages
 from datetime import datetime
 
@@ -295,32 +295,40 @@ def busca(request):
     professores = Professor.objects.all()
     return render(request, 'busca.html', {'professores': professores})
 
-from django.contrib import messages
-from django.shortcuts import render, get_object_or_404
-from .models import Professor
 
 def agendar_aula(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
-    horarios = []
-    
+    aluno = get_object_or_404(Aluno, id=request.session.get('aluno_id'))  # Obtém o aluno logado da sessão
+    horarios = professor.horarios.all()  # Obtém os horários disponíveis do professor
+
     if request.method == 'POST':
-        dia_selecionado = request.POST.get('dia')
-        
-        # Filtrar os horários com base no dia selecionado
-        horarios = Horario.objects.filter(professor=professor, dia=dia_selecionado)
-        
-        # Lógica de agendamento, por exemplo, salvar o horário escolhido
-        horario_selecionado = request.POST.getlist('horarios')
-        # Adicionar aqui lógica de salvar agendamento, como uma nova instância de agendamento.
+        dia = request.POST.get('data_selecionada')
+        horarios_selecionados = request.POST.getlist('horarios_selecionados')  # Lista de horários selecionados
+        data_agendamento = datetime.strptime(dia, "%d/%m/%Y").date()
 
-    else:
-        # Inicialmente exibe todos os horários, caso deseje.
-        horarios = Horario.objects.filter(professor=professor)
+        # Loop para criar agendamentos para cada horário selecionado
+        for hora in horarios_selecionados:
+            try:
+                horario = Horario.objects.get(professor=professor, hora_inicio=hora)
+                # Verifica se já existe um agendamento para o horário selecionado
+                if Agendamento.objects.filter(aluno=aluno, professor=professor, dia=data_agendamento, horario=horario).exists():
+                    messages.warning(request, f"O horário {hora} já está reservado. Selecione outro.")
+                    continue
 
-    context = {
-        'professor': professor,
-        'horarios': horarios,
-    }
-    return render(request, 'agendamento.html', context)
+                Agendamento.objects.create(
+                    aluno=aluno,
+                    professor=professor,
+                    dia=data_agendamento,
+                    horario=horario,
+                    duracao=1  # Duracao padrão
+                )
+            except Horario.DoesNotExist:
+                messages.error(request, f"Horário {hora} não está disponível.")
+                continue
+
+        messages.success(request, "Aula(s) agendada(s) com sucesso!")
+        return redirect('success_page')
+
+    return render(request, 'agendamento.html', {'professor': professor, 'horarios': horarios})
 
  

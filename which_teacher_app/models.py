@@ -74,3 +74,19 @@ class Turma(models.Model):
 
     def __str__(self):
         return self.nome
+
+class Agendamento(models.Model):
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, related_name="agendamentos")
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name="agendamentos")
+    horario = models.ForeignKey(Horario, on_delete=models.CASCADE, related_name="agendamentos")  # Refere-se ao horário específico
+    dia = models.DateField()  # Data da aula agendada
+    duracao = models.IntegerField(default=1)  # Duração da aula em horas
+
+    criado_em = models.DateTimeField(auto_now_add=True)  # Registro da data e hora de criação
+    atualizado_em = models.DateTimeField(auto_now=True)  # Registro da data e hora de atualização
+
+    class Meta:
+        unique_together = ('aluno', 'professor', 'dia', 'horario')  # Garante agendamentos únicos para o mesmo horário
+
+    def __str__(self):
+        return f"{self.aluno.nome} agendou com {self.professor.nome} em {self.dia} às {self.horario.hora_inicio}"
