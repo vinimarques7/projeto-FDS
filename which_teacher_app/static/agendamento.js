@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
             horariosDisponiveis.forEach(horario => {
                 let inicio = new Date(`1970-01-01T${horario.inicio}:00`);
                 let fim = new Date(`1970-01-01T${horario.fim}:00`);
+                
 
                 while (inicio < fim) {
                     const timeSlot = document.createElement('div');
