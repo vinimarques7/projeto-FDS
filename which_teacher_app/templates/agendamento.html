@@ -45,8 +45,7 @@
 
             <div class="col-md-6">
                 <h5>Selecione a data:</h5>
-                <input type="date" id="data-selecionada" class="form-control mb-3" min="{{ data_atual }}" required>
-
+                <input type="date" id="data-selecionada" class="form-control mb-3" required>
 
                 <div class="time-slots">
                     <h5>Horários disponíveis para <span id="selected-date"></span>:</h5>
@@ -63,8 +62,26 @@
                     {% csrf_token %}
                     <input type="hidden" name="data_selecionada" id="data-selecionada-oculto" value="">
                     <input type="hidden" name="horarios_selecionados" id="horarios-selecionados" value="">
-                    
-                    
+
+                    <div class="form-group">
+                        <label for="meio-transmissao">Meio de Transmissão:</label>
+                        <select id="meio-transmissao" name="meio_transmissao" class="form-control" required>
+                            <option value="">Selecione um meio</option>
+                            <option value="Online">Online</option>
+                            <option value="Presencial">Presencial</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meio-pagamento">Meio de Pagamento:</label>
+                        <select id="meio-pagamento" name="meio_pagamento" class="form-control" required>
+                            <option value="">Selecione um meio</option>
+                            <option value="Cartão">Cartão de Crédito/Débito</option>
+                            <option value="Transferência">Transferência Bancária</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="comentarios">Comentários:</label>
                         <textarea id="comentarios" name="comentarios" class="form-control" rows="3"
@@ -75,16 +92,14 @@
                         <button type="submit" class="btn btn-primary btn-block">Agendar Aula</button>
                     </div>
 
+                    <div id="error-message" class="alert alert-danger mt-3" style="display:none;">
+                        Por favor, preencha todos os campos obrigatórios.
+                    </div>
                     <div id="confirmacao-mensagem" class="alert alert-success mt-3" style="display:none;">
                         Agendamento realizado com sucesso!
                     </div>
                 </form>
             </div>
-        </div>
-
-        <div class="about-section">
-            <h5>Sobre</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id nibh magna.</p>
         </div>
     </div>
 

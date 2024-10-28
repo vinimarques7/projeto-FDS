@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import time
+from django.contrib.auth.models import User
 
 
 class Professor(models.Model):
@@ -76,17 +77,14 @@ class Turma(models.Model):
         return self.nome
 
 class Agendamento(models.Model):
-    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, related_name="agendamentos")
-    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name="agendamentos")
-    horario = models.ForeignKey(Horario, on_delete=models.CASCADE, related_name="agendamentos")  # Refere-se ao horário específico
-    dia = models.DateField()  # Data da aula agendada
-    duracao = models.IntegerField(default=1)  # Duração da aula em horas
-
-    criado_em = models.DateTimeField(auto_now_add=True)  # Registro da data e hora de criação
-    atualizado_em = models.DateTimeField(auto_now=True)  # Registro da data e hora de atualização
-
-    class Meta:
-        unique_together = ('aluno', 'professor', 'dia', 'horario')  # Garante agendamentos únicos para o mesmo horário
+    professor = models.ForeignKey("Professor", on_delete=models.CASCADE)
+    aluno = models.ForeignKey(User, on_delete=models.CASCADE)  # ou seu modelo de usuário
+    data = models.DateField()
+    horario = models.CharField(max_length=255)  # Pode armazenar os horários selecionados em um formato serializado, como JSON
+    meio_transmissao = models.CharField(max_length=50)
+    meio_pagamento = models.CharField(max_length=50)
+    comentarios = models.TextField(blank=True, null=True)
+    criado_em = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.aluno.nome} agendou com {self.professor.nome} em {self.dia} às {self.horario.hora_inicio}"
+        return f"{self.aluno} - {self.professor} - {self.data} - {self.horario}"

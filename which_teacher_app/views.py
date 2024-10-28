@@ -309,37 +309,44 @@ def busca(request):
 
 def agendar_aula(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
-    aluno = get_object_or_404(Aluno, id=request.session.get('aluno_id'))  # Obtém o aluno logado da sessão
-    horarios = professor.horarios.all()  # Obtém os horários disponíveis do professor
+    horarios = Horario.objects.filter(professor=professor)
 
-    if request.method == 'POST':
-        dia = request.POST.get('data_selecionada')
-        horarios_selecionados = request.POST.getlist('horarios_selecionados')  # Lista de horários selecionados
-        data_agendamento = datetime.strptime(dia, "%d/%m/%Y").date()
+    if request.method == "POST":
+        data_selecionada = request.POST.get("data_selecionada")
+        horarios_selecionados = request.POST.get("horarios_selecionados")
+        meio_transmissao = request.POST.get("meio_transmissao")
+        meio_pagamento = request.POST.get("meio_pagamento")
+        comentarios = request.POST.get("comentarios")
 
-        # Loop para criar agendamentos para cada horário selecionado
-        for hora in horarios_selecionados:
-            try:
-                horario = Horario.objects.get(professor=professor, hora_inicio=hora)
-                # Verifica se já existe um agendamento para o horário selecionado
-                if Agendamento.objects.filter(aluno=aluno, professor=professor, dia=data_agendamento, horario=horario).exists():
-                    messages.warning(request, f"O horário {hora} já está reservado. Selecione outro.")
-                    continue
+        # Validação dos campos obrigatórios
+        if not data_selecionada or not horarios_selecionados:
+            messages.error(request, "O dia e o horário são obrigatórios para o agendamento.")
+            return redirect("agendar_aula", professor_id=professor.id)
 
-                Agendamento.objects.create(
-                    aluno=aluno,
-                    professor=professor,
-                    dia=data_agendamento,
-                    horario=horario,
-                    duracao=1  # Duracao padrão
-                )
-            except Horario.DoesNotExist:
-                messages.error(request, f"Horário {hora} não está disponível.")
-                continue
+        if not meio_transmissao or not meio_pagamento:
+            messages.error(request, "A escolha do meio de transmissão e do meio de pagamento é obrigatória.")
+            return redirect("agendar_aula", professor_id=professor.id)
 
-        messages.success(request, "Aula(s) agendada(s) com sucesso!")
-        return redirect('success_page')
+        # Salvando o agendamento
+        try:
+            Agendamento.objects.create(
+                professor=professor,
+                aluno=request.user,  # Certifique-se de que o usuário está autenticado
+                data=data_selecionada,
+                horario=horarios_selecionados,
+                meio_transmissao=meio_transmissao,
+                meio_pagamento=meio_pagamento,
+                comentarios=comentarios
+            )
+            messages.success(request, "Agendamento realizado com sucesso!")
+        except Exception as e:
+            messages.error(request, f"Ocorreu um erro ao salvar o agendamento: {e}")
+            return redirect("agendar_aula", professor_id=professor.id)
 
-    return render(request, 'agendamento.html', {'professor': professor, 'horarios': horarios})
+        return redirect("agendar_aula", professor_id=professor.id)
 
+    return render(request, "agendamento.html", {
+        "professor": professor,
+        "horarios": horarios,
+    })
  
