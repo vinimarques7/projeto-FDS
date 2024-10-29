@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     const selectedDateInput = document.getElementById('data-selecionada');
+
+    // Definir data mínima para hoje
+    const today = new Date().toISOString().split('T')[0];
+    selectedDateInput.setAttribute('min', today);
+
     const availableTimesElement = document.getElementById('available-times');
     const meioTransmissaoSelect = document.getElementById('meio-transmissao');
     const meioPagamentoSelect = document.getElementById('meio-pagamento');

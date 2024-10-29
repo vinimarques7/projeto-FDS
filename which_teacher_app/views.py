@@ -311,6 +311,9 @@ def agendar_aula(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
     horarios = Horario.objects.filter(professor=professor)
 
+    meios_transmissao = professor.comunicacao.split(',')  # Supondo que os meios sejam separados por vírgula
+    meios_pagamento = professor.recebimento.split(',')
+
     if request.method == "POST":
         data_selecionada = request.POST.get("data_selecionada")
         horarios_selecionados = request.POST.get("horarios_selecionados")
@@ -348,5 +351,7 @@ def agendar_aula(request, professor_id):
     return render(request, "agendamento.html", {
         "professor": professor,
         "horarios": horarios,
+        'meios_transmissao': meios_transmissao,
+        'meios_pagamento': meios_pagamento,
     })
  

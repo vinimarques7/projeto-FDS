@@ -47,16 +47,6 @@
                 <h5>Selecione a data:</h5>
                 <input type="date" id="data-selecionada" class="form-control mb-3" required>
 
-                <div class="time-slots">
-                    <h5>Horários disponíveis para <span id="selected-date"></span>:</h5>
-                    <div id="available-times">Selecione uma data para ver os horários.</div>
-                    <div id="horarios-data" data-horarios='[
-                        {% for horario in horarios %}
-                            {"dia": "{{ horario.dia_semana }}", "inicio": "{{ horario.hora_inicio|date:"H:i" }}", "fim": "{{ horario.hora_fim|date:"H:i" }}"}
-                            {% if not forloop.last %},{% endif %}
-                        {% endfor %}
-                    ]'></div>
-                </div>
 
                 <form method="POST" id="agendar-form">
                     {% csrf_token %}
@@ -67,18 +57,19 @@
                         <label for="meio-transmissao">Meio de Transmissão:</label>
                         <select id="meio-transmissao" name="meio_transmissao" class="form-control" required>
                             <option value="">Selecione um meio</option>
-                            <option value="Online">Online</option>
-                            <option value="Presencial">Presencial</option>
+                            {% for meio in meios_transmissao %}
+                                <option value="{{ meio }}">{{ meio }}</option>
+                            {% endfor %}
                         </select>
                     </div>
-
+                    
                     <div class="form-group">
                         <label for="meio-pagamento">Meio de Pagamento:</label>
                         <select id="meio-pagamento" name="meio_pagamento" class="form-control" required>
                             <option value="">Selecione um meio</option>
-                            <option value="Cartão">Cartão de Crédito/Débito</option>
-                            <option value="Transferência">Transferência Bancária</option>
-                            <option value="Dinheiro">Dinheiro</option>
+                            {% for pagamento in meios_pagamento %}
+                                <option value="{{ pagamento }}">{{ pagamento }}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
