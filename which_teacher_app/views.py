@@ -316,15 +316,11 @@ def agendar_aula(request, professor_id):
 
     if request.method == "POST":
         data_selecionada = request.POST.get("data_selecionada")
-        horarios_selecionados = request.POST.get("horarios_selecionados")
         meio_transmissao = request.POST.get("meio_transmissao")
         meio_pagamento = request.POST.get("meio_pagamento")
         comentarios = request.POST.get("comentarios")
 
         # Validação dos campos obrigatórios
-        if not data_selecionada or not horarios_selecionados:
-            messages.error(request, "O dia e o horário são obrigatórios para o agendamento.")
-            return redirect("agendar_aula", professor_id=professor.id)
 
         if not meio_transmissao or not meio_pagamento:
             messages.error(request, "A escolha do meio de transmissão e do meio de pagamento é obrigatória.")
@@ -336,7 +332,6 @@ def agendar_aula(request, professor_id):
                 professor=professor,
                 aluno=request.user,  # Certifique-se de que o usuário está autenticado
                 data=data_selecionada,
-                horario=horarios_selecionados,
                 meio_transmissao=meio_transmissao,
                 meio_pagamento=meio_pagamento,
                 comentarios=comentarios

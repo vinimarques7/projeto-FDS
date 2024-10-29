@@ -80,7 +80,6 @@ class Agendamento(models.Model):
     professor = models.ForeignKey("Professor", on_delete=models.CASCADE)
     aluno = models.ForeignKey(User, on_delete=models.CASCADE)  # ou seu modelo de usuário
     data = models.DateField()
-    horario = models.CharField(max_length=255)  # Pode armazenar os horários selecionados em um formato serializado, como JSON
     meio_transmissao = models.CharField(max_length=50)
     meio_pagamento = models.CharField(max_length=50)
     comentarios = models.TextField(blank=True, null=True)

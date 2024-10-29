@@ -114,16 +114,6 @@
                     <div class="bio-row">
                         <p><span>Celular </span>: {{ professor.celular }}</p>
                     </div>
-                    <div class="bio-row">
-                        <p><span>Horários</span>Disponiveis</p>
-                        <ul>
-                            {% for horario in horarios %}
-                            <li>{{ horario.dia_semana }} - {{ horario.hora_inicio|date:"H:i" }} até {{ horario.hora_fim|date:"H:i" }}</li>
-                            {% empty %}
-                            <li>Nenhum horário disponível.</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
