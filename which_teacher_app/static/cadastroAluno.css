@@ -112,3 +112,17 @@ input[type='range']::-ms-thumb {
 	font-size: 16px;
 	transition: left 0.1s ease; /* Suaviza o movimento */
 }
+/* Estilo do botão de dropdown para Forma de Pagamento */
+.payment-dropdown {
+	background-color: #6a0dad; /* Cor de fundo roxa */
+	border: none;
+	border-radius: 10px; /* Deixa os cantos levemente arredondados */
+	color: #fff;
+	padding: 10px 20px;
+	text-align: left;
+	font-size: 1rem;
+}
+
+.payment-dropdown::after {
+	margin-right: 10px;
+}
