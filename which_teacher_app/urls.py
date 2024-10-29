@@ -15,6 +15,7 @@ urlpatterns = [
     path('editarP/', views.editarP, name='editarP'),
     path('publicoP/<int:professor_id>/', views.publicoP, name='publicoP'),
     path('agendar_aula/<int:professor_id>/', views.agendar_aula, name='agendar_aula'),
+    path('agendar_sucesso/<int:professor_id>/', views.agendar_sucesso, name='agendar_sucesso'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

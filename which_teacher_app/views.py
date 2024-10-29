@@ -4,6 +4,7 @@ from .models import Professor, Horario, Aluno, Turma, Lembrete, Avaliacao,Agenda
 from django.contrib import messages
 from datetime import datetime
 
+
 def cadastro_professor(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
@@ -303,7 +304,7 @@ def cadastroP(request):
     return render(request, 'cadastroProfessor.html')
 
 def busca(request):
-    professores = Professor.objects.all()
+    professores = Professor.objects.all()  
     return render(request, 'busca.html', {'professores': professores})
 
 
@@ -342,16 +343,24 @@ def agendar_aula(request, professor_id):
                 comentarios=comentarios
             )
             messages.success(request, "Agendamento realizado com sucesso!")
+            return redirect("agendar_sucesso", professor_id=professor.id)  # Redireciona para a página de sucesso
         except Exception as e:
             messages.error(request, f"Ocorreu um erro ao salvar o agendamento: {e}")
             return redirect("agendar_aula", professor_id=professor.id)
 
-        return redirect("agendar_aula", professor_id=professor.id)
-
     return render(request, "agendamento.html", {
         "professor": professor,
         "horarios": horarios,
-        'meios_transmissao': meios_transmissao,
-        'meios_pagamento': meios_pagamento,
+        "meios_transmissao": meios_transmissao,
+        "meios_pagamento": meios_pagamento,
+    })
+
+
+def agendar_sucesso(request, professor_id):
+    # Aqui você pode passar informações do professor para a template, se necessário
+    professor = get_object_or_404(Professor, id=professor_id)
+    
+    return render(request, "agendar_sucesso.html", {
+        "professor": professor,
     })
  
