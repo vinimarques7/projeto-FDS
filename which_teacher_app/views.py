@@ -1,6 +1,6 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Professor, Horario, Aluno, Turma, Lembrete, Avaliacao,Agendamento
+from .models import Professor, Aluno, Turma, Lembrete, Avaliacao,Agendamento
 from django.contrib import messages
 from datetime import datetime
 
@@ -66,7 +66,6 @@ def loginP(request):
 def perfilP(request):
     professor_id = request.session.get('professor_id')
     professor = Professor.objects.get(id=professor_id)
-    horarios = professor.horarios.all()
 
     alunos = Aluno.objects.all()
     turmas = Turma.objects.filter(professor=professor)
@@ -125,7 +124,6 @@ def perfilP(request):
 
     return render(request, 'perfilProfessor.html', {
         'professor': professor,
-        'horarios': horarios,
         'alunos': alunos,
         'lembretes': lembretes,
         'turmas': turmas  # Passar as turmas para o template
@@ -194,14 +192,6 @@ def editarP(request):
     professor = get_object_or_404(Professor, id=professor_id)
 
     if request.method == 'POST':
-        # Verificando se o botão de remover horário foi acionado
-        if 'remover_horario_id' in request.POST:
-            horario_id = request.POST.get('remover_horario_id')
-            horario = get_object_or_404(Horario, id=horario_id, professor=professor)
-            horario.delete()
-            messages.success(request, 'Horário removido com sucesso!')
-            return redirect('editarP')
-
         # Atualizando os campos do professor
         professor.nome = request.POST.get('nome')
         professor.email = request.POST.get('email')
@@ -222,27 +212,14 @@ def editarP(request):
         if 'imagem' in request.FILES:
             professor.imagem = request.FILES['imagem']
 
-        # Adicionando novo horário
-        if 'dia_semana' in request.POST and 'hora_inicio' in request.POST and 'hora_fim' in request.POST:
-            dia_semana = request.POST.get('dia_semana')
-            hora_inicio = request.POST.get('hora_inicio')
-            hora_fim = request.POST.get('hora_fim')
-            try:
-                Horario.objects.create(professor=professor, dia_semana=dia_semana, hora_inicio=hora_inicio, hora_fim=hora_fim)
-                messages.success(request, 'Horário adicionado com sucesso!')
-                return redirect('editarP')
-            except Exception as e:
-                messages.error(request, 'Erro ao adicionar horário: ' + str(e))
 
         # Salvando o professor com as alterações feitas
         professor.save()
         messages.success(request, 'Perfil atualizado com sucesso!')
         return redirect('perfilP')
 
-    # Carregar os horários do professor
-    horarios = professor.horarios.all()
 
-    return render(request, 'editarPerfil.html', {'professor': professor, 'horarios': horarios})
+    return render(request, 'editarPerfil.html', {'professor': professor})
 
 
 
@@ -288,14 +265,12 @@ def publicoP(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
     
     # Obtenha todos os horários associados ao professor
-    horarios = Horario.objects.filter(professor=professor)
     turmas= Turma.objects.filter(professor=professor)
      # Exemplo para carregar turmas, caso necessário
 
     # Renderize o template com o professor, os horários e as turmas
     return render(request, 'perfilpublicoP.html', {
         'professor': professor,
-        'horarios': horarios,
         'turmas': turmas
     })
    
@@ -310,7 +285,6 @@ def busca(request):
 
 def agendar_aula(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
-    horarios = Horario.objects.filter(professor=professor)
 
     meios_transmissao = professor.comunicacao.split(',')  # Supondo que os meios sejam separados por vírgula
     meios_pagamento = professor.recebimento.split(',')
@@ -345,7 +319,6 @@ def agendar_aula(request, professor_id):
 
     return render(request, "agendamento.html", {
         "professor": professor,
-        "horarios": horarios,
         "meios_transmissao": meios_transmissao,
         "meios_pagamento": meios_pagamento,
     })
