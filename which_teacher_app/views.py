@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Professor, Horario, Aluno, Turma, Lembrete, Avaliacao,Agendamento
 from django.contrib import messages
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 
 def cadastro_professor(request):
@@ -304,15 +305,21 @@ def cadastroP(request):
     return render(request, 'cadastroProfessor.html')
 
 def busca(request):
-    professores = Professor.objects.all()  
-    return render(request, 'busca.html', {'professores': professores})
+    professores = Professor.objects.all()
+    aluno_id = request.session.get('aluno_id')
+    aluno = None
+
+    if aluno_id:
+        aluno = get_object_or_404(Aluno, id=aluno_id)
+    
+    return render(request, 'busca.html', {'professores': professores, 'aluno': aluno})
+
 
 
 def agendar_aula(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
     horarios = Horario.objects.filter(professor=professor)
-
-    meios_transmissao = professor.comunicacao.split(',')  # Supondo que os meios sejam separados por vírgula
+    meios_transmissao = professor.comunicacao.split(',')
     meios_pagamento = professor.recebimento.split(',')
 
     if request.method == "POST":
@@ -322,23 +329,21 @@ def agendar_aula(request, professor_id):
         comentarios = request.POST.get("comentarios")
 
         # Validação dos campos obrigatórios
-
         if not meio_transmissao or not meio_pagamento:
             messages.error(request, "A escolha do meio de transmissão e do meio de pagamento é obrigatória.")
             return redirect("agendar_aula", professor_id=professor.id)
 
-        # Salvando o agendamento
         try:
             Agendamento.objects.create(
                 professor=professor,
-                aluno=request.user,  # Certifique-se de que o usuário está autenticado
+                aluno=request.user,
                 data=data_selecionada,
                 meio_transmissao=meio_transmissao,
                 meio_pagamento=meio_pagamento,
                 comentarios=comentarios
             )
             messages.success(request, "Agendamento realizado com sucesso!")
-            return redirect("agendar_sucesso", professor_id=professor.id)  # Redireciona para a página de sucesso
+            return redirect("agendar_sucesso", professor_id=professor.id)
         except Exception as e:
             messages.error(request, f"Ocorreu um erro ao salvar o agendamento: {e}")
             return redirect("agendar_aula", professor_id=professor.id)

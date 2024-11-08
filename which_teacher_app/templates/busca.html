@@ -1,246 +1,299 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		{% load static %}
-		<link
-			rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		/>
-		<link rel="stylesheet" href="{% static 'busca.css' %}" />
-		<title>WhichTeacher</title>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'busca.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>WhichTeacher - Página Principal do Aluno</title>
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .card {
+        transition: transform 0.2s;
+        border: none;
+        border-radius: 15px;
+      }
+      .card:hover {
+        transform: scale(1.05);
+      }
+      .filters {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .professor-card {
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+      .navbar {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .welcome-section {
+        padding: 40px;
+        background-color: #e8eaf6;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .card-body {
+        text-align: left;
+      }
+      .card-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+      .rating i {
+        color: #ffc107;
+      }
+      .rating span {
+        margin-left: 5px;
+        font-size: 0.9rem;
+        color: #6c757d;
+      }
+      .badge-custom {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #6f42c1;
+        color: #fff;
+        font-size: 0.8rem;
+        padding: 5px 10px;
+        border-radius: 15px;
+      }
+      .price-info {
+        font-weight: bold;
+        color: #28a745;
+      }
+      .location-info {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+      .card-footer {
+        background-color: #fff;
+        border-top: none;
+      }
+      @media (max-width: 768px) {
+        .welcome-section {
+          padding: 20px;
+        }
+        .card-body {
+          padding: 15px;
+        }
+        .navbar-nav {
+          text-align: center;
+        }
+        .filters {
+          margin-bottom: 20px;
+        }
+        .filters h5, .filters h6 {
+          font-size: 1rem;
+        }
+        .d-flex {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .d-flex input {
+          margin-bottom: 10px;
+        }
+        .btn {
+          margin-bottom: 10px;
+        }
+      }
+    </style>
+  </head>
 
-	<body class="teachers-regular">
-		{% if messages %}
-		<div
-			class="alert alert-info alert-dismissible fade show"
-			role="alert"
-			style="opacity: 1 !important; visibility: visible !important"
-		>
-			{% for message in messages %}
-			<strong>Aviso:</strong> {{ message }}
-			<button
-				type="button"
-				class="btn-close"
-				data-bs-dismiss="alert"
-				aria-label="Close"
-			></button>
-			{% endfor %}
-		</div>
-		{% endif %}
-		<header
-			class="container d-flex justify-content-between align-items-center py-3"
-		>
-			<div class="logo">
-				<a href="#" class="navbar-brand">
-					<span class="text-black">Which</span
-					><span class="text-purple">Teacher</span>
-				</a>
-			</div>
-			<nav class="menu-desktop">
-				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Sobre</a></li>
-					<li><a href="#">Contatos</a></li>
-					<li><a href="#">Serviços</a></li>
-				</ul>
-			</nav>
-			<div class="menu-abrir" id="menu-abrir">
-				<img src="{% static 'menu-line.svg' %}" alt="" />
-			</div>
-			<div class="menu-mobile" id="menu-mobile">
-				<div class="menu-fechar">
-					<img src="{% static 'close-large-line.svg' %}" alt="" />
-				</div>
-				<nav class="mobile">
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Sobre</a></li>
-						<li><a href="#">Contatos</a></li>
-						<li><a href="#">Serviços</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+  <body class="teachers-regular">
+    {% if messages %}
+    <div
+      class="alert alert-info alert-dismissible fade show"
+      role="alert"
+      style="opacity: 1 !important; visibility: visible !important"
+    >
+      {% for message in messages %}
+      <strong>Aviso:</strong> {{ message }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+      {% endfor %}
+    </div>
+    {% endif %}
 
-		<div class="imagem w-100">
-			<img src="{% static 'busca.svg' %}" class="img-fluid" alt="banner" />
-		</div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">WhichTeacher</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Minhas Aulas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Notificações</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sair</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-		<div class="container mt-5">
-			<div class="row">
-				<div class="col-md-6 offset-md-3">
-					<!-- Filter Section -->
-					<!-- Carrossel -->
-					<div
-						id="professorCarousel"
-						class="carousel slide mt-5"
-						data-ride="carousel"
-					>
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<div class="d-flex justify-content-center">
-									<img
-										src="https://via.placeholder.com/300"
-										class="d-block w-50"
-										alt="Professor A"
-									/>
-								</div>
-								<div class="carousel-caption d-none d-md-block">
-									<h5>Professor A</h5>
-									<p>Especialista em Matemática e Ciências.</p>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<div class="d-flex justify-content-center">
-									<img
-										src="https://via.placeholder.com/300"
-										class="d-block w-50"
-										alt="Professor B"
-									/>
-								</div>
-								<div class="carousel-caption d-none d-md-block">
-									<h5>Professor B</h5>
-									<p>Professor de Línguas e Literatura.</p>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<div class="d-flex justify-content-center">
-									<img
-										src="https://via.placeholder.com/300"
-										class="d-block w-50"
-										alt="Professor C"
-									/>
-								</div>
-								<div class="carousel-caption d-none d-md-block">
-									<h5>Professor C</h5>
-									<p>Experiente em História e Geografia.</p>
-								</div>
-							</div>
-						</div>
-						<a
-							class="carousel-control-prev"
-							href="#professorCarousel"
-							role="button"
-							data-slide="prev"
-						>
-							<span
-								class="carousel-control-prev-icon"
-								aria-hidden="true"
-							></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a
-							class="carousel-control-next"
-							href="#professorCarousel"
-							role="button"
-							data-slide="next"
-						>
-							<span
-								class="carousel-control-next-icon"
-								aria-hidden="true"
-							></span>
-							<span class="sr-only">Next</span>
-						</a>
-					</div>
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <!-- Filtro Lateral -->
+        <div class="col-lg-3 mb-4 mb-lg-0">
+          <div class="filters">
+            <h5 class="mb-4">Filtro</h5>
+            
+            <h6 class="mb-3 mt-4">Matérias:</h6>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input filtro-materia" id="materiaPortugues" value="Português">
+              <label class="form-check-label" for="materiaPortugues">Português</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input filtro-materia" id="materiaIngles" value="Inglês">
+              <label class="form-check-label" for="materiaIngles">Inglês</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input filtro-materia" id="materiaMatematica" value="Matemática">
+              <label class="form-check-label" for="materiaMatematica">Matemática</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input filtro-materia" id="materiaFisica" value="Física">
+              <label class="form-check-label" for="materiaFisica">Física</label>
+            </div>
+            <h6 class="mb-3 mt-4">Taxa:</h6>
+      <input type="range" class="form-range custom-range" id="filtro-taxa" min="0" max="100">
+      <div class="d-flex justify-content-between mt-2">
+        <span>R$0</span>
+        <span>R$100+</span>
+      </div>
+      
+      
+          </div>
+        </div>
 
-					<!-- Substituir o Dropdown de Matérias pelo Menu de Rolagem -->
-					<div class="scrolling-wrapper-container">
-						<div class="scroll-arrow">
-							<button class="scroll-left">
-								<span>&lt;</span>
-								<!-- Seta para a esquerda -->
-							</button>
-						</div>
+        <!-- Área Principal de Professores -->
+        <div class="col-lg-9">
+          <div class="welcome-section">
+            <h2 class="mb-4">Bem-vindo, {{ aluno.nome }}!</h2> 
+            <p class="mb-4">Encontre o professor ideal para sua jornada de aprendizado.</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-3 mt-4 flex-wrap">
+            <input type="text" class="form-control w-100 w-md-50 mb-2 mb-md-0" placeholder="Pesquisar" id="pesquisar-professores">
+            <div class="btn-group">
+              <button class="btn btn-outline-secondary">Novo</button>
+              <button class="btn btn-outline-secondary">Maior Preço</button>
+              <button class="btn btn-outline-secondary">Menor Preço</button>
+              <button class="btn btn-outline-secondary">Avaliação</button>
+            </div>
+          </div>
+          <div class="row" id="item-list">
+            {% for professor in professores %}
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4 professor-item" data-type="{{ professor.nivel_ensino }} {{ professor.materia }}">
+              <div class="card h-100 professor-card">
+                <a href="{% url 'publicoP' professor.id %}">
+                  <div style="position: relative; overflow: hidden; border-radius: 15px;">
+                    {% if professor.imagem %}
+                    <img src="{{ professor.imagem.url }}" alt="Imagem do professor" class="card-img-top" style="height: 250px; width: 100%; object-fit: cover;" />
+                    {% else %}
+                    <img src="{% static 'usuario_default.png' %}" alt="Imagem padrão" class="card-img-top" style="height: 250px; width: 100%; object-fit: cover;" />
+                    {% endif %}
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ professor.nome }}</h5>
+                    <p class="location-info">{{ professor.localizacao }}</p>
+                    <div class="rating">
+                      <i class="fas fa-star"></i> <span>5 (18 avaliações)</span>
+                    </div>
+                    <p class="card-text">Matérias: {{ professor.materia }}</p>
+                    <p class="card-text">{{ professor.descricao }}</p>
+                  </div>
+                  <div class="card-footer d-flex justify-content-between align-items-center">
+                    <p class="price-info">R${{ professor.taxa }}/h</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="alert alert-warning text-center" id="no-teachers-message" style="display: none">
+            Nenhum professor encontrado para a materia selecionada.
+          </div>
+        </div>
+      </div>
+    </div>
 
-						<div class="scrolling-wrapper">
-							<div class="scroll-item">
-								<button class="filter-btn" data-subject="Português">
-									<p>Português</p>
-								</button>
-							</div>
-							<div class="scroll-item">
-								<button class="filter-btn" data-subject="Inglês">
-									<p>Inglês</p>
-								</button>
-							</div>
-							<div class="scroll-item">
-								<button class="filter-btn" data-subject="Matemática">
-									<p>Matemática</p>
-								</button>
-							</div>
-							<div class="scroll-item">
-								<button class="filter-btn" data-subject="Física">
-									<p>Física</p>
-								</button>
-								<!-- Adicione mais matérias conforme necessário -->
-							</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      // Filtragem por Matérias
+      document.querySelectorAll(".filtro-materia").forEach(function (checkbox) {
+        checkbox.addEventListener("change", function () {
+          filtrarProfessores();
+        });
+      });
 
-							<div class="scroll-arrow">
-								<button class="scroll-right">
-									<span>&gt;</span>
-									<!-- Seta para a direita -->
-								</button>
-							</div>
-						</div>
-					</div>
+      function filtrarProfessores() {
+        const selectedSubjects = Array.from(document.querySelectorAll(".filtro-materia:checked")).map(function (checkbox) {
+          return checkbox.value.toLowerCase();
+        });
 
-					<!-- Cards Section -->
-					<div class="row" id="item-list">
-						{% for professor in professores %}
-						<div
-							class="col-md-3 mb-3"
-							data-type="{{ professor.nivel_ensino }} {{ professor.materia }}"
-						>
-							<a href="{% url 'publicoP' professor.id %}">
-								<div class="card horizontal-card">
-									<div class="row no-gutters">
-										<!-- Imagem do professor -->
-										<img
-											src="{{ professor.imagem }}"
-											class="card-img-left rounded-circle"
-											alt="Imagem de perfil de {{ professor.nome }}"
-											style="
-												width: 100px;
-												height: 100px;
-												margin-right: 100px;
-												margin-top: 18px;
-											"
-										/>
+        const items = document.querySelectorAll("#item-list .professor-item");
+        let visibleCount = 0;
 
-										<div class="col">
-											<div class="card-body">
-												<h5 class="card-title">{{ professor.nome }}</h5>
-												<span class="badge badge-primary"
-													>{{ professor.materia }}</span
-												>
-												<p class="card-text">
-													Nível de Ensino: {{ professor.nivel_ensino }}
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						{% endfor %}
-					</div>
-					<div
-						class="alert alert-warning"
-						id="no-teachers-message"
-						style="display: none"
-					>
-						Nenhum professor encontrado para a matéria selecionada.
-					</div>
-				</div>
-			</div>
-		</div>
+        items.forEach(function (item) {
+          const subject = item.getAttribute("data-type").toLowerCase();
+          const matchesSubject = selectedSubjects.length === 0 || selectedSubjects.some(function (selected) {
+            return subject.includes(selected);
+          });
 
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<script src="{% static 'busca.js' %}"></script>
-	</body>
+          if (matchesSubject) {
+            item.style.display = "block";
+            visibleCount++;
+          } else {
+            item.style.display = "none";
+          }
+        });
+
+        document.getElementById("no-teachers-message").style.display = visibleCount === 0 ? "block" : "none";
+      }
+    </script>
+  </body>
 </html>
