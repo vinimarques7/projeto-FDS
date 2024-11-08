@@ -1,9 +1,11 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Professor, Aluno, Turma, Lembrete, Avaliacao,Agendamento
+from .models import Professor, Horario, Aluno, Turma, Lembrete, Review
 from django.contrib import messages
-from datetime import datetime
+from django.db.models import Avg
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+
 
 
 def cadastro_professor(request):
@@ -18,10 +20,10 @@ def cadastro_professor(request):
         comunicacao = request.POST.getlist('comunicacao')
         genero = request.POST.get('genero')
 
-
        # Verifica se o email já está cadastrado
         if Professor.objects.filter(email=email).exists():
-            messages.error(request, 'Este email já está cadastrado. Por favor, utilize outro email.')
+            messages.error(
+                request, 'Este email já está cadastrado. Por favor, utilize outro email.')
             return render(request, 'cadastroProfessor.html')
 
         # Criação do novo professor
@@ -39,23 +41,21 @@ def cadastro_professor(request):
         )
         professor.save()
 
-
         # Redireciona para a página de login
         return redirect('loginP')
 
     return render(request, 'cadastroProfessor.html')
 
 
-
 def loginP(request):
     if request.method == 'POST':
         email = request.POST.get('loginEmail')
         senha = request.POST.get('loginSenha')
-        
+
         try:
             professor = Professor.objects.get(email=email)
             if professor.senha == senha:
-                request.session['professor_id'] = professor.id
+                request.user['professor_id'] = professor.id
                 return redirect('perfilP')
             messages.error(request, 'Senha incorreta')
         except Professor.DoesNotExist:
@@ -65,8 +65,9 @@ def loginP(request):
 
 
 def perfilP(request):
-    professor_id = request.session.get('professor_id')
+    professor_id = request.user.get('professor_id')
     professor = Professor.objects.get(id=professor_id)
+    horarios = professor.horarios.all()
 
     alunos = Aluno.objects.all()
     turmas = Turma.objects.filter(professor=professor)
@@ -78,9 +79,11 @@ def perfilP(request):
             if lembrete_texto:
                 try:
                     Lembrete.objects.create(texto=lembrete_texto)
-                    messages.success(request, 'Lembrete adicionado com sucesso!')
+                    messages.success(
+                        request, 'Lembrete adicionado com sucesso!')
                 except Exception as e:
-                    messages.error(request, 'Erro ao adicionar lembrete: ' + str(e))
+                    messages.error(
+                        request, 'Erro ao adicionar lembrete: ' + str(e))
             return redirect('perfilP')
 
         # Lógica para deletar lembretes
@@ -101,7 +104,8 @@ def perfilP(request):
             alunos_ids = request.POST.getlist('alunos')
             if nome_turma and materia and alunos_ids:
                 try:
-                    turma = Turma.objects.create(nome=nome_turma, materia=materia, professor=professor)
+                    turma = Turma.objects.create(
+                        nome=nome_turma, materia=materia, professor=professor)
                     alunos = Aluno.objects.filter(id__in=alunos_ids)
                     turma.alunos.set(alunos)
                     turma.save()
@@ -125,12 +129,11 @@ def perfilP(request):
 
     return render(request, 'perfilProfessor.html', {
         'professor': professor,
+        'horarios': horarios,
         'alunos': alunos,
         'lembretes': lembretes,
         'turmas': turmas  # Passar as turmas para o template
     })
-
-
 
 
 def cadastro_aluno(request):
@@ -144,7 +147,8 @@ def cadastro_aluno(request):
         genero = request.POST.get('genero')
 
         if Aluno.objects.filter(email=email).exists():
-            messages.error(request, 'Este email já está cadastrado. Por favor, utilize outro email.')
+            messages.error(
+                request, 'Este email já está cadastrado. Por favor, utilize outro email.')
             return render(request, 'cadastroAluno.html')
 
         aluno = Aluno(
@@ -161,21 +165,21 @@ def cadastro_aluno(request):
     return render(request, 'cadastroAluno.html')
 
 
-
 def loginA(request):
     if request.method == 'POST':
         email = request.POST.get('loginEmail')
         senha = request.POST.get('loginSenha')
-        
+
         try:
             aluno = Aluno.objects.get(email=email)
             if aluno.senha == senha:
-                request.session['aluno_id'] = aluno.id
+                request.user['aluno_id'] = aluno.id
                 return redirect('busca')
             messages.error(request, 'Senha incorreta')
         except Aluno.DoesNotExist:
             messages.error(request, 'Email não encontrado')
     return render(request, 'loginAluno.html')
+
 
 def criar_turma(request):
     if request.method == 'POST':
@@ -188,24 +192,36 @@ def criar_turma(request):
             turma.save()
         return redirect('perfil_professor')
 
+
 def editarP(request):
-    professor_id = request.session.get('professor_id')
+    professor_id = request.user.get('professor_id')
     professor = get_object_or_404(Professor, id=professor_id)
 
     if request.method == 'POST':
+        # Verificando se o botão de remover horário foi acionado
+        if 'remover_horario_id' in request.POST:
+            horario_id = request.POST.get('remover_horario_id')
+            horario = get_object_or_404(
+                Horario, id=horario_id, professor=professor)
+            horario.delete()
+            messages.success(request, 'Horário removido com sucesso!')
+            return redirect('editarP')
+
         # Atualizando os campos do professor
         professor.nome = request.POST.get('nome')
         professor.email = request.POST.get('email')
-        
+
         # Capturando as matérias selecionadas no formulário
         materias_selecionadas = request.POST.getlist('materia')
-        
+
         if materias_selecionadas:
             # Atualizar as matérias somente se houver seleção
-            professor.materia = ','.join(materias_selecionadas)  # Converte a lista de matérias em string
+            # Converte a lista de matérias em string
+            professor.materia = ','.join(materias_selecionadas)
         else:
             # Preservar as matérias atuais se não houver novas seleções
-            messages.info(request, 'Nenhuma matéria selecionada, as matérias anteriores foram mantidas.')
+            messages.info(
+                request, 'Nenhuma matéria selecionada, as matérias anteriores foram mantidas.')
 
         professor.celular = request.POST.get('celular')
 
@@ -213,130 +229,83 @@ def editarP(request):
         if 'imagem' in request.FILES:
             professor.imagem = request.FILES['imagem']
 
+        # Adicionando novo horário
+        if 'dia' in request.POST and 'hora_inicio' in request.POST and 'hora_fim' in request.POST:
+            dia = request.POST.get('dia')
+            hora_inicio = request.POST.get('hora_inicio')
+            hora_fim = request.POST.get('hora_fim')
+            try:
+                Horario.objects.create(
+                    professor=professor, dia=dia, hora_inicio=hora_inicio, hora_fim=hora_fim)
+                messages.success(request, 'Horário adicionado com sucesso!')
+                return redirect('editarP')
+            except Exception as e:
+                messages.error(request, 'Erro ao adicionar horário: ' + str(e))
 
         # Salvando o professor com as alterações feitas
         professor.save()
         messages.success(request, 'Perfil atualizado com sucesso!')
         return redirect('perfilP')
 
+    # Carregar os horários do professor
+    horarios = professor.horarios.all()
 
-    return render(request, 'editarPerfil.html', {'professor': professor})
-
-
+    return render(request, 'editarPerfil.html', {'professor': professor, 'horarios': horarios})
 
 
 def home(request):
     return render(request, 'landingPage.html')
 
-def avaliacao(request):
-    aluno_id = request.session.get('aluno_id')
-    if aluno_id:
-        aluno = Aluno.objects.get(id=aluno_id)
-        nome_aluno = aluno.nome
-    if request.method == 'POST':
-        estrelas = request.POST.get('rating')
-        comentario = request.POST.get('comentario')
-    success_message = None
-
-    estrelas = None
-    comentario = None
-    
-    if request.method == 'POST':
-        estrelas = request.POST.get('rating')
-        comentario = request.POST.get('comentario')
-
-        avaliacao = Avaliacao(
-            estrelas=estrelas,
-            comentario=comentario,
-            id_aluno=aluno_id,
-            nome_aluno=nome_aluno
-        )
-        avaliacao.save()  
-
-
-        success_message = "Avaliação enviada com sucesso!"
-    else:
-        return redirect('LoginA')
-
-
-
-    return render(request, 'avaliacao.html', {'aluno': aluno, 'success_message': success_message})
 
 def publicoP(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
-    
-    # Obtenha todos os horários associados ao professor
-    turmas= Turma.objects.filter(professor=professor)
-     # Exemplo para carregar turmas, caso necessário
+    reviews = professor.reviews.all()
+    average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
 
-    # Renderize o template com o professor, os horários e as turmas
-    return render(request, 'perfilpublicoP.html', {
+    context = {
         'professor': professor,
-        'turmas': turmas
-    })
-   
+        'reviews': reviews,
+        'average_rating': round(average_rating, 1)
+    }
+    return render(request, 'perfilpublicoP.html', context)
 
-def cadastroP(request):
-    return render(request, 'cadastroProfessor.html')
 
 def busca(request):
     professores = Professor.objects.all()
-    aluno_id = request.session.get('aluno_id')
-    aluno = None
-
-    if aluno_id:
-        aluno = get_object_or_404(Aluno, id=aluno_id)
-    
-    return render(request, 'busca.html', {'professores': professores, 'aluno': aluno})
+    return render(request, 'busca.html', {'professores': professores})
 
 
 
-def agendar_aula(request, professor_id):
+def avaliar(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
-    horarios = Horario.objects.filter(professor=professor)
-    meios_transmissao = professor.comunicacao.split(',')
-
-    meios_transmissao = professor.comunicacao.split(',')  # Supondo que os meios sejam separados por vírgula
-    meios_pagamento = professor.recebimento.split(',')
 
     if request.method == "POST":
-        data_selecionada = request.POST.get("data_selecionada")
-        meio_transmissao = request.POST.get("meio_transmissao")
-        meio_pagamento = request.POST.get("meio_pagamento")
-        comentarios = request.POST.get("comentarios")
+        rating = request.POST.get("rating")  # Nota fornecida pelo aluno
+        comment = request.POST.get("comment", "").strip()  # Comentário opcional
 
-        # Validação dos campos obrigatórios
-        if not meio_transmissao or not meio_pagamento:
-            messages.error(request, "A escolha do meio de transmissão e do meio de pagamento é obrigatória.")
-            return redirect("agendar_aula", professor_id=professor.id)
+        # Garantir que a nota tenha sido fornecida
+        if rating is None or rating == '':
+            messages.error(request, 'Você deve atribuir uma nota para o professor.')
+            return render(request, 'avaliacao.html', {'professor': professor})
 
-        try:
-            Agendamento.objects.create(
+        rating = int(rating)  # Converte a nota para inteiro
+
+        if 1 <= rating <= 5:  # Valida se a nota está entre 1 e 5
+            # Tenta atualizar ou criar uma avaliação para o professor e aluno
+            review, created = Review.objects.update_or_create(
+                aluno=request.user,  # Aluno logado
                 professor=professor,
-                aluno=request.user,
-                data=data_selecionada,
-                meio_transmissao=meio_transmissao,
-                meio_pagamento=meio_pagamento,
-                comentarios=comentarios
+                defaults={'rating': rating, 'comment': comment}
             )
-            messages.success(request, "Agendamento realizado com sucesso!")
-            return redirect("agendar_sucesso", professor_id=professor.id)
-        except Exception as e:
-            messages.error(request, f"Ocorreu um erro ao salvar o agendamento: {e}")
-            return redirect("agendar_aula", professor_id=professor.id)
 
-    return render(request, "agendamento.html", {
-        "professor": professor,
-        "meios_transmissao": meios_transmissao,
-        "meios_pagamento": meios_pagamento,
-    })
+            if created:
+                messages.success(request, 'Avaliação enviada com sucesso!')
+            else:
+                messages.success(request, 'Avaliação atualizada com sucesso!')
+            return redirect('perfilP')  # Redireciona para a página de perfil após sucesso
+        else:
+            messages.error(request, 'Nota inválida. A nota deve ser entre 1 e 5.')
 
+        return render(request, 'avaliacao.html', {'professor': professor})
 
-def agendar_sucesso(request, professor_id):
-    # Aqui você pode passar informações do professor para a template, se necessário
-    professor = get_object_or_404(Professor, id=professor_id)
-    
-    return render(request, "agendar_sucesso.html", {
-        "professor": professor,
-    })
- 
+    return render(request, 'avaliacao.html', {'professor': professor})
