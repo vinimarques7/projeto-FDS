@@ -1,0 +1,84 @@
+/* Estilo geral */
+body {
+	background-color: #a885d843;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+/* Seção de Cadastro */
+.cadastro-section {
+	background-color: #a885d8;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 100vh;
+	position: relative;
+	clip-path: ellipse(80% 80% at 0% 10%); /* Adicionando a curva mais suave */
+}
+
+.cadastro-section h3 {
+	font-weight: bold;
+}
+
+.cadastro-section img {
+	max-width: 150px;
+}
+
+/* Seção de Login */
+.login-box {
+	background-color: transparent;
+}
+
+.login-box h2 {
+	font-weight: bold;
+	color: black;
+}
+
+.form-control {
+	background-color: #a885d843;
+	border: none;
+	padding: 10px;
+	border-radius: 55px;
+	width: 500px;
+}
+
+.form-control:focus {
+	box-shadow: none;
+	border-color: #512da8;
+}
+
+.btn-primary {
+	background-color: #512da8;
+	border: none;
+	color: white;
+	border-radius: 49px;
+	width: 200px; /* Defina o tamanho desejado */
+	height: 40px; /* Defina a altura desejada */
+	font-size: 16px; /* Ajuste o tamanho da fonte, se necessário */
+	display: block; /* Para garantir que o botão se comporte como um bloco */
+	margin: 0 auto; /* Centraliza o botão se precisar */
+}
+
+.btn-primary:hover {
+	background-color: #673ab7;
+}
+
+/* Estilo do botão de cadastro */
+.btn-outline-secondary {
+	background: transparent;
+	border: 2px solid white;
+	color: white;
+	transition: all 0.3s ease; /* Adiciona uma transição suave */
+	border-radius: 49px;
+}
+
+.btn-outline-secondary:hover {
+	background-color: transparent;
+	color: black;
+	border-color: white;
+}

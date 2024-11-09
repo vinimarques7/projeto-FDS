@@ -1,2 +1,32 @@
+# Ambientes Virtuais
 /.venv
+/venv
+
+# Arquivos de Banco de Dados
 /db.sqlite3
+
+# Arquivos de Configuração do Editor
+.vscode/
+
+# Arquivos de Log
+*.log
+
+# Arquivos de Cache do Python
+__pycache__/
+*.py[cod]
+
+# Arquivos de Configuração do Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de Dependências
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Arquivos de Ambiente
+
+.env
+
+# Arquivos de Migrations
+which_teacher_app/migrations
+
