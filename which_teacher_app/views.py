@@ -414,8 +414,12 @@ def perfil_aluno(request):
         if 'novo_objetivo' in request.POST:
             descricao = request.POST.get('novo_objetivo')
             if descricao:
-                ObjetivoEstudo.objects.create(aluno=aluno, descricao=descricao)
-                messages.success(request, "Objetivo de estudo adicionado com sucesso!")
+                # Verifica se o objetivo já existe para o aluno
+                if ObjetivoEstudo.objects.filter(aluno=aluno, descricao=descricao).exists():
+                    messages.error(request, "Este objetivo de estudo já foi adicionado.")
+                else:
+                    ObjetivoEstudo.objects.create(aluno=aluno, descricao=descricao)
+                    messages.success(request, "Objetivo de estudo adicionado com sucesso!")
             else:
                 messages.error(request, "Por favor, insira uma descrição para o objetivo de estudo.")
             return redirect('perfil_aluno')  # Redireciona após o POST
@@ -434,8 +438,12 @@ def perfil_aluno(request):
             descricao_tarefa = request.POST.get('nova_tarefa')
             objetivo = get_object_or_404(ObjetivoEstudo, id=objetivo_id, aluno=aluno)
             if descricao_tarefa:
-                TarefaObjetivo.objects.create(objetivo=objetivo, descricao=descricao_tarefa)
-                messages.success(request, "Tarefa adicionada ao objetivo de estudo!")
+                # Verifica se a tarefa já existe para o objetivo
+                if TarefaObjetivo.objects.filter(objetivo=objetivo, descricao=descricao_tarefa).exists():
+                    messages.error(request, "Esta tarefa já foi adicionada ao objetivo.")
+                else:
+                    TarefaObjetivo.objects.create(objetivo=objetivo, descricao=descricao_tarefa)
+                    messages.success(request, "Tarefa adicionada ao objetivo de estudo!")
             else:
                 messages.error(request, "Por favor, insira uma descrição para a tarefa.")
             return redirect('perfil_aluno')  # Redireciona após o POST
