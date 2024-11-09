@@ -4,6 +4,7 @@ from .models import Professor, Aluno, Turma, Lembrete, Avaliacao,Agendamento,Obj
 from django.contrib import messages
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 
 
 def cadastro_professor(request):
@@ -266,14 +267,17 @@ def avaliacao(request):
 def publicoP(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
     
-    # Obtenha todos os horários associados ao professor
-    turmas= Turma.objects.filter(professor=professor)
-     # Exemplo para carregar turmas, caso necessário
+    # Obtenha todas as turmas associadas ao professor
+    turmas = Turma.objects.filter(professor=professor)
+    
+    # Obtenha todas as avaliações do professor e calcule a média de estrelas
+    media_estrelas = Avaliacao.objects.filter(professor=professor).aggregate(Avg('estrelas'))['estrelas__avg'] or 0
 
-    # Renderize o template com o professor, os horários e as turmas
+    # Renderize o template com o professor, as turmas e a média de estrelas
     return render(request, 'perfilpublicoP.html', {
         'professor': professor,
-        'turmas': turmas
+        'turmas': turmas,
+        'media_estrelas': round(media_estrelas, 1)  # Arredonda para uma casa decimal
     })
    
 
