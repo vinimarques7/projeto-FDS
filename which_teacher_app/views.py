@@ -293,7 +293,6 @@ def busca(request):
 
 def agendar_aula(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
-    horarios = Horario.objects.filter(professor=professor)
     meios_transmissao = professor.comunicacao.split(',')
 
     meios_transmissao = professor.comunicacao.split(',')  # Supondo que os meios sejam separados por vírgula
@@ -340,3 +339,36 @@ def agendar_sucesso(request, professor_id):
         "professor": professor,
     })
  
+def avaliacao(request, professor_id):
+    aluno_id = request.session.get('aluno_id')
+    if not aluno_id:
+        return redirect('loginA')
+
+    aluno = Aluno.objects.get(id=aluno_id)
+    nome_aluno = aluno.nome
+    professor = get_object_or_404(Professor, id=professor_id)
+
+    success_message = None
+    if request.method == 'POST':
+        estrelas = request.POST.get('rating')
+        comentario = request.POST.get('comentario')
+
+        if not estrelas or not comentario:
+            messages.error(request, 'Por favor, forneça uma avaliação e um comentário.')
+        else:
+            avaliacao = Avaliacao(
+                estrelas=estrelas,
+                comentario=comentario,
+                id_aluno=aluno_id,
+                nome_aluno=nome_aluno,
+                professor=professor
+            )
+            avaliacao.save()
+            success_message = "Avaliação enviada com sucesso!"
+
+    return render(request, 'avaliacao.html', {
+        'aluno': aluno,
+        'professor': professor,
+        'success_message': success_message
+    })
+

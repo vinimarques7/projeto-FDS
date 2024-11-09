@@ -1,16 +1,8 @@
-// Seleciona todas as estrelas
+// Seleciona todos os inputs de rádio para as estrelas
 const starInputs = document.querySelectorAll('.star-rating input[type="radio"]');
 const starLabels = document.querySelectorAll('.star-rating label');
 
-// Adiciona o evento de clique para cada estrela
-starInputs.forEach((input) => {
-    input.addEventListener('change', () => {
-        // Atualiza a cor das estrelas com base na seleção
-        updateStarColors();
-    });
-});
-
-// Atualiza as cores das estrelas com base na estrela selecionada
+// Função para atualizar a cor das estrelas com base na seleção
 function updateStarColors() {
     let foundChecked = false;
     starLabels.forEach((label, index) => {
@@ -21,6 +13,11 @@ function updateStarColors() {
         label.style.color = foundChecked ? '#d4af37' : '#d4c29d'; // Dourado ou cinza
     });
 }
+
+// Adiciona o evento de clique para cada estrela
+starInputs.forEach((input) => {
+    input.addEventListener('change', updateStarColors);
+});
 
 // Define o efeito de hover
 starLabels.forEach((label) => {
@@ -35,8 +32,8 @@ document.getElementById('avaliacao-form').addEventListener('submit', function (e
     event.preventDefault(); // Impede o envio tradicional do formulário
 
     // Captura os valores do formulário
-    const rating = document.querySelector('input[name="rating"]:checked').value;
-    const comment = document.getElementById('comentario').value;
+    const rating = document.querySelector('input[name="rating"]:checked').value; // Valor da estrela selecionada
+    const comment = document.getElementById('comentario').value; // Comentário do usuário
 
     // Enviar os dados para o servidor usando Fetch API (POST)
     fetch("{% url 'avaliar' professor.id %}", {
@@ -46,8 +43,8 @@ document.getElementById('avaliacao-form').addEventListener('submit', function (e
             'X-CSRFToken': document.querySelector('[name="csrfmiddlewaretoken"]').value
         },
         body: JSON.stringify({
-            rating: rating,
-            comment: comment
+            rating: rating, // Nota das estrelas
+            comment: comment // Comentário escrito
         })
     })
     .then(response => response.json())
