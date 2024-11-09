@@ -17,6 +17,8 @@ urlpatterns = [
     path('agendar_aula/<int:professor_id>/', views.agendar_aula, name='agendar_aula'),
     path('agendar_sucesso/<int:professor_id>/', views.agendar_sucesso, name='agendar_sucesso'),
     path('avaliacao/<int:professor_id>/', views.avaliacao, name='avaliacao'),
+    path('perfil_aluno/', views.perfil_aluno, name='perfil_aluno'),
+    path('editar_aluno/', views.editar_aluno, name='editar_aluno'),
 
 ]
 if settings.DEBUG:

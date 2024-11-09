@@ -57,9 +57,34 @@ class Aluno(models.Model):
     nivel_ensino = models.CharField(max_length=100)
     genero = models.CharField(max_length=10)
     idade = models.CharField(max_length=3)
+    objetivo_estudo = models.CharField(max_length=255, blank=True, null=True)  # Novo campo
+    imagem = models.ImageField(upload_to='perfil_aluno/', blank=True, null=True)
+
 
     def __str__(self):
         return self.nome
+    
+class ObjetivoEstudo(models.Model):
+    aluno = models.ForeignKey(Aluno, related_name='objetivos', on_delete=models.CASCADE)
+    descricao = models.CharField(max_length=255)
+    progresso = models.IntegerField(default=0)  # Progresso calculado com base nas tarefas
+
+    def calcular_progresso(self):
+        total_tarefas = self.tarefas.count()
+        tarefas_concluidas = self.tarefas.filter(concluida=True).count()
+        if total_tarefas > 0:
+            self.progresso = int((tarefas_concluidas / total_tarefas) * 100)
+        else:
+            self.progresso = 0
+        self.save()
+
+class TarefaObjetivo(models.Model):
+    objetivo = models.ForeignKey(ObjetivoEstudo, related_name='tarefas', on_delete=models.CASCADE)
+    descricao = models.CharField(max_length=255)
+    concluida = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.descricao
 
 class Turma(models.Model):
     nome = models.CharField(max_length=100)
