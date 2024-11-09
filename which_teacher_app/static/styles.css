@@ -1,11 +1,11 @@
 @font-face {
-	font-family: 'teachers';
-	src: url('../fontes/Teachers-VariableFont_wght-Regular.ttf');
+  font-family: 'teachers';
+  src: url("../fontes/Teachers-VariableFont_wght-Regular.ttf");
 }
 
 .teachers-regular {
-	font-family: 'Teachers', system-ui;
-	font-optical-sizing: auto;
-	font-weight: 500;
-	font-style: normal;
+  font-family: "Teachers", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }

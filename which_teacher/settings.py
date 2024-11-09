@@ -77,7 +77,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'which_teacher_app',
-    "whitenoise.runserver_nostatic",
+     "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
@@ -136,8 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Sao_Paulo'
-USE_TZ = True  # Ative o uso de fuso horário
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

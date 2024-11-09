@@ -78,7 +78,7 @@
                             {% for lembrete in lembretes %}
                             <li class="list-group-item">
                                 {{ lembrete.texto }}
-                                <small class="text-muted"> - {{ lembrete.data_criacao|date:"H:i" }}</small>
+                                <small class="text-muted"> - {{ lembrete.data_criacao }}</small>
                                 <form method="POST" style="display:inline;">
                                     {% csrf_token %}
                                     <input type="hidden" name="delete_lembrete" value="{{ lembrete.id }}">
@@ -111,6 +111,16 @@
                     </div>
                     <div class="bio-row">
                         <p><span>Celular </span>: {{ professor.celular }}</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>Horários</span>Disponiveis</p>
+                        <ul>
+                            {% for horario in horarios %}
+                            <li>{{ horario.dia }} - {{ horario.hora_inicio }} até {{ horario.hora_fim }}</li>
+                            {% empty %}
+                            <li>Nenhum horário disponível.</li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>

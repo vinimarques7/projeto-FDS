@@ -2,157 +2,120 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	{% load static %}
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="{% static 'styles.css' %}" />
-	<link rel="stylesheet" href="{% static 'perfilpublicoP.css' %}" />
-	<title>Perfil do professor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'perfilpublicoP.css' %}">
+    <title>Perfil do professor</title>
 </head>
 
 <body>
-	{% if messages %}
-	<div class="alert alert-info alert-dismissible fade show" role="alert"
-		style="opacity: 1 !important; visibility: visible !important">
-		{% for message in messages %}
-		<strong>Aviso:</strong> {{ message }}
-		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-		{% endfor %}
-	</div>
-	{% endif %}
-	<div class="container bootstrap snippets bootdey">
-		<div class="row">
-			<div class="profile-nav col-md-3">
-				<div class="panel">
-					<div class="user-heading round">
-						<a href="#">
-							<!-- Exibir imagem do professor ou imagem padrão se não houver -->
-							{% if professor.imagem %}
-							<img src="{{ professor.imagem.url }}" alt="Imagem do professor"
-								class="img-fluid rounded-circle" />
-							{% else %}
-							<img src="{% static 'usuario_default.png' %}" alt="Imagem padrão"
-								class="img-fluid rounded-circle" />
-							{% endif %}
-						</a>
-						<h1>{{ professor.nome }}</h1>
-						<p>{{ professor.email }}</p>
-					</div>
-				</div>
-			</div>
-			<div class="profile-info col-md-9">
-				<div class="panel">
-					<div class="panel-body bio-graph-info">
-						<h1>Informações do Professor</h1>
-						<div class="row">
-							<div class="bio-row">
-								<p><span> Nome: {{ professor.nome }} </span></p>
-							</div>
-							<div class="bio-row">
-								<p><span>Email: {{ professor.email }} </span></p>
-							</div>
-							<div class="bio-row">
-								<p><span>Matérias: {{ professor.materia }} </span></p>
-							</div>
-							<div class="bio-row">
-								<p><span>Celular: {{ professor.celular }} </span></p>
-							</div>
-							<div class="bio-row">
-								<p><span>Horários Disponíveis: </span></p>
-								<ul>
-									{% for horario in horarios %}
-									<li>
-										{{ horario.dia }} - {{ horario.hora_inicio }} até {{
-										horario.hora_fim }}
-									</li>
-									{% empty %}
-									<li>Nenhum horário disponível.</li>
-									{% endfor %}
-								</ul>
-							</div>
-							<!-- <div class="bio-row">
-                                    <p><span>Preço por hora </span>: R$ {{ professor.preco_hora }}</p>
-                                </div> -->
-							<!-- Display Average Rating -->
-							<div class="bio-row">
-								<p>
-									<span>Avaliação:
-										<span class="rating">
-											<span class="rating-value">/5.0<span class="rating-stars">&#9733;</span>
-											</span>
-										</span>
-									</span>
-								</p>
-							</div>
-						</div>
-					</div>
+    {% if messages %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert" style="opacity: 1 !important; visibility: visible !important;">
+        {% for message in messages %}
+            <strong>Aviso:</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {% endfor %}
+    </div>
+{% endif %}
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="profile-nav col-md-3">
+                <div class="panel">
+                    <div class="user-heading round">
+                        <a href="#">
+                            <!-- Exibir imagem do professor ou imagem padrão se não houver -->
+                            {% if professor.imagem %}
+                            <img src="{{ professor.imagem.url }}" alt="Imagem do professor" class="img-fluid rounded-circle">
+                            {% else %}
+                            <img src="{% static 'usuario_default.png' %}" alt="Imagem padrão" class="img-fluid rounded-circle">
+                            {% endif %}
+                        </a>
+                        <h1>{{ professor.nome }}</h1>
+                        <p>{{ professor.email }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-info col-md-9">
+                <div class="panel">
+                    <div class="panel-body bio-graph-info">
+                        <h1>Informações do Professor</h1>
+                        <div class="row">
+                            <div class="bio-row">
+                                <p><span>Nome </span>: {{ professor.nome }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Email </span>: {{ professor.email }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Matérias </span>: {{ professor.materia }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Celular </span>: {{ professor.celular }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Horários Disponíveis </span>:</p>
+                                <ul>
+                                    {% for horario in horarios %}
+                                    <li>{{ horario.dia }} - {{ horario.hora_inicio }} até {{ horario.hora_fim }}</li>
+                                    {% empty %}
+                                    <li>Nenhum horário disponível.</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <!-- Schedule Button -->
+                            <button type="button" class="btn btn-primary" id="schedule-class-btn"
+                                >Agendar</button>
+                            <!-- Write a Review Button -->
+                            <button type="button" class="btn btn-info" id="write-review-btn"
+                                >Avaliar</button>
+                        </div>
+                        
+                    </div>
+                </div>
 
-					<div class="modal-footer">
-						<!-- Schedule Button -->
-						<a href="{% url 'agendar_aula' professor.id %}" class="btn btn-info">Agendar<a>
-						<!-- Write a Review Button -->
-						<a href="{% url 'avaliacao' professor.id %}" class="btn btn-info">Avaliar<a>
-					</div>
-				</div>
-			</div>
+                <!-- Seção para exibir as turmas cadastradas -->
+                <div class="panel-body bio-graph-info">
+                    <h3>Turmas</h3>
+                    <div class="row">
+                        {% for turma in turmas %}
+                        <div class="col-md-3"> <!-- Cada card ocupa 3 colunas (4 cards por linha) -->
+                            <div class="card" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px;">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ turma.nome }}</h4>
+                                    <p class="card-text"><strong>Matéria:</strong> {{ turma.materia }}</p>
+                                    <p><strong>Alunos:</strong></p>
+                                    <ul>
+                                        {% for aluno in turma.alunos.all %}
+                                        <li>{{ aluno.nome }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="col-md-12">
+                            <p>Nenhuma turma cadastrada.</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-			<div class="bio-graph-info">
-				<h3>Avaliação</h3>
-				{% if reviews %} {% for review in reviews %}
-				<div class="review">
-					<p>
-						<strong>{{ review.aluno.nome }}</strong> - {{ review.rating }}
-						estrelas
-					</p>
-					<p>{{ review.comment }}</p>
-					<small>{{ review.date_created }}</small>
-				</div>
-				{% endfor %} {% else %}
-				<p>Ainda não há avaliações.</p>
-				{% endif %}
-			</div>
+    
+     
 
-			<!-- Seção para exibir as turmas cadastradas -->
-			<div class="panel-body bio-graph-info">
-				<h3>Turmas</h3>
-				<div class="row">
-					{% for turma in turmas %}
-					<div class="col-md-3">
-						<!-- Cada card ocupa 3 colunas (4 cards por linha) -->
-						<div class="card" style="
-									border: 1px solid #ddd;
-									padding: 15px;
-									margin-bottom: 20px;
-								">
-							<div class="card-body">
-								<h4 class="card-title">{{ turma.nome }}</h4>
-								<p class="card-text">
-									<strong>Matéria:</strong> {{ turma.materia }}
-								</p>
-								<p><strong>Alunos:</strong></p>
-								<ul>
-									{% for aluno in turma.alunos.all %}
-									<li>{{ aluno.nome }}</li>
-									{% endfor %}
-								</ul>
-							</div>
-						</div>
-					</div>
-					{% empty %}
-					<div class="col-md-12">
-						<p>Nenhuma turma cadastrada.</p>
-					</div>
-					{% endfor %}
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script src="{% static 'perfilpublicoP.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="{% static 'perfilpublicoP.js' %}"></script>
 </body>
 
 </html>
