@@ -72,10 +72,14 @@ def perfilP(request):
     turmas = Turma.objects.filter(professor=professor)
 
     if request.method == 'POST':
-        # Lógica para lembretes
+        # Lógica para lembretes (já existente)
         if 'lembrete_texto' in request.POST:
-            lembrete_texto = request.POST.get('lembrete_texto')
-            if lembrete_texto:
+            lembrete_texto = request.POST.get('lembrete_texto').strip()
+            if not lembrete_texto:
+                messages.error(request, 'O lembrete não pode estar vazio.')
+            elif len(lembrete_texto) > 255:
+                messages.error(request, 'O lembrete não pode ultrapassar 255 caracteres.')
+            else:
                 try:
                     Lembrete.objects.create(texto=lembrete_texto)
                     messages.success(request, 'Lembrete adicionado com sucesso!')
@@ -83,7 +87,7 @@ def perfilP(request):
                     messages.error(request, 'Erro ao adicionar lembrete: ' + str(e))
             return redirect('perfilP')
 
-        # Lógica para deletar lembretes
+        # Lógica para deletar lembretes (já existente)
         elif 'delete_lembrete' in request.POST:
             lembrete_id = request.POST.get('delete_lembrete')
             try:
@@ -99,7 +103,11 @@ def perfilP(request):
             nome_turma = request.POST.get('nome_turma')
             materia = request.POST.get('materia')
             alunos_ids = request.POST.getlist('alunos')
-            if nome_turma and materia and alunos_ids:
+            
+            # Verificação para garantir que pelo menos um aluno foi selecionado
+            if not alunos_ids:
+                messages.error(request, 'Por favor, selecione pelo menos um aluno para a turma.')
+            elif nome_turma and materia:
                 try:
                     turma = Turma.objects.create(nome=nome_turma, materia=materia, professor=professor)
                     alunos = Aluno.objects.filter(id__in=alunos_ids)
@@ -108,9 +116,11 @@ def perfilP(request):
                     messages.success(request, 'Turma criada com sucesso!')
                 except Exception as e:
                     messages.error(request, 'Erro ao criar turma: ' + str(e))
+            else:
+                messages.error(request, 'Por favor, preencha todos os campos para criar uma turma.')
             return redirect('perfilP')
 
-        # Lógica para remover turma
+        # Lógica para remover turma (já existente)
         elif 'remover_turma' in request.POST:
             turma_id = request.POST.get('remover_turma')
             try:
@@ -129,6 +139,9 @@ def perfilP(request):
         'lembretes': lembretes,
         'turmas': turmas  # Passar as turmas para o template
     })
+
+
+
 
 
 
