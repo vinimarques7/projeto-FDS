@@ -292,32 +292,49 @@ def busca(request):
 
 
 def agendar_aula(request, professor_id):
+    # Obter o professor correspondente
     professor = get_object_or_404(Professor, id=professor_id)
-    meios_transmissao = professor.comunicacao.split(',')
 
-    meios_transmissao = professor.comunicacao.split(',')  # Supondo que os meios sejam separados por vírgula
+    # Extrair os meios de comunicação e pagamento do professor
+    meios_transmissao = professor.comunicacao.split(',')
     meios_pagamento = professor.recebimento.split(',')
 
+    # Verificar se o aluno está autenticado através da sessão
+    aluno_id = request.session.get('aluno_id')
+    if not aluno_id:
+        return redirect('loginA')
+
+    aluno = get_object_or_404(Aluno, id=aluno_id)
+
     if request.method == "POST":
+        # Capturar os valores do formulário
         data_selecionada = request.POST.get("data_selecionada")
         meio_transmissao = request.POST.get("meio_transmissao")
         meio_pagamento = request.POST.get("meio_pagamento")
         comentarios = request.POST.get("comentarios")
 
+        # Debug: verificar os valores recebidos
+        print("Data Selecionada:", data_selecionada)
+        print("Meio de Transmissão:", meio_transmissao)
+        print("Meio de Pagamento:", meio_pagamento)
+        print("Comentários:", comentarios)
+
         # Validação dos campos obrigatórios
-        if not meio_transmissao or not meio_pagamento:
-            messages.error(request, "A escolha do meio de transmissão e do meio de pagamento é obrigatória.")
+        if not data_selecionada or not meio_transmissao or not meio_pagamento:
+            messages.error(request, "Por favor, preencha todos os campos obrigatórios.")
             return redirect("agendar_aula", professor_id=professor.id)
 
         try:
-            Agendamento.objects.create(
+            # Criar um novo agendamento no banco de dados
+            agendamento = Agendamento.objects.create(
                 professor=professor,
-                aluno=request.user,
+                aluno=aluno,
                 data=data_selecionada,
                 meio_transmissao=meio_transmissao,
                 meio_pagamento=meio_pagamento,
                 comentarios=comentarios
             )
+            agendamento.save()
             messages.success(request, "Agendamento realizado com sucesso!")
             return redirect("agendar_sucesso", professor_id=professor.id)
         except Exception as e:

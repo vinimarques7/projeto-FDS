@@ -45,13 +45,12 @@
 
             <div class="col-md-6">
                 <h5>Selecione a data:</h5>
-                <input type="date" id="data-selecionada" class="form-control mb-3" required>
-
-
                 <form method="POST" id="agendar-form">
                     {% csrf_token %}
-                    <input type="hidden" name="data_selecionada" id="data-selecionada-oculto" value="">
-                    <input type="hidden" name="horarios_selecionados" id="horarios-selecionados" value="">
+                    <div class="form-group">
+                        <input type="date" name="data_selecionada" id="data-selecionada" class="form-control mb-3" required>
+                    </div>
+                    
 
                     <div class="form-group">
                         <label for="meio-transmissao">Meio de Transmissão:</label>

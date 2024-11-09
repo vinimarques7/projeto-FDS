@@ -1,57 +1,51 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const selectedDateInput = document.getElementById('data-selecionada');
-
-    // Definir data mínima para hoje
-    const today = new Date().toISOString().split('T')[0];
-    selectedDateInput.setAttribute('min', today);
-
     const availableTimesElement = document.getElementById('available-times');
+    const hiddenTimesInput = document.getElementById('horarios-selecionados');
+    const agendarForm = document.getElementById('agendar-form');
+
     const meioTransmissaoSelect = document.getElementById('meio-transmissao');
     const meioPagamentoSelect = document.getElementById('meio-pagamento');
-    const errorMessage = document.getElementById('error-message');
-    const confirmacaoMensagem = document.getElementById('confirmacao-mensagem');
+
     let selectedTimes = [];
 
     // Permite seleção múltipla de horários
-    availableTimesElement.addEventListener('click', function (event) {
-        if (event.target.classList.contains('time-slot')) {
-            const time = event.target.getAttribute('data-time');
-            if (selectedTimes.includes(time)) {
-                selectedTimes = selectedTimes.filter(t => t !== time);
-                event.target.classList.remove('selected');
-            } else {
-                selectedTimes.push(time);
-                event.target.classList.add('selected');
+    if (availableTimesElement) {
+        availableTimesElement.addEventListener('click', function (event) {
+            if (event.target.classList.contains('time-slot')) {
+                const time = event.target.getAttribute('data-time');
+                if (selectedTimes.includes(time)) {
+                    selectedTimes = selectedTimes.filter(t => t !== time);
+                    event.target.classList.remove('selected');
+                } else {
+                    selectedTimes.push(time);
+                    event.target.classList.add('selected');
+                }
+                hiddenTimesInput.value = selectedTimes.join(', ');
+                console.log("Horários selecionados atualizados:", hiddenTimesInput.value);
             }
-            document.getElementById('horarios-selecionados').value = selectedTimes.join(', ');
-        }
-    });
+        });
+    }
 
-    // Validação do formulário ao submeter
-    document.getElementById('agendar-form').addEventListener('submit', function (e) {
-        e.preventDefault();  // Evita o envio do formulário
+    // Garantir que os valores dos campos ocultos sejam atualizados no momento da submissão
+    agendarForm.addEventListener('submit', function () {
+        // Atualizar o valor dos horários selecionados
+        hiddenTimesInput.value = selectedTimes.join(', ');
 
-        // Verifica se todos os campos obrigatórios foram preenchidos
-        const selectedDate = selectedDateInput.value;
-        const selectedHorario = selectedTimes.length > 0;
-        const meioTransmissao = meioTransmissaoSelect.value;
-        const meioPagamento = meioPagamentoSelect.value;
+        console.log("Enviando formulário com:");
+        console.log("Horários Selecionados:", hiddenTimesInput.value);
 
-        if (!selectedDate || !selectedHorario) {
-            errorMessage.innerText = "O dia e o horário são obrigatórios para o agendamento.";
-            errorMessage.style.display = 'block';
-            return;
+        // Verificar se todos os campos estão preenchidos antes de submeter o formulário
+        if (!hiddenTimesInput.value) {
+            alert("Por favor, selecione pelo menos um horário.");
+            return false;
         }
 
-        if (!meioTransmissao || !meioPagamento) {
-            errorMessage.innerText = "A escolha do meio de transmissão e do meio de pagamento é obrigatória.";
-            errorMessage.style.display = 'block';
-            return;
+        if (!meioTransmissaoSelect.value || !meioPagamentoSelect.value) {
+            alert("Por favor, preencha os campos de meio de transmissão e meio de pagamento.");
+            return false;
         }
 
-        // Oculta a mensagem de erro e exibe a confirmação se tudo estiver preenchido
-        errorMessage.style.display = 'none';
-        confirmacaoMensagem.style.display = 'block';
-        this.submit();  // Envia o formulário após validação
+        // Caso tudo esteja preenchido, enviar o formulário
+        return true;
     });
 });
