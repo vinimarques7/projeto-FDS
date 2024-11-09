@@ -361,31 +361,31 @@ def avaliacao(request, professor_id):
     if not aluno_id:
         return redirect('loginA')
 
-    aluno = Aluno.objects.get(id=aluno_id)
+    aluno = get_object_or_404(Aluno, id=aluno_id)
     nome_aluno = aluno.nome
     professor = get_object_or_404(Professor, id=professor_id)
 
-    success_message = None
     if request.method == 'POST':
         estrelas = request.POST.get('rating')
-        comentario = request.POST.get('comentario')
+        comentario = request.POST.get('comment')  # Alterado para corresponder ao campo do HTML
 
         if not estrelas or not comentario:
             messages.error(request, 'Por favor, forneça uma avaliação e um comentário.')
         else:
-            avaliacao = Avaliacao(
-                estrelas=estrelas,
-                comentario=comentario,
-                id_aluno=aluno_id,
-                nome_aluno=nome_aluno,
-                professor=professor
-            )
-            avaliacao.save()
-            success_message = "Avaliação enviada com sucesso!"
+            try:
+                # Salvar a avaliação no banco de dados
+                avaliacao = Avaliacao.objects.create(
+                    estrelas=estrelas,
+                    comentario=comentario,
+                    id_aluno=aluno.id,  # Usando id_aluno conforme o modelo
+                    nome_aluno=nome_aluno
+                )
+                messages.success(request, "Avaliação enviada com sucesso!")
+                return redirect('avaliacao_sucesso', professor_id=professor.id)
+            except Exception as e:
+                messages.error(request, f"Erro ao salvar avaliação: {e}")
 
     return render(request, 'avaliacao.html', {
         'aluno': aluno,
         'professor': professor,
-        'success_message': success_message
     })
-
