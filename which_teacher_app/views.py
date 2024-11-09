@@ -1,6 +1,6 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Professor, Aluno, Turma, Lembrete, Avaliacao,Agendamento
+from .models import Professor, Aluno, Turma, Lembrete, Avaliacao,Agendamento,ObjetivoEstudo, TarefaObjetivo
 from django.contrib import messages
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
@@ -225,6 +225,7 @@ def editarP(request):
 
 
 
+
 def home(request):
     return render(request, 'landingPage.html')
 
@@ -390,3 +391,84 @@ def avaliacao(request, professor_id):
         'aluno': aluno,
         'professor': professor,
     })
+
+def perfil_aluno(request):
+    aluno_id = request.session.get('aluno_id')
+    aluno = get_object_or_404(Aluno, id=aluno_id)
+
+    if request.method == 'POST':
+        # Adicionar novo objetivo de estudo
+        if 'novo_objetivo' in request.POST:
+            descricao = request.POST.get('novo_objetivo')
+            if descricao:
+                ObjetivoEstudo.objects.create(aluno=aluno, descricao=descricao)
+                messages.success(request, "Objetivo de estudo adicionado com sucesso!")
+            else:
+                messages.error(request, "Por favor, insira uma descrição para o objetivo de estudo.")
+            return redirect('perfil_aluno')  # Redireciona após o POST
+
+        # Remover objetivo de estudo
+        elif 'remover_objetivo' in request.POST:
+            objetivo_id = request.POST.get('remover_objetivo')
+            objetivo = get_object_or_404(ObjetivoEstudo, id=objetivo_id, aluno=aluno)
+            objetivo.delete()
+            messages.success(request, "Objetivo de estudo removido com sucesso!")
+            return redirect('perfil_aluno')  # Redireciona após o POST
+
+        # Adicionar nova tarefa ao objetivo específico
+        elif 'nova_tarefa' in request.POST:
+            objetivo_id = request.POST.get('objetivo_id')
+            descricao_tarefa = request.POST.get('nova_tarefa')
+            objetivo = get_object_or_404(ObjetivoEstudo, id=objetivo_id, aluno=aluno)
+            if descricao_tarefa:
+                TarefaObjetivo.objects.create(objetivo=objetivo, descricao=descricao_tarefa)
+                messages.success(request, "Tarefa adicionada ao objetivo de estudo!")
+            else:
+                messages.error(request, "Por favor, insira uma descrição para a tarefa.")
+            return redirect('perfil_aluno')  # Redireciona após o POST
+
+        # Marcar tarefa como concluída ou não concluída
+        elif 'concluir_tarefa' in request.POST:
+            tarefa_id = request.POST.get('concluir_tarefa')
+            tarefa = get_object_or_404(TarefaObjetivo, id=tarefa_id, objetivo__aluno=aluno)
+            tarefa.concluida = not tarefa.concluida
+            tarefa.save()
+            tarefa.objetivo.calcular_progresso()
+            messages.success(request, "Tarefa atualizada com sucesso!")
+            return redirect('perfil_aluno')  # Redireciona após o POST
+
+        # Apagar tarefa
+        elif 'apagar_tarefa' in request.POST:
+            tarefa_id = request.POST.get('apagar_tarefa')
+            tarefa = get_object_or_404(TarefaObjetivo, id=tarefa_id, objetivo__aluno=aluno)
+            objetivo = tarefa.objetivo
+            tarefa.delete()
+            objetivo.calcular_progresso()
+            messages.success(request, "Tarefa removida com sucesso!")
+            return redirect('perfil_aluno')  # Redireciona após o POST
+
+    objetivos = aluno.objetivos.all()
+    return render(request, 'perfil_aluno.html', {'aluno': aluno, 'objetivos': objetivos})
+
+def editar_aluno(request):
+    aluno_id = request.session.get('aluno_id')
+    aluno = get_object_or_404(Aluno, id=aluno_id)
+
+    if request.method == 'POST':
+        # Atualizando os campos do aluno
+        aluno.nome = request.POST.get('nome')
+        aluno.email = request.POST.get('email')
+
+
+        aluno.celular = request.POST.get('celular')
+
+        # Atualizando imagem, se houver
+        if 'imagem' in request.FILES:
+            aluno.imagem = request.FILES['imagem']
+
+        # Salvando o aluno com as alterações feitas
+        aluno.save()
+        messages.success(request, 'Perfil atualizado com sucesso!')
+        return redirect('perfil_aluno')
+
+    return render(request, 'editar_aluno.html', {'aluno': aluno})
