@@ -30,14 +30,6 @@ class Professor(models.Model):
     def __str__(self):
         return f"{self.nome} - {self.materia} ({self.nivel_ensino})"
 
-class Horario(models.Model):
-    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, related_name='horarios')
-    dia_semana = models.CharField(max_length=20)
-    hora_inicio = models.TimeField(default=time(9, 0))  # Defina um valor padrão para hora de início
-    hora_fim = models.TimeField(default=time(17, 0))
-
-    def __str__(self):
-        return f"{self.professor.nome} - {self.dia_semana}: {self.hora_inicio} às {self.hora_fim}"
 
 class Lembrete(models.Model):
     texto = models.CharField(max_length=255)
@@ -79,7 +71,7 @@ class Turma(models.Model):
 
 class Agendamento(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    aluno = models.ForeignKey(User, on_delete=models.CASCADE)  # ou seu modelo de usuário personalizado
+    aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)  # ou seu modelo de usuário personalizado
     data = models.DateField()
     meio_transmissao = models.CharField(max_length=50)
     meio_pagamento = models.CharField(max_length=50)
