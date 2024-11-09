@@ -39,13 +39,14 @@ class Lembrete(models.Model):
         return self.texto
 
 class Avaliacao(models.Model):
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
     estrelas = models.IntegerField()
     comentario = models.TextField(max_length=500)
     id_aluno = models.IntegerField()
     nome_aluno = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.nome_aluno} - {self.estrelas} estrelas"
+        return f"{self.nome_aluno} - {self.professor} - {self.estrelas} estrelas"
 
 class Aluno(models.Model):
     id = models.BigAutoField(primary_key=True)
