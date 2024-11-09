@@ -367,21 +367,22 @@ def avaliacao(request, professor_id):
 
     if request.method == 'POST':
         estrelas = request.POST.get('rating')
-        comentario = request.POST.get('comment')  # Alterado para corresponder ao campo do HTML
+        comentario = request.POST.get('comment')
 
         if not estrelas or not comentario:
             messages.error(request, 'Por favor, forneça uma avaliação e um comentário.')
         else:
             try:
-                # Salvar a avaliação no banco de dados
+                # Salvar a avaliação com o professor no banco de dados
                 avaliacao = Avaliacao.objects.create(
+                    professor=professor,
                     estrelas=estrelas,
                     comentario=comentario,
-                    id_aluno=aluno.id,  # Usando id_aluno conforme o modelo
+                    id_aluno=aluno.id,
                     nome_aluno=nome_aluno
                 )
                 messages.success(request, "Avaliação enviada com sucesso!")
-                return redirect('avaliacao_sucesso', professor_id=professor.id)
+                return redirect('publicoP', professor_id=professor.id)
             except Exception as e:
                 messages.error(request, f"Erro ao salvar avaliação: {e}")
 
