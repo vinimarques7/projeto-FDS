@@ -1,7 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-# More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
-
 name: Build and deploy Python app to Azure Web App - whichteacher
 
 on:
@@ -29,9 +25,23 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt
-        
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
+      # Instala o Cypress
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install Cypress
+        run: npm install cypress
+
+      # Executa os testes Cypress
+      - name: Run Cypress Tests
+        run: npx cypress run
+        env:
+          CYPRESS_BASE_URL: http://localhost:8000 # Base URL para o Cypress (ajuste conforme necessário)
+
+      # Cria o artefato zipado para o deploy
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
@@ -61,7 +71,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -69,12 +78,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1FA717CE07AF42C9ADC34720CDC074CC }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5143AB19F3DD4308B030882A30CDCEB4 }}
 
-
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'whichteacher'
           slot-name: 'Production'
-
-          
