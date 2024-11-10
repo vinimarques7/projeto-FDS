@@ -55,7 +55,17 @@ jobs:
           npx cypress run
         env:
           CYPRESS_BASE_URL: http://127.0.0.1:8000
-          TARGET_ENV: "prod" # Defina TARGET_ENV para produção ou outro valor adequado
+
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
+
+      - name: Upload artifact for deployment jobs
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-app
+          path: |
+            release.zip
+            !venv/
 
   deploy:
     runs-on: ubuntu-latest
@@ -81,14 +91,6 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7B95E45DDE4D486BADCF76FC300E8955 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1FA717CE07AF42C9ADC34720CDC074CC }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5143AB19F3DD4308B030882A30CDCEB4 }}
-
-      - name: Run migrations on Azure
-        run: |
-          source venv/bin/activate
-          python manage.py makemigrations
-          python manage.py migrate
-        env:
-          TARGET_ENV: "prod"
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
