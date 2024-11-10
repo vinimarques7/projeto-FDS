@@ -73,10 +73,14 @@ def perfilP(request):
     turmas = Turma.objects.filter(professor=professor)
 
     if request.method == 'POST':
-        # Lógica para lembretes
+        # Lógica para lembretes (já existente)
         if 'lembrete_texto' in request.POST:
-            lembrete_texto = request.POST.get('lembrete_texto')
-            if lembrete_texto:
+            lembrete_texto = request.POST.get('lembrete_texto').strip()
+            if not lembrete_texto:
+                messages.error(request, 'O lembrete não pode estar vazio.')
+            elif len(lembrete_texto) > 255:
+                messages.error(request, 'O lembrete não pode ultrapassar 255 caracteres.')
+            else:
                 try:
                     Lembrete.objects.create(texto=lembrete_texto)
                     messages.success(request, 'Lembrete adicionado com sucesso!')

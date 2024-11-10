@@ -24,7 +24,7 @@ class Professor(models.Model):
     recebimento = models.TextField()
     comunicacao = models.TextField()
     nivel_ensino = models.CharField(max_length=100, choices=NIVEIS_CHOICES)
-    genero = models.CharField(max_length=10)
+    genero = models.CharField(max_length=100)
     imagem = models.ImageField(upload_to='perfil_professor/', blank=True, null=True)
 
     def __str__(self):
