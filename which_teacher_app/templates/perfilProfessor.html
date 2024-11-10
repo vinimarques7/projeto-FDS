@@ -1,238 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% load static %}
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-    
-
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <link rel="stylesheet" href="{% static 'perfilProfessor.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'perfilpublicoP.css' %}" />
     <title>Perfil do professor</title>
 </head>
-
 <body>
     {% if messages %}
-    <div class="alert alert-info alert-dismissible fade show" role="alert" style="opacity: 1 !important; visibility: visible !important;">
+    <div class="alert alert-info alert-dismissible fade show" role="alert"
+         style="opacity: 1 !important; visibility: visible !important">
         {% for message in messages %}
             <strong>Aviso:</strong> {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         {% endfor %}
     </div>
-{% endif %}
-
-
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    {% endif %}
     <div class="container bootstrap snippets bootdey">
+        <!-- Conteúdo do perfil do professor -->
         <div class="row">
             <div class="profile-nav col-md-3">
                 <div class="panel">
                     <div class="user-heading round">
                         <a href="#">
-                            <!-- Exibir imagem do professor ou imagem padrão se não houver -->
                             {% if professor.imagem %}
-                            <img src="{{ professor.imagem.url }}" alt="Imagem do professor"
-                                class="img-fluid rounded-circle">
+                            <img src="{{ professor.imagem.url }}" alt="Imagem do professor" class="img-fluid rounded-circle" />
                             {% else %}
-                            <img src="{% static 'usuario_default.png' %}" alt="Imagem padrão"
-                                class="img-fluid rounded-circle">
+                            <img src="{% static 'usuario_default.png' %}" alt="Imagem padrão" class="img-fluid rounded-circle" />
                             {% endif %}
                         </a>
                         <h1>{{ professor.nome }}</h1>
-                        <p>{{ professor.email }}</p>
                     </div>
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="{% url 'editarP' %}"> <i class="fa fa-edit"></i> Editar perfil</a></li>
-                    </ul>
                 </div>
             </div>
             <div class="profile-info col-md-9">
                 <div class="panel">
-                    <form method="POST">
-                        {% csrf_token %}
-                        <textarea name="lembrete_texto" placeholder="Digite seu lembrete aqui..." rows="2"
-                            class="form-control input-lg p-text-area"></textarea>
-                        <footer class="panel-footer">
-                            <button type="submit" class="btn btn-warning pull-right"
-                                style="background-color: #482191aa; border-color: transparent;">Adicionar
-                                Lembrete</button>
-                            <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-map-marker"></i></a></li>
-                                <li><a href="#"><i class="fa fa-camera"></i></a></li>
-                                <li><a href="#"><i class="fa fa-film"></i></a></li>
-                                <li><a href="#"><i class="fa fa-microphone"></i></a></li>
-                            </ul>
-                        </footer>
-                    </form>
-                </div>
-
-                <!-- Exibição de lembretes com opção de apagar -->
-                <div class="panel" style="margin-top: 20px;">
-                    <div class="panel-heading">
-                        <h4>Lembretes</h4>
+                    <div class="panel-body bio-graph-info">
+                        <h1>Informações do Professor</h1>
+                        <div class="row">
+                            <div class="bio-row">
+                                <p><span>Nome: </span>{{ professor.nome }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Email: </span>{{ professor.email }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Matérias: </span>{{ professor.materia }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span>Celular: </span>{{ professor.celular }}</p>
+                            </div>
+                            <div class="bio-row">
+								<p>
+									<span>Avaliação: </span>
+									<span class="rating-value">{{ media_estrelas }}/5.0 <span class="rating-stars">&#9733;</span></span>
+								</p>
+							</div>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            {% for lembrete in lembretes %}
-                            <li class="list-group-item">
-                                {{ lembrete.texto }}
-                                <small class="text-muted"> - {{ lembrete.data_criacao }}</small>
-                                <form method="POST" style="display:inline;">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="delete_lembrete" value="{{ lembrete.id }}">
-                                    <button type="submit" class="btn btn-danger btn-sm">Apagar</button>
-                                </form>
-                            </li>
-                            {% empty %}
-                            <li class="list-group-item">Nenhum lembrete adicionado ainda.</li>
-                            {% endfor %}
-                        </ul>
+
+                    <div class="modal-footer">
+                        <!-- Botão para agendar aula -->
+                        <a href="{% url 'agendar_aula' professor.id %}" class="btn btn-info">Agendar</a>
+                        <!-- Botão para o modal de confirmação de avaliação -->
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#confirmModal">
+                            Avaliar
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="panel">
-            <div class="bio-graph-heading">
 
-            </div>
-            <div class="panel-body bio-graph-info">
-                <h1>Suas informações</h1>
-                <div class="row">
-                    <div class="bio-row">
-                        <p><span>Nome </span>: {{ professor.nome }}</p>
-                    </div>
-                    <div class="bio-row">
-                        <p><span>Email </span>: {{ professor.email }}</p>
-                    </div>
-                    <div class="bio-row">
-                        <p><span>Matérias </span>: {{ professor.materia }}</p>
-                    </div>
-                    <div class="bio-row">
-                        <p><span>Celular </span>: {{ professor.celular }}</p>
-                    </div>
-                    <div class="bio-row">
-                        <p><span>Horários</span>Disponiveis</p>
-                        <ul>
-                            {% for horario in horarios %}
-                            <li>{{ horario.dia }} - {{ horario.hora_inicio }} até {{ horario.hora_fim }}</li>
-                            {% empty %}
-                            <li>Nenhum horário disponível.</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal -->
-
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Criar turma
-        </button>
-
-        <form method="POST" action="{% url 'perfilP' %}">
-            {% csrf_token %}
-            <!-- Modal -->
-            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                aria-hidden="true">
+            <!-- Modal de confirmação -->
+            <div id="confirmModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Nome da turma</h4>
+                            <h5 class="modal-title" id="confirmModalLabel">Confirmação</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         <div class="modal-body">
-                            <input type="text" name="nome_turma" class="form-control" placeholder="Tópico">
-                            <h5>Matéria:</h5>
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle w-100" type="button"
-                                    data-toggle="dropdown">
-                                    Selecione a matéria
-                                </button>
-                                <ul class="dropdown-menu w-100">
-                                    <li><label class="dropdown-item"><input type="radio" name="materia"
-                                                value="Matemática"> Matemática</label></li>
-                                    <li><label class="dropdown-item"><input type="radio" name="materia"
-                                                value="Português"> Português</label></li>
-                                    <li><label class="dropdown-item"><input type="radio" name="materia" value="Inglês">
-                                            Inglês</label></li>
-                                </ul>
-                            </div>
-                            <h5>Alunos:</h5>
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle w-100" type="button"
-                                    data-toggle="dropdown">
-                                    Selecione os alunos
-                                </button>
-                                <ul class="dropdown-menu w-100">
-                                    {% for aluno in alunos %}
-                                    <li><label class="dropdown-item"><input type="checkbox" name="alunos"
-                                                value="{{ aluno.id }}"> {{ aluno.nome }}</label></li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
+                            Você já teve uma aula com este professor?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                            <a href="{% url 'avaliacao' professor.id %}" class="btn btn-primary">Sim</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
-        <div class="panel-body bio-graph-info">
-            <!-- Seção para exibir as turmas cadastradas -->
-            <h3>Turmas Cadastradas</h3>
-            <div class="row">
-                {% for turma in turmas %}
-                <div class="col-md-3"> <!-- Cada card ocupa 3 colunas (4 cards por linha) -->
-                    <div class="card" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px;">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ turma.nome }}</h4>
-                            <p class="card-text">
-                                <strong>Matéria:</strong> {{ turma.materia }}
-                            </p>
-                            <p><strong>Alunos:</strong></p>
-                            <ul>
-                                {% for aluno in turma.alunos.all %}
-                                <li>{{ aluno.nome }}</li>
-                                {% endfor %}
-                            </ul>
 
-                            <!-- Botão para remover a turma -->
-                            <form method="POST">
-                                {% csrf_token %}
-                                <input type="hidden" name="remover_turma" value="{{ turma.id }}">
-                                <button type="submit" class="btn btn-danger btn-sm">Remover Turma</button>
-                            </form>
+            <div class="bio-graph-info">
+                <h3>Avaliações</h3>
+                {% if reviews %}
+                    <div class="row">
+                        {% for review in reviews %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{{ review.nome_aluno }}</strong></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{ review.estrelas }} estrelas &#9733;</h6>
+                                    <p class="card-text">{{ review.comentario }}</p>
+                                    <small class="text-muted">{{ review.criado_em }}</small>
+                                </div>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
-                </div>
-                {% empty %}
-                <div class="col-md-12">
-                    <p>Nenhuma turma cadastrada.</p>
-                </div>
-                {% endfor %}
+                {% else %}
+                    <p>Ainda não há avaliações.</p>
+                {% endif %}
             </div>
         </div>
-
-
-
-
     </div>
-    </div>
-    </div>
-    </div>
+
+    <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'perfilProfessor.js' %}"></script>
-
 </body>
-
 </html>
