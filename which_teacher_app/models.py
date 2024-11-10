@@ -55,7 +55,7 @@ class Aluno(models.Model):
     email = models.EmailField(unique=True)
     senha = models.CharField(max_length=100)
     nivel_ensino = models.CharField(max_length=100)
-    genero = models.CharField(max_length=10)
+    genero = models.CharField(max_length=100)
     idade = models.CharField(max_length=3)
     objetivo_estudo = models.CharField(max_length=255, blank=True, null=True)  # Novo campo
     imagem = models.ImageField(upload_to='perfil_aluno/', blank=True, null=True)
