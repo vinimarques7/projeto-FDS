@@ -1,3 +1,7 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+# More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
+
 name: Build and deploy Python app to Azure Web App - whichteacher
 
 on:
@@ -14,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Python version
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v1
         with:
           python-version: '3.12'
 
@@ -24,29 +28,37 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          npm ci
+          cd ..
 
-      # Instala o Cypress
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install Cypress
-        run: npm install cypress
-
-      # Executa os testes Cypress
-      - name: Run Cypress Tests
-        run: npx cypress run
-        env:
-          CYPRESS_BASE_URL: https://127.0.0.1:8000 # Base URL para o Cypress 
+      # Inicia o servidor Django e executa os testes Cypress
+      - name: Run local server and Cypress tests
+        run: |
+          source venv/bin/activate
+          python manage.py migrate
+          python manage.py runserver &
+          sleep 5 # Aguarda o servidor iniciar
+          npx cypress run
+        
+      # Limpeza de arquivos de teste
+      - name: Cleaning testing files
+        run: |
+          rm .env
+          rm cypress.config.js
+          rm package-lock.json
+          rm package.json
+          rm -rf cypress
+          cd ..
 
       # Cria o artefato zipado para o deploy
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-
+        run: |
+          zip release.zip ./* -r
+      
       - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: python-app
           path: |
@@ -64,7 +76,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: python-app
 
@@ -72,14 +84,14 @@ jobs:
         run: unzip release.zip
 
       - name: Login to Azure
-        uses: azure/login@v2
+        uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7B95E45DDE4D486BADCF76FC300E8955 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1FA717CE07AF42C9ADC34720CDC074CC }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5143AB19F3DD4308B030882A30CDCEB4 }}
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v3
+        uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'whichteacher'
