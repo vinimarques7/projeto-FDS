@@ -126,6 +126,47 @@ WhichTeacher é uma plataforma online que permite a professores freelancers cria
 
 ---
 
+# Entrega 04
+
+<p align="center">
+  <a href="">
+    <img src="https://img.shields.io/badge/screencast das histórias em produção-7c4f87?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  
+  <a href="https://youtu.be/D7V9OTswqSA">
+    <img src="https://img.shields.io/badge/screencast dos protótipos-ffffff?style=for-the-badge&logo=youtube&logoColor=black" height="35px"/>
+  </a>
+  
+  <a href="">
+    <img src="https://img.shields.io/badge/screencast de build & deploy-7c4f87?style=for-the-badge&logo=youtube&logoColor=white" height="35px"/></a>
+  
+  <a href="">
+    <img src="https://img.shields.io/badge/screencast dos testes e2e-ffffff?style=for-the-badge&logo=youtube&logoColor=black" height="35px"/></a>
+  
+  <a href="https://whichteacher.azurewebsites.net/">
+    <img src="https://img.shields.io/badge/site na azure-ffffff?style=for-the-badge&logo=microsoft-azure&logoColor=black" height="35px"/></a>
+  
+  <a href="">
+    <img src="https://img.shields.io/badge/slides apresentação final-7c4f87?style=for-the-badge&logo=figma&logoColor=white" height="35px"/></a>
+</p>
+
+- <strong> Backlog </strong>
+
+![Backlog-E4](https://imgur.com/z7jW76U.png)
+
+<br/>
+  
+- <strong> Board </strong>
+
+![Board-E4](https://imgur.com/SxDOBLr.png)
+<br/>
+
+- <strong> Issues </strong>
+
+![openedIssues-E4](https://imgur.com/ys8r4vd.png)
+
+
+---
+
 
 # 👥 Equipe
 <table>
