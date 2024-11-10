@@ -1,0 +1,270 @@
+/* Fundo da Página */
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #ead8fc; /* Fundo bege claro */
+	overflow-x: hidden;
+}
+
+/* Cabeçalho */
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: auto;
+	margin-top: 50px;
+}
+
+.logo a {
+	font-size: 28px;
+	font-weight: bold;
+	color: #15202b;
+	text-decoration: none;
+}
+
+.text-black {
+	color: #15202b;
+}
+
+.text-purple {
+	color: #482191;
+}
+
+/* Menu Desktop */
+nav.menu-desktop ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+nav.menu-desktop li {
+	display: inline-block;
+	margin: 0 20px;
+}
+
+nav.menu-desktop a {
+	text-decoration: none;
+	color: #fff;
+	background-color: #a885d8;
+	padding: 10px 20px;
+	border-radius: 50px; /* Cantos arredondados */
+	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+nav.menu-desktop a:hover {
+	background-color: #482191;
+	color: white;
+	transition: 0.3s;
+}
+
+/* Botão de Menu Mobile */
+.menu-abrir {
+	cursor: pointer;
+}
+
+.menu-abrir img {
+	width: 30px;
+	margin-left: 10px;
+}
+
+/* Menu Mobile */
+.menu-mobile {
+	background-color: #a885d8;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 99999;
+	width: 0%;
+	overflow: hidden;
+	transition: 0.5s;
+	border-radius: 10px;
+}
+
+.menu-mobile.abrir-menu {
+	width: 100%;
+}
+
+nav.mobile ul {
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+nav.mobile li {
+	list-style-type: none;
+	margin: 20px;
+}
+
+nav.mobile a {
+	color: #15202b;
+	padding: 30px 8%;
+	text-decoration: none;
+}
+
+nav.mobile a:hover {
+	color: #a885d8;
+	transition: 0.3s;
+	text-decoration: underline;
+}
+
+.menu-fechar {
+	padding: 20px;
+}
+
+.menu-fechar img {
+	width: 30px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+/* Cartões e Botões */
+.card {
+	width: 100%;
+	margin: 10px 0;
+	border-radius: 10px;
+	background-color: #fff;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.professor-card {
+	padding: 20px;
+	margin-top: 30px;
+	border-radius: 10px;
+	background-color: #ffffff;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+/* Ajusta o tamanho da imagem do professor */
+.professor-card img {
+	max-width: 80%;
+	height: auto;
+	border-radius: 50%;
+	margin-bottom: 15px;
+}
+
+.price-tag {
+	font-size: 24px;
+	font-weight: bold;
+	color: #482191;
+}
+
+.about-section {
+	margin-top: 20px;
+	border-top: 1px solid #ddd;
+	padding-top: 15px;
+}
+
+.btn-primary {
+	background-color: #482191;
+	border-radius: 50px;
+	color: #fff;
+	width: 400px;
+	height: 40px;
+	font-size: 16px;
+	display: block;
+	margin: 0 auto;
+}
+
+.btn-primary:hover {
+	background-color: #a885d8;
+	color: #fff;
+}
+
+.tag {
+	background-color: #28a745;
+	color: white;
+	font-size: 12px;
+	border-radius: 4px;
+	padding: 2px 6px;
+}
+
+.about-section textarea {
+	resize: none;
+}
+
+/* Calendário */
+#calendar {
+	margin-top: 20px;
+}
+
+.calendar {
+	width: 100%;
+	background: #ffffff;
+	box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.calendar-header {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+.calendar-days {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 10px;
+}
+
+.calendar-day {
+	padding: 20px;
+	background: #f5f5dc;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: background-color 0.3s ease;
+}
+
+.calendar-day:hover {
+	background-color: #a885d8;
+	color: white;
+}
+
+.selected-date {
+	background-color: #482191 !important;
+	color: white;
+}
+
+.time-slots {
+	margin-top: 20px;
+}
+
+.time-slot {
+	display: inline-block;
+	padding: 10px;
+	margin: 5px;
+	background-color: #482191;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+/* Responsividade */
+@media screen and (max-width: 1067px) {
+	.menu-desktop {
+		display: none;
+	}
+
+	main {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	article img {
+		display: none;
+	}
+}
+
+@media (min-width: 1064px) {
+	.menu-abrir img {
+		display: none;
+	}
+}
