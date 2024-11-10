@@ -1,73 +1,103 @@
 
-# Contribuindo para o WhichTeacher
+## 👋 Bem-vindo(a)!
 
-Obrigado por considerar contribuir para o projeto WhichTeacher! Aqui estão algumas diretrizes para tornar o processo de contribuição o mais eficiente e colaborativo possível.
+Se você chegou até aqui, é porque tem interesse em contribuir com o WhichTeacher! Antes de começar, leia este guia para entender como você pode colaborar da melhor forma possível.
 
-## Como Contribuir
+---
 
-1. **Leia as Issues**: Verifique se o problema que você deseja resolver já existe no [Issue Tracker](https://github.com/vinimarques7/projeto-FDS/issues). Discuta sua solução na issue antes de começar a trabalhar.
-2. **Fork o Repositório**: Crie um fork deste repositório para trabalhar nas suas mudanças.
-3. **Clone o Projeto**:
+## 🤔 Como contribuir?
+
+Você pode sugerir uma nova funcionalidade, propor melhorias ou escolher uma das [issues em aberto](https://github.com/vinimarques7/projeto-FDS/issues) para resolver.
+
+---
+
+## 📁 Configurando o repositório
+
+1. **Faça um Fork do Repositório:** Crie uma cópia do repositório na sua conta para realizar alterações sem afetar o repositório principal.
+
+2. **Clone o repositório:**
    ```bash
    git clone https://github.com/vinimarques7/projeto-FDS.git
+   ```
+
+3. **Crie sua Branch:**
+   ```bash
+   git checkout -b minha-nova-funcionalidade
+   ```
+
+---
+
+## 💻 Configurando o ambiente de desenvolvimento
+
+1. **Entre no Diretório do Projeto:**
+   ```bash
    cd projeto-FDS
    ```
-4. **Crie uma Branch**: Organize sua contribuição em uma nova branch.
+
+2. **Crie um Ambiente Virtual:**
    ```bash
-   git checkout -b minha-nova-feature
+   python -m venv venv
    ```
 
-## Padrões de Código
+3. **Ative o Ambiente Virtual:**
+   - Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - Linux/Mac:
+     ```bash
+     source venv/bin/activate
+     ```
 
-- **Python**: Certifique-se de que o código siga as convenções do PEP8. Utilize o `flake8` ou `black` para ajudar.
-- **HTML/CSS**: Mantenha uma estrutura semântica no HTML e utilize classes CSS descritivas e bem documentadas.
-- **JavaScript**: Escreva código claro e modular. Utilize o `eslint` para manter a consistência.
-
-## Configuração do Ambiente de Desenvolvimento
-
-Este projeto utiliza **Django** e **PostgreSQL**. Para configurar o ambiente de desenvolvimento:
-
-1. **Instale as dependências**:
+4. **Instale as Dependências:**
    ```bash
    pip install -r requirements.txt
    ```
-2. **Configure o banco de dados**: Crie um banco de dados PostgreSQL e defina as variáveis de ambiente.
-3. **Faça as migrações**:
+
+5. **Aplique as Migrations (Criar o Banco de Dados):**
    ```bash
    python manage.py migrate
    ```
-4. **Inicie o servidor local**:
+
+6. **Rode o Servidor:**
    ```bash
    python manage.py runserver
    ```
 
-## Submetendo Sua Contribuição
+### Rodando os testes
 
-1. **Commit e Push**: Faça commits concisos e descritivos e dê push para a sua branch.
+Para garantir que seu código não afete outras partes do projeto:
+
+1. **Baixe o [Node](https://nodejs.org/en) na versão LTS.**
+
+2. **Instale as dependências:**
    ```bash
-   git add .
-   git commit -m "Descrição clara da alteração"
-   git push origin minha-nova-feature
+   npm ci
    ```
-2. **Abra um Pull Request**: Acesse o repositório no GitHub e abra um Pull Request. Explique as mudanças e mencione as issues relacionadas, se houver.
 
-### Exemplo de Mensagem de Commit
+3. **Execute os testes:**
+   ```bash
+   npx cypress run
+   ```
 
-```
-[Feature] Adiciona filtragem de professores por matéria e nível de ensino
-```
+---
 
-## Revisão de Código
+## 🛰️ Submetendo suas Alterações
 
-Após submeter um Pull Request:
-- Seu código será revisado para assegurar que está de acordo com as diretrizes e padrões do projeto.
-- Faremos sugestões de mudanças, se necessário. 
+Quando terminar, abra um Pull Request com uma descrição detalhada das alterações realizadas.
 
-## Reportando Bugs e Solicitando Funcionalidades
+1. **No repositório do seu fork, clique em `Contribute`.**
 
-1. **Bugs**: Descreva claramente o bug, incluindo como reproduzi-lo, o comportamento esperado e o ambiente.
-2. **Funcionalidades**: Descreva a nova funcionalidade desejada e explique como ela melhoraria o projeto.
+2. **Clique em `Open pull request`.**
 
-## Agradecimentos
+3. **Selecione o repositório e a branch onde realizou as alterações.**
 
-Agradecemos sua contribuição! Cada melhoria é importante para o desenvolvimento do WhichTeacher, e estamos animados para colaborar com você.
+4. **Para finalizar, clique em `Create pull request`.**
+
+Nós da equipe do WhichTeacher iremos avaliar sua submissão. Se necessário, entraremos em contato para revisarmos o seu código.
+
+---
+
+## ❤️ Obrigado por Contribuir!
+
+Estamos ansiosos para receber suas sugestões e melhorias! Caso tenha dúvidas, entre em contato conosco através do e-mail: [contato.whichteacher@gmail.com](mailto:contato.whichteacher@gmail.com).
