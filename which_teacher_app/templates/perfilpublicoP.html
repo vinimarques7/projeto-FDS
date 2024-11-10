@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% load static %}
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <link rel="stylesheet" href="{% static 'perfilpublicoP.css' %}" />
@@ -15,8 +16,8 @@
     <div class="alert alert-info alert-dismissible fade show" role="alert"
          style="opacity: 1 !important; visibility: visible !important">
         {% for message in messages %}
-        <strong>Aviso:</strong> {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>Aviso:</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         {% endfor %}
     </div>
     {% endif %}
@@ -34,7 +35,6 @@
                             {% endif %}
                         </a>
                         <h1>{{ professor.nome }}</h1>
-                        <p>{{ professor.email }}</p>
                     </div>
                 </div>
             </div>
@@ -54,16 +54,6 @@
                             </div>
                             <div class="bio-row">
                                 <p><span>Celular: </span>{{ professor.celular }}</p>
-                            </div>
-                            <div class="bio-row">
-                                <p><span>Horários Disponíveis: </span></p>
-                                <ul>
-                                    {% for horario in horarios %}
-                                    <li>{{ horario.dia }} - {{ horario.hora_inicio }} até {{ horario.hora_fim }}</li>
-                                    {% empty %}
-                                    <li>Nenhum horário disponível.</li>
-                                    {% endfor %}
-                                </ul>
                             </div>
                             <div class="bio-row">
 								<p>
@@ -107,17 +97,24 @@
             </div>
 
             <div class="bio-graph-info">
-                <h3>Avaliação</h3>
+                <h3>Avaliações</h3>
                 {% if reviews %}
-                {% for review in reviews %}
-                <div class="review">
-                    <p><strong>{{ review.aluno.nome }}</strong> - {{ review.rating }} estrelas</p>
-                    <p>{{ review.comment }}</p>
-                    <small>{{ review.date_created }}</small>
-                </div>
-                {% endfor %}
+                    <div class="row">
+                        {% for review in reviews %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>{{ review.nome_aluno }}</strong></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">{{ review.estrelas }} estrelas &#9733;</h6>
+                                    <p class="card-text">{{ review.comentario }}</p>
+                                    <small class="text-muted">{{ review.criado_em }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 {% else %}
-                <p>Ainda não há avaliações.</p>
+                    <p>Ainda não há avaliações.</p>
                 {% endif %}
             </div>
         </div>

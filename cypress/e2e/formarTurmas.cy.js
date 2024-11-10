@@ -23,7 +23,7 @@ Cypress.Commands.add('registerProfessor', () => {
     cy.get('input[name="comunicacao"][value="Discord"]').check();
     cy.get(':nth-child(6) > .dropdown > .btn').click(); // Fecha dropdown
     cy.get(':nth-child(7) > .dropdown > .btn').click();
-    cy.get('input[name="nivel_ensino"][value="Ensino-Fundamental"]').check();
+    cy.get('input[name="recebimento"][value="Boleto"]').check();
     cy.get(':nth-child(7) > .dropdown > .btn').click(); // Fecha dropdown
     cy.get('.mt-4.text-center > .btn').click(); // Envia o formulário de cadastro
 
