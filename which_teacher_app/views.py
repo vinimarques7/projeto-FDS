@@ -4,6 +4,7 @@ from .models import Professor, Aluno, Turma, Lembrete, Avaliacao,Agendamento,Obj
 from django.contrib import messages
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 
 
 def cadastro_professor(request):
@@ -142,10 +143,6 @@ def perfilP(request):
 
 
 
-
-
-
-
 def cadastro_aluno(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
@@ -279,14 +276,19 @@ def avaliacao(request):
 def publicoP(request, professor_id):
     professor = get_object_or_404(Professor, id=professor_id)
     
-    # Obtenha todos os horários associados ao professor
-    turmas= Turma.objects.filter(professor=professor)
-     # Exemplo para carregar turmas, caso necessário
+    # Obtenha todas as turmas associadas ao professor
+    turmas = Turma.objects.filter(professor=professor)
+    
+    # Obtenha todas as avaliações do professor e calcule a média de estrelas
+    reviews = Avaliacao.objects.filter(professor=professor)
+    media_estrelas = reviews.aggregate(Avg('estrelas'))['estrelas__avg'] or 0
 
-    # Renderize o template com o professor, os horários e as turmas
+    # Renderize o template com o professor, as turmas, as avaliações e a média de estrelas
     return render(request, 'perfilpublicoP.html', {
         'professor': professor,
-        'turmas': turmas
+        'turmas': turmas,
+        'reviews': reviews,
+        'media_estrelas': round(media_estrelas, 1)  # Arredonda para uma casa decimal
     })
    
 
@@ -294,14 +296,17 @@ def cadastroP(request):
     return render(request, 'cadastroProfessor.html')
 
 def busca(request):
-    professores = Professor.objects.all()
+    professores = Professor.objects.all().annotate(media_estrelas=Avg('avaliacao__estrelas'))
     aluno_id = request.session.get('aluno_id')
     aluno = None
 
     if aluno_id:
         aluno = get_object_or_404(Aluno, id=aluno_id)
     
-    return render(request, 'busca.html', {'professores': professores, 'aluno': aluno})
+    return render(request, 'busca.html', {
+        'professores': professores,
+        'aluno': aluno
+    })
 
 
 
@@ -333,9 +338,30 @@ def agendar_aula(request, professor_id):
         print("Meio de Pagamento:", meio_pagamento)
         print("Comentários:", comentarios)
 
-        # Validação dos campos obrigatórios
-        if not data_selecionada or not meio_transmissao or not meio_pagamento:
+         # Lista para acumular mensagens de erro
+        erros = []
+
+        if not data_selecionada and not meio_transmissao and not meio_pagamento and not comentarios:
             messages.error(request, "Por favor, preencha todos os campos obrigatórios.")
+            return redirect("agendar_aula", professor_id=professor.id)
+
+        # Verificações de cada campo obrigatório e acumulação de erros específicos
+        if not data_selecionada:
+            erros.append("Por favor, selecione um dia para o agendamento.")
+        
+        if not meio_transmissao:
+            erros.append("Por favor, selecione um meio de transmissão para o agendamento.")
+        
+        if not meio_pagamento:
+            erros.append("Por favor, selecione um meio de pagamento para o agendamento.")
+        
+        if not comentarios:
+            erros.append("Por favor, insira um comentário para o professor.")
+
+        # Se algum erro foi encontrado, exibe todas as mensagens de erro acumuladas
+        if erros:
+            for erro in erros:
+                messages.error(request, erro)
             return redirect("agendar_aula", professor_id=professor.id)
 
         try:
@@ -350,7 +376,7 @@ def agendar_aula(request, professor_id):
             )
             agendamento.save()
             messages.success(request, "Agendamento realizado com sucesso!")
-            return redirect("agendar_sucesso", professor_id=professor.id)
+            return redirect("publicoP", professor_id=professor.id)
         except Exception as e:
             messages.error(request, f"Ocorreu um erro ao salvar o agendamento: {e}")
             return redirect("agendar_aula", professor_id=professor.id)
@@ -372,33 +398,46 @@ def agendar_sucesso(request, professor_id):
  
 def avaliacao(request, professor_id):
     aluno_id = request.session.get('aluno_id')
+
     if not aluno_id:
+        messages.warning(request, "Por favor, faça login para enviar uma avaliação.")
         return redirect('loginA')
 
     aluno = get_object_or_404(Aluno, id=aluno_id)
     nome_aluno = aluno.nome
     professor = get_object_or_404(Professor, id=professor_id)
 
+    # Verifique se uma avaliação já existe para esse aluno e professor
+    avaliacao_existente = Avaliacao.objects.filter(professor=professor, id_aluno=aluno.id).first()
+
+    if avaliacao_existente:
+        messages.info(request, "Você já enviou uma avaliação para este professor.")
+        return redirect('publicoP', professor_id=professor.id)
+
     if request.method == 'POST':
         estrelas = request.POST.get('rating')
         comentario = request.POST.get('comment')
 
-        if not estrelas or not comentario:
-            messages.error(request, 'Por favor, forneça uma avaliação e um comentário.')
+        if not estrelas and not comentario:
+            messages.error(request, 'Avaliação não enviada: a avaliação e o comentário estão vazios.')
+        elif not estrelas:
+            messages.error(request, 'Avaliação não enviada: por favor, forneça uma avaliação de estrelas.')
+        elif not comentario:
+            messages.error(request, 'Avaliação não enviada: por favor, forneça um comentário.')
         else:
             try:
-                # Salvar a avaliação com o professor no banco de dados
-                avaliacao = Avaliacao.objects.create(
+                # Salvar a avaliação no banco de dados
+                Avaliacao.objects.create(
                     professor=professor,
                     estrelas=estrelas,
                     comentario=comentario,
                     id_aluno=aluno.id,
                     nome_aluno=nome_aluno
                 )
-                messages.success(request, "Avaliação enviada com sucesso!")
+                messages.success(request, "Sua avaliação foi enviada com sucesso!")
                 return redirect('publicoP', professor_id=professor.id)
             except Exception as e:
-                messages.error(request, f"Erro ao salvar avaliação: {e}")
+                messages.error(request, f"Ocorreu um erro ao salvar sua avaliação. Tente novamente mais tarde. Erro: {e}")
 
     return render(request, 'avaliacao.html', {
         'aluno': aluno,

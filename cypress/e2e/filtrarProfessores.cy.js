@@ -45,7 +45,7 @@ Cypress.Commands.add('registerLoginP', () =>{
     cy.get('input[name="comunicacao"][value="Discord"]').check();
     cy.get(':nth-child(6) > .dropdown > .btn').click()
     cy.get(':nth-child(7) > .dropdown > .btn').click()
-    cy.get('input[name="nivel_ensino"][value="Ensino-Fundamental"]').check();
+    cy.get('input[name="recebimento"][value="PIX"]').check();
     cy.get(':nth-child(7) > .dropdown > .btn').click()
     cy.get('.mt-4.text-center > .btn').click()
     cy.visit('/')
@@ -63,7 +63,7 @@ Cypress.Commands.add('registerLoginP', () =>{
     cy.get('input[name="comunicacao"][value="Discord"]').check();
     cy.get(':nth-child(6) > .dropdown > .btn').click()
     cy.get(':nth-child(7) > .dropdown > .btn').click()
-    cy.get('input[name="nivel_ensino"][value="Ensino-Fundamental"]').check();
+    cy.get('input[name="recebimento"][value="Boleto"]').check();
     cy.get(':nth-child(7) > .dropdown > .btn').click()
     cy.get('.mt-4.text-center > .btn').click()
     
@@ -77,7 +77,9 @@ describe('test suite Filtrar', () => {
         cy.registerLoginA();
         cy.visit('busca/')
         // Clica no botão de filtro para a matéria de Português
-        cy.get('.filter-btn[data-subject="Português"]').click();
+        cy.get('#materiaPortugues').check();
+        
+
         
        
 
@@ -92,7 +94,8 @@ describe('test suite Filtrar', () => {
         cy.registerLoginA();
         cy.visit('busca/')
         // Clica no botão de filtro para a matéria de ingles
-        cy.get('.filter-btn[data-subject="Inglês"]').click();
+        cy.get('#materiaIngles').check();
+
     })
 
     it(' Resetar filtro e visualizar todos os professores', () => {
@@ -102,7 +105,8 @@ describe('test suite Filtrar', () => {
         cy.registerLoginA();
         cy.visit('busca/')
         // Clica no botão de filtro para a matéria de ingles
-        cy.get('.filter-btn[data-subject="Português"]').click();
-        cy.get('.filter-btn[data-subject="Português"]').click();
+        cy.get('#materiaPortugues').check();
+        cy.get('#materiaPortugues').check();
+
     })
 })

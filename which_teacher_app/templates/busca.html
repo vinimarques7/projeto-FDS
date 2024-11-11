@@ -239,9 +239,8 @@
                   </div>
                   <div class="card-body">
                     <h5 class="card-title">{{ professor.nome }}</h5>
-                    <p class="location-info">{{ professor.localizacao }}</p>
                     <div class="rating">
-                      <i class="fas fa-star"></i> <span>5 (18 avaliações)</span>
+                      <p>Avaliação Média: {{ professor.media_estrelas|default:"0" }}/5.0 <span class="rating-stars">&#9733;</span></p>
                     </div>
                     <p class="card-text">Matérias: {{ professor.materia }}</p>
                     <p class="card-text">{{ professor.descricao }}</p>

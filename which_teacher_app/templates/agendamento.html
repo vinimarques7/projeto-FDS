@@ -6,12 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'agendamento.css' %}">
     <title>WhichTeacher - Agendamento</title>
 </head>
 
 <body class="teachers-regular">
+    {% if messages %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert" style="opacity: 1 !important; visibility: visible !important;">
+            {% for message in messages %}
+                <strong>Aviso:</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {% endfor %}
+        </div>
+    {% endif %}
     <header class="container d-flex justify-content-between align-items-center py-3">
         <div class="logo">
             <a href="#" class="navbar-brand">
@@ -40,7 +50,6 @@
                 <h2>{{ professor.nome }}</h2>
                 <span class="tag">Tag</span>
                 <p class="price-tag">$50</p>
-                <p>Já teve aula com esse professor? <a href="#">Avalie</a></p>
             </div>
 
             <div class="col-md-6">
@@ -48,13 +57,13 @@
                 <form method="POST" id="agendar-form">
                     {% csrf_token %}
                     <div class="form-group">
-                        <input type="date" name="data_selecionada" id="data-selecionada" class="form-control mb-3" required>
+                        <input type="date" name="data_selecionada" id="data-selecionada" class="form-control mb-3" >
                     </div>
                     
 
                     <div class="form-group">
                         <label for="meio-transmissao">Meio de Transmissão:</label>
-                        <select id="meio-transmissao" name="meio_transmissao" class="form-control" required>
+                        <select id="meio-transmissao" name="meio_transmissao" class="form-control" >
                             <option value="">Selecione um meio</option>
                             {% for meio in meios_transmissao %}
                                 <option value="{{ meio }}">{{ meio }}</option>
@@ -64,7 +73,7 @@
                     
                     <div class="form-group">
                         <label for="meio-pagamento">Meio de Pagamento:</label>
-                        <select id="meio-pagamento" name="meio_pagamento" class="form-control" required>
+                        <select id="meio-pagamento" name="meio_pagamento" class="form-control" >
                             <option value="">Selecione um meio</option>
                             {% for pagamento in meios_pagamento %}
                                 <option value="{{ pagamento }}">{{ pagamento }}</option>
