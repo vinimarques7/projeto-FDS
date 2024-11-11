@@ -1,5 +1,7 @@
-let SubmitMenu = document.getElementById('menu-abrir');
-let menu = document.getElementById('menu-mobile');
+document.addEventListener('DOMContentLoaded', function () {
+    const SubmitMenu = document.getElementById('menu-abrir');
+    const menu = document.getElementById('menu-mobile');
+
 
 SubmitMenu.addEventListener('click', () => {
 	menu.classList.add('abrir-menu');
@@ -22,3 +24,4 @@ document
 			$('#myModal').modal('hide');
 		}
 	});
+

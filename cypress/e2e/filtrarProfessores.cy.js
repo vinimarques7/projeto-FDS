@@ -79,6 +79,7 @@ describe('test suite Filtrar', () => {
         // Clica no botão de filtro para a matéria de Português
         cy.get('#materiaPortugues').check();
         
+
         
        
 
@@ -94,6 +95,7 @@ describe('test suite Filtrar', () => {
         cy.visit('busca/')
         // Clica no botão de filtro para a matéria de ingles
         cy.get('#materiaIngles').check();
+
     })
 
     it(' Resetar filtro e visualizar todos os professores', () => {
@@ -105,5 +107,6 @@ describe('test suite Filtrar', () => {
         // Clica no botão de filtro para a matéria de ingles
         cy.get('#materiaPortugues').check();
         cy.get('#materiaPortugues').check();
+
     })
 })
